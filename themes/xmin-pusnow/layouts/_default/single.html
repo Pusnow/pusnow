@@ -1,8 +1,12 @@
 {{ partial "header.html" . }}
 <h1>{{ .Title | markdownify }}</h1>
 
- <span class="date">{{ .Date.Format "2006/01/02" }}</span>
+{{ if .Date }}
+<span class="date">{{ .Date.Format "2006/01/02" }}</span>
+{{ if .GitInfo }}
 <span class="date">(Last update: {{ .GitInfo.AuthorDate.Format "2006/01/02" }})</span>
+{{ end }}
+{{ end }}
 <main>
 {{ .Content }}
 </main>

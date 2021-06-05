@@ -13,9 +13,6 @@
   <li>
     <span class="date">{{ .Date.Format "2006/01/02" }}</span>
     <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
-    {{ if .GitInfo }}
-    <span class="date">(Last update: {{ .GitInfo.AuthorDate.Format "2006/01/02" }})</span>
-    {{ end }}
   </li>
   {{ end }}
 </ul>
