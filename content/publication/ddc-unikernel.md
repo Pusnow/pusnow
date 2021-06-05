@@ -1,5 +1,6 @@
 ---
 title: Accelerating Disaggregated Data Centers Using Unikernel
+date: 2020-08-11
 tags:
     - publication
 ---
@@ -7,8 +8,6 @@ tags:
 **Wonsup Yoon**, Jinyoung Oh, Sue Moon, and Youngjin Kwon
 
 *Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM '20 Posters and Demos)*
-
-2020
 
 ## Abstract
 
