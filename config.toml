@@ -1,0 +1,28 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "My New Hugo Site"
+theme = "xmin-pusnow"
+
+[permalinks]
+note = "/note/:slug/"
+
+[[menu.main]]
+name = "Home"
+url = ""
+weight = 1
+
+[[menu.main]]
+name = "Tags"
+url = "tags/"
+weight = 2
+
+[[menu.main]]
+name = "About"
+url = ""
+weight = 3
+
+[params]
+footer = "&copy; [Wonsup Yoon](https://www.pusnow.com) | [GitHub](https://github.com/pusnow) | Original theme: [Hugo xmin](https://github.com/yihui/hugo-xmin)"
+
+
+
