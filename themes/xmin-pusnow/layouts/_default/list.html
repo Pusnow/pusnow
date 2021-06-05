@@ -12,10 +12,10 @@
   {{ range (where $pages "Section" "!=" "") }}
   <li>
     <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
-    <br/>
-    {{ if (isset .GitInfo "AuthorDate") }}
+    {{ if .GitInfo.AuthorDate }}
     <span class="date">(Last update: {{ .GitInfo.AuthorDate.Format "2006/01/02" }})</span>
     {{ else }}
+    (new)
     {{ end }}
   </li>
   {{ end }}
