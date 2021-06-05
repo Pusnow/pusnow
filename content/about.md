@@ -30,7 +30,7 @@
 
 ## Publication
 
-- Accelerating Disaggregated Data Centers Using Unikernel. [[Link](publication/ddc-unikernel.html)]
+- Accelerating Disaggregated Data Centers Using Unikernel. [[Link](/publication/ddc-unikernel)]
     - **Wonsup Yoon**, Jinyoung Oh, Sue Moon, and Youngjin Kwon
     - *Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM '20 Posters and Demos)*, 2020.
 - Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System. [[Link](https://dl.acm.org/doi/abs/10.1145/3365137.3365403)]

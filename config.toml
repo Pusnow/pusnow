@@ -5,8 +5,8 @@ theme = "xmin-pusnow"
 enableGitInfo = true
 
 [permalinks]
-note = "/note/:slug/"
-publication = "/publication/:slug/"
+note = "/note/:filename/"
+publication = "/publication/:filename/"
 
 [[menu.main]]
 name = "Home"
@@ -20,7 +20,7 @@ weight = 2
 
 [[menu.main]]
 name = "About"
-url = ""
+url = "about/"
 weight = 3
 
 [params]
