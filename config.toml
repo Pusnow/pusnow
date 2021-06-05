@@ -2,9 +2,11 @@ baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "My New Hugo Site"
 theme = "xmin-pusnow"
+enableGitInfo = true
 
 [permalinks]
 note = "/note/:slug/"
+publication = "/publication/:slug/"
 
 [[menu.main]]
 name = "Home"

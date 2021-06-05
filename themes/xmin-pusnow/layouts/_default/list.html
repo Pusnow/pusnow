@@ -11,8 +11,12 @@
   {{ if .IsHome }}{{ $pages = .Site.RegularPages }}{{ end }}
   {{ range (where $pages "Section" "!=" "") }}
   <li>
-    <span class="date">{{ .Date.Format "2006/01/02" }}</span>
     <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+    <br/>
+    {{ if (isset .GitInfo "AuthorDate") }}
+    <span class="date">(Last update: {{ .GitInfo.AuthorDate.Format "2006/01/02" }})</span>
+    {{ else }}
+    {{ end }}
   </li>
   {{ end }}
 </ul>
