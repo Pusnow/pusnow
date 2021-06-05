@@ -1,6 +1,6 @@
-baseURL = "http://example.org/"
+baseURL = "https://www.pusnow.com/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Pusnow"
 theme = "xmin-pusnow"
 enableGitInfo = true
 

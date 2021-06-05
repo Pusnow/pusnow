@@ -30,14 +30,11 @@ jobs:
         with:
           path: main
           
-      - name: Pandoc
-        uses: docker://pandoc/core:2.11
-        with:
-          entrypoint: /bin/sh
-          args: -c "apk --no-cache add make && make -C main -j$(nproc) OUT=${PWD}/out"
+      - name: Hugo
+        uses: docker://klakegg/hugo:latest
 
       - name: Deploy
-        run : rsync -r --delete --exclude="CNAME" --exclude=".git" out/ gh-pages/
+        run : rsync -r --delete --exclude="CNAME" --exclude=".git" public/ gh-pages/
       
       - name: GIT config
         working-directory: ${{github.workspace}}/gh-pages
