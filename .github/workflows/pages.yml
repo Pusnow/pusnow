@@ -19,20 +19,17 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
+    steps:          
+      - uses: actions/checkout@v2
+          
+      - name: Hugo
+        uses: docker://klakegg/hugo:latest
+
       - uses: actions/checkout@v2
         with:
           ssh-key: ${{ secrets.SSH_PRIVKEY }}
           ref: gh-pages
           path: gh-pages
-          
-      - uses: actions/checkout@v2
-        with:
-          path: main
-          
-      - name: Hugo
-        uses: docker://klakegg/hugo:latest
-
       - name: Deploy
         run : rsync -r --delete --exclude="CNAME" --exclude=".git" public/ gh-pages/
       
