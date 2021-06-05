@@ -9,9 +9,9 @@ lang: ko-kr
 유니코드에서 한글을 어떻게 다루는지를 정리하였다.
 
 ## 유니코드
-* 유니코드(Unicode)는 전 세계의 모든 문자를 컴퓨터에서 일관되게 표현하고 다룰 수 있도록 설계된 산업 표준 ([위키 백과](https://ko.wikipedia.org/wiki/유니코드))
+* 유니코드(Unicode)는 전 세계의 모든 문자를 컴퓨터에서 일관되게 표현하고 다룰 수 있도록 설계된 산업 표준 [^1]
 * 단순히 문자마다 번호를 붙임
-* 계속 업데이트되며 현재는 Unicode Version 9.0.0 이 최신이다.
+* 계속 업데이트되며 현재는 Unicode Version 14.0.0 이 최신
 
 ### UTF
 * 유니코드를 실제 파일 등에 어떻게 기록할 것인지를 표준화한 것이다.
@@ -20,7 +20,7 @@ lang: ko-kr
 
 
 ## 유니코드 속의 한글
-[Unicode Consortium](http://www.unicode.org)의 Version 9.0.0 데이터베이스에 따르면 유니코드에서 한글이 지정된 블록은 다음과 같다. [[참고](http://www.unicode.org/Public/9.0.0/charts/)]
+[Unicode Consortium](http://www.unicode.org)의 Version 9.0.0 데이터베이스에 따르면 유니코드에서 한글이 지정된 블록은 다음과 같다.[^2]
 
 * Hangul Jamo: 1100 ~ 11FF
 * Currency Symbols 중 WON SIGN : 20A9
@@ -160,3 +160,8 @@ NFKC와 NFKD는 한글자모/한글음절 영역 이외의 한글 유니코드 �
 
 ### KS X 1026-1
 유니코드 표준은 아니지만 [KS X 1026-1](http://www.unicode.org/L2/L2008/08225-n3422.pdf)에서는 한글 정렬 알고리즘이 소개되어 있다. 본격적으로 정렬을 하고자 한다면 이 규칙을 따르는 것도 나쁘지 않은 선택이다.
+
+
+
+[^1]: 유니코드. 위키백과. [https://ko.wikipedia.org/wiki/유니코드](https://ko.wikipedia.org/wiki/유니코드)
+[^2]: Unicode 9.0.0 Charts. http://www.unicode.org/Public/9.0.0/charts/

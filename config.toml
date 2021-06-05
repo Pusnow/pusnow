@@ -26,5 +26,14 @@ weight = 3
 [params]
 footer = "&copy; [Wonsup Yoon](https://www.pusnow.com) | [GitHub](https://github.com/pusnow) | Original theme: [Hugo xmin](https://github.com/yihui/hugo-xmin)"
 
+[markup]
+defaultMarkdownHandler = "goldmark"
 
-
+[markup.goldmark.extensions]
+definitionList = true
+footnote = true
+linkify = true
+strikethrough = true
+table = true
+taskList = true
+typographer = true
