@@ -21,7 +21,7 @@ tags:
 ## Compilers
 
 - Windows: Visual Studio 2019
-- macOS: Apple Clang 1
+- macOS: Apple Clang 12
 - Linux: GCC 8
 
 ## Source Code
