@@ -20,8 +20,8 @@ tags:
 
 ## Compilers
 
-- Windows: Visual Studio 2019 
-- macOS: Clang 12.0.5
+- Windows: Visual Studio 2019
+- macOS: Apple Clang 1
 - Linux: GCC 8
 
 ## Source Code
