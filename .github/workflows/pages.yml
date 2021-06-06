@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v2
           
       - name: Hugo
-        uses: docker://klakegg/hugo:latest
+        uses: docker://ghcr.io/pusnow/hugo:latest
 
       - uses: actions/checkout@v2
         with:
