@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>publication on Pusnow</title>
+    <link>https://www.pusnow.com/tags/publication/</link>
+    <description>Recent content in publication on Pusnow</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 11 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/publication/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Accelerating Disaggregated Data Centers Using Unikernel</title>
+      <link>https://www.pusnow.com/publication/ddc-unikernel/</link>
+      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/publication/ddc-unikernel/</guid>
+      <description>Wonsup Yoon, Jinyoung Oh, Sue Moon, and Youngjin Kwon
+Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM &amp;lsquo;20 Posters and Demos)
+Abstract Memory disaggregation is a new hardware and system paradigm to split computation and memory into physical separate nodes. Grouping and pooling hardware resources solves the low resource utilization problem and hide intermittent hardware failures in data centers. In this work we propose a unikernel-based remote paging for memory disaggregation.</description>
+    </item>
+    
+  </channel>
+</rss>

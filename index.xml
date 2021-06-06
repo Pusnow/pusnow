@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pusnow</title>
+    <link>https://www.pusnow.com/</link>
+    <description>Recent content on Pusnow</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 11 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Accelerating Disaggregated Data Centers Using Unikernel</title>
+      <link>https://www.pusnow.com/publication/ddc-unikernel/</link>
+      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/publication/ddc-unikernel/</guid>
+      <description>Wonsup Yoon, Jinyoung Oh, Sue Moon, and Youngjin Kwon
+Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM &amp;lsquo;20 Posters and Demos)
+Abstract Memory disaggregation is a new hardware and system paradigm to split computation and memory into physical separate nodes. Grouping and pooling hardware resources solves the low resource utilization problem and hide intermittent hardware failures in data centers. In this work we propose a unikernel-based remote paging for memory disaggregation.</description>
+    </item>
+    
+    <item>
+      <title>한글과 유니코드</title>
+      <link>https://www.pusnow.com/note/hangul-and-unicode/</link>
+      <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/note/hangul-and-unicode/</guid>
+      <description>유니코드에서 한글을 어떻게 다루는지를 정리하였다.
+유니코드  유니코드(Unicode)는 전 세계의 모든 문자를 컴퓨터에서 일관되게 표현하고 다룰 수 있도록 설계된 산업 표준 1 단순히 문자마다 번호를 붙임 계속 업데이트되며 현재는 Unicode Version 14.0.0 이 최신  UTF  유니코드를 실제 파일 등에 어떻게 기록할 것인지를 표준화한 것이다. 유니코드는 문자를 각 숫자에 대응시킨 것에 불과하고 이를 실제 비트로 표현하는 방식은 다양하다 UTF-8, UTF-16 등이 있다.  유니코드 속의 한글 Unicode Consortium의 Version 9.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.pusnow.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/about/</guid>
+      <description>Wonsup Yoon  Research Area  Virtualization: unikernels, microVM, containers, etc. Networking: RDMA, virtio, etc. Datacenter: resource disaggregation, microservices, etc.   Education  Ph.D. Candidate in Computer Science, KAIST, 2019.9-present.  GPA: 4.01/4.30   M.S. in Computer Science, KAIST, 2017.9-2019.8.  GPA: 3.95/4.30   B.S. in Electrical and Electronic Engineering, Yonsei University, 2013.3-2017.2.  Minor: Computer Science Graduation with High Honors (Top 3%) GPA: 4.01/4.30   Sunrin Internet High School, 2009.</description>
+    </item>
+    
+  </channel>
+</rss>
