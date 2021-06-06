@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Size of Standard Types | Pusnow</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<h1>Size of Standard Types</h1>
+
+
+<span class="date">2021/06/06</span>
+
+<span class="date">(Last update: 2021/06/06)</span>
+
+
+<main>
+<p>Note: architectures without parentheses mean Linux</p>
+<table>
+<thead>
+<tr>
+<th>Types</th>
+<th>x86_64</th>
+<th>x86_64 (Windows)</th>
+<th>x86_64 (macOS)</th>
+<th>i386</th>
+<th>i386 (Windows)</th>
+<th>aarch64</th>
+<th>aarch64 (macOS)</th>
+<th>armv7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>short</code></td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>8</td>
+<td>4</td>
+<td>8</td>
+<td>4</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>long long</code></td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>long double</code></td>
+<td>16</td>
+<td>8</td>
+<td>16</td>
+<td>12</td>
+<td>8</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>void*</code></td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>4</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="compilers">Compilers</h2>
+<ul>
+<li>Windows: Visual Studio 2019</li>
+<li>macOS: Clang 12.0.5</li>
+<li>Linux: GCC 8</li>
+</ul>
+<h2 id="source-code">Source Code</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+    printf(<span style="color:#e6db74">&#34;short: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">short</span>));
+    printf(<span style="color:#e6db74">&#34;int: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>));
+    printf(<span style="color:#e6db74">&#34;long: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">long</span>));
+    printf(<span style="color:#e6db74">&#34;long long: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span>));
+    printf(<span style="color:#e6db74">&#34;float: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">float</span>));
+    printf(<span style="color:#e6db74">&#34;double: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">double</span>));
+    printf(<span style="color:#e6db74">&#34;long double: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">long</span> <span style="color:#66d9ef">double</span>));
+    printf(<span style="color:#e6db74">&#34;void*: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>));
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div>
+</main>
+
+  <footer>
+  
+  
+  <hr/>
+  © <a href="https://www.pusnow.com">Wonsup Yoon</a> | <a href="https://github.com/pusnow">GitHub</a> | Original theme: <a href="https://github.com/yihui/hugo-xmin">Hugo xmin</a>
+  
+  </footer>
+  </body>
+</html>
+

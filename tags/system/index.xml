@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>system on Pusnow</title>
+    <link>https://www.pusnow.com/tags/system/</link>
+    <description>Recent content in system on Pusnow</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 06 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Size of Standard Types</title>
+      <link>https://www.pusnow.com/note/size-of-standard-types/</link>
+      <pubDate>Sun, 06 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/note/size-of-standard-types/</guid>
+      <description>Note: architectures without parentheses mean Linux
+   Types x86_64 x86_64 (Windows) x86_64 (macOS) i386 i386 (Windows) aarch64 aarch64 (macOS) armv7     short 2 2 2 2 2      int 4 4 4 4 4      long 8 4 8 4 4      long long 8 8 8 8 8      float 4 4 4 4 4      double 8 8 8 8 8      long double 16 8 16 12 8      void* 8 8 8 4 4       Compilers  Windows: Visual Studio 2019 macOS: Clang 12.</description>
+    </item>
+    
+  </channel>
+</rss>
