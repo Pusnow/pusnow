@@ -3,27 +3,26 @@ title: Size of Standard Types
 date: 2021-06-06
 tags:
     - system
-draft: true
 ---
 
 Note: architectures without parentheses mean Linux
 
 | Types         | x86_64 | x86_64 (Windows) | x86_64 (macOS) | i386 | i386 (Windows) | aarch64 | aarch64 (macOS) | armv7 |
 |---------------|--------|------------------|----------------|------|----------------|---------|-----------------|-------|
-| `short`       |        |                  | 2              |      |                |         |                 |       |
-| `int`         |        |                  | 4              |      |                |         |                 |       |
-| `long`        |        |                  | 8              |      |                |         |                 |       |
-| `long long`   |        |                  | 8              |      |                |         |                 |       |
-| `float`       |        |                  | 4              |      |                |         |                 |       |
-| `double`      |        |                  | 8              |      |                |         |                 |       |
-| `long double` |        |                  | 16             |      |                |         |                 |       |
-| `void*`       |        |                  | 8              |      |                |         |                 |       |
+| `short`       | 2      | 2                | 2              | 2    | 2              |         |                 |       |
+| `int`         | 4      | 4                | 4              | 4    | 4              |         |                 |       |
+| `long`        | 8      | 4                | 8              | 4    | 4              |         |                 |       |
+| `long long`   | 8      | 8                | 8              | 8    | 8              |         |                 |       |
+| `float`       | 4      | 4                | 4              | 4    | 4              |         |                 |       |
+| `double`      | 8      | 8                | 8              | 8    | 8              |         |                 |       |
+| `long double` | 16     | 8                | 16             | 12   | 8              |         |                 |       |
+| `void*`       | 8      | 8                | 8              | 4    | 4              |         |                 |       |
 
 ## Compilers
 
-- Windows: MSVC
+- Windows: Visual Studio 2019 
 - macOS: Clang 12.0.5
-- Linux: GCC
+- Linux: GCC 8
 
 ## Source Code
 
