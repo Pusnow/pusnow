@@ -6,7 +6,18 @@
     <description>Recent content in system on Pusnow</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>파일시스템의 종류 - 로컬, 네트워크, 분산</title>
+      <link>https://www.pusnow.com/note/distributed-file-system/</link>
+      <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/note/distributed-file-system/</guid>
+      <description>Ceph dissertation (Ceph: Reliable, Scalable, and High-performance Distributed Storage, 2007)의 Related Work 부분을 요약 정리하였다. 당시에는 SSD가 대중화되어있지 않아서, 이 dissertation에서 다루는 디스크는 대부분 하드 디스크이다.
+파일시스템의 분류 파일시스템은 크게 세 가지로 분류된다.
+ 로컬 파일시스템: 로컬에 장착된 디스크와 상호 작용 네트워크 파일시스템 (클라이언트-서버 파일시스템): 원격 서버와 상호 작용 분산 파일시스템: 파일시스템의 데이터가 여러 호스트로 분산  로컬 파일시스템 수십 년간 파일시스템은 Unix 파일시스템과 BSD 유닉스의 Fast 파일시스템 (Fast File System, FFS)에 크게 영향을 받아왔다.</description>
+    </item>
+    
     <item>
       <title>Size of Standard Types</title>
       <link>https://www.pusnow.com/note/size-of-standard-types/</link>
