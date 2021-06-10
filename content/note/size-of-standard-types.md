@@ -17,6 +17,7 @@ tags:
 | `double`      |       8        |        8         |       8        |      8       |       8        |        8        |                 |        8        |
 | `long double` |       16       |        8         |       16       |      12      |       8        |       16        |                 |       16        |
 | `void*`       |       8        |        8         |       8        |      4       |       4        |        8        |                 |        8        |
+| `size_t`      |       8        |        8         |       8        |      4       |       4        |        8        |                 |        8        |
 
 ## Compilers
 
@@ -38,6 +39,7 @@ int main(){
     printf("double: %lu\n", sizeof(double));
     printf("long double: %lu\n", sizeof(long double));
     printf("void*: %lu\n", sizeof(void*));
+    printf("size_t: %lu\n", sizeof(size_t));
     return 0;
 }
 ```
