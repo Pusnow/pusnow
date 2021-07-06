@@ -43,15 +43,15 @@ blockquote {
 }
 
 table {
-  margin: auto;
   border-top: 1px solid #666;
   border-bottom: 1px solid #666;
+  width: fit-content;
   display: block;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-  margin: 0 auto;
+  max-width: 90vw;
   overflow-x: auto;
   white-space: nowrap;
+  margin-left: 50%; 
+  transform: translateX(-50%); 
 }
 table thead th { border-bottom: 1px solid #ddd; }
 th, td { padding: 5px; }
