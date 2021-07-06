@@ -6,7 +6,16 @@
     <description>Recent content in Notes on Pusnow</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/note/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/note/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C Atomic Instruction Mapping</title>
+      <link>https://www.pusnow.com/note/c-atomic-instruction-mapping/</link>
+      <pubDate>Tue, 06 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/note/c-atomic-instruction-mapping/</guid>
+      <description>Note  Only 64 bits data types Compiler: clang 11.0.1 https://godbolt.org/z/Te1zeva8M  Mapping Table    Operation x86-64 armv8-a RISC-V rv64gc     Load (no atomic) mov rax, qword ptr [rip + y] adrp x8, yldr x0, [x8, :lo12:y] lui a0, %hi(y)ld a0, %lo(y)(a0)    Load (implicit) mov rax, qword ptr [rip + x] adrp x8, xadd x8, x8, :lo12:xldar x0, [x8] fence rw, rwlui a0, %hi(x)ld a0, %lo(x)(a0)fence r, rw   Load (relaxed) mov rax, qword ptr [rip + x] adrp x8, xldr x0, [x8, :lo12:x] lui a0, %hi(x)ld a0, %lo(x)(a0)   Load (consume) mov rax, qword ptr [rip + x] adrp x8, xadd x8, x8, :lo12:xldar x0, [x8] lui a0, %hi(x)ld a0, %lo(x)(a0)fence r, rw   Load (acquire) mov rax, qword ptr [rip + x] adrp x8, xadd x8, x8, :lo12:xldar x0, [x8] lui a0, %hi(x)ld a0, %lo(x)(a0)fence r, rw   Load (release) Watomic-memory-ordering Watomic-memory-ordering Watomic-memory-ordering   Load (acq_rel) Watomic-memory-ordering Watomic-memory-ordering Watomic-memory-ordering   Load (seq_cst) mov rax, qword ptr [rip + x] adrp x8, xadd x8, x8, :lo12:xldar x0, [x8] fence rw, rwlui a0, %hi(x)ld a0, %lo(x)(a0)fence r, rw   Store (no atomic) mov qword ptr [rip + y], rdi adrp x8, ystr x0, [x8, :lo12:y] lui a1, %hi(y)sd a0, %lo(y)(a1)   Store (implicit) xchg qword ptr [rip + x], rdi adrp x8, xadd x8, x8, :lo12:xstlr x0, [x8] fence rw, wlui a1, %hi(x)sd a0, %lo(x)(a1)   Store (relaxed) mov qword ptr [rip + x], rdi adrp x8, xstr x0, [x8, :lo12:x] lui a1, %hi(x)sd a0, %lo(x)(a1)   Store (consume) Watomic-memory-ordering Watomic-memory-ordering Watomic-memory-ordering   Store (acquire) Watomic-memory-ordering Watomic-memory-ordering Watomic-memory-ordering   Store (release) mov qword ptr [rip + x], rdi adrp x8, xadd x8, x8, :lo12:xstlr x0, [x8] fence rw, wlui a1, %hi(x)sd a0, %lo(x)(a1)   Store (acq_rel) Watomic-memory-ordering Watomic-memory-ordering Watomic-memory-ordering   Store (seq_cst) xchg qword ptr [rip + x], rdi adrp x8, xadd x8, x8, :lo12:xstlr x0, [x8] fence rw, wlui a1, %hi(x)sd a0, %lo(x)(a1)   Exchange (implicit) mov eax, 42xchg qword ptr [rip + x], rax  adrp x8, x add x8, x8, :lo12:x mov w9, #42.</description>
+    </item>
+    
     <item>
       <title>파일시스템의 종류 - 로컬, 네트워크, 분산</title>
       <link>https://www.pusnow.com/note/distributed-file-system/</link>

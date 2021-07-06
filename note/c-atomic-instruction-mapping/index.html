@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C Atomic Instruction Mapping | Pusnow</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<h1>C Atomic Instruction Mapping</h1>
+
+
+<span class="date">2021/07/06</span>
+
+<span class="date">(Last update: 2021/07/06)</span>
+
+
+<main>
+<h2 id="note">Note</h2>
+<ul>
+<li>Only 64 bits data types</li>
+<li>Compiler: clang 11.0.1</li>
+<li><a href="https://godbolt.org/z/Te1zeva8M">https://godbolt.org/z/Te1zeva8M</a></li>
+</ul>
+<h2 id="mapping-table">Mapping Table</h2>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>x86-64</th>
+<th>armv8-a</th>
+<th>RISC-V rv64gc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Load (no atomic)</td>
+<td><code>mov rax, qword ptr [rip + y]</code></td>
+<td><code>adrp x8, y</br>ldr x0, [x8, :lo12:y]</code></td>
+<td><code>lui a0, %hi(y)<br/>ld a0, %lo(y)(a0)                                                        </code></td>
+</tr>
+<tr>
+<td>Load (implicit)</td>
+<td><code>mov rax, qword ptr [rip + x]</code></td>
+<td><code>adrp x8, x</br>add x8, x8, :lo12:x</br>ldar x0, [x8]</code></td>
+<td><code>fence rw, rw<br/>lui a0, %hi(x)<br/>ld a0, %lo(x)(a0)<br/>fence r, rw</code></td>
+</tr>
+<tr>
+<td>Load (relaxed)</td>
+<td><code>mov rax, qword ptr [rip + x]</code></td>
+<td><code>adrp x8, x</br>ldr x0, [x8, :lo12:x]</code></td>
+<td><code>lui a0, %hi(x)<br/>ld a0, %lo(x)(a0)</code></td>
+</tr>
+<tr>
+<td>Load (consume)</td>
+<td><code>mov rax, qword ptr [rip + x]</code></td>
+<td><code>adrp x8, x</br>add x8, x8, :lo12:x</br>ldar x0, [x8]</code></td>
+<td><code>lui a0, %hi(x)<br/>ld a0, %lo(x)(a0)<br/>fence r, rw</code></td>
+</tr>
+<tr>
+<td>Load (acquire)</td>
+<td><code>mov rax, qword ptr [rip + x]</code></td>
+<td><code>adrp x8, x</br>add x8, x8, :lo12:x</br>ldar x0, [x8]</code></td>
+<td><code>lui a0, %hi(x)<br/>ld a0, %lo(x)(a0)<br/>fence r, rw</code></td>
+</tr>
+<tr>
+<td>Load (release)</td>
+<td><code>Watomic-memory-ordering</code></td>
+<td><code>Watomic-memory-ordering</code></td>
+<td><code>Watomic-memory-ordering</code></td>
+</tr>
+<tr>
+<td>Load (acq_rel)</td>
+<td><code>Watomic-memory-ordering</code></td>
+<td><code>Watomic-memory-ordering</code></td>
+<td><code>Watomic-memory-ordering</code></td>
+</tr>
+<tr>
+<td>Load (seq_cst)</td>
+<td><code>mov rax, qword ptr [rip + x]</code></td>
+<td><code>adrp x8, x</br>add x8, x8, :lo12:x</br>ldar x0, [x8]</code></td>
+<td><code>fence rw, rw<br/>lui a0, %hi(x)<br/>ld a0, %lo(x)(a0)<br/>fence r, rw</code></td>
+</tr>
+<tr>
+<td>Store (no atomic)</td>
+<td><code>mov qword ptr [rip + y], rdi</code></td>
+<td><code>adrp x8, y</br>str x0, [x8, :lo12:y]</code></td>
+<td><code>lui a1, %hi(y)<br/>sd a0, %lo(y)(a1)</code></td>
+</tr>
+<tr>
+<td>Store (implicit)</td>
+<td><code>xchg qword ptr [rip + x], rdi</code></td>
+<td><code>adrp x8, x</br>add x8, x8, :lo12:x</br>stlr x0, [x8]</code></td>
+<td><code>fence rw, w<br/>lui a1, %hi(x)<br/>sd a0, %lo(x)(a1)</code></td>
+</tr>
+<tr>
+<td>Store (relaxed)</td>
+<td><code>mov qword ptr [rip + x], rdi</code></td>
+<td><code>adrp x8, x</br>str x0, [x8, :lo12:x]</code></td>
+<td><code>lui a1, %hi(x)<br/>sd a0, %lo(x)(a1)</code></td>
+</tr>
+<tr>
+<td>Store (consume)</td>
+<td><code>Watomic-memory-ordering</code></td>
+<td><code>Watomic-memory-ordering</code></td>
+<td><code>Watomic-memory-ordering</code></td>
+</tr>
+<tr>
+<td>Store (acquire)</td>
+<td><code>Watomic-memory-ordering</code></td>
+<td><code>Watomic-memory-ordering</code></td>
+<td><code>Watomic-memory-ordering</code></td>
+</tr>
+<tr>
+<td>Store (release)</td>
+<td><code>mov qword ptr [rip + x], rdi</code></td>
+<td><code>adrp x8, x</br>add x8, x8, :lo12:x</br>stlr x0, [x8]</code></td>
+<td><code>fence rw, w<br/>lui a1, %hi(x)<br/>sd a0, %lo(x)(a1)</code></td>
+</tr>
+<tr>
+<td>Store (acq_rel)</td>
+<td><code>Watomic-memory-ordering</code></td>
+<td><code>Watomic-memory-ordering</code></td>
+<td><code>Watomic-memory-ordering</code></td>
+</tr>
+<tr>
+<td>Store (seq_cst)</td>
+<td><code>xchg qword ptr [rip + x], rdi</code></td>
+<td><code>adrp x8, x</br>add x8, x8, :lo12:x</br>stlr x0, [x8]</code></td>
+<td><code>fence rw, w<br/>lui a1, %hi(x)<br/>sd a0, %lo(x)(a1)</code></td>
+</tr>
+<tr>
+<td>Exchange (implicit)</td>
+<td><code>mov eax, 42<br/>xchg qword ptr [rip + x], rax</code></td>
+<td><code>             adrp x8, x<br/>  add x8, x8, :lo12:x<br/>  mov w9, #42<br/>.LBB16_1:<br/>  ldaxr x0, [x8]<br/>  stlxr w10, x9, [x8]<br/>  cbnz w10, .LBB16_1</code></td>
+<td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoswap.d.aqrl a0, a1, (a0)</code></td>
+</tr>
+<tr>
+<td>Exchange (relaxed)</td>
+<td><code>mov eax, 42<br/>xchg qword ptr [rip + x], rax</code></td>
+<td><code>  adrp x8, x<br/>  add x8, x8, :lo12:x<br/>  mov w9, #42<br/>.LBB17_1:<br/>  ldxr x0, [x8]<br/>  stxr w10, x9, [x8]<br/>  cbnz w10, .LBB17_1</code></td>
+<td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoswap.d a0, a1, (a0)</code></td>
+</tr>
+<tr>
+<td>Exchange (consume)</td>
+<td><code>mov eax, 42<br/>xchg qword ptr [rip + x], rax</code></td>
+<td><code>  adrp x8, x<br/>  add x8, x8, :lo12:x<br/>  mov w9, #42<br/>.LBB18_1:<br/>  ldaxr x0, [x8]<br/>  stxr w10, x9, [x8]<br/>  cbnz w10, .LBB18_1</code></td>
+<td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoswap.d.aq a0, a1, (a0)</code></td>
+</tr>
+<tr>
+<td>Exchange (acquire)</td>
+<td><code>mov eax, 42<br/>xchg qword ptr [rip + x], rax</code></td>
+<td><code>  adrp x8, x<br/>  add x8, x8, :lo12:x<br/>  mov w9, #42<br/>.LBB19_1:<br/>  ldaxr x0, [x8]<br/>  stxr w10, x9, [x8]<br/>  cbnz w10, .LBB19_1</code></td>
+<td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoswap.d.aq a0, a1, (a0)</code></td>
+</tr>
+<tr>
+<td>Exchange (release)</td>
+<td><code>mov eax, 42<br/>xchg qword ptr [rip + x], rax</code></td>
+<td><code>  adrp x8, x<br/>  add x8, x8, :lo12:x<br/>  mov w9, #42<br/>.LBB20_1:<br/>  ldxr x0, [x8]<br/>  stlxr w10, x9, [x8]<br/>  cbnz w10, .LBB20_1</code></td>
+<td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoswap.d.rl a0, a1, (a0)</code></td>
+</tr>
+<tr>
+<td>Exchange (acq_rel)</td>
+<td><code>mov eax, 42<br/>xchg qword ptr [rip + x], rax</code></td>
+<td><code>  adrp x8, x<br/>  add x8, x8, :lo12:x<br/>  mov w9, #42<br/>.LBB21_1:<br/>  ldaxr x0, [x8]<br/>  stlxr w10, x9, [x8]<br/>  cbnz w10, .LBB21_1</code></td>
+<td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoswap.d.aqrl a0, a1, (a0)</code></td>
+</tr>
+<tr>
+<td>Exchange (seq_cst)</td>
+<td><code>mov eax, 42<br/>xchg qword ptr [rip + x], rax</code></td>
+<td><code>  adrp x8, x<br/>  add x8, x8, :lo12:x<br/>  mov w9, #42<br/>.LBB22_1:<br/>  ldaxr x0, [x8]<br/>  stlxr w10, x9, [x8]<br/>  cbnz w10, .LBB22_1</code></td>
+<td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoswap.d.aqrl a0, a1, (a0)</code></td>
+</tr>
+<tr>
+<td>Fetch Add (implicit)</td>
+<td><code>mov eax, 42<br/>lock xadd qword ptr [rip + x], rax</code></td>
+<td><code>  adrp x8, x<br/>  add x8, x8, :lo12:x<br/>.LBB23_1:<br/>  ldaxr x0, [x8]<br/>  add x9, x0, #42<br/>  stlxr w10, x9, [x8]<br/>  cbnz w10, .LBB23_1</code></td>
+<td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoadd.d.aqrl a0, a1, (a0)</code></td>
+</tr>
+<tr>
+<td>Fetch Add (relaxed)</td>
+<td><code>mov eax, 42<br/>lock xadd qword ptr [rip + x], rax</code></td>
+<td><code>  adrp x8, x<br/>  add x8, x8, :lo12:x<br/>.LBB24_1:<br/>  ldxr x0, [x8]<br/>  add x9, x0, #42<br/>  stxr w10, x9, [x8]<br/>  cbnz w10, .LBB24_1</code></td>
+<td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoadd.d a0, a1, (a0)</code></td>
+</tr>
+<tr>
+<td>Fetch Add (consume)</td>
+<td><code>mov eax, 42<br/>lock xadd qword ptr [rip + x], rax</code></td>
+<td><code>  adrp x8, x<br/>  add x8, x8, :lo12:x<br/>.LBB25_1:<br/>  ldaxr x0, [x8]<br/>  add x9, x0, #42<br/>  stxr w10, x9, [x8]<br/>  cbnz w10, .LBB25_1</code></td>
+<td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoadd.d.aq a0, a1, (a0)</code></td>
+</tr>
+<tr>
+<td>Fetch Add (acquire)</td>
+<td><code>mov eax, 42<br/>lock xadd qword ptr [rip + x], rax</code></td>
+<td><code>  adrp x8, x<br/>  add x8, x8, :lo12:x<br/>.LBB26_1:<br/>  ldaxr x0, [x8]<br/>  add x9, x0, #42<br/>  stxr w10, x9, [x8]<br/>  cbnz w10, .LBB26_1</code></td>
+<td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoadd.d.aq a0, a1, (a0)</code></td>
+</tr>
+<tr>
+<td>Fetch Add (release)</td>
+<td><code>mov eax, 42<br/>lock xadd qword ptr [rip + x], rax</code></td>
+<td><code>  adrp x8, x<br/>  add x8, x8, :lo12:x<br/>.LBB27_1:<br/>  ldxr x0, [x8]<br/>  add x9, x0, #42<br/>  stlxr w10, x9, [x8]<br/>  cbnz w10, .LBB27_1</code></td>
+<td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoadd.d.rl a0, a1, (a0)</code></td>
+</tr>
+<tr>
+<td>Fetch Add (acq_rel)</td>
+<td><code>mov eax, 42<br/>lock xadd qword ptr [rip + x], rax</code></td>
+<td><code>  adrp x8, x<br/>  add x8, x8, :lo12:x<br/>.LBB28_1:<br/>  ldaxr x0, [x8]<br/>  add x9, x0, #42<br/>  stlxr w10, x9, [x8]<br/>  cbnz w10, .LBB28_1</code></td>
+<td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoadd.d.aqrl a0, a1, (a0)</code></td>
+</tr>
+<tr>
+<td>Fetch Add (seq_cst)</td>
+<td><code>mov eax, 42<br/>lock xadd qword ptr [rip + x], rax</code></td>
+<td><code>  adrp x8, x<br/>  add x8, x8, :lo12:x<br/>.LBB29_1:<br/>  ldaxr x0, [x8]<br/>  add x9, x0, #42<br/>  stlxr w10, x9, [x8]<br/>  cbnz w10, .LBB29_1</code></td>
+<td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoadd.d.aqrl a0, a1, (a0)</code></td>
+</tr>
+</tbody>
+</table>
+
+</main>
+
+  <footer>
+  
+  
+  <hr/>
+  © <a href="https://www.pusnow.com">Wonsup Yoon</a> | <a href="https://github.com/pusnow">GitHub</a> | Original theme: <a href="https://github.com/yihui/hugo-xmin">Hugo xmin</a>
+  
+  </footer>
+  </body>
+</html>
+
