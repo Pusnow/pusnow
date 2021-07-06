@@ -46,6 +46,12 @@ table {
   margin: auto;
   border-top: 1px solid #666;
   border-bottom: 1px solid #666;
+  display: block;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  margin: 0 auto;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 table thead th { border-bottom: 1px solid #ddd; }
 th, td { padding: 5px; }
