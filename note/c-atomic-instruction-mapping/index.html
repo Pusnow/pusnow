@@ -28,7 +28,7 @@
 
 <span class="date">2021/07/06</span>
 
-<span class="date">(Last update: 2021/07/06)</span>
+<span class="date">(Last update: 2021/07/12)</span>
 
 
 <main>
@@ -36,7 +36,7 @@
 <ul>
 <li>Only 64 bits data types</li>
 <li>Compiler: clang 11.0.1</li>
-<li><a href="https://godbolt.org/z/Te1zeva8M">https://godbolt.org/z/Te1zeva8M</a></li>
+<li><a href="https://godbolt.org/z/drMsxvGd4">https://godbolt.org/z/drMsxvGd4</a></li>
 </ul>
 <h2 id="mapping-table">Mapping Table</h2>
 <table>
@@ -228,6 +228,84 @@
 <td><code>mov eax, 42<br/>lock xadd qword ptr [rip + x], rax</code></td>
 <td><code>  adrp x8, x<br/>  add x8, x8, :lo12:x<br/>.LBB29_1:<br/>  ldaxr x0, [x8]<br/>  add x9, x0, #42<br/>  stlxr w10, x9, [x8]<br/>  cbnz w10, .LBB29_1</code></td>
 <td><code>lui a0, %hi(x)<br/>addi a0, a0, %lo(x)<br/>addi a1, zero, 42<br/>amoadd.d.aqrl a0, a1, (a0)</code></td>
+</tr>
+<tr>
+<td>Kill Dependency</td>
+<td><code>mov rax, qword ptr [rip + x]</code></td>
+<td><code>adrp x8, x<br/>add x8, x8, :lo12:x<br/>ldar x0, [x8]</code></td>
+<td><code>fence rw, rw<br/>lui a0, %hi(x)<br/>ld a0, %lo(x)(a0)<br/>fence r, rw</code></td>
+</tr>
+<tr>
+<td>Thread Fence (relaxed)</td>
+<td><code>nop</code></td>
+<td><code>nop</code></td>
+<td><code>nop</code></td>
+</tr>
+<tr>
+<td>Thread Fence (consume)</td>
+<td><code>nop</code></td>
+<td><code>dmb ishld</code></td>
+<td><code>fence r, rw</code></td>
+</tr>
+<tr>
+<td>Thread Fence (acquire)</td>
+<td><code>nop</code></td>
+<td><code>dmb ishld</code></td>
+<td><code>fence r, rw</code></td>
+</tr>
+<tr>
+<td>Thread Fence (release)</td>
+<td><code>nop</code></td>
+<td><code>dmb ish</code></td>
+<td><code>fence rw, w</code></td>
+</tr>
+<tr>
+<td>Thread Fence (acq_rel)</td>
+<td><code>nop</code></td>
+<td><code>dmb ish</code></td>
+<td><code>fence.tso</code></td>
+</tr>
+<tr>
+<td>Thread Fence (seq_cst)</td>
+<td><code>mfence</code></td>
+<td><code>dmb ish</code></td>
+<td><code>fence rw, rw</code></td>
+</tr>
+<tr>
+<td>Signal Fence (relaxed)</td>
+<td><code>nop</code></td>
+<td><code>nop</code></td>
+<td><code>nop</code></td>
+</tr>
+<tr>
+<td>Signal Fence (consume)</td>
+<td><code>nop</code></td>
+<td><code>nop</code></td>
+<td><code>fence r, rw</code></td>
+</tr>
+<tr>
+<td>Signal Fence (acquire)</td>
+<td><code>nop</code></td>
+<td><code>nop</code></td>
+<td><code>fence r, rw</code></td>
+</tr>
+<tr>
+<td>Signal Fence (release)</td>
+<td><code>nop</code></td>
+<td><code>nop</code></td>
+<td><code>fence rw, w</code></td>
+</tr>
+<tr>
+<td>Signal Fence (acq_rel)</td>
+<td><code>nop</code></td>
+<td><code>nop</code></td>
+<td><code>fence.tso</code></td>
+</tr>
+<tr>
+<td>Signal Fence (seq_cst)</td>
+<td><code>nop</code></td>
+<td><code>nop</code></td>
+<td><code>fence rw, rw</code></td>
 </tr>
 </tbody>
 </table>
