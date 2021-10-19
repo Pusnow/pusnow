@@ -2,7 +2,7 @@
 
 ---
 
-## Research Area
+## Research Interest
 
 - Virtualization: unikernels, microVM, containers, etc.
 - Networking: RDMA, virtio, etc.
