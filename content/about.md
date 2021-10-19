@@ -28,7 +28,7 @@
 
 ## Publications
 
-- DiLOS: Adding Performance to Paging-based Memory Disaggregation
+- DiLOS: Adding Performance to Paging-based Memory Disaggregation [[Link](https://dl.acm.org/doi/10.1145/3476886.3477507)]
   - **Wonsup Yoon**, Jinyoung Oh, Jisu Ok, Sue Moon, and Youngjin Kwon
   - *Proceedings of the 12th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys)*, 2021.
 - Accelerating Disaggregated Data Centers Using Unikernel. [[Link](/publication/ddc-unikernel)]
