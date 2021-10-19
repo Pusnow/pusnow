@@ -64,4 +64,7 @@ thead, tfoot, tr:nth-child(even) { background: #eee; }
     {
         display: none !important;
     }
+    a {
+      color: #0074D9;
+    }
 }
