@@ -64,5 +64,5 @@
 
 ## Contact
 
-- Email: [pusnow@kaist.ac.kr](mailto:pusnow@kaist.ac.kr)
+- Email: [wsyoon@kaist.ac.kr](mailto:wsyoon@kaist.ac.kr)
 - GitHub: [Pusnow](https://github.com/Pusnow)
