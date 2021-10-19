@@ -2,7 +2,7 @@
 
 ---
 
-## Research Interest
+## Research Interests
 
 - Virtualization: unikernels, microVM, containers, etc.
 - Networking: RDMA, virtio, etc.
@@ -26,7 +26,7 @@
 
 ---
 
-## Publication
+## Publications
 
 - DiLOS: Adding Performance to Paging-based Memory Disaggregation
   - **Wonsup Yoon**, Jinyoung Oh, Jisu Ok, Sue Moon, and Youngjin Kwon
@@ -51,7 +51,7 @@
 
 ---
 
-## Experience
+## Experiences
 
 - Yonsei Institute of Language and Information Studies, *2013-2017*.
   - Role: Technical Assistant and Developer
