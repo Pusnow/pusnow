@@ -21,7 +21,7 @@
   - Graduation with High Honors (Top 3%)
   - GPA: 4.01/4.30
 - **Sunrin Internet High School**, *2009.3-2012.2*.
-  - Major : Information Communication
+  - Major: Information Communication
   - Graduation with Highest Honors (Principal's Award)
 
 ---
@@ -37,6 +37,17 @@
 - Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System. [[Link](https://dl.acm.org/doi/abs/10.1145/3365137.3365403)]
   - Keunhong Lee, Jeehoon Kang, **Wonsup Yoon**, Joongi Kim, and Sue Moon
   - *Proceedings of the 10th Workshop on Programming Languages and Operating Systems (PLOS@SOSP)*, 2019.
+
+---
+
+## Scholarships and Awards
+
+- **Jul.** 2021: Best TA Award
+- **Aug.** 2016 & **Feb.** 2017: Awarded High Honors
+- **Dec.** 2015 & **Sep.** 2016: National Science and Technology Scholarship
+- **Sep.** 2015 & **Mar.** 2016: Yonsei Internal Scholarship
+- **Aug.** 2015: Korea Telecom Scholarship
+- **Feb.** 2015 & **Aug.** 2015 & **Feb.** 2016: Awarded Honors
 
 ---
 
