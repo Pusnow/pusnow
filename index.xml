@@ -6,7 +6,17 @@
     <description>Recent content on Pusnow</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>비트 스캔 연산자의 Undefined Behavior</title>
+      <link>https://www.pusnow.com/note/undefined-behaviors-of-bit-scan-operators/</link>
+      <pubDate>Sun, 07 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/note/undefined-behaviors-of-bit-scan-operators/</guid>
+      <description>비트 스캔 연산자의 Undefined Behavior 비트 스캔 연산자에는 프로그래머가 주의를 기울이지 않으면 실수 할 수 있는 undefined behavior가 존재한다. 이 문서에서는 이런 undefined behavior와 이에 따른 버그 및 해결 방안을 알아본다.
+비트 스캔 연산자 최신 프로세서에는 비트 스캔 연산자가 존재한다. Intel 프로세서의 경우 bsf (Bit Scan First), bsr (Bit Scan Reverse) 연산자와 BMI1 확장을 지원한다면 lzcnt (Leading Zero Count), tzcnt (Trailing Zero Count) 연산자가 추가로 존재한다. 이 연산자들은 기본적으로 피연산자를 스캔하여 가장 첫 번째 혹은 마지막 비트의 위치를 추출하는 역할을 한다.</description>
+    </item>
+    
     <item>
       <title>C Atomic Instruction Mapping</title>
       <link>https://www.pusnow.com/note/c-atomic-instruction-mapping/</link>
