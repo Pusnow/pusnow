@@ -32,7 +32,6 @@
 
 
 <main>
-<h1 id="비트-스캔-연산자의-undefined-behavior">비트 스캔 연산자의 Undefined Behavior</h1>
 <p>비트 스캔 연산자에는 프로그래머가 주의를 기울이지 않으면 실수 할 수 있는 undefined behavior가 존재한다.
 이 문서에서는 이런 undefined behavior와 이에 따른 버그 및 해결 방안을 알아본다.</p>
 <h2 id="비트-스캔-연산자">비트 스캔 연산자</h2>
@@ -53,10 +52,10 @@ Intel 프로세서의 경우 <code>bsf</code> (Bit Scan First), <code>bsr</code>
 <li><code>__builtin_ctz</code>: Returns the number of trailing 0-bits in x, starting at the least significant bit position. <strong>If x is 0, the result is undefined.</strong></li>
 </ul>
 <p>위와 같은 비트 스캔 연산자를 활용하면 비트맵 등 비트 하나로 데이터를 표기하는 데이터 구조를 쉽고 빠르게 만들 수 있어서 많은 구현체에서 이를 활용한다.</p>
-<h2 id="비트-스캔-연산자의-undefined-behavior-1">비트 스캔 연산자의 Undefined Behavior</h2>
+<h2 id="비트-스캔-연산자의-undefined-behavior">비트 스캔 연산자의 Undefined Behavior</h2>
 <p>Intel 시스템 매뉴얼과 GCC 매뉴얼을 살펴보면 몇 비트 연산자(<code>bsf</code>, <code>bsr</code>, <code>clz</code>, <code>ctz</code>)에 0을 인자로 활용하는 것은 undefined behavior라는 것을 알 수 있다.
 본 문서에서는 <code>ctz</code>를 활용하여 비트 스캔 연산자를 잘못 활용했을 경우 어떤 문제가 발생하는지를 알아보겠다.</p>
-<p>GCC(적어도 11.2 버전)에서는 <code>__builtin_ctzll</code>(<code>ctz</code>의 <code>long long</code> 버전)에 0을 제공하면 64를 결과로 내보낸다 [<a href="%EC%B0%B8%EA%B3%A0">https://godbolt.org/z/7ncjrKPqK</a>].</p>
+<p>GCC(적어도 11.2 버전)에서는 <code>__builtin_ctzll</code>(<code>ctz</code>의 <code>long long</code> 버전)에 0을 제공하면 64를 결과로 내보낸다 [<a href="https://godbolt.org/z/7ncjrKPqK">참고</a>].</p>
 <p>그렇다면, 이 결과를 활용하는 함수를 제작해도 문제가 없을까?
 이 결과를 활용하는 함수 <code>is_empty</code>를 제작해 보았다. 이 함수는 <code>field</code>를 인자로 받고 모든 비트가 0이면 1 아니면 0을 리턴하는 함수이다. (이 기능을 더 쉽게 구현하는 방법은 많지만 여기서는 의도적으로 실수를 저지르기 위해 <code>ctz</code>를 사용하였다.)</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">is_empty</span>(uint64_t field){
