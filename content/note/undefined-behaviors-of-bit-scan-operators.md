@@ -6,8 +6,6 @@ tags:
 lang: ko-kr
 ---
 
-# 비트 스캔 연산자의 Undefined Behavior
-
 비트 스캔 연산자에는 프로그래머가 주의를 기울이지 않으면 실수 할 수 있는 undefined behavior가 존재한다.
 이 문서에서는 이런 undefined behavior와 이에 따른 버그 및 해결 방안을 알아본다.
 
