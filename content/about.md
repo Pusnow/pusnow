@@ -33,10 +33,10 @@ title: Wonsup Yoon
 - DiLOS: Adding Performance to Paging-based Memory Disaggregation <span class="no-print">[[Link](https://dl.acm.org/doi/10.1145/3476886.3477507)]</span>
   - **Wonsup Yoon**, Jinyoung Oh, Jisu Ok, Sue Moon, and Youngjin Kwon
   - *Proceedings of the 12th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys)*, 2021.
-- Accelerating Disaggregated Data Centers Using Unikernel. <span class="no-print">[[Link](/publication/ddc-unikernel)]</span>
+- Accelerating Disaggregated Data Centers Using Unikernel <span class="no-print">[[Link](https://dl.acm.org/doi/10.1145/3405837.3411397)]</span>
   - **Wonsup Yoon**, Jinyoung Oh, Sue Moon, and Youngjin Kwon
   - *Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM '20 Posters and Demos)*, 2020.
-- Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System. <span class="no-print">[[Link](https://dl.acm.org/doi/abs/10.1145/3365137.3365403)]</span>
+- Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System <span class="no-print">[[Link](https://dl.acm.org/doi/abs/10.1145/3365137.3365403)]</span>
   - Keunhong Lee, Jeehoon Kang, **Wonsup Yoon**, Joongi Kim, and Sue Moon
   - *Proceedings of the 10th Workshop on Programming Languages and Operating Systems (PLOS@SOSP)*, 2019.
 
