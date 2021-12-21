@@ -3,10 +3,15 @@
 
 {{ if .Date }}
 <span class="date">{{ .Date.Format "2006/01/02" }}</span>
-{{ end }}
 {{ if .GitInfo }}
 <span class="date">(Last update: {{ .GitInfo.AuthorDate.Format "2006/01/02" }})</span>
 {{ end }}
+{{else}}
+{{ end }}
+{{ if .GitInfo }}
+<span class="date">Last update: {{ .GitInfo.AuthorDate.Format "2006/01/02" }}</span>
+{{ end }}
+<hr />
 <main>
     {{ .Content }}
 </main>

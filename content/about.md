@@ -2,8 +2,6 @@
 title: Wonsup Yoon
 ---
 
----
-
 ## Research Interests
 
 - Virtualization: unikernels, microVM, containers, etc.
