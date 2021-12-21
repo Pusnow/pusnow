@@ -3,12 +3,12 @@
 
 {{ if .Date }}
 <span class="date">{{ .Date.Format "2006/01/02" }}</span>
+{{ end }}
 {{ if .GitInfo }}
 <span class="date">(Last update: {{ .GitInfo.AuthorDate.Format "2006/01/02" }})</span>
 {{ end }}
-{{ end }}
 <main>
-{{ .Content }}
+    {{ .Content }}
 </main>
 
 {{ partial "footer.html" . }}
