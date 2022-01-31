@@ -6,7 +6,17 @@
     <description>Recent content in system on Pusnow</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DinV (Docker-in-VM)</title>
+      <link>https://www.pusnow.com/note/dinv/</link>
+      <pubDate>Mon, 31 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/note/dinv/</guid>
+      <description>Source code available  간혹 Docker를 Docker 컨테이너 안에서 실행시켜야 하는 경우가 있다. 특히, CI 서비스(Jenkins Docker, GitHub Docker Container Action, GitLab Docker executor)를 Docker를 통하여 배포할 때, Docker 이미지를 빌드할 수 없는 문제가 생긴다. 이는 Docker 이미지를 빌드하기 위해 필요한 dockerd 데몬이 많은 시스템 권한을 요구하기 때문이다.
+기존 솔루션 지금까지 dockerd를 컨테이너 안에서 실행시키기 위해서는 DooD (Docker-out-of-Docker) 혹은 DinD (Docker-in-Docker) 기법을 사용한다. DooD 기법은 컨테이너 내부에서 호스트 dockerd에 연결하여 사용하는 기법으로, 이를 위해 도커 컨트롤 소켓(/var/run/docker.</description>
+    </item>
+    
     <item>
       <title>비트 스캔 연산자의 Undefined Behavior</title>
       <link>https://www.pusnow.com/note/undefined-behaviors-of-bit-scan-operators/</link>
