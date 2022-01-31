@@ -84,7 +84,6 @@ QEMU에서 지원하는 가상화 기반 shared file system은 두가지가 존�
 
 이 문제는 container network의 IP 대역을 변경하면 쉽게 해결 가능하다.
 
-
 ```
 ┌host network──────────────┐
 │172.17.0.0/16             │
@@ -101,4 +100,5 @@ QEMU에서 지원하는 가상화 기반 shared file system은 두가지가 존�
 ```
 
 [^1]: 사실 DinV를 위해 꼭 microVM을 사용해야 하는 것은 아니다.
-[^2]: QEMU microVM에서는 PCI를 에뮬레이션하지 않고 virtio-mmio기반 디바이스만 지원한다. virtio-fs를 사용하기 위해서는 vhost-user-fs 디바이스가 필요한데, 이 디바이스는 PCI만 지원하기 때문에 (`vhost-user-fs-pci`) microVM에서는 사용할 수 없다. 
+[^2]: QEMU microVM에서는 PCI를 에뮬레이션하지 않고 virtio-mmio기반 디바이스만 지원한다. virtio-fs를 사용하기 위해서는
+ vhost-user-fs 디바이스가 필요한데, 이 디바이스는 PCI만 지원하기 때문에 (`vhost-user-fs-pci`) microVM에서는 사용할 수 없다.
