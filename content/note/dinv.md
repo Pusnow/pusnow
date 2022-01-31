@@ -78,7 +78,9 @@ QEMU에서 지원하는 가상화 기반 shared file system은 두가지가 존�
 
 현재 grace shutdown은 지원하지 않고 있다. QEMU monitor socket을 이용하면 이를 지원할 수도 있는데, CI 워크플로에서는 필요가 없으므로 지원하지 않고 있다.
 
-### Port forwarding
+### Port forwarding [**해결됨**]
+
+Update: `dockerd`에는 `--bip` (bridge IP) 옵션이 존재한다. 이 옵션을 사용하여 container network의 IP 대역을 `172.19.0.0/16`으로 변경하여 해결하였다.
 
 현재 port forwarding이 정상적으로 동작하지 않는 이유는 host docker 네트워크와 컨테이너 네트워크 간 IP 충돌이 발생하기 때문이다. 두 네트워크 모두 `172.17.0.0/16` 대역을 사용하므로 VM 안에서 `172.17.0.0/16` 대역을 조회할 때, routing이 host와 container network를 구분하지 못하기 때문이다.
 
