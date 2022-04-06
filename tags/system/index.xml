@@ -6,7 +6,18 @@
     <description>Recent content in system on Pusnow</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 31 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>USE 방법론과 RED 방법론</title>
+      <link>https://www.pusnow.com/note/use-method-and-red-method/</link>
+      <pubDate>Wed, 06 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/note/use-method-and-red-method/</guid>
+      <description>시스템의 성능을 분석하는 기법 중 USE 방법론(the USE method)과 RED 방법론(the RED method) 이 널리 알려져 있다. 본 글에서는 이 두 방법론을 간단하게 소개하고, 차이점과 장단점을 분석해 본다.
+USE 방법론 (The USE Method) 시스템을 개발하고 관리하다 보면, 시스템이 종종 기대치에 못 미치는 성능을 보여주는 성능 이슈에 직면하게 된다. 복잡한 시스템에서는, 왜 혹은 시스템의 어떤 부분이 이러한 성능 이슈를 발생시키는지를 찾기는 조금 어려울 수 있다.
+USE 방법론은 성능 이슈를 빠르게 해결하기 위하여 Brendan Gregg가 고안한 방법이다.</description>
+    </item>
+    
     <item>
       <title>DinV (Docker-in-VM)</title>
       <link>https://www.pusnow.com/note/dinv/</link>

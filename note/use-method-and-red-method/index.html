@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>USE 방법론과 RED 방법론 | Pusnow</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav class="no-print">
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<h1>USE 방법론과 RED 방법론</h1>
+
+
+<span class="date">2022/04/06</span>
+
+<span class="date">(Last update: 2022/04/06)</span>
+
+
+<hr />
+<main>
+    <p>시스템의 성능을 분석하는 기법 중 <a href="https://www.brendangregg.com/usemethod.html">USE 방법론(the USE method)</a>과 <a href="https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/">RED 방법론(the RED method)</a> 이 널리 알려져 있다.
+본 글에서는 이 두 방법론을 간단하게 소개하고, 차이점과 장단점을 분석해 본다.</p>
+<h2 id="use-방법론-the-use-method">USE 방법론 (The USE Method)</h2>
+<p>시스템을 개발하고 관리하다 보면, 시스템이 종종 기대치에 못 미치는 성능을 보여주는 <em>성능 이슈</em>에 직면하게 된다.
+복잡한 시스템에서는, 왜 혹은 시스템의 어떤 부분이 이러한 성능 이슈를 발생시키는지를 찾기는 조금 어려울 수 있다.</p>
+<p>USE 방법론은 성능 이슈를 빠르게 해결하기 위하여 Brendan Gregg가 고안한 방법이다.
+이 방법론은 간단하면서도 복잡한 시스템에서 적용 가능하기 때문에 많은 시스템에서 USE 방법론을 이용하고 있다.</p>
+<p>Brendan Gregg USE 방법론을 다음과 같이 요약한다.</p>
+<blockquote>
+<p>&ldquo;모든 resource (자원)에 대하여 utilization (점유율), saturation (포화율), errors (오류)를 확인해라.&rdquo;</p>
+</blockquote>
+<p>각 용어를 정의하면,</p>
+<table>
+<thead>
+<tr>
+<th>용어</th>
+<th>정의</th>
+<th>예제</th>
+<th>해석 방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resource (자원)</td>
+<td>모든 물리적 서버의 기능적 부분 및 몇 소프트웨어 리소스</td>
+<td>CPUs, disks, busses, mutex locks, thread pools</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Utilization (점유율)</td>
+<td>리소스가 서비스에 바쁘게 사용되는 평균 시간</td>
+<td>디스크 점유율</td>
+<td>높은 utilization은 주로 병목 현상을 나타냄</td>
+</tr>
+<tr>
+<td>Saturation (포화율)</td>
+<td>리소스가 아직 처리하지 않은 추가 작업이 있는 정도</td>
+<td>CPU의 평균 런 큐 길이</td>
+<td>높은 saturation은 wait 큐가 너무 길어짐을 나타냄</td>
+</tr>
+<tr>
+<td>Errors (오류)</td>
+<td>오류 이벤트의 수</td>
+<td>NIC의 패킷 drop 카운터</td>
+<td>에러가 있고, 확인해 봐야 함, 특히 성능 문제가 있으면</td>
+</tr>
+</tbody>
+</table>
+<p>리눅스 시스템에서 USE 방법론을 사용하는 법은 Brendan Gregg의 <a href="https://www.brendangregg.com/USEmethod/use-linux.html">홈페이지</a>에 잘 소개되어 있다.</p>
+<h3 id="use-방법론의-장점">USE 방법론의 장점</h3>
+<p>이 글에서 집중하고자 하는 것은, 시스템 성능 분석 기법 중 USE 방법론이 가지는 장점이다.
+다른 방법론과 비교하여 USE 방법론이 가지는 가장 큰 장점은 간단함으로 보인다.</p>
+<p>USE 방법론은 소프트웨어에 대한 이해 없이 기계적으로 적용이 가능해, 어떤 시스템에도 쉽게 도입이 가능하다.
+USE 방법론에서 모니터링하는 리소스는 대부분 물리적 하드웨어이고, 소프트웨어는 대부분의 시스템에서 사용하는 매우 기초적인 리소스이다.
+따라서, 방법론 자체가 소프트웨어 로직에 의존적이지 않고, 시스템에서 어떤 소프트웨어를 사용하던 적용이 가능하다.
+점차 빨라지는 현대 소프트웨어 개발 사이클에서 USE 방법론의 소프트웨어 비의존성은 시스템 성능 분석을 큰 규모로 쉽게 확장할 수 있게 한다.</p>
+<p>USE 방법론의 간단함에도 불구하고, Brendan Gregg에 따르면 80%의 서버 이슈는 USE method만으로도 찾을 수 있다고 한다.
+Method R과 같은 다른 방법론을 사용하면 100% 이슈를 발견할 수 있겠지만, 이러한 방법론은 소프트웨어 내부구조에 대한 이해 없이는 적용이 어렵워 빠르게 확장할 수가 없다.</p>
+<h3 id="use-방법론의-단점">USE 방법론의 단점</h3>
+<p>USE 방법론은 많은 시스템에 성공적으로 도입되었지만, 마이크로서비스에 적용되기에는 조금 추상적이라는 비판이 제기된다.
+CPU, 메모리 등 하드웨어에 대한 정보를 알고 있다 하더라도, 어떤 서비스가 문제인지 등은 알 수가 없다.</p>
+<h2 id="red-방법론-the-red-method">RED 방법론 (The RED Method)</h2>
+<p>Tom Wilkie는 마이크로서비스 환경에서의 성능 분석을 위하여 <a href="https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/">RED 방법론</a>을 고안하였다.
+RED 방법론은 다음과 같이 요약된다.</p>
+<blockquote>
+<p>&ldquo;모든 서비스<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>에 대하여, rate (처리율), errors (오류 수), duration (처리 시간)을 모니터링하라.&rdquo;</p>
+</blockquote>
+<p>RED 방법론에 대한 메트릭은 모두 요청(request)에 대한 것들이다. 각 용어를 정의하면,</p>
+<table>
+<thead>
+<tr>
+<th>용어</th>
+<th>정의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service (서비스)</td>
+<td>요청을 받아서 처리하는 소프트웨어</td>
+</tr>
+<tr>
+<td>Rate (처리율)</td>
+<td>초당 처리한 요청의 수</td>
+</tr>
+<tr>
+<td>Errors (오류 수)</td>
+<td>처리에 실패하여 오류가 발생한 요청 수</td>
+</tr>
+<tr>
+<td>Duration (처리 시간)</td>
+<td>요청을 처리하는 시간</td>
+</tr>
+</tbody>
+</table>
+<p>이처럼 RED 방법론은 USE 방법론과 달리, 각 서비스에 대한 직관적이고 일관된 정보를 제공한다.
+마이크로 서비스 환경에서, 왜 웹사이트가 느려지는지, 어떤 서비스에 문제가 발생하는가 등을 분석할 때 유용하고, SLA를 측정하는데도 유의미한 정보이다.</p>
+<p>RED 방법론 또한 USE 방법론처럼, 서비스 소프트웨어 내부구조에 대한 이해 없이 기계적으로 적용이 가능하다.
+특히, 마이크로서비스처럼 다수의 서비스가 표준적인 인터페이스를 통해 연결되어있는 구조에서는 RED 방법론은 쉽게 도입이 가능하며 효과적이다.</p>
+<h2 id="어떤-방법론을-써야-할까">어떤 방법론을 써야 할까?</h2>
+<p>이에 대한 답은 매우 간단하다.
+RED 방법론의 고안자 Tom Wilkie는 USE 방법론과 RED 방법론 모두 사용하라고 권고한다.
+RED 방법론은 서비스 사용자의 만족도에, USE 방법론은 머신의 만족도에 집중하고 있다.
+결론적으로, 이 두 방법론은 하나의 시스템을 바라보는 두 개의 다른 뷰로, 서로 상호보완적이다.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>인용한 원글, <a href="https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/">RED 방법론</a>, 에서는 리소스(resource)로 되어 있지만, 문맥상 그리고 다른 문헌을 참고하면 서비스가 맞다.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+</main>
+
+  <footer class="no-print">
+  
+  
+  <hr/>
+  © <a href="https://www.pusnow.com">Wonsup Yoon</a> | <a href="https://github.com/pusnow">GitHub</a> | Original theme: <a href="https://github.com/yihui/hugo-xmin">Hugo xmin</a>
+  
+  </footer>
+  </body>
+</html>
