@@ -79,4 +79,4 @@ RED 방법론의 고안자 Tom Wilkie는 USE 방법론과 RED 방법론 모두 �
 RED 방법론은 서비스 사용자의 만족도에, USE 방법론은 머신의 만족도에 집중하고 있다.
 결론적으로, 이 두 방법론은 하나의 시스템을 바라보는 두 개의 다른 뷰로, 서로 상호보완적이다.
 
-[^1]: 인용한 원글, [RED 방법론](https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/), 에서는 리소스(resource)로 되어 있지만, 문맥상 그리고 다른 문헌을 참고하면 서비스가 맞다.
+[^1]: 인용한 원글([RED 방법론](https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/))에서는 리소스(resource)로 되어 있지만, 문맥상 그리고 다른 문헌을 참고하면 서비스가 맞다.
