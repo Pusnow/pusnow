@@ -28,7 +28,7 @@
 
 <span class="date">2021/06/06</span>
 
-<span class="date">(Last update: 2022/04/06)</span>
+<span class="date">(Last update: 2022/07/29)</span>
 
 
 <hr />
@@ -57,7 +57,7 @@
 <td style="text-align:center">2</td>
 <td style="text-align:center">2</td>
 <td style="text-align:center">2</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
 <td style="text-align:center">2</td>
 </tr>
 <tr>
@@ -68,7 +68,7 @@
 <td style="text-align:center">4</td>
 <td style="text-align:center">4</td>
 <td style="text-align:center">4</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">4</td>
 <td style="text-align:center">4</td>
 </tr>
 <tr>
@@ -79,7 +79,7 @@
 <td style="text-align:center">4</td>
 <td style="text-align:center">4</td>
 <td style="text-align:center">8</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">8</td>
 <td style="text-align:center">8</td>
 </tr>
 <tr>
@@ -90,7 +90,7 @@
 <td style="text-align:center">8</td>
 <td style="text-align:center">8</td>
 <td style="text-align:center">8</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">8</td>
 <td style="text-align:center">8</td>
 </tr>
 <tr>
@@ -101,7 +101,7 @@
 <td style="text-align:center">4</td>
 <td style="text-align:center">4</td>
 <td style="text-align:center">4</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">4</td>
 <td style="text-align:center">4</td>
 </tr>
 <tr>
@@ -112,7 +112,7 @@
 <td style="text-align:center">8</td>
 <td style="text-align:center">8</td>
 <td style="text-align:center">8</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">8</td>
 <td style="text-align:center">8</td>
 </tr>
 <tr>
@@ -123,7 +123,7 @@
 <td style="text-align:center">12</td>
 <td style="text-align:center">8</td>
 <td style="text-align:center">16</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">8</td>
 <td style="text-align:center">16</td>
 </tr>
 <tr>
@@ -134,7 +134,7 @@
 <td style="text-align:center">4</td>
 <td style="text-align:center">4</td>
 <td style="text-align:center">8</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">8</td>
 <td style="text-align:center">8</td>
 </tr>
 <tr>
@@ -145,7 +145,7 @@
 <td style="text-align:center">4</td>
 <td style="text-align:center">4</td>
 <td style="text-align:center">8</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">8</td>
 <td style="text-align:center">8</td>
 </tr>
 </tbody>
@@ -153,25 +153,25 @@
 <h2 id="compilers">Compilers</h2>
 <ul>
 <li>Windows: Visual Studio 2019</li>
-<li>macOS: Apple Clang 12</li>
+<li>macOS: Apple Clang 12/13</li>
 <li>Linux: GCC 8</li>
 </ul>
 <h2 id="source-code">Source Code</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
-    printf(<span style="color:#e6db74">&#34;short: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">short</span>));
-    printf(<span style="color:#e6db74">&#34;int: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>));
-    printf(<span style="color:#e6db74">&#34;long: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">long</span>));
-    printf(<span style="color:#e6db74">&#34;long long: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span>));
-    printf(<span style="color:#e6db74">&#34;float: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">float</span>));
-    printf(<span style="color:#e6db74">&#34;double: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">double</span>));
-    printf(<span style="color:#e6db74">&#34;long double: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">long</span> <span style="color:#66d9ef">double</span>));
-    printf(<span style="color:#e6db74">&#34;void*: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>));
-    printf(<span style="color:#e6db74">&#34;size_t: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(size_t));
-    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;short: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">short</span>));
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;int: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>));
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;long: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">long</span>));
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;long long: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span>));
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;float: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">float</span>));
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;double: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">double</span>));
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;long double: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">long</span> <span style="color:#66d9ef">double</span>));
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;void*: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>));
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;size_t: %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">sizeof</span>(size_t));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 </main>
 
   <footer class="no-print">
