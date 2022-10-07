@@ -66,3 +66,4 @@ title: Wonsup Yoon
 
 - Email: [wsyoon@kaist.ac.kr](mailto:wsyoon@kaist.ac.kr)
 - GitHub: [Pusnow](https://github.com/Pusnow)
+- ORCID: [0000-0002-6247-4119](https://orcid.org/0000-0002-6247-4119)
