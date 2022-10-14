@@ -30,7 +30,7 @@ title: Wonsup Yoon
 
 - DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
   - **Wonsup Yoon**, Jisu Ok, Jinyoung Oh, Sue Moon, and Youngjin Kwon
-  - *Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys)*, 2022.
+  - *Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys)*, 2023.
 - DiLOS: Adding Performance to Paging-based Memory Disaggregation <span class="no-print">[[Link](https://dl.acm.org/doi/10.1145/3476886.3477507)]</span>
   - **Wonsup Yoon**, Jinyoung Oh, Jisu Ok, Sue Moon, and Youngjin Kwon
   - *Proceedings of the 12th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys)*, 2021.
