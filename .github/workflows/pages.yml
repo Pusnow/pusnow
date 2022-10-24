@@ -28,27 +28,27 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ssh-key: ${{ secrets.SSH_PRIVKEY }}
-          ref: gh-pages
-          path: gh-pages
+          ref: pages
+          path: pages
       - name: Deploy
-        run : rsync -r --delete --exclude="CNAME" --exclude=".git" public/ gh-pages/
+        run : rsync -r --delete --exclude="CNAME" --exclude=".git" public/ pages/
       
       - name: GIT config
-        working-directory: ${{github.workspace}}/gh-pages
+        working-directory: ${{github.workspace}}/pages
         shell: bash
         run : |
               git config user.email "bot@pusnow.com"
               git config user.name "Wonsup Yoon"
       
       - name: Commit
-        working-directory: ${{github.workspace}}/gh-pages
+        working-directory: ${{github.workspace}}/pages
         shell: bash
         run: |
             git add -A
             git commit -m "Update from $GITHUB_SHA" --allow-empty
           
       - name: Push
-        working-directory: ${{github.workspace}}/gh-pages
+        working-directory: ${{github.workspace}}/pages
         shell: bash
         run: |
             git push
