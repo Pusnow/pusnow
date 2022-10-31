@@ -13,7 +13,7 @@
 
 #hiking-map{
    width: 1000px;
-   height: 60vh;
+   height: 80vh;
  }
 @media screen and (max-width: 1000px) {
    #hiking-map{
