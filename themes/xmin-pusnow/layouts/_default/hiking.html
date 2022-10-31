@@ -13,6 +13,7 @@
     <a href="https://www.openstreetmap.org/?mlat={{ index $locSlice 0 }}&mlon={{ index $locSlice 1 }}#map=18/{{ index $locSlice 0 }}/{{ index $locSlice 1 }}"
       target="_blank">
       {{.name | markdownify }}
+      {{ if .ele }}({{.ele}}m){{ end }}
     </a>
   </li>
   {{ end }}
