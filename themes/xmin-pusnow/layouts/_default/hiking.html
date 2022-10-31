@@ -1,16 +1,29 @@
-{{ partial "header.html" . }}
+{{ partial "top.html" . }}
+
+<head>
+  {{ partial "head.html" . }}
+</head>
+{{ partial "nav.html" . }}
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+  integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+<link rel="stylesheet" href="{{ "/css/hiking.css" | relURL }}" />
 
 {{if not .IsHome }}
 <h1>{{ .Title | markdownify }}</h1>
 {{ end }}
 
+
 {{ .Content }}
+
+<div id="hiking-main">
+<div id="hiking-map"></div>
+<div id="hiking-list">
 <ul>
   {{ range sort .Params.mountains "date" "desc" }}
-  {{ $locSlice := split .loc "," }}
   <li>
     <span class="date">{{ .date | time.Format "2006/01/02" }}</span>
-    <a href="https://www.openstreetmap.org/?mlat={{ index $locSlice 0 }}&mlon={{ index $locSlice 1 }}#map=18/{{ index $locSlice 0 }}/{{ index $locSlice 1 }}"
+    <a href="https://www.openstreetmap.org/?mlat={{ index .loc 0 }}&mlon={{ index .loc 1 }}#map=18/{{ index .loc 0 }}/{{ index .loc 1 }}"
       target="_blank">
       {{.name | markdownify }}
       {{ if .ele }}({{.ele}}m){{ end }}
@@ -18,6 +31,40 @@
   </li>
   {{ end }}
 </ul>
+</div>
+
+</div>
 
 
 {{ partial "footer.html" . }}
+<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+  integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+<script>
+var list_markers = [
+{{ range sort .Params.mountains "date" "desc" }}
+  { "lat": {{ index .loc 0 }}, "long": {{ index .loc 1 }} },
+{{ end }}];
+
+
+
+
+var max_lat = Math.max.apply(Math, list_markers.map(function(o) { return o.lat; }));
+var min_lat = Math.min.apply(Math, list_markers.map(function(o) { return o.lat; }));
+var max_long = Math.max.apply(Math, list_markers.map(function(o) { return o.long; }));
+var min_long = Math.min.apply(Math, list_markers.map(function(o) { return o.long; }));
+
+var map = L.map('hiking-map').setView([(max_lat + min_lat)/2, (max_long + min_long)/2], 8);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+list_markers.forEach( m => {
+  L.marker([m.lat, m.long]).addTo(map);
+})
+
+
+
+</script>
+
+{{ partial "end.html" . }}

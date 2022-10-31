@@ -1,4 +1,10 @@
-{{ partial "header.html" . }}
+{{ partial "top.html" . }}
+
+<head>
+  {{ partial "head.html" . }}
+</head>
+{{ partial "nav.html" . }}
+
 
 <h1>{{ .Title }}</h1>
 
@@ -11,3 +17,5 @@
 </ul>
 
 {{ partial "footer.html" . }}
+
+{{ partial "end.html" . }}

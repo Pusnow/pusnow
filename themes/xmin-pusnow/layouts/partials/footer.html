@@ -1,9 +1,6 @@
-  <footer class="no-print">
-  {{ partial "foot_custom.html" . }}
+<footer class="no-print">
   {{ with .Site.Params.footer }}
-  <hr/>
+  <hr />
   {{ . | markdownify }}
   {{ end }}
-  </footer>
-  </body>
-</html>
+</footer>
