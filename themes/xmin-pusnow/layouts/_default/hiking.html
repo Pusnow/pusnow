@@ -23,8 +23,7 @@
   {{ range sort .Params.mountains "date" "desc" }}
   <li>
     <span class="date">{{ .date | time.Format "2006/01/02" }}</span>
-    <a href="https://www.openstreetmap.org/?mlat={{ index .loc 0 }}&mlon={{ index .loc 1 }}#map=18/{{ index .loc 0 }}/{{ index .loc 1 }}"
-      target="_blank">
+    <a href="javascript:void(0);" onclick="flyTo({{ index .loc 0 }}, {{ index .loc 1 }})">
       {{.name | markdownify }}
       {{ if .ele }}({{.ele}}m){{ end }}
     </a>
@@ -42,7 +41,7 @@
 <script>
 var list_markers = [
 {{ range sort .Params.mountains "date" "desc" }}
-  { "lat": {{ index .loc 0 }}, "long": {{ index .loc 1 }} },
+  { "lat": {{ index .loc 0 }}, "long": {{ index .loc 1 }}, "date": "{{ .date }}", "name": "{{ .name }}" },
 {{ end }}];
 
 
@@ -59,11 +58,19 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+var markers = {};
+
 list_markers.forEach( m => {
-  L.marker([m.lat, m.long]).addTo(map);
+  var marker = L.marker([m.lat, m.long]).addTo(map)
+    .bindPopup(m.date +" " +m.name)  
+   markers[m.lat + "-" + m.long]=marker;
 })
 
-
+function flyTo(lat, long){
+  var marker = markers[lat + "-" + long];  
+  map.flyTo(marker.getLatLng(),15);
+  marker.openPopup();
+}
 
 </script>
 
