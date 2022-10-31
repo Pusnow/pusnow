@@ -1,88 +1,88 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hiking Log | Pusnow</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/fonts.css" />
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hiking Log | Pusnow</title>
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/fonts.css" />
+</head>
+<nav class="no-print">
+  <ul class="menu">
     
-  </head>
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/hiking/">Hiking</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/about/">About</a></li>
+    
+  </ul>
+  <hr />
+</nav>
 
-  <body>
-    <nav class="no-print">
-    <ul class="menu">
-      
-      <li><a href="/">Home</a></li>
-      
-      <li><a href="/hiking/">Hiking</a></li>
-      
-      <li><a href="/tags/">Tags</a></li>
-      
-      <li><a href="/about/">About</a></li>
-      
-    </ul>
-    <hr/>
-    </nav>
-
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+  integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+<link rel="stylesheet" href="/css/hiking.css" />
 
 
 <h1>Hiking Log</h1>
 
 
 
+
+
+<div id="hiking-main">
+<div id="hiking-map"></div>
+<div id="hiking-list">
 <ul>
-  
   
   <li>
     <span class="date">2022/10/30</span>
-    <a href="https://www.openstreetmap.org/?mlat=37.5769300&mlon=%20126.9457832#map=18/37.5769300/%20126.9457832"
+    <a href="https://www.openstreetmap.org/?mlat=37.57693&mlon=126.9457832#map=18/37.57693/126.9457832"
       target="_blank">
       안산 자락길
       
     </a>
   </li>
   
-  
   <li>
     <span class="date">2022/10/28</span>
-    <a href="https://www.openstreetmap.org/?mlat=36.4225333&mlon=%20127.3269833#map=18/36.4225333/%20127.3269833"
+    <a href="https://www.openstreetmap.org/?mlat=36.4225333&mlon=127.3269833#map=18/36.4225333/127.3269833"
       target="_blank">
       노루봉
       (365m)
     </a>
   </li>
   
-  
   <li>
     <span class="date">2022/10/28</span>
-    <a href="https://www.openstreetmap.org/?mlat=36.4284424&mlon=%20127.3373355#map=18/36.4284424/%20127.3373355"
+    <a href="https://www.openstreetmap.org/?mlat=36.4284424&mlon=127.3373355#map=18/36.4284424/127.3373355"
       target="_blank">
       금병산
       (375m)
     </a>
   </li>
   
-  
   <li>
     <span class="date">2022/10/22</span>
-    <a href="https://www.openstreetmap.org/?mlat=38.1897227&mlon=%20128.4750923#map=18/38.1897227/%20128.4750923"
+    <a href="https://www.openstreetmap.org/?mlat=38.1897227&mlon=128.4750923#map=18/38.1897227/128.4750923"
       target="_blank">
       흔들바위
       
     </a>
   </li>
   
-  
   <li>
     <span class="date">2022/10/22</span>
-    <a href="https://www.openstreetmap.org/?mlat=38.1942976&mlon=%20128.4744452#map=18/38.1942976/%20128.4744452"
+    <a href="https://www.openstreetmap.org/?mlat=38.1942976&mlon=128.4744452#map=18/38.1942976/128.4744452"
       target="_blank">
       설악산 울산바위
       (780m)
     </a>
   </li>
-  
   
   <li>
     <span class="date">2022/10/15</span>
@@ -93,16 +93,14 @@
     </a>
   </li>
   
-  
   <li>
     <span class="date">2022/10/02</span>
-    <a href="https://www.openstreetmap.org/?mlat=36.37600&mlon=127.34877#map=18/36.37600/127.34877"
+    <a href="https://www.openstreetmap.org/?mlat=36.376&mlon=127.34877#map=18/36.376/127.34877"
       target="_blank">
       신성근린공원
       
     </a>
   </li>
-  
   
   <li>
     <span class="date">2022/10/02</span>
@@ -113,7 +111,6 @@
     </a>
   </li>
   
-  
   <li>
     <span class="date">2022/10/02</span>
     <a href="https://www.openstreetmap.org/?mlat=36.36672&mlon=127.34943#map=18/36.36672/127.34943"
@@ -123,20 +120,18 @@
     </a>
   </li>
   
-  
   <li>
     <span class="date">2022/09/30</span>
-    <a href="https://www.openstreetmap.org/?mlat=36.3814304&mlon=%20127.3720293#map=18/36.3814304/%20127.3720293"
+    <a href="https://www.openstreetmap.org/?mlat=36.3814304&mlon=127.3720293#map=18/36.3814304/127.3720293"
       target="_blank">
       매봉산
       
     </a>
   </li>
   
-  
   <li>
     <span class="date">2022/09/14</span>
-    <a href="https://www.openstreetmap.org/?mlat=36.3716641&mlon=%20127.3702360#map=18/36.3716641/%20127.3702360"
+    <a href="https://www.openstreetmap.org/?mlat=36.3716641&mlon=127.370236#map=18/36.3716641/127.370236"
       target="_blank">
       성두산
       
@@ -144,14 +139,67 @@
   </li>
   
 </ul>
+</div>
+
+</div>
 
 
-  <footer class="no-print">
+<footer class="no-print">
   
-  
-  <hr/>
+  <hr />
   © <a href="https://www.pusnow.com">Wonsup Yoon</a> | <a href="https://github.com/pusnow">GitHub</a> | Original theme: <a href="https://github.com/yihui/hugo-xmin">Hugo xmin</a>
   
-  </footer>
-  </body>
+</footer>
+<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+  integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+<script>
+var list_markers = [
+
+  { "lat":  37.57693 , "long":  126.9457832  },
+
+  { "lat":  36.4225333 , "long":  127.3269833  },
+
+  { "lat":  36.4284424 , "long":  127.3373355  },
+
+  { "lat":  38.1897227 , "long":  128.4750923  },
+
+  { "lat":  38.1942976 , "long":  128.4744452  },
+
+  { "lat":  36.3946 , "long":  127.3685  },
+
+  { "lat":  36.376 , "long":  127.34877  },
+
+  { "lat":  36.36497 , "long":  127.35094  },
+
+  { "lat":  36.36672 , "long":  127.34943  },
+
+  { "lat":  36.3814304 , "long":  127.3720293  },
+
+  { "lat":  36.3716641 , "long":  127.370236  },
+];
+
+
+
+
+var max_lat = Math.max.apply(Math, list_markers.map(function(o) { return o.lat; }));
+var min_lat = Math.min.apply(Math, list_markers.map(function(o) { return o.lat; }));
+var max_long = Math.max.apply(Math, list_markers.map(function(o) { return o.long; }));
+var min_long = Math.min.apply(Math, list_markers.map(function(o) { return o.long; }));
+
+var map = L.map('hiking-map').setView([(max_lat + min_lat)/2, (max_long + min_long)/2], 8);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+list_markers.forEach( m => {
+  L.marker([m.lat, m.long]).addTo(map);
+})
+
+
+
+</script>
+
+</body>
+
 </html>
