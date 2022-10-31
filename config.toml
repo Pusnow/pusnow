@@ -14,14 +14,19 @@ url = ""
 weight = 1
 
 [[menu.main]]
+name = "Hiking"
+url = "hiking/"
+weight = 2
+
+[[menu.main]]
 name = "Tags"
 url = "tags/"
-weight = 2
+weight = 3
 
 [[menu.main]]
 name = "About"
 url = "about/"
-weight = 3
+weight = 4
 
 [params]
 footer = "&copy; [Wonsup Yoon](https://www.pusnow.com) | [GitHub](https://github.com/pusnow) | Original theme: [Hugo xmin](https://github.com/yihui/hugo-xmin)"

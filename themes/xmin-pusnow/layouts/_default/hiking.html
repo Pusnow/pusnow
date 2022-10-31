@@ -1,0 +1,22 @@
+{{ partial "header.html" . }}
+
+{{if not .IsHome }}
+<h1>{{ .Title | markdownify }}</h1>
+{{ end }}
+
+{{ .Content }}
+<ul>
+  {{ range sort .Params.mountains "date" "desc" }}
+  {{ $locSlice := split .loc "," }}
+  <li>
+    <span class="date">{{ .date | time.Format "2006/01/02" }}</span>
+    <a href="https://www.openstreetmap.org/?mlat={{ index $locSlice 0 }}&mlon={{ index $locSlice 1 }}#map=18/{{ index $locSlice 0 }}/{{ index $locSlice 1 }}"
+      target="_blank">
+      {{.name | markdownify }}
+    </a>
+  </li>
+  {{ end }}
+</ul>
+
+
+{{ partial "footer.html" . }}
