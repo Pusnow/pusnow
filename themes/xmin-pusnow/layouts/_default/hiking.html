@@ -20,7 +20,7 @@
 <div id="hiking-map"></div>
 <div id="hiking-list">
 <ul>
-  {{ range sort .Params.mountains "date" "desc" }}
+  {{ range sort $.Site.Data.hiking "date" "desc" }}
   <li>
     <span class="date">{{ .date | time.Format "2006/01/02" }}</span>
     <a href="javascript:void(0);" onclick="flyTo({{ index .loc 0 }}, {{ index .loc 1 }})">
@@ -40,11 +40,10 @@
   integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
 <script>
 var list_markers = [
-{{ range sort .Params.mountains "date" "desc" }}
+{{ range sort $.Site.Data.hiking "date" "desc" }}
   { "lat": {{ index .loc 0 }}, "long": {{ index .loc 1 }}, "date": "{{ .date }}", "name": "{{ .name }}" },
-{{ end }}];
-
-
+{{ end }}
+];
 
 
 var max_lat = Math.max.apply(Math, list_markers.map(function(o) { return o.lat; }));
