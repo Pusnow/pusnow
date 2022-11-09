@@ -173,15 +173,15 @@
 <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
   integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
 <script>
-var list_markers = JSON.parse("[{\"date\":\"2022-09-14\",\"loc\":[36.3716641,127.370236],\"name\":\"성두산\"},{\"date\":\"2022-10-02\",\"loc\":[36.376,127.34877],\"name\":\"신성근린공원\"},{\"date\":\"2022-10-02\",\"loc\":[36.36497,127.35094],\"name\":\"궁동근린공원\"},{\"date\":\"2022-10-02\",\"loc\":[36.36672,127.34943],\"name\":\"은골산\"},{\"date\":\"2022-09-30\",\"loc\":[36.3814304,127.3720293],\"name\":\"매봉산\"},{\"date\":\"2022-10-15\",\"loc\":[36.3946,127.3685],\"name\":\"대덕대뒷산\"},{\"date\":\"2022-10-28\",\"ele\":365,\"loc\":[36.4225333,127.3269833],\"name\":\"노루봉\"},{\"date\":\"2022-10-28\",\"ele\":375,\"loc\":[36.4284424,127.3373355],\"name\":\"금병산\"},{\"date\":\"2022-10-22\",\"loc\":[38.1897227,128.4750923],\"name\":\"흔들바위\"},{\"date\":\"2022-10-22\",\"ele\":780,\"loc\":[38.1942976,128.4744452],\"name\":\"설악산 울산바위\"},{\"date\":\"2022-10-30\",\"loc\":[37.57693,126.9457832],\"name\":\"안산 자락길\"},{\"date\":\"2022-11-01\",\"loc\":[36.36969,127.35772],\"name\":\"어은동산\"},{\"date\":\"2022-11-05\",\"ele\":766,\"loc\":[36.3519673,127.2003629],\"name\":\"계룡산 관음봉\"},{\"date\":\"2022-11-05\",\"ele\":775,\"loc\":[36.3614534,127.2103212],\"name\":\"계룡산 삼불봉\"},{\"date\":\"2022-11-05\",\"ele\":649,\"loc\":[36.368359,127.2195255],\"name\":\"계룡산 신선봉\"}]").sort(function(a, b) {
+const list_markers = JSON.parse("[{\"date\":\"2022-09-14\",\"loc\":[36.3716641,127.370236],\"name\":\"성두산\"},{\"date\":\"2022-10-02\",\"loc\":[36.376,127.34877],\"name\":\"신성근린공원\"},{\"date\":\"2022-10-02\",\"loc\":[36.36497,127.35094],\"name\":\"궁동근린공원\"},{\"date\":\"2022-10-02\",\"loc\":[36.36672,127.34943],\"name\":\"은골산\"},{\"date\":\"2022-09-30\",\"loc\":[36.3814304,127.3720293],\"name\":\"매봉산\"},{\"date\":\"2022-10-15\",\"loc\":[36.3946,127.3685],\"name\":\"대덕대뒷산\"},{\"date\":\"2022-10-28\",\"ele\":365,\"loc\":[36.4225333,127.3269833],\"name\":\"노루봉\"},{\"date\":\"2022-10-28\",\"ele\":375,\"loc\":[36.4284424,127.3373355],\"name\":\"금병산\"},{\"date\":\"2022-10-22\",\"loc\":[38.1897227,128.4750923],\"name\":\"흔들바위\"},{\"date\":\"2022-10-22\",\"ele\":780,\"loc\":[38.1942976,128.4744452],\"name\":\"설악산 울산바위\"},{\"date\":\"2022-10-30\",\"loc\":[37.57693,126.9457832],\"name\":\"안산 자락길\"},{\"date\":\"2022-11-01\",\"loc\":[36.36969,127.35772],\"name\":\"어은동산\"},{\"date\":\"2022-11-05\",\"ele\":766,\"loc\":[36.3519673,127.2003629],\"name\":\"계룡산 관음봉\"},{\"date\":\"2022-11-05\",\"ele\":775,\"loc\":[36.3614534,127.2103212],\"name\":\"계룡산 삼불봉\"},{\"date\":\"2022-11-05\",\"ele\":649,\"loc\":[36.368359,127.2195255],\"name\":\"계룡산 신선봉\"}]").sort(function(a, b) {
   return a.date.localeCompare(b.date);
 });
 
 
-var max_lat = Math.max.apply(Math, list_markers.map(function(o) { return o.loc[0]; }));
-var min_lat = Math.min.apply(Math, list_markers.map(function(o) { return o.loc[0]; }));
-var max_long = Math.max.apply(Math, list_markers.map(function(o) { return o.loc[1]; }));
-var min_long = Math.min.apply(Math, list_markers.map(function(o) { return o.loc[1]; }));
+const max_lat = Math.max.apply(Math, list_markers.map(function(o) { return o.loc[0]; }));
+const min_lat = Math.min.apply(Math, list_markers.map(function(o) { return o.loc[0]; }));
+const max_long = Math.max.apply(Math, list_markers.map(function(o) { return o.loc[1]; }));
+const min_long = Math.min.apply(Math, list_markers.map(function(o) { return o.loc[1]; }));
 
 var map = L.map('hiking-map').setView([(max_lat + min_lat)/2, (max_long + min_long)/2], 8);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -192,13 +192,13 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var markers = {};
 
 list_markers.forEach( m => {
-  var marker = L.marker([m.loc[0], m.loc[1]]).addTo(map)
+  const marker = L.marker([m.loc[0], m.loc[1]]).addTo(map)
     .bindPopup(m.date +" " +m.name)  
    markers[m.loc[0] + "-" + m.loc[1]]=marker;
 })
 
 function flyTo(lat, long){
-  var marker = markers[lat + "-" + long];  
+  const marker = markers[lat + "-" + long];  
   map.flyTo(marker.getLatLng(),15);
   marker.openPopup();
 }
