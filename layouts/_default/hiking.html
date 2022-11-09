@@ -25,17 +25,15 @@
 <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
   integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
 <script>
-var list_markers = [
-{{ range sort $.Site.Data.hiking "date" "desc" }}
-  { "lat": {{ index .loc 0 }}, "long": {{ index .loc 1 }}, "date": "{{ .date }}", "name": "{{ .name }}" },
-{{ end }}
-];
+var list_markers = JSON.parse({{ $.Site.Data.hiking | jsonify }}).sort(function(a, b) {
+  return a.date.localeCompare(b.date);
+});
 
 
-var max_lat = Math.max.apply(Math, list_markers.map(function(o) { return o.lat; }));
-var min_lat = Math.min.apply(Math, list_markers.map(function(o) { return o.lat; }));
-var max_long = Math.max.apply(Math, list_markers.map(function(o) { return o.long; }));
-var min_long = Math.min.apply(Math, list_markers.map(function(o) { return o.long; }));
+var max_lat = Math.max.apply(Math, list_markers.map(function(o) { return o.loc[0]; }));
+var min_lat = Math.min.apply(Math, list_markers.map(function(o) { return o.loc[0]; }));
+var max_long = Math.max.apply(Math, list_markers.map(function(o) { return o.loc[1]; }));
+var min_long = Math.min.apply(Math, list_markers.map(function(o) { return o.loc[1]; }));
 
 var map = L.map('hiking-map').setView([(max_lat + min_lat)/2, (max_long + min_long)/2], 8);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -46,9 +44,9 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var markers = {};
 
 list_markers.forEach( m => {
-  var marker = L.marker([m.lat, m.long]).addTo(map)
+  var marker = L.marker([m.loc[0], m.loc[1]]).addTo(map)
     .bindPopup(m.date +" " +m.name)  
-   markers[m.lat + "-" + m.long]=marker;
+   markers[m.loc[0] + "-" + m.loc[1]]=marker;
 })
 
 function flyTo(lat, long){
