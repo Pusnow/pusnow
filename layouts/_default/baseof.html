@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="{{if .Params.lang }}{{ .Params.lang }}{{ else }}{{ .Site.LanguageCode }}{{ end }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}" />
+    <link rel="stylesheet" href="{{ "/css/fonts.css" | relURL }}" />
+    {{ block "head" . }}{{ end }}
+</head>
+<body>
+<nav class="no-print">
+    <ul class="menu">
+      {{ range .Site.Menus.main }}
+      <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+    <hr />
+</nav>
+
+{{if not .IsHome }}
+<h1>{{ .Title | markdownify }}</h1>
+{{ end }}
+
+{{ block "body" . }}{{ end }}
+
+<footer class="no-print">
+    {{ with .Site.Params.footer }}
+    <hr />
+    {{ . | markdownify }}
+    {{ end }}
+</footer>
+{{ block "script" . }}{{ end }}
+</body>
+
+</html>

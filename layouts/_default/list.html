@@ -1,13 +1,4 @@
-{{ partial "top.html" . }}
-
-<head>
-  {{ partial "head.html" . }}
-</head>
-{{ partial "nav.html" . }}
-
-{{if not .IsHome }}
-<h1>{{ .Title | markdownify }}</h1>
-{{ end }}
+{{ define "body" }}
 
 {{ .Content }}
 
@@ -21,7 +12,4 @@
   </li>
   {{ end }}
 </ul>
-
-{{ partial "footer.html" . }}
-
-{{ partial "end.html" . }}
+{{ end }}

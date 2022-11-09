@@ -1,12 +1,4 @@
-{{ partial "top.html" . }}
-
-<head>
-    {{ partial "head.html" . }}
-</head>
-{{ partial "nav.html" . }}
-
-<h1>{{ .Title | markdownify }}</h1>
-
+{{ define "body" }}
 {{ if .Date }}
 <span class="date">{{ .Date.Format "2006/01/02" }}</span>
 {{ if .GitInfo }}
@@ -21,7 +13,4 @@
 <main>
     {{ .Content }}
 </main>
-
-{{ partial "footer.html" . }}
-
-{{ partial "end.html" . }}
+{{ end }}
