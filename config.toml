@@ -1,7 +1,6 @@
 baseURL = "https://www.pusnow.com/"
 languageCode = "en-us"
 title = "Pusnow"
-theme = "xmin-pusnow"
 enableGitInfo = true
 
 [permalinks]
