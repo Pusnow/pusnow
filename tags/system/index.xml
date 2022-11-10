@@ -6,7 +6,17 @@
     <description>Recent content in system on Pusnow</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KENS 리뉴얼 Part 1: 메모리 안전성</title>
+      <link>https://www.pusnow.com/note/kens-renewal-part1/</link>
+      <pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/note/kens-renewal-part1/</guid>
+      <description>Source code available KENS KAIST 전산망 개론 수업에서는 KENS(KAIST Educational Network System)라는 네트워크 교육용 시스템을 활용한다. 학생들은 KENS를 이용하여 기초적인 TCP 스택을 구현하는 과제를 수행하며, 이 과제는 전체 수업 과정 중에 상당한 부분을 차지한다. 하지만, 내가 조교 활동을 준비하고 있을 때(2020년 여름)는 KENS 과제에 여러 문제가 누적되어 있었으며, 이 글과 후속 글에서는 조교 활동 및 준비 기간(2020년 여름 ~ 2022년 여름) 동안, KENS가 개선된 내용을 일부 소개한다.
+메모리 안전성 학생들이 과제를 진행하면 가장 많이 겪는 문제는 메모리 관련 버그이다.</description>
+    </item>
+    
     <item>
       <title>CS 분야 우수 학술대회 목록</title>
       <link>https://www.pusnow.com/note/cs-top-conferences/</link>
