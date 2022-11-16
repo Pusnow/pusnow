@@ -45,12 +45,12 @@ title: Wonsup Yoon
 
 ## Scholarships and Awards
 
-- **Jul.** 2021: Best TA Award
-- **Aug.** 2016 & **Feb.** 2017: Awarded High Honors
-- **Dec.** 2015 & **Sep.** 2016: National Science and Technology Scholarship
-- **Sep.** 2015 & **Mar.** 2016: Yonsei Internal Scholarship
-- **Aug.** 2015: Korea Telecom Scholarship
-- **Feb.** 2015 & **Aug.** 2015 & **Feb.** 2016: Awarded Honors
+- **Jul.** 2021: Best TA Award, **KAIST**
+- **Aug.** 2016 & **Feb.** 2017: Awarded High Honors, **Yonsei University**
+- **Dec.** 2015 & **Sep.** 2016: The National Scholarship for Science and Engineering, **KOSAF**
+- **Sep.** 2015 & **Mar.** 2016: Yonsei Internal Scholarship, **Yonsei University**
+- **Aug.** 2015: Korea Telecom Scholarship, **Korea Telecom**
+- **Feb.** 2015 & **Aug.** 2015 & **Feb.** 2016: Awarded Honors, **Yonsei University**
 
 ---
 
