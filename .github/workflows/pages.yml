@@ -8,7 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:          
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
           
       - name: Download Hugo
         shell: bash
@@ -22,7 +24,7 @@ jobs:
       - name: Run Hugo
         run : ./hugo
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ssh-key: ${{ secrets.SSH_PRIVKEY }}
           ref: pages
