@@ -6,6 +6,9 @@ tags:
     - system
 ---
 
+* [Source code available](https://github.com/ANLAB-KAIST/KENSv3)
+* [Part 1](https://www.pusnow.com/note/kens-renewal-part1/)
+
 ## KENS 개발 환경
 
 [기존 KENS 시스템](https://github.com/ANLAB-KAIST/KENSv3/tree/v3.0)은 과제를 수행하기 위한 개발 환경을 셋업하는 것이 학생들에게 조금 까다로웠다.
