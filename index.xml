@@ -13,8 +13,8 @@
       <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.pusnow.com/note/kens-renewal-part2/</guid>
-      <description>KENS 개발 환경 기존 KENS 시스템은 과제를 수행하기 위한 개발 환경을 셋업하는 것이 학생들에게 조금 까다로웠다. KENS 개발 환경의 빌드 시스템은 순수 Makefile 이루어져 있고, 빌드 시 GoogleTest 라이브러리를 설치해 주어야 하므로, C/C++을 처음 혹은 두 번째로 사용하는 학생들은 이 둘에 익숙하지 못하다. 따라서, 학생 중 상당수가 과제를 시작하는 데 어려움을 겪고 관련 질의응답도 많이 있었다.
-이 문제의 질의응답이 어려운 점은 학생들의 개발 환경이 매우 다양하다는 점이다. 많은 학생이 리눅스가 아닌 macOS와 Windows를 사용하고 있고, 리눅스를 사용하더라도 배포판, GCC 및 GoogleTest 버전 등 개발 환경이 다양하기 때문이다.</description>
+      <description>Source code available Part 1 KENS 개발 환경 기존 KENS 시스템은 과제를 수행하기 위한 개발 환경을 셋업하는 것이 학생들에게 조금 까다로웠다. KENS 개발 환경의 빌드 시스템은 순수 Makefile 이루어져 있고, 빌드 시 GoogleTest 라이브러리를 설치해 주어야 하므로, C/C++을 처음 혹은 두 번째로 사용하는 학생들은 이 둘에 익숙하지 못하다. 따라서, 학생 중 상당수가 과제를 시작하는 데 어려움을 겪고 관련 질의응답도 많이 있었다.
+이 문제의 질의응답이 어려운 점은 학생들의 개발 환경이 매우 다양하다는 점이다.</description>
     </item>
     
     <item>
