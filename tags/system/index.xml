@@ -6,7 +6,18 @@
     <description>Recent content in system on Pusnow</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DIY Wi-Fi 라우터</title>
+      <link>https://www.pusnow.com/note/diy-wifi-router/</link>
+      <pubDate>Wed, 23 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/note/diy-wifi-router/</guid>
+      <description>DIY Wi-Fi 라우터 제작 이 글에서는 개인적으로 사용하는 Wi-Fi 라우터를 소개한다. 일반적인 라우터와 달리 Intel 기반의 미니 PC에 Debian Linux 기반으로 직접 제작하여 커스터미이징이 쉽고 높은 성능을 제공한다.
+목적 기성 Wi-Fi 라우터는 낮은 가격에 쓸만한 성능, 전력효율을 제공한다. 하지만, 대부분의 기성 라우터는 제조사가 제공하는 펌웨어만을 강제한다. OpenWRT와 같은 커스텀 펌웨어를 사용하더라도 완전히 커스터마이즈하여 사용하기에는 한계가 있다.
+그래서, 직접 Wi-Fi 라우터를 만들기로 결심했다. 또, 새로 만드는 김에 기존에 개인적으로 사용하던 홈서버와 통합하여, 홈서버가 Wi-Fi 라우터 기능을 제공하는 것을 목표로 했다.</description>
+    </item>
+    
     <item>
       <title>KENS 리뉴얼 Part 3: 지속이 가능한 에코시스템과 남은 과제</title>
       <link>https://www.pusnow.com/note/kens-renewal-part3/</link>
