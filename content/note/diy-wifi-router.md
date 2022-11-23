@@ -4,7 +4,6 @@ date: 2022-11-23
 tags:
     - system
 lang: ko-kr
-draft: true
 ---
 
 ## DIY Wi-Fi 라우터 제작
