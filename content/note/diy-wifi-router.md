@@ -76,7 +76,7 @@ QCA6174는 두 개의 안테나 사용하고 총 두 장의 QCA6174를 사용하
 최종 사항을 정리하면 다음과 같다.
 아주 성능이 좋다고는 할 수 없지만, Wi-Fi 라우터 중에는 매우 좋은 편이다.
 
-| Hardware     | Description                            |
+| Hardware     | Specification                          |
 | ------------ | ---------------------------------------|
 | CPU          | Intel Celeron N5105 (2.00GHz)          |
 | Memory       | 32GiB DDR4 Synchronous (2667 MHz)      |
