@@ -67,8 +67,6 @@ title: Wonsup Yoon
 
 ## Contact
 
-**Temporary Absence (Military Service, December 1st-22th, 2022)**
-
 - Email: [wsyoon@kaist.ac.kr](mailto:wsyoon@kaist.ac.kr)
 - GitHub: [Pusnow](https://github.com/Pusnow)
 - Google Scholar: [Wonsup Yoon](https://scholar.google.com/citations?user=QXsLShMAAAAJ)
