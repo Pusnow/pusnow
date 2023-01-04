@@ -31,13 +31,13 @@ title: Wonsup Yoon
 - DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
   - **Wonsup Yoon**, Jisu Ok, Jinyoung Oh, Sue Moon, and Youngjin Kwon
   - *Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys)*, 2023.
-- DiLOS: Adding Performance to Paging-based Memory Disaggregation {{< link "https://dl.acm.org/doi/10.1145/3476886.3477507">}}
+- DiLOS: Adding Performance to Paging-based Memory Disaggregation{{< link "https://dl.acm.org/doi/10.1145/3476886.3477507">}}
   - **Wonsup Yoon**, Jinyoung Oh, Jisu Ok, Sue Moon, and Youngjin Kwon
   - *Proceedings of the 12th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys)*, 2021.
-- Accelerating Disaggregated Data Centers Using Unikernel {{< link "https://dl.acm.org/doi/10.1145/3405837.3411397">}}
+- Accelerating Disaggregated Data Centers Using Unikernel{{< link "https://dl.acm.org/doi/10.1145/3405837.3411397">}}
   - **Wonsup Yoon**, Jinyoung Oh, Sue Moon, and Youngjin Kwon
   - *Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM '20 Posters and Demos)*, 2020.
-- Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System {{< link "https://dl.acm.org/doi/abs/10.1145/3365137.3365403">}}
+- Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System{{< link "https://dl.acm.org/doi/abs/10.1145/3365137.3365403">}}
   - Keunhong Lee, Jeehoon Kang, **Wonsup Yoon**, Joongi Kim, and Sue Moon
   - *Proceedings of the 10th Workshop on Programming Languages and Operating Systems (PLOS@SOSP)*, 2019.
 
@@ -59,7 +59,7 @@ title: Wonsup Yoon
 - KAIST, *2017-2022*.
   - Role: Teaching Assistant
   - Projects:
-    - Developing and maintaining KENS (KAIST Educational Network System) {{< link "https://github.com/ANLAB-KAIST/KENSv3">}}. Its enhancements include memory safety {{< link-korean "https://pusnow.com/note/kens-renewal-part1/">}}, build system and development environment {{< link-korean "https://pusnow.com/note/kens-renewal-part2/">}}, and teaching ecosystem {{< link-korean "https://pusnow.com/note/kens-renewal-part3/">}}.
+    - Developing and maintaining KENS (KAIST Educational Network System){{< link "https://github.com/ANLAB-KAIST/KENSv3">}}. Its enhancements include memory safety{{< link-korean "https://pusnow.com/note/kens-renewal-part1/">}}, build system and development environment{{< link-korean "https://pusnow.com/note/kens-renewal-part2/">}}, and teaching ecosystem{{< link-korean "https://pusnow.com/note/kens-renewal-part3/">}}.
 - Yonsei Institute of Language and Information Studies, *2013-2017*.
   - Role: Technical Assistant and Software System Developer
   - Projects
