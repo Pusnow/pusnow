@@ -2,7 +2,7 @@
 {{ if .Date }}
 <span class="date">{{ .Date.Format "2006/01/02" }}</span>
 {{ if .GitInfo }}
-<span class="date">Updated: {{ .GitInfo.AuthorDate.Format "2006/01/02" }}.</span>
+<span class="date"> (Updated: {{ .GitInfo.AuthorDate.Format "2006/01/02" }}).</span>
 {{ end }}
 {{else}}
 {{ if .GitInfo }}
