@@ -2,13 +2,15 @@
 {{ if .Date }}
 <span class="date">{{ .Date.Format "2006/01/02" }}</span>
 {{ if .GitInfo }}
-<span class="date">(Last update: {{ .GitInfo.AuthorDate.Format "2006/01/02" }})</span>
+<span class="date">Updated: {{ .GitInfo.AuthorDate.Format "2006/01/02" }}.</span>
 {{ end }}
 {{else}}
 {{ if .GitInfo }}
-<span class="date">Last update: {{ .GitInfo.AuthorDate.Format "2006/01/02" }}</span>
+<span class="date">Updated: {{ .GitInfo.AuthorDate.Format "2006/01/02" }}.</span>
 {{ end }}
 {{ end }}
+<span class="only-print">
+    The latest version of this page is available at <a href="{{ .Permalink }}">{{ .Permalink }}</a>.</span>
 <hr />
 <main>
     {{ .Content }}

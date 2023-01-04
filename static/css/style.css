@@ -112,6 +112,18 @@ tr:nth-child(even) {
 }
 
 
+.avoid-page-break-inside {
+  page-break-inside: avoid;
+}
+
+
+@media screen {
+
+  .only-print,
+  .only-print * {
+    display: none;
+  }
+}
 
 @media print {
 
@@ -119,6 +131,8 @@ tr:nth-child(even) {
   .no-print * {
     display: none !important;
   }
+
+
 
   a {
     color: #0074D9;

@@ -69,6 +69,7 @@ title: Wonsup Yoon
     - TOPIK (Test Of Proficiency In Korean) Word Searcher for National Institute for International Education (국립국제교육원): designing and implementing a level-based dictionary search application used for TOPIK (Test Of Proficiency In Korean)
 
 ---
+<div class="avoid-page-break-inside">
 
 ## Contact
 
@@ -77,3 +78,5 @@ title: Wonsup Yoon
 - Google Scholar: [Wonsup Yoon](https://scholar.google.com/citations?user=QXsLShMAAAAJ)
 - LinkedIn: [pusnow](https://www.linkedin.com/in/pusnow/)
 - ORCID: [0000-0002-6247-4119](https://orcid.org/0000-0002-6247-4119)
+
+</div>
