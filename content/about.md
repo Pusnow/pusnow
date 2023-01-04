@@ -63,10 +63,10 @@ title: Wonsup Yoon
 - Yonsei Institute of Language and Information Studies, *2013-2017*.
   - Role: Technical Assistant and Software System Developer
   - Projects
-    - Yonsei Corpus Searcher: design and implementation of efficient search-filter-sort application for Yonsei Korean Corpus.
-    - Yonsei Dictionary Searcher: design and implementation of efficient search application for Yonsei Korean Dictionary.
-    - Dictionary for National Institute of Korean Language (국립국어원): design and implementation of dictionary search application for Korean language.
-    - TOPIK (Test Of Proficiency In Korean) Word Searcher for National Institute for International Education (국립국제교육원): design and implementation of level-based dictionary search application used for TOPIK (Test Of Proficiency In Korean)
+    - Yonsei Corpus Searcher: designing and implementing an efficient efficient search-filter-sort application for Yonsei Korean Corpus.
+    - Yonsei Dictionary Searcher: designing and implementing an efficient search application for Yonsei Korean Dictionary.
+    - Dictionary for National Institute of Korean Language (국립국어원): designing and implementing  dictionary search application for Korean language.
+    - TOPIK (Test Of Proficiency In Korean) Word Searcher for National Institute for International Education (국립국제교육원): designing and implementing a level-based dictionary search application used for TOPIK (Test Of Proficiency In Korean)
 
 ---
 
