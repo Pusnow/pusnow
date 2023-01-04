@@ -13,8 +13,10 @@ title: Wonsup Yoon
 ## Education
 
 - Ph.D. Candidate in Computer Science, **KAIST**, *2019.9-present*.
+  - Co-advisors: [Sue Moon](https://an.kaist.ac.kr/~sbmoon/) and [Youngjin Kwon](https://sites.google.com/view/yjkwon/home)
   - GPA: 4.01/4.30
 - M.S. in Computer Science, **KAIST**, *2017.9-2019.8*.
+  - Co-advisors: [Sue Moon](https://an.kaist.ac.kr/~sbmoon/) and [Youngjin Kwon](https://sites.google.com/view/yjkwon/home)
   - GPA: 3.95/4.30
 - B.S. in Electrical and Electronic Engineering, **Yonsei University**, *2013.3-2017.2*.
   - Minor: Computer Science
@@ -58,15 +60,14 @@ title: Wonsup Yoon
 
 - **KAIST**, *2017-2022*.
   - Role: Teaching Assistant
-  - Projects:
-    - Developing and maintaining KENS (KAIST Educational Network System){{< link "https://github.com/ANLAB-KAIST/KENSv3" >}}. Its enhancements include memory safety{{< link-korean "https://pusnow.com/note/kens-renewal-part1/" >}}, build system and development environment{{< link-korean "https://pusnow.com/note/kens-renewal-part2/" >}}, and teaching ecosystem{{< link-korean "https://pusnow.com/note/kens-renewal-part3/" >}}.
+  - Teaching CS341 (Introduction to Computer Networks),  CS443 (Distributed Algorithms and Systems), and CS530 (Graduate Operating Systems). My main role is teaching project assignments including KENS (KAIST Educational Network System){{< link "https://github.com/ANLAB-KAIST/KENSv3" >}}, Raft consensus algorithm{{< link "<https://an.kaist.ac.kr/courses/2018/cs443/lab/lab-raft.html> >}}, and an OSv unikernel-based project.
+  - Developing and maintaining KENS (KAIST Educational Network System){{< link "https://github.com/ANLAB-KAIST/KENSv3" >}}. Its enhancements include memory safety{{< link-korean "https://pusnow.com/note/kens-renewal-part1/" >}}, build system and development environment{{< link-korean "https://pusnow.com/note/kens-renewal-part2/" >}}, and teaching ecosystem{{< link-korean "https://pusnow.com/note/kens-renewal-part3/" >}}.
 - Institute of Language and Information Studies, **Yonsei University**, *2013-2017*.
-  - Role: Technical Assistant and Software System Developer
-  - Projects
-    - Yonsei Corpus Searcher: designing and implementing an efficient efficient search-filter-sort application for Yonsei Korean Corpus.
-    - Yonsei Dictionary Searcher: designing and implementing an efficient search application for Yonsei Korean Dictionary.
-    - Dictionary for National Institute of Korean Language (국립국어원): designing and implementing  dictionary search application for Korean language.
-    - TOPIK (Test Of Proficiency In Korean) Word Searcher for National Institute for International Education (국립국제교육원): designing and implementing a level-based dictionary search application used for TOPIK (Test Of Proficiency In Korean)
+  - Role: Technical Assistant and Software Developer
+  - Developing Yonsei Corpus Searcher, an efficient efficient search-filter-sort application for Yonsei Korean Corpus.
+  - Developing Yonsei Dictionary Searcher, an efficient search application for Yonsei Korean Dictionary.
+  - Developing dictionary searcher for National Institute of Korean Language (국립국어원). A dictionary search web application for Korean language.
+  - Developing TOPIK (Test Of Proficiency In Korean) Word Searcher for National Institute for International Education (국립국제교육원). An education level-based dictionary search application used for TOPIK.
 
 ---
 <div class="avoid-page-break-inside">
