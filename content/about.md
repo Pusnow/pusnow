@@ -56,12 +56,17 @@ title: Wonsup Yoon
 
 ## Experiences
 
+- KAIST, *2017-2022*.
+  - Role: Teaching Assistant
+  - Projects:
+    - Developing and maintaining [KENS (KAIST Educational Network System)](https://github.com/ANLAB-KAIST/KENSv3). Its enhancements includes [memory safety (Korean)](https://pusnow.com/note/kens-renewal-part1/), [build system and development environment (Korean)](https://pusnow.com/note/kens-renewal-part2/), and [teaching ecosystem (Korean)](https://pusnow.com/note/kens-renewal-part3/).
 - Yonsei Institute of Language and Information Studies, *2013-2017*.
-  - Role: Technical Assistant and Developer
+  - Role: Technical Assistant and Software System Developer
   - Projects
-    - Yonsei Corpus Searcher
-    - Web Dictionary for National Institute of Korean Language (국립국어원)
-    - TOPIK (Test Of Proficiency In Korean) Word Searcher for National Institute for International Education (국립국제교육원)
+    - Yonsei Corpus Searcher: design and implementation of efficient search-filter-sort application for Yonsei Korean Corpus.
+    - Yonsei Dictionary Searcher: design and implementation of efficient search application for Yonsei Korean Dictionary.
+    - Dictionary for National Institute of Korean Language (국립국어원): design and implementation of dictionary search application for Korean language.
+    - TOPIK (Test Of Proficiency In Korean) Word Searcher for National Institute for International Education (국립국제교육원): design and implementation of level-based dictionary search application used for TOPIK (Test Of Proficiency In Korean)
 
 ---
 
