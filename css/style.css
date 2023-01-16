@@ -115,7 +115,9 @@ tr:nth-child(even) {
 .avoid-page-break-inside {
   page-break-inside: avoid;
 }
-
+.avoid-page-break-inside-ul > ul > li {
+  page-break-inside: avoid;
+}
 
 @media screen {
 
