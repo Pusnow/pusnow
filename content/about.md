@@ -12,6 +12,8 @@ title: Wonsup Yoon
 
 ## Education
 
+<div class="avoid-page-break-inside-ul">
+
 - Ph.D. Candidate in Computer Science, **KAIST**, *2019.9-present*.
   - Co-advisors: [Sue Moon](https://an.kaist.ac.kr/~sbmoon/) and [Youngjin Kwon](https://sites.google.com/view/yjkwon/home)
   - GPA: 4.01/4.30
@@ -26,9 +28,13 @@ title: Wonsup Yoon
   - Major: Information Communication
   - Graduation with Highest Honors (Principal's Award)
 
+</div>
+
 ---
 
 ## Publications
+
+<div class="avoid-page-break-inside-ul">
 
 - DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation{{< tbu >}}
   - **Wonsup Yoon**, Jisu Ok, Jinyoung Oh, Sue Moon, and Youngjin Kwon
@@ -42,6 +48,8 @@ title: Wonsup Yoon
 - Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System{{< link "https://dl.acm.org/doi/abs/10.1145/3365137.3365403" >}}
   - Keunhong Lee, Jeehoon Kang, **Wonsup Yoon**, Joongi Kim, and Sue Moon
   - *Proceedings of the 10th Workshop on Programming Languages and Operating Systems (PLOS@SOSP)*, 2019.
+
+</div>
 
 ---
 
