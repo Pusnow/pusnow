@@ -111,4 +111,24 @@ Wi-Fi 라우터를 기능을 추가하기 위해서는 Hostapd를 사용하였�
 따라서, Intel 기반의 DIY Wi-Fi 라우터를 제작 및 설정하였다.
 이 라우터는 기성 라우터 대비 가격은 높지만, 커스터마이징이 매우 쉬우며 높은 성능을 제공할 수 있었다.
 
+## Update (2023. 2. 22.)
+
+최근 커널[^2]에서는 아래와 같은 메시지가 나타나면서 [`ath10k-firmware` GitHub 저장소](https://github.com/kvalo/ath10k-firmware)에서 제공하는 펌웨어가 호환되지 않는다.
+
+```log
+[ 2060.576275] ath10k_pci 0000:01:00.0: No allocated memory for IRAM back up
+[ 2060.576281] ath10k_pci 0000:01:00.0: failed to copy target iram contents: -12
+[ 2060.652476] ath10k_pci 0000:01:00.0: could not init core (-12)
+[ 2060.652486] ath10k_pci 0000:01:00.0: could not probe fw (-12)
+```
+
+이 현상은 최근 ath10 드라이버에 추가된 [iram recovery 기능](https://github.com/torvalds/linux/commit/9af7c32ceca85da27867dd863697d2aafc80a3f8) 때문이다.
+`ath10k-firmware` 저장소에서 제공하는 QCA6174 펌웨어는 실제로는 iram recovery 기능을 제공하지 않으면서 iram recovery feature flag를 설정하는 것으로 추정된다.
+예전 드라이버에서는 관련 flag를 확인하지 않고 관련 기능을 설정하지 않아서 문제가 되지 않았지만, 최신 버전의 드라이버에서는 펌웨어에 설정된 flag를 확인하고 iram recovery 기능을 활성화하다 오류가 발생한 것으로 보인다.
+
+이를 해결하기 위해서는 드라이버를 수정하여 iram recovery 기능을 삭제하거나, firmware 파일을 수정하여 iram recovery flag를 비활성화해야 한다.
+다행히 다음 [GitHub 저장소](https://github.com/tiiuae/wifi-firmware)에서 iram recovery flag를 비활성화한 버전의 QCA6174 수정 펌웨어를 배포하고 있다.
+기존에 사용하는 펌웨어를 이 버전으로 교체하니, 다시 정상 작동하게 되었다.
+
 [^1]: [QWA-AC2600](https://www.qnap.com/en-us/product/qwa-ac2600)와 같은 하나의 PCIe 슬롯에 장착하여 두 개의 WLAN 인터페이스를 제공하는 카드도 있지만, 팬이 달려있고 가격도 너무 비싸 고려하지 않았다.
+[^2]: 나는 Debian Bookworm으로 업그레이드 하면서 현상이 발생하였다. 사용하는 커널 버전은 6.1.8이다.
