@@ -6,7 +6,17 @@
     <description>Recent content in system on Pusnow</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 23 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>QCNFA765을 이용한 Wi-Fi 6 AP</title>
+      <link>https://www.pusnow.com/note/qcnfa765-wifi-6-ap/</link>
+      <pubDate>Wed, 08 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/note/qcnfa765-wifi-6-ap/</guid>
+      <description>QCNFA765 최근에 알리익스프레스에서 WCN6855를 사용한 QCNFA765이 $20 내외로 판매되고 있다는 것을 발견했다. WCN6855은 Wi-Fi 6(802.11ax)는 물론, 6GHz를 사용하는 Wi-Fi 6E도 지원하여, 사용하고 있던 QCA6174보다 더 좋은 성능을 기대할 수 있다. 또, 두 개 이상의 주파수 대역을 사용하여 성능을 높이는 DBS(dual band simultaneous)도 사용할 수 있어, 6GHz를 지원하는 장비는 성능을 거의 두 배 가까이 올릴 수도 있을 것으로 판단했다.
+이 글에서는 QCNFA765를 구매하여 Wi-Fi 6 AP로 사용할 때 발생한 시행착오를 소개한다.</description>
+    </item>
+    
     <item>
       <title>DIY Wi-Fi 라우터</title>
       <link>https://www.pusnow.com/note/diy-wifi-router/</link>
