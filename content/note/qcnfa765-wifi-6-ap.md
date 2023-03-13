@@ -169,6 +169,42 @@ ath11k_pci 0000:01:00.0:   5. (5735 - 5835 @ 80) (6, 23) (0 ms) (FLAGS 2048)
 QCNFA765는 저렴하게 이용할 수 있는 Wi-Fi 6 AP 모드 WLAN 카드이다. 아직 소프트웨어와 펌웨어가 완벽한 것은 아니지만, Wi-Fi 6 AP로 활용할 수 있을 정도는 된 것으로 보인다.
 장기 사용 시 어떤 문제가 발생할지는 모르지만, 현재로서는 큰 문제 없이 사용할 수 있을 것 같다.
 
+## Update (2022. 3. 13.)
+
+일주일 정도 사용해 보니, 드라이버 단에서 원인 모를 오류가 계속 발생하여 장치가 멈추는 문제가 발생하였다.
+
+```
+[ 4690.678477] ath11k_pci 0000:01:00.0: failed to send HAL_REO_CMD_FLUSH_CACHE, tid 15 (-105)
+[ 6180.612484] ath11k_pci 0000:01:00.0: failed to send HAL_REO_CMD_FLUSH_CACHE, tid 15 (-105)
+[18853.631913] ath11k_pci 0000:01:00.0: failed to send HAL_REO_CMD_FLUSH_CACHE, tid 15 (-105)
+[19614.677932] ath11k_pci 0000:01:00.0: failed to send HAL_REO_CMD_FLUSH_CACHE, tid 14 (-105)
+[19614.677941] ath11k_pci 0000:01:00.0: failed to send HAL_REO_CMD_FLUSH_CACHE, tid 14 (-105)
+[20515.055734] ath11k_pci 0000:01:00.0: failed to send HAL_REO_CMD_FLUSH_CACHE, tid 15 (-105)
+[59959.911770] ath11k_pci 0000:01:00.0: failed to send HAL_REO_CMD_FLUSH_CACHE, tid 15 (-105)
+[61695.843982] ath11k_pci 0000:01:00.0: mgmt tx queue is full
+[61695.844000] ath11k_pci 0000:01:00.0: failed to queue management frame -28
+[61695.844029] ath11k_pci 0000:01:00.0: mgmt tx queue is full
+[61695.844033] ath11k_pci 0000:01:00.0: failed to queue management frame -28
+[61695.844046] ath11k_pci 0000:01:00.0: mgmt tx queue is full
+[61695.844050] ath11k_pci 0000:01:00.0: failed to queue management frame -28
+[61695.844061] ath11k_pci 0000:01:00.0: mgmt tx queue is full
+[61695.844065] ath11k_pci 0000:01:00.0: failed to queue management frame -28
+[61695.844076] ath11k_pci 0000:01:00.0: mgmt tx queue is full
+[61695.844080] ath11k_pci 0000:01:00.0: failed to queue management frame -28
+[61702.162639] ath11k_warn: 400 callbacks suppressed
+[61702.162655] ath11k_pci 0000:01:00.0: failed to flush mgmt transmit queue, mgmt pkts pending 438
+[61703.186617] ath11k_pci 0000:01:00.0: wmi command 28680 timeout
+[61703.186638] ath11k_pci 0000:01:00.0: failed to submit WMI_MGMT_TX_SEND_CMDID cmd
+[61703.186649] ath11k_pci 0000:01:00.0: failed to send mgmt frame: -11
+[61703.186666] ath11k_pci 0000:01:00.0: failed to tx mgmt frame, vdev_id 0 :-11
+[61706.258518] ath11k_pci 0000:01:00.0: wmi command 28680 timeout
+...
+```
+
+정확한 원인은 모르지만 추측을 해보자면, 어떤 이유에선가 `HAL_REO_CMD_FLUSH_CACHE`가 처리되지 못해서 `mgmt tx queue`가 가득차 필수적인 관리 명렁이 디바이스에 전송되지 못하는 문제로 보인다.
+이를 디버깅하는 것은 시간/능력이 부족하므로 포기하기로 했다.
+결국 기존 QCA6174으로 하드웨어로 롤백했다.
+
 
 [^1]: `WLAN.HSP.1.1-03125-QCAHSPSWPL_V1_V2_SILICONZ_LITE-3.6510.23`
 [^2]: `iw reg get`으로 확인
