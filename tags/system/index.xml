@@ -6,17 +6,7 @@
     <description>Recent content in system on Pusnow</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>실행 단위 (Execution Unit) 정리</title>
-      <link>https://www.pusnow.com/note/execution-units/</link>
-      <pubDate>Sat, 20 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.pusnow.com/note/execution-units/</guid>
-      <description>Paralellism과 concurrency를 지원하기 위해 다양한 실행 단위(Execution Unit)가 존재한다. 가장 기초적인 프로세스와 스레드부터 그린 스레드(green thread), 코루틴(coroutine), 파이버(fiber) 등 비교적 일반적 개념과, 고루틴(Goroutine)처럼 특정 언어에만 존재하는 개념도 존재한다. 상당수의 기술 문서, 대화에서 이들 개념이 명확히 구분되지 않고 사용되고, 때로는 잘못 사용되는 경우도 많다.
-이를 명확히 구분하려는 글은 몇 존재하지만, 그다지 만족스럽지 않아서 새로 정리해 본다. 되도록이면 각 개념을 최초로 소개하는 논문 혹은 문서를 참고하려고 했으며, 그 글에서 기존 방식과의 차이가 기술되어 있으면 이를 중점으로 소개한다.</description>
-    </item>
-    
+    <lastBuildDate>Wed, 08 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>QCNFA765을 이용한 Wi-Fi 6 AP</title>
       <link>https://www.pusnow.com/note/qcnfa765-wifi-6-ap/</link>
