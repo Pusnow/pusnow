@@ -35,7 +35,7 @@ def handle_markdown(fname):
     if not fname.is_file():
         return
     updateted_text = None
-    executor = concurrent.futures.ThreadPoolExecutor(max_workers=5)
+
     with open(fname, "r", encoding="utf8") as f:
         original = f.read()
 
@@ -44,6 +44,9 @@ def handle_markdown(fname):
         ).strip()
 
         cites = re.findall(r"\[\^(.+?)\]", body)
+        if not cites:
+            return
+        executor = concurrent.futures.ThreadPoolExecutor(max_workers=5)
         futures = [executor.submit(fetch_cite, cite) for cite in cites]
         to_cites = []
         results = {}
@@ -102,6 +105,9 @@ def handle_markdown(fname):
             )
             to_cites.append(cite_text)
 
+        if not to_cites:
+            return
+
         reference = "\n".join(to_cites)
 
         updateted_text = body + "\n\n" + REF_START + "\n" + reference + "\n" + REF_END
@@ -111,5 +117,10 @@ def handle_markdown(fname):
             f.write(updateted_text)
 
 
-for fname in sys.argv[1:]:
-    handle_markdown(fname)
+if len(sys.argv) > 1:
+    for fname in sys.argv[1:]:
+        handle_markdown(fname)
+else:
+    content = pathlib.Path("content/")
+    for fname in content.glob("**/*.md"):
+        handle_markdown(fname)
