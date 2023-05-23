@@ -67,6 +67,8 @@ def handle_markdown(fname):
             authors = [author.text for author in tree.iter("author")]
             titles = [title.text for title in tree.iter("title")]
             years = [year.text for year in tree.iter("year")]
+            ees = [ee.text for ee in tree.iter("ee")]
+            
             author_text = ""
             if len(authors) == 1:
                 author_text = authors[0]
@@ -103,6 +105,10 @@ def handle_markdown(fname):
                 title_text,
                 last_text,
             )
+            if ees:
+                ee = ees[0]
+                cite_text += " {{< link \"%s\" >}}" % ee
+
             to_cites.append(cite_text)
 
         if not to_cites:
