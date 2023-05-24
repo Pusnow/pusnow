@@ -61,6 +61,7 @@ graph TB
 
 * Green Thread[^books/daglib/0096707]: Java의 유저레벨 스레드를 지칭할 때 주로 사용된다. Java 그린팀이 제작했기 때문에 이런 이름이 붙여졌다.
 * [Fiber](https://learn.microsoft.com/en-us/windows/win32/procthread/fibers): 주로 Microsoft Windows에서 사용하는 유저레벨 스레드를 지칭한다.
+* [Boost Fiber](https://www.boost.org/doc/libs/1_82_0/libs/fiber/doc/html/index.html)
 * Protothread[^conf/sensys/DunkelsSVA06]: 주로 임베디드 환경에서 stackless 코루틴을 지칭한다. (엄밀히는 스택이 없기 때문에 스레드의 기능을 수행하지 못한다.)
 * Goroutine[^journals/cacm/CoxGPTT22]: Go 언어에서 사용하는 유저레벨 스레드를 지칭한다.
 
