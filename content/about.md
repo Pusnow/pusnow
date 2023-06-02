@@ -36,6 +36,10 @@ title: Wonsup Yoon
 
 <div class="avoid-page-break-inside-ul">
 
+
+- Host Efficient Networking Stack Utilizing NIC DRAM{{< tbu >}}
+  - Byeong Keon Lee, Dong Hyeon Lee, Jisu Ok, **Wonsup Yoon**, Sue Moon
+  - *Proceedings of the 7th Asia-Pacific Workshop on Networking (APNet)*, 2023.
 - DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation{{< link "https://dl.acm.org/doi/10.1145/3552326.3567488" >}} [[Slides]](https://wsyo.one/dilos/slides)
   - **Wonsup Yoon**, Jisu Ok, Jinyoung Oh, Sue Moon, and Youngjin Kwon
   - *Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys)*, 2023.
