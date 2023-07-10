@@ -99,7 +99,7 @@ def handle_markdown(fname):
 
             if title_text.endswith("."):
                 title_text = title_text[:-1]
-            cite_text = "[^%s]: %s. *%s*. %s" % (
+            cite_text = "[^%s]: %s. *%s*. %s." % (
                 cite,
                 author_text,
                 title_text,
@@ -107,7 +107,7 @@ def handle_markdown(fname):
             )
             if ees:
                 ee = ees[0]
-                cite_text += " {{< link \"%s\" >}}" % ee
+                cite_text += " [%s](%s)" % (ee, ee)
 
             to_cites.append(cite_text)
 
