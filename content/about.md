@@ -12,7 +12,7 @@ title: Wonsup Yoon
 
 ## Education
 
-<div class="avoid-page-break-inside-ul">
+<div class="avoid-page-break-inside-ul normal-print-a">
 
 - Ph.D. Candidate in Computer Science, **KAIST**, *2019.9-present*.
   - Co-advisors: [Sue Moon](https://an.kaist.ac.kr/~sbmoon/) and [Youngjin Kwon](https://sites.google.com/view/yjkwon/home)
@@ -34,7 +34,7 @@ title: Wonsup Yoon
 
 ## Publications
 
-<div class="avoid-page-break-inside-ul">
+<div class="avoid-page-break-inside-ul no-print-a">
 
 <!-- pusnow publication start -->
 - Host Efficient Networking Stack Utilizing NIC DRAM.
@@ -57,6 +57,7 @@ title: Wonsup Yoon
 <!-- pusnow publication end -->
 
 </div>
+
 ---
 
 ## Scholarships and Awards
@@ -72,17 +73,23 @@ title: Wonsup Yoon
 
 ## Experiences
 
+
+<div class="normal-print-a">
+
 - Teaching Assistant, **KAIST**, *2017-2022*.
-  - Teaching CS341 (Introduction to Computer Networks),  CS443 (Distributed Algorithms and Systems), and CS530 (Graduate Operating Systems). Its main job was teaching project assignments including KENS (KAIST Educational Network System) [[Link]](https://github.com/ANLAB-KAIST/KENSv3), Raft consensus algorithm [[Link]](https://an.kaist.ac.kr/courses/2018/cs443/lab/lab-raft.html), and an OSv unikernel-based project.
-  - Developing and maintaining KENS (KAIST Educational Network System) [[Link]](https://github.com/ANLAB-KAIST/KENSv3). Its enhancements include memory safety [[Link (Korean)]](https://pusnow.com/note/kens-renewal-part1/), build system and development environment [[Link (Korean)]](https://pusnow.com/note/kens-renewal-part2/), and teaching ecosystem [[Link (Korean)]](https://pusnow.com/note/kens-renewal-part3/).
+  - Teaching CS341 (Introduction to Computer Networks),  CS443 (Distributed Algorithms and Systems), and CS530 (Graduate Operating Systems). Its main job was teaching project assignments including [KENS (KAIST Educational Network System)](https://github.com/ANLAB-KAIST/KENSv3), [Raft consensus algorithm](https://an.kaist.ac.kr/courses/2018/cs443/lab/lab-raft.html), and an OSv unikernel-based project.
+  - Developing and maintaining [KENS (KAIST Educational Network System)](https://github.com/ANLAB-KAIST/KENSv3). Its enhancements include [memory safety](https://pusnow.com/note/kens-renewal-part1/ "korean"), [build system and development environment](https://pusnow.com/note/kens-renewal-part2/ "korean"), and [teaching ecosystem](https://pusnow.com/note/kens-renewal-part3/ "korean").
 - Technical Assistant and Software Developer, Institute of Language and Information Studies, **Yonsei University**, *2013-2017*.
   - Developing Yonsei Corpus Searcher, an efficient efficient search-filter-sort application for Yonsei Korean Corpus.
   - Developing Yonsei Dictionary Searcher, an efficient search application for Yonsei Korean Dictionary.
   - Developing dictionary searcher for National Institute of Korean Language (국립국어원). A dictionary search web application for Korean language.
   - Developing TOPIK (Test Of Proficiency In Korean) Word Searcher for National Institute for International Education (국립국제교육원). An education level-based dictionary search application used for TOPIK.
 
+</div>
+
 ---
-<div class="avoid-page-break-inside">
+
+<div class="avoid-page-break-inside normal-print-a">
 
 ## Contact
 
