@@ -1,6 +1,4 @@
----
-title: Wonsup Yoon
----
+# Wonsup Yoon
 
 ## Research Interests
 

@@ -13,6 +13,6 @@
     The latest version of this page is available at <a href="{{ .Permalink }}">{{ .Permalink }}</a>.</span>
 <hr />
 <main>
-    {{ .Content }}
+    {{ .Content | markdownify | replaceRE `<h1.*?>.*?</h1>` ""  | safeHTML }}
 </main>
 {{ end }}

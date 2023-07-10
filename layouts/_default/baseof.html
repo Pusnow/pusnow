@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{if .Params.lang }}{{ .Params.lang }}{{ else }}{{ .Site.LanguageCode }}{{ end }}">
 
+{{ $page_title := .Title }}
+{{if not .Title }}
+{{ $page_title = findRESubmatch `<h1.*?>(.*?)</h1>` .Content 1 }}
+{{ $page_title = index $page_title 0 }}
+{{ $page_title = index $page_title 1 }}
+{{ end }}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    <title>{{ $page_title }} | {{ .Site.Title }}</title>
     <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}" />
     <link rel="stylesheet" href="{{ "/css/fonts.css" | relURL }}" />
     {{ block "head" . }}{{ end }}
@@ -20,7 +26,7 @@
 </nav>
 
 {{if not .IsHome }}
-<h1>{{ .Title | markdownify }}</h1>
+<h1>{{ $page_title | markdownify }}</h1>
 {{ end }}
 
 {{ block "body" . }}{{ end }}
