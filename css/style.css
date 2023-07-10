@@ -125,6 +125,9 @@ tr:nth-child(even) {
   .only-print * {
     display: none;
   }
+  a[title="korean"]::after{
+    content: " (Korean)"
+  }
 }
 
 @media print {
@@ -132,6 +135,15 @@ tr:nth-child(even) {
   .no-print,
   .no-print * {
     display: none !important;
+  }
+
+  .no-print-a a {
+    display: none !important;
+  }
+
+  .normal-print-a a {
+    color: inherit;
+    text-decoration: inherit;
   }
 
 
