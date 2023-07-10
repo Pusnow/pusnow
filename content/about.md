@@ -41,18 +41,18 @@ title: Wonsup Yoon
   - Byeong Keon Lee, Dong Hyeon Lee, Jisu Ok, **Wonsup Yoon**, and Sue Moon
   - *Proceedings of the 7th Asia-Pacific Workshop on Networking (APNet).* 2023
   - Best Paper Award
-- DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation. [[Link]](https://doi.org/10.1145/3552326.3567488) [[Slides]](https://wsyo.one/dilos/slides)
+- DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation. [[Link]](https://dl.acm.org/doi/pdf/10.1145/3552326.3567488) [[Slides]](https://wsyo.one/dilos/slides)
   - **Wonsup Yoon**, Jisu Ok, Jinyoung Oh, Sue Moon, and Youngjin Kwon
   - *Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys).* 2023
   - Best Paper Runner-up
-- DiLOS: adding performance to paging-based memory disaggregation. [[Link]](https://doi.org/10.1145/3476886.3477507)
-  - **Wonsup Yoon**, Jinyoung Oh, Jisu Ok, Sue B. Moon, and Youngjin Kwon
+- DiLOS: adding performance to paging-based memory disaggregation. [[Link]](https://dl.acm.org/doi/pdf/10.1145/3476886.3477507)
+  - **Wonsup Yoon**, Jinyoung Oh, Jisu Ok, Sue Moon, and Youngjin Kwon
   - *Proceedings of the 12th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys).* 2021
-- Accelerating disaggregated data centers using unikernel. [[Link]](https://doi.org/10.1145/3405837.3411397)
-  - **Wonsup Yoon**, Jinyoung Oh, Sue B. Moon, and Youngjin Kwon
+- Accelerating disaggregated data centers using unikernel. [[Link]](https://dl.acm.org/doi/pdf/10.1145/3405837.3411397)
+  - **Wonsup Yoon**, Jinyoung Oh, Sue Moon, and Youngjin Kwon
   - *Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM '20 Posters and Demos).* 2020
-- Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System. [[Link]](https://doi.org/10.1145/3365137.3365403)
-  - Keunhong Lee, Jeehoon Kang, **Wonsup Yoon**, Joongi Kim, and Sue B. Moon
+- Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System. [[Link]](https://dl.acm.org/doi/pdf/10.1145/3365137.3365403)
+  - Keunhong Lee, Jeehoon Kang, **Wonsup Yoon**, Joongi Kim, and Sue Moon
   - *Proceedings of the 10th Workshop on Programming Languages and Operating Systems (PLOS@SOSP).* 2019
 <!-- pusnow publication end -->
 

@@ -2,6 +2,7 @@ import concurrent.futures
 import pathlib
 import re
 import sys
+import json
 import tomllib
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -43,7 +44,16 @@ def format_authors(authors):
     return author_text
 
 
-def parse_dblp(tp, xml_txt):
+def parse_dblp(cite, xml_txt):
+    if cite.startswith("journals/"):
+        tp = JOURNALS
+    elif cite.startswith("conf/"):
+        tp = CONF
+    elif cite.startswith("books/"):
+        tp = BOOK
+    else:
+        tp = None
+
     if not tp:
         return None
     tree = ET.fromstring(xml_txt)
@@ -79,20 +89,57 @@ def parse_dblp(tp, xml_txt):
 
 
 def fetch_dblp(cite):
-    if cite.startswith("journals/"):
-        tp = JOURNALS
-    elif cite.startswith("conf/"):
-        tp = CONF
-    elif cite.startswith("books/"):
-        tp = BOOK
-    else:
-        tp = None
-    if tp:
+    if (
+        cite.startswith("journals/")
+        or cite.startswith("conf/")
+        or cite.startswith("books/")
+    ):
         url = "https://dblp.org/rec/%s.xml" % cite
         with urllib.request.urlopen(url) as response:
-            return (cite, tp, response.read())
+            return (cite, response.read())
     else:
-        return (cite, tp, "")
+        return (cite, "")
+
+
+def parse_acm(cite, json_txt):
+    if not json_txt:
+        return None
+    data = json.loads(json_txt)
+    if data.get("status", "") != "ok":
+        return None
+
+    msg = data["message"]
+    authors = [
+        "%s %s" % (author["given"], author["family"]) for author in msg["author"]
+    ]
+    title = " ".join([_title for _title in msg["title"]])
+    subtitle = " ".join([_subtitle for _subtitle in msg["subtitle"]])
+    if subtitle:
+        title += ": " + subtitle
+
+    year = str(msg["published"]["date-parts"][0][0])
+
+    ees = [link["URL"] for link in msg["link"]]
+
+    where_text = " ".join([_title for _title in msg["container-title"]])
+
+
+    return {
+        "title": title,
+        "authors": authors,
+        "year": year,
+        "ees": ees,
+        "where": where_text,
+    }
+
+
+def fetch_acm(cite):
+    if not cite.startswith("10.1145/"):
+        return (cite, "")
+    url = "https://api.crossref.org/works/%s" % cite
+    with urllib.request.urlopen(url) as response:
+        return (cite, response.read())
+    return (cite, "")
 
 
 def generate_publication():
@@ -102,10 +149,14 @@ def generate_publication():
         pubs = []
         for pub in publications:
             pub2 = {}
-            if "dblp" in pub:
-                cite, tp, text = fetch_dblp(pub["dblp"])
+            if "cite" in pub:
+                cite, text = fetch_acm(pub["cite"])
                 if text:
-                    pub2 = parse_dblp(tp, text)
+                    pub2 = parse_acm(cite, text)
+                else:
+                    cite, text = fetch_dblp(pub["cite"])
+                    if text:
+                        pub2 = parse_dblp(cite, text)
 
             for key in pub:
                 pub2[key] = pub[key]
@@ -149,18 +200,18 @@ def handle_cite(text):
     results = {}
     for future in concurrent.futures.as_completed(futures):
         try:
-            cite, tp, text = future.result()
-            results[cite] = (tp, text)
+            cite, text = future.result()
+            results[cite] = text
         except Exception as e:
             print(f"An error occurred: {e}")
             continue
 
     for cite in cites:
-        tp, text = results.get(cite, (None, None))
-        if not tp:
+        text = results.get(cite, "")
+        if not text:
             continue
 
-        parsed = parse_dblp(tp, text)
+        parsed = parse_dblp(cite, text)
         author_text = format_authors(parsed["authors"])
         title_text = parsed["title"]
 
