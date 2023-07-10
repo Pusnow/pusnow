@@ -142,6 +142,17 @@ def fetch_acm(cite):
     return (cite, "")
 
 
+def fetch_and_parse_cite(cite):
+    cite, text = fetch_acm(cite)
+    if text:
+        return parse_acm(cite, text)
+    cite, text = fetch_dblp(cite)
+    if text:
+        return parse_dblp(cite, text)
+    return {}
+
+
+
 def generate_publication():
     with open("data/publications.toml", "rb") as f:
         data = tomllib.load(f)
@@ -150,13 +161,7 @@ def generate_publication():
         for pub in publications:
             pub2 = {}
             if "cite" in pub:
-                cite, text = fetch_acm(pub["cite"])
-                if text:
-                    pub2 = parse_acm(cite, text)
-                else:
-                    cite, text = fetch_dblp(pub["cite"])
-                    if text:
-                        pub2 = parse_dblp(cite, text)
+                pub2 = fetch_and_parse_cite(pub["cite"])
 
             for key in pub:
                 pub2[key] = pub[key]
