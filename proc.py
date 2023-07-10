@@ -11,7 +11,7 @@ REF_END = "<!-- pusnow reference end -->"
 PUB_START = "<!-- pusnow publication start -->"
 PUB_END = "<!-- pusnow publication end -->"
 
-MY_NAME = ["Wonsup Yoon"]
+MY_NAME = set(["Wonsup Yoon"])
 
 JOURNALS = 1
 CONF = 2
@@ -26,12 +26,20 @@ def add_dot(text):
 
 def format_authors(authors):
     author_text = ""
-    if len(authors) == 1:
-        author_text = authors[0]
-    elif len(authors) == 2:
-        author_text = " and ".join(authors)
-    elif len(authors) > 2:
-        author_text = ", ".join(authors[:-1]) + ", and " + authors[-1]
+
+    authors2 = []
+    for author in authors:
+        if author in MY_NAME:
+            authors2.append("**%s**" % author)
+        else:
+            authors2.append(author)
+
+    if len(authors2) == 1:
+        author_text = authors2[0]
+    elif len(authors2) == 2:
+        author_text = " and ".join(authors2)
+    elif len(authors2) > 2:
+        author_text = ", ".join(authors2[:-1]) + ", and " + authors2[-1]
     return author_text
 
 
