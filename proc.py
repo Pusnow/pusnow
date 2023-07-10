@@ -43,7 +43,7 @@ def format_authors(authors):
     return author_text
 
 
-def parse_cite(tp, xml_txt):
+def parse_dblp(tp, xml_txt):
     if not tp:
         return None
     tree = ET.fromstring(xml_txt)
@@ -78,7 +78,7 @@ def parse_cite(tp, xml_txt):
     }
 
 
-def fetch_cite(cite):
+def fetch_dblp(cite):
     if cite.startswith("journals/"):
         tp = JOURNALS
     elif cite.startswith("conf/"):
@@ -103,9 +103,9 @@ def generate_publication():
         for pub in publications:
             pub2 = {}
             if "dblp" in pub:
-                cite, tp, text = fetch_cite(pub["dblp"])
+                cite, tp, text = fetch_dblp(pub["dblp"])
                 if text:
-                    pub2 = parse_cite(tp, text)
+                    pub2 = parse_dblp(tp, text)
 
             for key in pub:
                 pub2[key] = pub[key]
@@ -144,7 +144,7 @@ def handle_cite(text):
     if not cites:
         return None
     executor = concurrent.futures.ThreadPoolExecutor(max_workers=5)
-    futures = [executor.submit(fetch_cite, cite) for cite in cites]
+    futures = [executor.submit(fetch_dblp, cite) for cite in cites]
     to_cites = []
     results = {}
     for future in concurrent.futures.as_completed(futures):
@@ -160,7 +160,7 @@ def handle_cite(text):
         if not tp:
             continue
 
-        parsed = parse_cite(tp, text)
+        parsed = parse_dblp(tp, text)
         author_text = format_authors(parsed["authors"])
         title_text = parsed["title"]
 
