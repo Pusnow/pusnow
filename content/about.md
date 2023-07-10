@@ -36,27 +36,27 @@ title: Wonsup Yoon
 
 <div class="avoid-page-break-inside-ul">
 
-
-- Host Efficient Networking Stack Utilizing NIC DRAM{{< tbu >}}
-  - Byeong Keon Lee, Dong Hyeon Lee, Jisu Ok, **Wonsup Yoon**, Sue Moon
-  - *Proceedings of the 7th Asia-Pacific Workshop on Networking (APNet)*, 2023.
+<!-- pusnow publication start -->
+- Host Efficient Networking Stack Utilizing NIC DRAM.
+  - Byeong Keon Lee, Dong Hyeon Lee, Jisu Ok, Wonsup Yoon, and Sue Moon
+  - *Proceedings of the 7th Asia-Pacific Workshop on Networking (APNet).* 2023
   - Best Paper Award
-- DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation{{< link "https://dl.acm.org/doi/10.1145/3552326.3567488" >}} [[Slides]](https://wsyo.one/dilos/slides)
-  - **Wonsup Yoon**, Jisu Ok, Jinyoung Oh, Sue Moon, and Youngjin Kwon
-  - *Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys)*, 2023.
+- DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation. [[Link]](https://doi.org/10.1145/3552326.3567488) [[Slides]](https://wsyo.one/dilos/slides)
+  - Wonsup Yoon, Jisu Ok, Jinyoung Oh, Sue Moon, and Youngjin Kwon
+  - *Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys).* 2023
   - Best Paper Runner-up
-- DiLOS: Adding Performance to Paging-based Memory Disaggregation{{< link "https://dl.acm.org/doi/10.1145/3476886.3477507" >}}
-  - **Wonsup Yoon**, Jinyoung Oh, Jisu Ok, Sue Moon, and Youngjin Kwon
-  - *Proceedings of the 12th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys)*, 2021.
-- Accelerating Disaggregated Data Centers Using Unikernel{{< link "https://dl.acm.org/doi/10.1145/3405837.3411397" >}}
-  - **Wonsup Yoon**, Jinyoung Oh, Sue Moon, and Youngjin Kwon
-  - *Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM '20 Posters and Demos)*, 2020.
-- Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System{{< link "https://dl.acm.org/doi/abs/10.1145/3365137.3365403" >}}
-  - Keunhong Lee, Jeehoon Kang, **Wonsup Yoon**, Joongi Kim, and Sue Moon
-  - *Proceedings of the 10th Workshop on Programming Languages and Operating Systems (PLOS@SOSP)*, 2019.
+- DiLOS: adding performance to paging-based memory disaggregation. [[Link]](https://doi.org/10.1145/3476886.3477507)
+  - Wonsup Yoon, Jinyoung Oh, Jisu Ok, Sue B. Moon, and Youngjin Kwon
+  - *Proceedings of the 12th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys).* 2021
+- Accelerating disaggregated data centers using unikernel. [[Link]](https://doi.org/10.1145/3405837.3411397)
+  - Wonsup Yoon, Jinyoung Oh, Sue B. Moon, and Youngjin Kwon
+  - *Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM '20 Posters and Demos).* 2020
+- Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System. [[Link]](https://doi.org/10.1145/3365137.3365403)
+  - Keunhong Lee, Jeehoon Kang, Wonsup Yoon, Joongi Kim, and Sue B. Moon
+  - *Proceedings of the 10th Workshop on Programming Languages and Operating Systems (PLOS@SOSP).* 2019
+<!-- pusnow publication end -->
 
 </div>
-
 ---
 
 ## Scholarships and Awards
@@ -73,8 +73,8 @@ title: Wonsup Yoon
 ## Experiences
 
 - Teaching Assistant, **KAIST**, *2017-2022*.
-  - Teaching CS341 (Introduction to Computer Networks),  CS443 (Distributed Algorithms and Systems), and CS530 (Graduate Operating Systems). Its main job was teaching project assignments including KENS (KAIST Educational Network System){{< link "https://github.com/ANLAB-KAIST/KENSv3" >}}, Raft consensus algorithm{{< link "https://an.kaist.ac.kr/courses/2018/cs443/lab/lab-raft.html" >}}, and an OSv unikernel-based project.
-  - Developing and maintaining KENS (KAIST Educational Network System){{< link "https://github.com/ANLAB-KAIST/KENSv3" >}}. Its enhancements include memory safety{{< link-korean "https://pusnow.com/note/kens-renewal-part1/" >}}, build system and development environment{{< link-korean "https://pusnow.com/note/kens-renewal-part2/" >}}, and teaching ecosystem{{< link-korean "https://pusnow.com/note/kens-renewal-part3/" >}}.
+  - Teaching CS341 (Introduction to Computer Networks),  CS443 (Distributed Algorithms and Systems), and CS530 (Graduate Operating Systems). Its main job was teaching project assignments including KENS (KAIST Educational Network System) [[Link]](https://github.com/ANLAB-KAIST/KENSv3), Raft consensus algorithm [[Link]](https://an.kaist.ac.kr/courses/2018/cs443/lab/lab-raft.html), and an OSv unikernel-based project.
+  - Developing and maintaining KENS (KAIST Educational Network System) [[Link]](https://github.com/ANLAB-KAIST/KENSv3). Its enhancements include memory safety [[Link (Korean)]](https://pusnow.com/note/kens-renewal-part1/), build system and development environment [[Link (Korean)]](https://pusnow.com/note/kens-renewal-part2/), and teaching ecosystem [[Link (Korean)]](https://pusnow.com/note/kens-renewal-part3/).
 - Technical Assistant and Software Developer, Institute of Language and Information Studies, **Yonsei University**, *2013-2017*.
   - Developing Yonsei Corpus Searcher, an efficient efficient search-filter-sort application for Yonsei Korean Corpus.
   - Developing Yonsei Dictionary Searcher, an efficient search application for Yonsei Korean Dictionary.

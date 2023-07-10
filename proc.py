@@ -2,15 +2,26 @@ import concurrent.futures
 import pathlib
 import re
 import sys
+import tomllib
 import urllib.request
 import xml.etree.ElementTree as ET
 
 REF_START = "<!-- pusnow reference start -->"
 REF_END = "<!-- pusnow reference end -->"
+PUB_START = "<!-- pusnow publication start -->"
+PUB_END = "<!-- pusnow publication end -->"
+
+MY_NAME = ["Wonsup Yoon"]
 
 JOURNALS = 1
 CONF = 2
 BOOK = 3
+
+
+def add_dot(text):
+    if text[-1] == ".":
+        return text
+    return text + "."
 
 
 def format_authors(authors):
@@ -23,19 +34,20 @@ def format_authors(authors):
         author_text = ", ".join(authors[:-1]) + ", and " + authors[-1]
     return author_text
 
+
 def parse_cite(tp, xml_txt):
     if not tp:
         return None
     tree = ET.fromstring(xml_txt)
     authors = [author.text for author in tree.iter("author")]
     title = " ".join([title.text for title in tree.iter("title")])
-    years = [year.text for year in tree.iter("year")]
+    year = "".join([year.text for year in tree.iter("year")][:1])
     ees = [ee.text for ee in tree.iter("ee")]
     where_text = ""
     if tp == CONF:
         booktitles = [booktitle.text for booktitle in tree.iter("booktitle")]
 
-        where_text = "In " + " ".join(booktitles) + " " + " ".join(years)
+        where_text = "In " + " ".join(booktitles) + " " + year
     elif tp == JOURNALS:
         journals = [journal.text for journal in tree.iter("journal")]
         volumes = [volume.text for volume in tree.iter("volume")]
@@ -47,13 +59,14 @@ def parse_cite(tp, xml_txt):
                 where_text += "(" + " ".join(numbers) + ")"
     elif tp == BOOK:
         publishers = [publisher.text for publisher in tree.iter("publisher")]
-        where_text = " ".join(publishers) + ", " + " ".join(years)
+        where_text = " ".join(publishers) + ", " + year
+
     return {
         "title": title,
         "authors": authors,
-        "years" : years,
-        "ees" : ees,
-        "where_text":where_text
+        "year": year,
+        "ees": ees,
+        "where": where_text,
     }
 
 
@@ -74,63 +87,119 @@ def fetch_cite(cite):
         return (cite, tp, "")
 
 
+def generate_publication():
+    with open("data/publications.toml", "rb") as f:
+        data = tomllib.load(f)
+        publications = data.get("publication", [])
+        pubs = []
+        for pub in publications:
+            pub2 = {}
+            if "dblp" in pub:
+                cite, tp, text = fetch_cite(pub["dblp"])
+                if text:
+                    pub2 = parse_cite(tp, text)
+
+            for key in pub:
+                pub2[key] = pub[key]
+
+            ees = pub2.get("ees", [])
+            slides = pub2.get("slides", "")
+            if ees:
+                ee = " [[Link]](%s)" % ees[0]
+            else:
+                ee = ""
+
+            if slides:
+                ee += " [[Slides]](%s)" % slides
+            authors = pub2.get("authors", [])
+            author_text = format_authors(authors)
+            note_text = pub2.get("note", "")
+            pub_text = "- %s%s\n  - %s\n  - *%s* %s" % (
+                add_dot(pub2["title"]),
+                ee,
+                author_text,
+                add_dot(pub2["where"]),
+                pub2["year"],
+            )
+            if note_text:
+                pub_text += "\n  - %s" % note_text
+            pubs.append(pub_text)
+        result = "\n".join(pubs)
+        return PUB_START + "\n" + result + "\n" + PUB_END
+    return PUB_START + "\n" + PUB_END
+
+
+def handle_cite(text):
+    body = re.sub(REF_START + ".*?" + REF_END, "", text, flags=re.DOTALL).strip()
+
+    cites = re.findall(r"\[\^(.+?)\]", body)
+    if not cites:
+        return None
+    executor = concurrent.futures.ThreadPoolExecutor(max_workers=5)
+    futures = [executor.submit(fetch_cite, cite) for cite in cites]
+    to_cites = []
+    results = {}
+    for future in concurrent.futures.as_completed(futures):
+        try:
+            cite, tp, text = future.result()
+            results[cite] = (tp, text)
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            continue
+
+    for cite in cites:
+        tp, text = results.get(cite, (None, None))
+        if not tp:
+            continue
+
+        parsed = parse_cite(tp, text)
+        author_text = format_authors(parsed["authors"])
+        title_text = parsed["title"]
+
+        title_text = add_dot(title_text)
+        cite_text = "[^%s]: %s. *%s* %s." % (
+            cite,
+            author_text,
+            title_text,
+            parsed["where"],
+        )
+        if parsed["ees"]:
+            ee = parsed["ees"][0]
+            cite_text += " [%s](%s)" % (ee, ee)
+
+        to_cites.append(cite_text)
+
+    reference = "\n".join(to_cites)
+
+    updateted_text = body + "\n\n" + REF_START + "\n" + reference + "\n" + REF_END
+    return updateted_text
+
+
+def handle_publication(text):
+    if not re.search(PUB_START + ".*?" + PUB_END, text, flags=re.DOTALL):
+        return None
+    publication_text = generate_publication()
+    result = re.sub(
+        PUB_START + ".*?" + PUB_END, publication_text, text, flags=re.DOTALL
+    )
+    return result
+
+
 def handle_markdown(fname):
     fname = pathlib.Path(fname)
     if not fname.is_file():
         return
+
+    print("Handling:", fname)
     updateted_text = None
 
     with open(fname, "r", encoding="utf8") as f:
         original = f.read()
-
-        body = re.sub(
-            REF_START + ".*?" + REF_END, "", original, flags=re.DOTALL
-        ).strip()
-
-        cites = re.findall(r"\[\^(.+?)\]", body)
-        if not cites:
-            return
-        executor = concurrent.futures.ThreadPoolExecutor(max_workers=5)
-        futures = [executor.submit(fetch_cite, cite) for cite in cites]
-        to_cites = []
-        results = {}
-        for future in concurrent.futures.as_completed(futures):
-            try:
-                cite, tp, text = future.result()
-                results[cite] = (tp, text)
-            except Exception as e:
-                print(f"An error occurred: {e}")
-                continue
-
-        for cite in cites:
-            tp, text = results.get(cite, (None, None))
-            if not tp:
-                continue
-
-            parsed = parse_cite(tp, text)
-            author_text = format_authors(parsed["authors"])
-            title_text = parsed["title"]
-
-            if title_text.endswith("."):
-                title_text = title_text[:-1]
-            cite_text = "[^%s]: %s. *%s*. %s." % (
-                cite,
-                author_text,
-                title_text,
-                parsed["where_text"],
-            )
-            if parsed["ees"]:
-                ee = parsed["ees"][0]
-                cite_text += " [%s](%s)" % (ee, ee)
-
-            to_cites.append(cite_text)
-
-        if not to_cites:
-            return
-
-        reference = "\n".join(to_cites)
-
-        updateted_text = body + "\n\n" + REF_START + "\n" + reference + "\n" + REF_END
+        updateted_text = handle_cite(original)
+        if updateted_text:
+            updateted_text = handle_publication(updateted_text)
+        else:
+            updateted_text = handle_publication(original)
 
     if updateted_text:
         with open(fname, "w", encoding="utf8") as f:

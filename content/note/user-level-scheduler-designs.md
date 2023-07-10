@@ -66,7 +66,7 @@ graph TB
 * Goroutine[^journals/cacm/CoxGPTT22]: Go 언어에서 사용하는 유저레벨 스레드를 지칭한다.
 
 <!-- pusnow reference start -->
-[^books/daglib/0096707]: Scott Oaks and Henry Wong. *Java threads - Java 2 (2. ed.)*. O'Reilly, 1999.
-[^conf/sensys/DunkelsSVA06]: Adam Dunkels, Oliver Schmidt, Thiemo Voigt, and Muneeb Ali. *Protothreads: simplifying event-driven programming of memory-constrained embedded systems*. In SenSys 2006. [https://doi.org/10.1145/1182807.1182811](https://doi.org/10.1145/1182807.1182811)
-[^journals/cacm/CoxGPTT22]: Russ Cox, Robert Griesemer, Rob Pike, Ian Lance Taylor, and Ken Thompson. *The Go programming language and environment*. Commun. ACM 65(5). [https://doi.org/10.1145/3488716](https://doi.org/10.1145/3488716)
+[^books/daglib/0096707]: Scott Oaks and Henry Wong. *Java threads - Java 2 (2. ed.).* O'Reilly, 1999.
+[^conf/sensys/DunkelsSVA06]: Adam Dunkels, Oliver Schmidt, Thiemo Voigt, and Muneeb Ali. *Protothreads: simplifying event-driven programming of memory-constrained embedded systems.* In SenSys 2006. [https://doi.org/10.1145/1182807.1182811](https://doi.org/10.1145/1182807.1182811)
+[^journals/cacm/CoxGPTT22]: Russ Cox, Robert Griesemer, Rob Pike, Ian Lance Taylor, and Ken Thompson. *The Go programming language and environment.* Commun. ACM 65(5). [https://doi.org/10.1145/3488716](https://doi.org/10.1145/3488716)
 <!-- pusnow reference end -->
