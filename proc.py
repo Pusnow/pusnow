@@ -13,6 +13,16 @@ CONF = 2
 BOOK = 3
 
 
+def format_authors(authors):
+    author_text = ""
+    if len(authors) == 1:
+        author_text = authors[0]
+    elif len(authors) == 2:
+        author_text = " and ".join(authors)
+    elif len(authors) > 2:
+        author_text = ", ".join(authors[:-1]) + ", and " + authors[-1]
+    return author_text
+
 def parse_cite(tp, xml_txt):
     if not tp:
         return None
@@ -98,15 +108,7 @@ def handle_markdown(fname):
                 continue
 
             parsed = parse_cite(tp, text)
-            authors = parsed["authors"]
-            author_text = ""
-            if len(authors) == 1:
-                author_text = authors[0]
-            elif len(authors) == 2:
-                author_text = " and ".join(authors)
-            elif len(authors) > 2:
-                author_text = ", ".join(authors[:-1]) + ", and " + authors[-1]
-
+            author_text = format_authors(parsed["authors"])
             title_text = parsed["title"]
 
             if title_text.endswith("."):
