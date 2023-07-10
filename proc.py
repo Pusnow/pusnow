@@ -144,11 +144,11 @@ def fetch_acm(cite):
 def fetch_and_parse_cite(cite):
     cite, text = fetch_acm(cite)
     if text:
-        return parse_acm(cite, text)
+        return (cite, parse_acm(cite, text))
     cite, text = fetch_dblp(cite)
     if text:
-        return parse_dblp(cite, text)
-    return {}
+        return (cite, parse_dblp(cite, text))
+    return (cite, {})
 
 
 def generate_publication():
@@ -159,7 +159,7 @@ def generate_publication():
         for pub in publications:
             pub2 = {}
             if "cite" in pub:
-                pub2 = fetch_and_parse_cite(pub["cite"])
+                _, pub2 = fetch_and_parse_cite(pub["cite"])
 
             for key in pub:
                 pub2[key] = pub[key]
@@ -198,23 +198,22 @@ def handle_cite(text):
     if not cites:
         return None
     executor = concurrent.futures.ThreadPoolExecutor(max_workers=5)
-    futures = [executor.submit(fetch_dblp, cite) for cite in cites]
+    futures = [executor.submit(fetch_and_parse_cite, cite) for cite in cites]
     to_cites = []
     results = {}
     for future in concurrent.futures.as_completed(futures):
         try:
-            cite, text = future.result()
-            results[cite] = text
+            cite, parsed = future.result()
+            results[cite] = parsed
         except Exception as e:
             print(f"An error occurred: {e}")
             continue
 
     for cite in cites:
-        text = results.get(cite, "")
-        if not text:
+        parsed = results.get(cite, {})
+        if not parsed:
             continue
 
-        parsed = parse_dblp(cite, text)
         author_text = format_authors(parsed["authors"])
         title_text = parsed["title"]
 
