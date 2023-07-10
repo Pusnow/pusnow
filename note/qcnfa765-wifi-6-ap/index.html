@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko-kr">
 
+
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,12 +79,10 @@ ath11k_pci 0000:01:00.0:   4. (5490 - 5730 @ 160) (0, 20) (0 ms) (FLAGS 2176)
 ath11k_pci 0000:01:00.0:   5. (5735 - 5895 @ 160) (0, 20) (0 ms) (FLAGS 2176)
 ath11k_pci 0000:01:00.0:   6. (5945 - 7125 @ 160) (0, 20) (0 ms) (FLAGS 2176)
 ath11k_pci 0000:01:00.0: rx ce pipe 2 len 172
-
-...
-
-ath11k_pci 0000:01:00.0: Country Setting is not allowed
+<p>&hellip;</p>
+<p>ath11k_pci 0000:01:00.0: Country Setting is not allowed
 ath11k_pci 0000:01:00.0: txpower from firmware NaN, reported -2147483648 dBm
-</code></pre><p>어떤 이유에선가 드라이버가 country 설정을 거부하고 있었고, 따라서 기본 country 코드(00)로 설정되기 때문에 5GHz에서 AP 모드를 사용할 수 없었다.</p>
+</code></pre><p>어떤 이유에선가 드라이버가 country 설정을 거부하고 있었고, 따라서 기본 country 코드(00)로 설정되기 때문에 5GHz에서 AP 모드를 사용할 수 없었다.</p></p>
 <p>이 현상이 발생하는 이유는 Debian 커널(혹은 리눅스 커널 기본값)이 <code>ATH_REG_DYNAMIC_USER_REG_HINTS</code>를 비활성화하기 때문에 발생한다.
 ath11k 드라이버에서는 위 설정이 비활성화되었다면, <a href="https://github.com/torvalds/linux/blob/63355b9884b3d1677de6bd1517cd2b8a9bf53978/drivers/net/wireless/ath/ath11k/reg.c#L69-L73">지역 코드를 업데이트하지 않는다.</a>
 따라서, 커널 컴파일할 때 이 설정을 활성화하면 해결할 수 있다.</p>
@@ -95,21 +95,17 @@ ath11k 드라이버에서는 위 설정이 비활성화되었다면, <a href="ht
 <h3 id="지역-코드-업데이트">지역 코드 업데이트</h3>
 <p>ath11k에서 위 설정을 활성화하면 다음과 같은 디버그 출력을 볼 수 있다(<code>ATH_DEBUG</code> 필요).</p>
 <pre tabindex="0"><code>ath11k_pci 0000:01:00.0: set current country pdev id 0 alpha2 KR                                                             
-
-...
-
-0000:01:00.0: processing regulatory channel list                                                                                                                     
-ath11k_pci 0000:01:00.0: ath11k_pull_reg_chan_list_update_ev:cc KR dsf 5 BW: min_2g 0 max_2g 40 min_5g 2 max_5g 160                     
-
-...
-
-Country KR, CFG Regdomain ETSI FW Regdomain 5, num_reg_rules 5
+<p>&hellip;</p>
+<p>0000:01:00.0: processing regulatory channel list                                                                                                                  <br>
+ath11k_pci 0000:01:00.0: ath11k_pull_reg_chan_list_update_ev:cc KR dsf 5 BW: min_2g 0 max_2g 40 min_5g 2 max_5g 160</p>
+<p>&hellip;</p>
+<p>Country KR, CFG Regdomain ETSI FW Regdomain 5, num_reg_rules 5
 ath11k_pci 0000:01:00.0:   1. (2402 - 2482 @ 40) (0, 23) (0 ms) (FLAGS 0)
 ath11k_pci 0000:01:00.0:   2. (5170 - 5250 @ 80) (6, 23) (0 ms) (FLAGS 2048)
 ath11k_pci 0000:01:00.0:   3. (5250 - 5330 @ 80) (6, 23) (0 ms) (FLAGS 2064)
 ath11k_pci 0000:01:00.0:   4. (5490 - 5730 @ 160) (6, 23) (0 ms) (FLAGS 2064)
 ath11k_pci 0000:01:00.0:   5. (5735 - 5835 @ 80) (6, 23) (0 ms) (FLAGS 2048)
-</code></pre><p>정상적으로 지역 코드가 업데이트되는 것을 확인할 수 있으며, hostpad에서도 정상적으로 AP 모드를 활성화할 수 있었다.</p>
+</code></pre><p>정상적으로 지역 코드가 업데이트되는 것을 확인할 수 있으며, hostpad에서도 정상적으로 AP 모드를 활성화할 수 있었다.</p></p>
 <h3 id="규제-관련">규제 관련</h3>
 <p><code>ATH_REG_DYNAMIC_USER_REG_HINTS</code>와 이 설정을 활성화 하기 위해 필요한 설정 <code>CFG80211_CERTIFICATION_ONUS</code>의 설명에는 다음과 같은 문구가 있다.</p>
 <p><code>ATH_REG_DYNAMIC_USER_REG_HINTS</code>:</p>

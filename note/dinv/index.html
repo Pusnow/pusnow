@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko-kr">
 
+
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -102,19 +104,16 @@ DinV의 Docker entrypoint는 이와 같은 시그널을 처리하기 위하여 <
 이는 host docker 네트워크와 컨테이너 네트워크 간 IP 충돌이 발생하기 때문이다. 두 네트워크 모두 <code>172.17.0.0/16</code> 대역(<code>dockerd</code> 기본 값)을 사용하므로 VM 안에서 <code>172.17.0.0/16</code> 대역을 조회할 때, routing이 host와 container network를 구분하지 못하기 때문이다.</p>
 <p>따라서, DinV는 <code>dockerd</code>에 <code>--bip</code> (bridge IP) 옵션을 사용하여 container network의 IP 대역을 <code>172.19.0.0/16</code>으로 변경하여 해결하였다.
 이렇게 해야만, host network와 container network를 구분이 가능하다.</p>
-
-
-
 <div class="goat svg-container ">
+<pre><code>&lt;svg
+  xmlns=&quot;http://www.w3.org/2000/svg&quot;
+  font-family=&quot;Menlo,Lucida Console,monospace&quot;
   
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      font-family="Menlo,Lucida Console,monospace"
-      
-        viewBox="0 0 320 329"
-      >
-      <g transform='translate(8,16)'>
-<text text-anchor='middle' x='0' y='4' fill='currentColor' style='font-size:1em'>┌</text>
+    viewBox=&quot;0 0 320 329&quot;
+  &gt;
+  &lt;g transform='translate(8,16)'&gt;
+</code></pre>
+<p><text text-anchor='middle' x='0' y='4' fill='currentColor' style='font-size:1em'>┌</text>
 <text text-anchor='middle' x='0' y='20' fill='currentColor' style='font-size:1em'>│</text>
 <text text-anchor='middle' x='0' y='36' fill='currentColor' style='font-size:1em'>│</text>
 <text text-anchor='middle' x='0' y='52' fill='currentColor' style='font-size:1em'>│</text>
@@ -541,10 +540,9 @@ DinV의 Docker entrypoint는 이와 같은 시그널을 처리하기 위하여 <
 <text text-anchor='middle' x='296' y='276' fill='currentColor' style='font-size:1em'>│</text>
 <text text-anchor='middle' x='296' y='292' fill='currentColor' style='font-size:1em'>│</text>
 <text text-anchor='middle' x='296' y='308' fill='currentColor' style='font-size:1em'>┘</text>
-</g>
-
-    </svg>
-  
+</g></p>
+<pre><code>&lt;/svg&gt;
+</code></pre>
 </div>
 <div class="footnotes" role="doc-endnotes">
 <hr>
