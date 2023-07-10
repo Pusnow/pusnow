@@ -123,7 +123,6 @@ def parse_acm(cite, json_txt):
 
     where_text = " ".join([_title for _title in msg["container-title"]])
 
-
     return {
         "title": title,
         "authors": authors,
@@ -150,7 +149,6 @@ def fetch_and_parse_cite(cite):
     if text:
         return parse_dblp(cite, text)
     return {}
-
 
 
 def generate_publication():
