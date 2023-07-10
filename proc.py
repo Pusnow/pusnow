@@ -13,6 +13,40 @@ CONF = 2
 BOOK = 3
 
 
+def parse_cite(tp, xml_txt):
+    if not tp:
+        return None
+    tree = ET.fromstring(xml_txt)
+    authors = [author.text for author in tree.iter("author")]
+    title = " ".join([title.text for title in tree.iter("title")])
+    years = [year.text for year in tree.iter("year")]
+    ees = [ee.text for ee in tree.iter("ee")]
+    where_text = ""
+    if tp == CONF:
+        booktitles = [booktitle.text for booktitle in tree.iter("booktitle")]
+
+        where_text = "In " + " ".join(booktitles) + " " + " ".join(years)
+    elif tp == JOURNALS:
+        journals = [journal.text for journal in tree.iter("journal")]
+        volumes = [volume.text for volume in tree.iter("volume")]
+        numbers = [number.text for number in tree.iter("number")]
+        where_text = " ".join(journals)
+        if volumes:
+            where_text += " " + " ".join(volumes)
+            if numbers:
+                where_text += "(" + " ".join(numbers) + ")"
+    elif tp == BOOK:
+        publishers = [publisher.text for publisher in tree.iter("publisher")]
+        where_text = " ".join(publishers) + ", " + " ".join(years)
+    return {
+        "title": title,
+        "authors": authors,
+        "years" : years,
+        "ees" : ees,
+        "where_text":where_text
+    }
+
+
 def fetch_cite(cite):
     if cite.startswith("journals/"):
         tp = JOURNALS
@@ -62,13 +96,9 @@ def handle_markdown(fname):
             tp, text = results.get(cite, (None, None))
             if not tp:
                 continue
-            xml_data = text
-            tree = ET.fromstring(xml_data)
-            authors = [author.text for author in tree.iter("author")]
-            titles = [title.text for title in tree.iter("title")]
-            years = [year.text for year in tree.iter("year")]
-            ees = [ee.text for ee in tree.iter("ee")]
-            
+
+            parsed = parse_cite(tp, text)
+            authors = parsed["authors"]
             author_text = ""
             if len(authors) == 1:
                 author_text = authors[0]
@@ -77,25 +107,7 @@ def handle_markdown(fname):
             elif len(authors) > 2:
                 author_text = ", ".join(authors[:-1]) + ", and " + authors[-1]
 
-            title_text = " ".join(titles)
-
-            last_text = ""
-            if tp == CONF:
-                booktitles = [booktitle.text for booktitle in tree.iter("booktitle")]
-
-                last_text = "In " + " ".join(booktitles) + " " + " ".join(years)
-            elif tp == JOURNALS:
-                journals = [journal.text for journal in tree.iter("journal")]
-                volumes = [volume.text for volume in tree.iter("volume")]
-                numbers = [number.text for number in tree.iter("number")]
-                last_text = " ".join(journals)
-                if volumes:
-                    last_text += " " + " ".join(volumes)
-                    if numbers:
-                        last_text += "(" + " ".join(numbers) + ")"
-            elif tp == BOOK:
-                publishers = [publisher.text for publisher in tree.iter("publisher")]
-                last_text = " ".join(publishers) + ", " + " ".join(years)
+            title_text = parsed["title"]
 
             if title_text.endswith("."):
                 title_text = title_text[:-1]
@@ -103,10 +115,10 @@ def handle_markdown(fname):
                 cite,
                 author_text,
                 title_text,
-                last_text,
+                parsed["where_text"],
             )
-            if ees:
-                ee = ees[0]
+            if parsed["ees"]:
+                ee = parsed["ees"][0]
                 cite_text += " [%s](%s)" % (ee, ee)
 
             to_cites.append(cite_text)
