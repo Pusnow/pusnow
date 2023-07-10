@@ -17,7 +17,7 @@ Paralellism과 concurrency를 지원하기 위해 다양한 실행 단위(Execut
 ## Process (프로세스)
 
 프로세스는 교과서에서도 나오는 개념이다. 초창기 컴퓨터 시스템에서는 프로세스에 대한 여러 디자인이 있었던 것 같지만, 여기서는 가장 대중적으로 사용되는 UNIX-like 프로세스를 설명하겠다.
-UNIX 논문에서는 프로세스와 이미지를 다음과 같이 설명한다[^journals/cacm/RitchieT74].
+UNIX 논문에서는 프로세스와 이미지를 다음과 같이 설명한다[^10.1145/361011.361061].
 
 > A *process* is the execution of an image. While the processor is executing on behalf of a process, the image must reside in main memory; during the execution of other processes it remains in main memory unless the appearance of an active, higher-priority process forces it to be swapped out to the disk.
 
@@ -74,8 +74,8 @@ Mach 커널에서 스레드 라이브러리(C-Thread)를 개발할 당시에도,
 
 * Green Thread[^books/daglib/0096707]: Java의 유저레벨 스레드를 지칭할 때 주로 사용된다. Java 그린팀이 제작했기 때문에 이런 이름이 붙여졌다.
 * [Fiber](https://learn.microsoft.com/en-us/windows/win32/procthread/fibers): 주로 Microsoft Windows에서 사용하는 유저레벨 스레드를 지칭한다.
-* Protothread[^conf/sensys/DunkelsSVA06]: 주로 임베디드 환경에서 stackless 코루틴을 지칭한다. (엄밀히는 스택이 없기 때문에 스레드의 기능을 수행하지 못한다.)
-* Goroutine[^journals/cacm/CoxGPTT22]: Go 언어에서 사용하는 유저레벨 스레드를 지칭한다.
+* Protothread[^10.1145/1182807.1182811]: 주로 임베디드 환경에서 stackless 코루틴을 지칭한다. (엄밀히는 스택이 없기 때문에 스레드의 기능을 수행하지 못한다.)
+* Goroutine[^10.1145/3488716]: Go 언어에서 사용하는 유저레벨 스레드를 지칭한다.
 
 ## Virtual Processor
 
@@ -104,11 +104,11 @@ thread-->|in user-space|user-level[user-level thread]
 [^1]: 이는 다소 엄밀한 정의는 아니다. 엄밀히 coroutine은 서로를 호출하는 동등한 루틴을 말하고, 서브루틴은 코루틴의 특별한 경우를 지칭한다[^books/lib/Knuth97].
 
 <!-- pusnow reference start -->
-[^journals/cacm/RitchieT74]: Dennis Ritchie and Ken Thompson. *The UNIX Time-Sharing System.* Commun. ACM 17(7). [https://doi.org/10.1145/361011.361061](https://doi.org/10.1145/361011.361061)
+[^10.1145/361011.361061]: Dennis M. Ritchie and Ken Thompson. *The UNIX time-sharing system.* Communications of the ACM 17, 7. [https://dl.acm.org/doi/pdf/10.1145/361011.361061](https://dl.acm.org/doi/pdf/10.1145/361011.361061)
 [^conf/usenix/AccettaBBGRTY86]: Michael J. Accetta, Robert V. Baron, William J. Bolosky, David B. Golub, Richard F. Rashid, Avadis Tevanian, and Michael Young. *Mach: A New Kernel Foundation for UNIX Development.* In USENIX Summer 1986.
 [^books/daglib/0096707]: Scott Oaks and Henry Wong. *Java threads - Java 2 (2. ed.).* O'Reilly, 1999.
-[^conf/sensys/DunkelsSVA06]: Adam Dunkels, Oliver Schmidt, Thiemo Voigt, and Muneeb Ali. *Protothreads: simplifying event-driven programming of memory-constrained embedded systems.* In SenSys 2006. [https://doi.org/10.1145/1182807.1182811](https://doi.org/10.1145/1182807.1182811)
-[^journals/cacm/CoxGPTT22]: Russ Cox, Robert Griesemer, Rob Pike, Ian Lance Taylor, and Ken Thompson. *The Go programming language and environment.* Commun. ACM 65(5). [https://doi.org/10.1145/3488716](https://doi.org/10.1145/3488716)
+[^10.1145/1182807.1182811]: Adam Dunkels, Oliver Schmidt, Thiemo Voigt, and Muneeb Ali. *Protothreads: simplifying event-driven programming of memory-constrained embedded systems.* Proceedings of the 4th international conference on Embedded networked sensor systems. [https://dl.acm.org/doi/pdf/10.1145/1182807.1182811](https://dl.acm.org/doi/pdf/10.1145/1182807.1182811)
+[^10.1145/3488716]: Russ Cox, Robert Griesemer, Rob Pike, Ian Lance Taylor, and Ken Thompson. *The Go programming language and environment.* Communications of the ACM 65, 5. [https://dl.acm.org/doi/pdf/10.1145/3488716](https://dl.acm.org/doi/pdf/10.1145/3488716)
 [^conf/usenix/EykholtKBFSSVWW92]: Joseph R. Eykholt, Steve R. Kleiman, Steve Barton, Roger Faulkner, Anil Shivalingiah, Mark Smith, Jim Voll, Mary Weeks, and Dock Williams. *Beyond Multiprocessing: Multithreading the SunOS Kernel.* In USENIX Summer 1992. [https://www.usenix.org/conference/usenix-summer-1992-technical-conference/beyond-multiprocessing-multithreading-sunos](https://www.usenix.org/conference/usenix-summer-1992-technical-conference/beyond-multiprocessing-multithreading-sunos)
 [^books/lib/Knuth97]: Donald Ervin Knuth. *The art of computer programming, Volume I: Fundamental Algorithms, 3rd Edition.* Addison-Wesley, 1997. [https://www.worldcat.org/oclc/312910844](https://www.worldcat.org/oclc/312910844)
 <!-- pusnow reference end -->

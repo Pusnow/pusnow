@@ -107,7 +107,6 @@ def parse_acm(cite, json_txt):
     data = json.loads(json_txt)
     if data.get("status", "") != "ok":
         return None
-
     msg = data["message"]
     authors = [
         "%s %s" % (author["given"], author["family"]) for author in msg["author"]
@@ -122,6 +121,12 @@ def parse_acm(cite, json_txt):
     ees = [link["URL"] for link in msg["link"]]
 
     where_text = " ".join([_title for _title in msg["container-title"]])
+    volume = msg.get("volume", "")
+    issue = msg.get("issue", "")
+    if volume:
+        where_text += " " + str(volume)
+        if issue:
+            where_text += ", " + str(issue)
 
     return {
         "title": title,
@@ -213,7 +218,6 @@ def handle_cite(text):
         parsed = results.get(cite, {})
         if not parsed:
             continue
-
         author_text = format_authors(parsed["authors"])
         title_text = parsed["title"]
 
@@ -230,10 +234,13 @@ def handle_cite(text):
 
         to_cites.append(cite_text)
 
-    reference = "\n".join(to_cites)
+    if to_cites:
+        reference = "\n".join(to_cites)
 
-    updateted_text = body + "\n\n" + REF_START + "\n" + reference + "\n" + REF_END
-    return updateted_text
+        updateted_text = body + "\n\n" + REF_START + "\n" + reference + "\n" + REF_END
+        return updateted_text
+    else:
+        return None
 
 
 def handle_publication(text):
@@ -258,7 +265,9 @@ def handle_markdown(fname):
         original = f.read()
         updateted_text = handle_cite(original)
         if updateted_text:
-            updateted_text = handle_publication(updateted_text)
+            updateted_text2 = handle_publication(updateted_text)
+            if updateted_text2:
+                updateted_text = updateted_text2
         else:
             updateted_text = handle_publication(original)
 

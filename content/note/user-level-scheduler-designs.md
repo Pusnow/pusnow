@@ -62,11 +62,11 @@ graph TB
 * Green Thread[^books/daglib/0096707]: Java의 유저레벨 스레드를 지칭할 때 주로 사용된다. Java 그린팀이 제작했기 때문에 이런 이름이 붙여졌다.
 * [Fiber](https://learn.microsoft.com/en-us/windows/win32/procthread/fibers): 주로 Microsoft Windows에서 사용하는 유저레벨 스레드를 지칭한다.
 * [Boost Fiber](https://www.boost.org/doc/libs/1_82_0/libs/fiber/doc/html/index.html)
-* Protothread[^conf/sensys/DunkelsSVA06]: 주로 임베디드 환경에서 stackless 코루틴을 지칭한다. (엄밀히는 스택이 없기 때문에 스레드의 기능을 수행하지 못한다.)
-* Goroutine[^journals/cacm/CoxGPTT22]: Go 언어에서 사용하는 유저레벨 스레드를 지칭한다.
+* Protothread[^10.1145/1182807.1182811]: 주로 임베디드 환경에서 stackless 코루틴을 지칭한다. (엄밀히는 스택이 없기 때문에 스레드의 기능을 수행하지 못한다.)
+* Goroutine[^10.1145/3488716]: Go 언어에서 사용하는 유저레벨 스레드를 지칭한다.
 
 <!-- pusnow reference start -->
 [^books/daglib/0096707]: Scott Oaks and Henry Wong. *Java threads - Java 2 (2. ed.).* O'Reilly, 1999.
-[^conf/sensys/DunkelsSVA06]: Adam Dunkels, Oliver Schmidt, Thiemo Voigt, and Muneeb Ali. *Protothreads: simplifying event-driven programming of memory-constrained embedded systems.* In SenSys 2006. [https://doi.org/10.1145/1182807.1182811](https://doi.org/10.1145/1182807.1182811)
-[^journals/cacm/CoxGPTT22]: Russ Cox, Robert Griesemer, Rob Pike, Ian Lance Taylor, and Ken Thompson. *The Go programming language and environment.* Commun. ACM 65(5). [https://doi.org/10.1145/3488716](https://doi.org/10.1145/3488716)
+[^10.1145/1182807.1182811]: Adam Dunkels, Oliver Schmidt, Thiemo Voigt, and Muneeb Ali. *Protothreads: simplifying event-driven programming of memory-constrained embedded systems.* Proceedings of the 4th international conference on Embedded networked sensor systems. [https://dl.acm.org/doi/pdf/10.1145/1182807.1182811](https://dl.acm.org/doi/pdf/10.1145/1182807.1182811)
+[^10.1145/3488716]: Russ Cox, Robert Griesemer, Rob Pike, Ian Lance Taylor, and Ken Thompson. *The Go programming language and environment.* Communications of the ACM 65, 5. [https://dl.acm.org/doi/pdf/10.1145/3488716](https://dl.acm.org/doi/pdf/10.1145/3488716)
 <!-- pusnow reference end -->
