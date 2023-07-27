@@ -1,3 +1,3 @@
 ## About me
 
-Homepage: [www.pusnow.com](https://www.pusnow.com/)
+Homepage: [www.pusnow.com/about/](https://www.pusnow.com/about/)
