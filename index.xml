@@ -6,7 +6,16 @@
     <description>Recent content on Pusnow</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Host Efficient Networking Stack Utilizing NIC DRAM</title>
+      <link>https://www.pusnow.com/publication/hens-apnet-23/</link>
+      <pubDate>Thu, 29 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/publication/hens-apnet-23/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>실행 단위 (Execution Unit) 정리</title>
       <link>https://www.pusnow.com/note/execution-units/</link>
@@ -15,6 +24,15 @@
       <guid>https://www.pusnow.com/note/execution-units/</guid>
       <description>Paralellism과 concurrency를 지원하기 위해 다양한 실행 단위(Execution Unit)가 존재한다. 가장 기초적인 프로세스와 스레드부터 그린 스레드(green thread), 코루틴(coroutine), 파이버(fiber) 등 비교적 일반적 개념과, 고루틴(Goroutine)처럼 특정 언어에만 존재하는 개념도 존재한다. 상당수의 기술 문서, 대화에서 이들 개념이 명확히 구분되지 않고 사용되고, 때로는 잘못 사용되는 경우도 많다.
 이를 명확히 구분하려는 글은 몇 존재하지만, 그다지 만족스럽지 않아서 새로 정리해 본다. 되도록 각 개념을 최초로 소개하는 논문 혹은 문서를 참고하려고 했으며, 그 글에서 기존 방식과의 차이가 기술되어 있으면 이를 중점으로 소개한다.</description>
+    </item>
+    
+    <item>
+      <title>DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation</title>
+      <link>https://www.pusnow.com/publication/dilos-eurosys-23/</link>
+      <pubDate>Mon, 08 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/publication/dilos-eurosys-23/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -109,6 +127,15 @@ USE 방법론은 성능 이슈를 빠르게 해결하기 위하여 Brendan Gregg
     </item>
     
     <item>
+      <title>DiLOS: adding performance to paging-based memory disaggregation</title>
+      <link>https://www.pusnow.com/publication/dilos-apsys-21/</link>
+      <pubDate>Tue, 24 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/publication/dilos-apsys-21/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>C Atomic Instruction Mapping</title>
       <link>https://www.pusnow.com/note/c-atomic-instruction-mapping/</link>
       <pubDate>Tue, 06 Jul 2021 00:00:00 +0000</pubDate>
@@ -138,14 +165,21 @@ USE 방법론은 성능 이슈를 빠르게 해결하기 위하여 Brendan Gregg
     </item>
     
     <item>
-      <title>Accelerating Disaggregated Data Centers Using Unikernel</title>
-      <link>https://www.pusnow.com/publication/ddc-unikernel/</link>
-      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
+      <title>Accelerating disaggregated data centers using unikernel</title>
+      <link>https://www.pusnow.com/publication/dilos-sigcommposter-20/</link>
+      <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.pusnow.com/publication/ddc-unikernel/</guid>
-      <description>Wonsup Yoon, Jinyoung Oh, Sue Moon, and Youngjin Kwon
-Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM &amp;lsquo;20 Posters and Demos)
-Abstract Memory disaggregation is a new hardware and system paradigm to split computation and memory into physical separate nodes. Grouping and pooling hardware resources solves the low resource utilization problem and hide intermittent hardware failures in data centers. In this work we propose a unikernel-based remote paging for memory disaggregation.</description>
+      <guid>https://www.pusnow.com/publication/dilos-sigcommposter-20/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System</title>
+      <link>https://www.pusnow.com/publication/rust-intrusive-plos-19/</link>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/publication/rust-intrusive-plos-19/</guid>
+      <description></description>
     </item>
     
     <item>

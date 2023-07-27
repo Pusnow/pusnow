@@ -2,10 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.pusnow.com/note/</loc>
-    <lastmod>2023-07-18T13:45:46+09:00</lastmod>
+    <loc>https://www.pusnow.com/publication/hens-apnet-23/</loc>
+    <lastmod>2023-07-27T14:22:08+09:00</lastmod>
+  </url><url>
+    <loc>https://www.pusnow.com/publication/</loc>
+    <lastmod>2023-07-27T14:22:08+09:00</lastmod>
   </url><url>
     <loc>https://www.pusnow.com/</loc>
+    <lastmod>2023-07-27T14:22:08+09:00</lastmod>
+  </url><url>
+    <loc>https://www.pusnow.com/note/</loc>
     <lastmod>2023-07-18T13:45:46+09:00</lastmod>
   </url><url>
     <loc>https://www.pusnow.com/tags/system/</loc>
@@ -16,6 +22,9 @@
   </url><url>
     <loc>https://www.pusnow.com/note/execution-units/</loc>
     <lastmod>2023-07-10T16:17:05+09:00</lastmod>
+  </url><url>
+    <loc>https://www.pusnow.com/publication/dilos-eurosys-23/</loc>
+    <lastmod>2023-07-27T14:22:08+09:00</lastmod>
   </url><url>
     <loc>https://www.pusnow.com/note/qcnfa765-wifi-6-ap/</loc>
     <lastmod>2023-03-13T21:38:06+09:00</lastmod>
@@ -44,6 +53,9 @@
     <loc>https://www.pusnow.com/note/undefined-behaviors-of-bit-scan-operators/</loc>
     <lastmod>2021-11-07T18:49:44+09:00</lastmod>
   </url><url>
+    <loc>https://www.pusnow.com/publication/dilos-apsys-21/</loc>
+    <lastmod>2023-07-27T14:22:08+09:00</lastmod>
+  </url><url>
     <loc>https://www.pusnow.com/note/c-atomic-instruction-mapping/</loc>
     <lastmod>2022-08-11T23:08:07+09:00</lastmod>
   </url><url>
@@ -53,14 +65,11 @@
     <loc>https://www.pusnow.com/note/size-of-standard-types/</loc>
     <lastmod>2022-07-29T14:59:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/publication/ddc-unikernel/</loc>
-    <lastmod>2021-06-06T02:02:32+09:00</lastmod>
+    <loc>https://www.pusnow.com/publication/dilos-sigcommposter-20/</loc>
+    <lastmod>2023-07-27T14:22:08+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/tags/publication/</loc>
-    <lastmod>2021-06-06T02:02:32+09:00</lastmod>
-  </url><url>
-    <loc>https://www.pusnow.com/publication/</loc>
-    <lastmod>2021-06-06T02:02:32+09:00</lastmod>
+    <loc>https://www.pusnow.com/publication/rust-intrusive-plos-19/</loc>
+    <lastmod>2023-07-27T14:22:08+09:00</lastmod>
   </url><url>
     <loc>https://www.pusnow.com/tags/hangul/</loc>
     <lastmod>2022-08-11T23:08:07+09:00</lastmod>
@@ -69,7 +78,7 @@
     <lastmod>2022-08-11T23:08:07+09:00</lastmod>
   </url><url>
     <loc>https://www.pusnow.com/about/</loc>
-    <lastmod>2023-07-17T11:47:30+09:00</lastmod>
+    <lastmod>2023-07-27T14:22:08+09:00</lastmod>
   </url><url>
     <loc>https://www.pusnow.com/categories/</loc>
   </url><url>
