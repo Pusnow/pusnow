@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>publication on Pusnow</title>
+    <link>https://www.pusnow.com/tags/publication/</link>
+    <description>Recent content in publication on Pusnow</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 29 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/publication/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Host Efficient Networking Stack Utilizing NIC DRAM</title>
+      <link>https://www.pusnow.com/publication/hens-apnet23/</link>
+      <pubDate>Thu, 29 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/publication/hens-apnet23/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation</title>
+      <link>https://www.pusnow.com/publication/dilos-eurosys23/</link>
+      <pubDate>Mon, 08 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/publication/dilos-eurosys23/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DiLOS: adding performance to paging-based memory disaggregation</title>
+      <link>https://www.pusnow.com/publication/dilos-apsys21/</link>
+      <pubDate>Tue, 24 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/publication/dilos-apsys21/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Accelerating disaggregated data centers using unikernel</title>
+      <link>https://www.pusnow.com/publication/dilos-sigcommposter20/</link>
+      <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/publication/dilos-sigcommposter20/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System</title>
+      <link>https://www.pusnow.com/publication/rust-intrusive-plos19/</link>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/publication/rust-intrusive-plos19/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
