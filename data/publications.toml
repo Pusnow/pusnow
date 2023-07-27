@@ -12,7 +12,7 @@ year = 2023
 month = 6
 day = 29
 note = "Best Paper Award"
-pdf = "hens-apnet-23"
+pdf = "hens-apnet23"
 
 [[publication]]
 cite = "10.1145/3552326.3567488"
@@ -20,24 +20,24 @@ dblp = "conf/eurosys/YoonOOMK23"
 where = "Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys)"
 note = "Best Paper Runner-up"
 slides = "https://wsyo.one/dilos/slides"
-pdf = "dilos-eurosys-23"
+pdf = "dilos-eurosys23"
 
 [[publication]]
 cite = "10.1145/3476886.3477507"
 dblp = "conf/apsys/YoonOOMK21"
 where = "Proceedings of the 12th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys)"
-pdf = "dilos-apsys-21"
+pdf = "dilos-apsys21"
 
 [[publication]]
 cite = "10.1145/3405837.3411397"
 dblp = "conf/sigcomm/YoonOMK20"
 where = "Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM '20 Posters and Demos)"
-pdf = "dilos-sigcommposter-20"
+pdf = "dilos-sigcommposter20"
 
 [[publication]]
 cite = "10.1145/3365137.3365403"
 dblp = "conf/sosp/LeeKYKM19"
 where = "Proceedings of the 10th Workshop on Programming Languages and Operating Systems (PLOS@SOSP)"
 right = "acmcopyright"
-pdf = "rust-intrusive-plos-19"
+pdf = "rust-intrusive-plos19"
 
