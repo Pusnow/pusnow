@@ -1,9 +1,18 @@
 [[publication]]
+title = "Designing a Memory Disaggregation System for Cloud"
+authors = ["Wonsup Yoon", "Jisu Ok", "Sue Moon", "Youngjin Kwon"]
+where = "Proceedings of the ACM SIGCOMM 2023 Conference Posters and Demos (SIGCOMM '23 Posters and Demos)"
+year = 2023
+
+[[publication]]
 title = "Host Efficient Networking Stack Utilizing NIC DRAM"
 authors = ["Byeong Keon Lee", "Dong Hyeon Lee", "Jisu Ok", "Wonsup Yoon", "Sue Moon"]
 where = "Proceedings of the 7th Asia-Pacific Workshop on Networking (APNet)"
 year = 2023
+month = 6
+day = 29
 note = "Best Paper Award"
+pdf = "hens-apnet-23"
 
 [[publication]]
 cite = "10.1145/3552326.3567488"
@@ -11,20 +20,24 @@ dblp = "conf/eurosys/YoonOOMK23"
 where = "Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys)"
 note = "Best Paper Runner-up"
 slides = "https://wsyo.one/dilos/slides"
+pdf = "dilos-eurosys-23"
 
 [[publication]]
 cite = "10.1145/3476886.3477507"
 dblp = "conf/apsys/YoonOOMK21"
 where = "Proceedings of the 12th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys)"
-
+pdf = "dilos-apsys-21"
 
 [[publication]]
 cite = "10.1145/3405837.3411397"
 dblp = "conf/sigcomm/YoonOMK20"
 where = "Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM '20 Posters and Demos)"
-
+pdf = "dilos-sigcommposter-20"
 
 [[publication]]
 cite = "10.1145/3365137.3365403"
 dblp = "conf/sosp/LeeKYKM19"
 where = "Proceedings of the 10th Workshop on Programming Languages and Operating Systems (PLOS@SOSP)"
+right = "acmcopyright"
+pdf = "rust-intrusive-plos-19"
+

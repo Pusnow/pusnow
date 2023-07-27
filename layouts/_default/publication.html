@@ -1,0 +1,16 @@
+{{ define "body" }}
+
+{{ if .Params.where }}
+<p> {{ .Params.where }}</p>
+{{ end }}
+{{ if .Params.copyright }}
+<p> {{ .Params.copyright | markdownify }}</p>
+{{ end }}
+{{ if .Params.pdf }}
+<p> Download URL: <a href="{{ .Params.pdf | absURL }}">{{ .Params.pdf | absURL }}</a></p>
+{{ end }}
+<main>
+    <object data="{{ .Params.pdf | absURL }}" width="100%" height="500">
+        </object>
+</main>
+{{ end }}

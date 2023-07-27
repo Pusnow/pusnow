@@ -18,6 +18,16 @@ JOURNALS = 1
 CONF = 2
 BOOK = 3
 
+ACM_COPYRIGHT = "© %s %s. This is the author's version of the work. It is posted here for your personal use. Not for redistribution. The definitive Version of Record was published in %s%s."
+
+CONFIG = {}
+BASE_URL =""
+
+
+with open("config.toml", "rb") as f:
+    CONFIG = tomllib.load(f)
+    BASE_URL = CONFIG["baseURL"]
+
 
 def add_dot(text):
     if text[-1] == ".":
@@ -25,12 +35,12 @@ def add_dot(text):
     return text + "."
 
 
-def format_authors(authors):
+def format_authors(authors, bold = True):
     author_text = ""
 
     authors2 = []
     for author in authors:
-        if author in MY_NAME:
+        if bold and author in MY_NAME:
             authors2.append("**%s**" % author)
         else:
             authors2.append(author)
@@ -116,7 +126,9 @@ def parse_acm(cite, json_txt):
     if subtitle:
         title += ": " + subtitle
 
-    year = str(msg["published"]["date-parts"][0][0])
+    year = msg["published"]["date-parts"][0][0]
+    month = msg["published"]["date-parts"][0][1]
+    day = msg["published"]["date-parts"][0][2]
 
     ees = [link["URL"] for link in msg["link"]]
 
@@ -132,6 +144,8 @@ def parse_acm(cite, json_txt):
         "title": title,
         "authors": authors,
         "year": year,
+        "month": month,
+        "day": day,
         "ees": ees,
         "where": where_text,
     }
@@ -157,6 +171,10 @@ def fetch_and_parse_cite(cite):
 
 
 def generate_publication():
+    cp = pathlib.Path("content/publication")
+    for child in cp.glob('*.md'):
+        if child.is_file():
+            child.unlink()
     with open("data/publications.toml", "rb") as f:
         data = tomllib.load(f)
         publications = data.get("publication", [])
@@ -169,16 +187,42 @@ def generate_publication():
             for key in pub:
                 pub2[key] = pub[key]
 
+            authors = pub2.get("authors", [])
             ees = pub2.get("ees", [])
+            right = pub2.get("right", "acmlicensed")
+            pdf = pub2.get("pdf", None)
+            if pdf:
+                copyright_text = ""
+                if ees:
+                    doi_text = f", [{ees[0]}]({ees[0]})"
+                else:
+                    doi_text=""
+                if right == "acmcopyright":
+                    copyright_text = ACM_COPYRIGHT % ("ACM", pub2["year"], pub2["where"], doi_text)
+                elif right == "acmlicensed":
+                    copyright_text = ACM_COPYRIGHT % (format_authors(authors, False), pub2["year"], pub2["where"], doi_text)
+                with open ("content/publication/%s.md"% pdf, "w", encoding="utf8") as f:
+                    f.write(
+f"""---
+layout: "publication"
+title: "{pub2["title"]}"
+date: {pub2["year"]}-{pub2["month"]:02}-{pub2["day"]:02}
+copyright: "{copyright_text}"
+where: "{pub2["where"]}"
+pdf: "/publication/{pdf}.pdf"
+---""")
+                    
+
             slides = pub2.get("slides", "")
-            if ees:
+            if pdf:
+                ee = f" [[Link]]({BASE_URL}publication/{pdf}/)"
+            elif ees:
                 ee = " [[Link]](%s)" % ees[0]
             else:
                 ee = ""
 
             if slides:
                 ee += " [[Slides]](%s)" % slides
-            authors = pub2.get("authors", [])
             author_text = format_authors(authors)
             note_text = pub2.get("note", "")
             pub_text = "- %s%s\n  - %s\n  - *%s* %s" % (
@@ -190,6 +234,7 @@ def generate_publication():
             )
             if note_text:
                 pub_text += "\n  - %s" % note_text
+
             pubs.append(pub_text)
         result = "\n".join(pubs)
         return PUB_START + "\n" + result + "\n" + PUB_END
