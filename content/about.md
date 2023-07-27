@@ -38,21 +38,21 @@
 - Designing a Memory Disaggregation System for Cloud.
   - **Wonsup Yoon**, Jisu Ok, Sue Moon, and Youngjin Kwon
   - *Proceedings of the ACM SIGCOMM 2023 Conference Posters and Demos (SIGCOMM '23 Posters and Demos).* 2023
-- Host Efficient Networking Stack Utilizing NIC DRAM. [[Link]](https://www.pusnow.com/publication/hens-apnet-23)
+- Host Efficient Networking Stack Utilizing NIC DRAM. [[Link]](https://www.pusnow.com/publication/hens-apnet-23/)
   - Byeong Keon Lee, Dong Hyeon Lee, Jisu Ok, **Wonsup Yoon**, and Sue Moon
   - *Proceedings of the 7th Asia-Pacific Workshop on Networking (APNet).* 2023
   - Best Paper Award
-- DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation. [[Link]](https://www.pusnow.com/publication/dilos-eurosys-23) [[Slides]](https://wsyo.one/dilos/slides)
+- DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation. [[Link]](https://www.pusnow.com/publication/dilos-eurosys-23/) [[Slides]](https://wsyo.one/dilos/slides)
   - **Wonsup Yoon**, Jisu Ok, Jinyoung Oh, Sue Moon, and Youngjin Kwon
   - *Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys).* 2023
   - Best Paper Runner-up
-- DiLOS: adding performance to paging-based memory disaggregation. [[Link]](https://www.pusnow.com/publication/dilos-apsys-21)
+- DiLOS: adding performance to paging-based memory disaggregation. [[Link]](https://www.pusnow.com/publication/dilos-apsys-21/)
   - **Wonsup Yoon**, Jinyoung Oh, Jisu Ok, Sue Moon, and Youngjin Kwon
   - *Proceedings of the 12th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys).* 2021
-- Accelerating disaggregated data centers using unikernel. [[Link]](https://www.pusnow.com/publication/dilos-sigcommposter-20)
+- Accelerating disaggregated data centers using unikernel. [[Link]](https://www.pusnow.com/publication/dilos-sigcommposter-20/)
   - **Wonsup Yoon**, Jinyoung Oh, Sue Moon, and Youngjin Kwon
   - *Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM '20 Posters and Demos).* 2020
-- Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System. [[Link]](https://www.pusnow.com/publication/rust-intrusive-plos-19)
+- Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System. [[Link]](https://www.pusnow.com/publication/rust-intrusive-plos-19/)
   - Keunhong Lee, Jeehoon Kang, **Wonsup Yoon**, Joongi Kim, and Sue Moon
   - *Proceedings of the 10th Workshop on Programming Languages and Operating Systems (PLOS@SOSP).* 2019
 <!-- pusnow publication end -->
