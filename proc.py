@@ -126,9 +126,9 @@ def parse_acm(cite, json_txt):
     if subtitle:
         title += ": " + subtitle
 
-    year = msg["published"]["date-parts"][0][0]
-    month = msg["published"]["date-parts"][0][1]
-    day = msg["published"]["date-parts"][0][2]
+    year = sum(msg["published"]["date-parts"][0][0:1])
+    month = sum(msg["published"]["date-parts"][0][1:2])
+    day = sum(msg["published"]["date-parts"][0][2:3])
 
     ees = [link["URL"] for link in msg["link"]]
 
@@ -252,12 +252,8 @@ def handle_cite(text):
     to_cites = []
     results = {}
     for future in concurrent.futures.as_completed(futures):
-        try:
-            cite, parsed = future.result()
-            results[cite] = parsed
-        except Exception as e:
-            print(f"An error occurred: {e}")
-            continue
+        cite, parsed = future.result()
+        results[cite] = parsed
 
     for cite in cites:
         parsed = results.get(cite, {})
