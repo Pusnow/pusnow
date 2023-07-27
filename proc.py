@@ -210,6 +210,8 @@ date: {pub2["year"]}-{pub2["month"]:02}-{pub2["day"]:02}
 copyright: "{copyright_text}"
 where: "{pub2["where"]}"
 pdf: "/publication/{pdf}.pdf"
+tags:
+    - publication
 ---""")
                     
 
