@@ -202,17 +202,25 @@ def generate_publication():
                 elif right == "acmlicensed":
                     copyright_text = ACM_COPYRIGHT % (format_authors(authors, False), pub2["year"], pub2["where"], doi_text)
                 with open ("content/publication/%s.md"% pdf, "w", encoding="utf8") as f:
+                    pdf_code = "{{% pdf \"" + f"/publication/{pdf}.pdf" + "\" %}}" 
                     f.write(
 f"""---
-layout: "publication"
 title: "{pub2["title"]}"
 date: {pub2["year"]}-{pub2["month"]:02}-{pub2["day"]:02}
-copyright: "{copyright_text}"
-where: "{pub2["where"]}"
+nogitdate: true
 pdf: "/publication/{pdf}.pdf"
 tags:
     - publication
----""")
+---
+
+{pub2["where"]}
+
+{copyright_text}
+
+[Download PDF](/publication/{pdf}.pdf)
+
+{pdf_code}
+""")
                     
 
             slides = pub2.get("slides", "")

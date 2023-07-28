@@ -1,7 +1,7 @@
 {{ define "body" }}
 {{ if .Date }}
 <span class="date">{{ .Date.Format "2006/01/02" }}</span>
-{{ if .GitInfo }}
+{{ if and (.GitInfo) (not (.Params.nogitdate)) }}
 <span class="date"> (Updated: {{ .GitInfo.AuthorDate.Format "2006/01/02" }}).</span>
 {{ end }}
 {{else}}
