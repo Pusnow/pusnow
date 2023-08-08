@@ -2,7 +2,7 @@
 title: Size of Standard Types
 date: 2021-06-06
 tags:
-    - system
+    - System
 ---
 
 ## Table

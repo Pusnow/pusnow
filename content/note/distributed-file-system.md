@@ -2,7 +2,7 @@
 title: 파일시스템의 종류 - 로컬, 네트워크, 분산
 date: 2021-06-07
 tags:
-    - system
+    - System
 lang: ko-kr
 ---
 

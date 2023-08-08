@@ -3,7 +3,7 @@ title: "실행 단위 (Execution Unit) 정리"
 date: 2023-05-20
 lang: ko-kr
 tags:
-    - system
+    - System
 ---
 
 

@@ -2,7 +2,7 @@
 title: 비트 스캔 연산자의 Undefined Behavior
 date: 2021-11-07
 tags:
-    - system
+    - System
 lang: ko-kr
 ---
 

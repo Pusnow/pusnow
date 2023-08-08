@@ -4,7 +4,7 @@ date: 2019-10-27
 nogitdate: true
 pdf: "/publication/rust-intrusive-plos19.pdf"
 tags:
-    - publication
+    - Publication
 ---
 
 Proceedings of the 10th Workshop on Programming Languages and Operating Systems (PLOS@SOSP)

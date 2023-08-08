@@ -2,7 +2,7 @@
 title: DIY Wi-Fi 라우터
 date: 2022-11-23
 tags:
-    - system
+    - System
 lang: ko-kr
 ---
 

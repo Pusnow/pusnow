@@ -3,7 +3,7 @@ title: "KENS 리뉴얼 Part 3: 지속이 가능한 에코시스템과 남은 과
 date: 2022-11-22
 lang: ko-kr
 tags:
-    - system
+    - System
 ---
 
 * [Source code available](https://github.com/ANLAB-KAIST/KENSv3)

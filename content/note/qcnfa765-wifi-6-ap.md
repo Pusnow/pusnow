@@ -2,7 +2,7 @@
 title: QCNFA765을 이용한 Wi-Fi 6 AP
 date: 2023-03-08
 tags:
-    - system
+    - System
 lang: ko-kr
 ---
 
@@ -135,7 +135,6 @@ ath11k_pci 0000:01:00.0:   5. (5735 - 5835 @ 80) (6, 23) (0 ms) (FLAGS 2048)
 요약하면, 이 설정은 시스템이 현지 규제를 잘 준수하는 경우에만 활성화하라는 것이다.
 ath11k에서 보고하는 사용 주파수 대역은 linux-wireless에서 국내 규제를 참고하여[^4] 정리한 [regdb](https://git.kernel.org/pub/scm/linux/kernel/git/sforshee/wireless-regdb.git/tree/db.txt?id=HEAD)와 어느 정도 일치하는 것으로 보이고, 펌웨어에 내장된 한국 규제 정보를 활용하기 때문에 큰 문제는 없다고 판단했다.
 
-
 ## Hostapd 설정
 
 기존에 사용하고 있던 hostapd에서는 ax 모드가 활성화되지 않았다.
@@ -204,7 +203,6 @@ QCNFA765는 저렴하게 이용할 수 있는 Wi-Fi 6 AP 모드 WLAN 카드이�
 정확한 원인은 모르지만 추측을 해보자면, 어떤 이유에선가 `HAL_REO_CMD_FLUSH_CACHE`가 처리되지 못해서 `mgmt tx queue`가 가득차 필수적인 관리 명렁이 디바이스에 전송되지 못하는 문제로 보인다.
 이를 디버깅하는 것은 시간/능력이 부족하므로 포기하기로 했다.
 결국 기존 QCA6174으로 하드웨어로 롤백했다.
-
 
 [^1]: `WLAN.HSP.1.1-03125-QCAHSPSWPL_V1_V2_SILICONZ_LITE-3.6510.23`
 [^2]: `iw reg get`으로 확인

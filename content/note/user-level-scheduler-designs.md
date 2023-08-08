@@ -3,7 +3,7 @@ title: "유저-레벨 스케줄러 디자인들"
 date: 2023-05-27
 lang: ko-kr
 tags:
-    - system
+    - System
 draft: true
 ---
 
@@ -55,7 +55,6 @@ graph TB
 * Syscall 호출
 * Exception 발생
 * Preemptive vs Cooperative
-
 
 ## 비교 대상
 

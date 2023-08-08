@@ -4,7 +4,7 @@ date: 2020-08-10
 nogitdate: true
 pdf: "/publication/dilos-sigcommposter20.pdf"
 tags:
-    - publication
+    - Publication
 ---
 
 Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM '20 Posters and Demos)

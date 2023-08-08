@@ -4,7 +4,7 @@ date: 2021-08-24
 nogitdate: true
 pdf: "/publication/dilos-apsys21.pdf"
 tags:
-    - publication
+    - Publication
 ---
 
 Proceedings of the 12th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys)

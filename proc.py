@@ -210,7 +210,7 @@ date: {pub2["year"]}-{pub2["month"]:02}-{pub2["day"]:02}
 nogitdate: true
 pdf: "/publication/{pdf}.pdf"
 tags:
-    - publication
+    - Publication
 ---
 
 {pub2["where"]}

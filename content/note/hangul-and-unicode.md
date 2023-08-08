@@ -2,7 +2,7 @@
 title: 한글과 유니코드
 date: 2016-07-04
 tags:
-    - hangul
+    - Hangul
 lang: ko-kr
 ---
 

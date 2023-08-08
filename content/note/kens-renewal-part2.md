@@ -3,7 +3,7 @@ title: "KENS 리뉴얼 Part 2: 개발 환경과 빌드 시스템"
 date: 2022-11-16
 lang: ko-kr
 tags:
-    - system
+    - System
 ---
 
 * [Source code available](https://github.com/ANLAB-KAIST/KENSv3)

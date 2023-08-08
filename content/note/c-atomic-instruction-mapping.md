@@ -2,7 +2,7 @@
 title: C Atomic Instruction Mapping
 date: 2021-07-06
 tags:
-    - system
+    - System
 ---
 
 ## Note

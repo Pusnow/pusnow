@@ -2,7 +2,7 @@
 title: USE 방법론과 RED 방법론
 date: 2022-04-06
 tags:
-    - system
+    - System
 lang: ko-kr
 ---
 

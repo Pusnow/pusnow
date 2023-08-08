@@ -4,7 +4,7 @@ date: 2023-06-29
 nogitdate: true
 pdf: "/publication/hens-apnet23.pdf"
 tags:
-    - publication
+    - Publication
 ---
 
 Proceedings of the 7th Asia-Pacific Workshop on Networking (APNet)

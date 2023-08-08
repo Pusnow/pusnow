@@ -4,7 +4,7 @@ date: 2023-05-08
 nogitdate: true
 pdf: "/publication/dilos-eurosys23.pdf"
 tags:
-    - publication
+    - Publication
 ---
 
 Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys)

@@ -3,7 +3,7 @@ title: "KENS 리뉴얼 Part 1: 메모리 안전성"
 date: 2022-11-10
 lang: ko-kr
 tags:
-    - system
+    - System
 ---
 
 * [Source code available](https://github.com/ANLAB-KAIST/KENSv3)
