@@ -35,7 +35,7 @@
 <div class="avoid-page-break-inside-ul no-print-a">
 
 <!-- pusnow publication start -->
-- Designing a Memory Disaggregation System for Cloud.
+- Designing a Memory Disaggregation System for Cloud. [[Link]](https://www.pusnow.com/publication/dmdsc-sigcommposter23/)
   - **Wonsup Yoon**, Jisu Ok, Sue Moon, and Youngjin Kwon
   - *Proceedings of the ACM SIGCOMM 2023 Conference Posters and Demos (SIGCOMM '23 Posters and Demos).* 2023
 - Host Efficient Networking Stack Utilizing NIC DRAM. [[Link]](https://www.pusnow.com/publication/hens-apnet23/)
