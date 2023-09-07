@@ -155,6 +155,7 @@ def fetch_acm(cite):
     if not cite.startswith("10.1145/"):
         return (cite, "")
     url = "https://api.crossref.org/works/%s" % cite
+    print("handling:", url)
     with urllib.request.urlopen(url) as response:
         return (cite, response.read())
     return (cite, "")
