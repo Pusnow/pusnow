@@ -12,7 +12,7 @@
 
 <div class="avoid-page-break-inside-ul normal-print-a">
 
-- Ph.D. Candidate in Computer Science, **KAIST**, *2019.9-present*.
+- Ph.D. Student in Computer Science, **KAIST**, *2019.9-present*.
   - Co-advisors: [Sue Moon](https://an.kaist.ac.kr/~sbmoon/) and [Youngjin Kwon](https://sites.google.com/view/yjkwon/home)
   - GPA: 4.01/4.30
 - M.S. in Computer Science, **KAIST**, *2017.9-2019.8*.
@@ -73,7 +73,6 @@
 ---
 
 ## Experiences
-
 
 <div class="normal-print-a">
 
