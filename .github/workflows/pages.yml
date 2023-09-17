@@ -3,6 +3,8 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
 
 jobs:
   build:
@@ -51,6 +53,6 @@ jobs:
         shell: bash
         run: |
             git push
-      
-
+      - uses: gautamkrishnar/keepalive-workflow@v1
+    
           
