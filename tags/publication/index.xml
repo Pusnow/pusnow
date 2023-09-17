@@ -6,7 +6,18 @@
     <description>Recent content in Publication on Pusnow</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/publication/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.pusnow.com/tags/publication/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Designing a Memory Disaggregation System for Cloud</title>
+      <link>https://www.pusnow.com/publication/dmdsc-sigcommposter23/</link>
+      <pubDate>Tue, 12 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.pusnow.com/publication/dmdsc-sigcommposter23/</guid>
+      <description>Proceedings of the ACM SIGCOMM 2023 Conference Posters and Demos (SIGCOMM &amp;lsquo;23 Posters and Demos)
+© Wonsup Yoon, Jisu Ok, Sue Moon, and Youngjin Kwon 2023. This is the author&amp;rsquo;s version of the work. It is posted here for your personal use. Not for redistribution. The definitive Version of Record was published in Proceedings of the ACM SIGCOMM 2023 Conference Posters and Demos (SIGCOMM &amp;lsquo;23 Posters and Demos), https://dl.acm.org/doi/pdf/10.1145/3603269.3610854.
+Download PDF</description>
+    </item>
+    
     <item>
       <title>Host Efficient Networking Stack Utilizing NIC DRAM</title>
       <link>https://www.pusnow.com/publication/hens-apnet23/</link>
