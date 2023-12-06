@@ -13,8 +13,7 @@
       <link>https://www.pusnow.com/note/hangul-and-unicode/</link>
       <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
       <guid>https://www.pusnow.com/note/hangul-and-unicode/</guid>
-      <description>유니코드에서 한글을 어떻게 다루는지를 정리하였다.
-유니코드 유니코드(Unicode)는 전 세계의 모든 문자를 컴퓨터에서 일관되게 표현하고 다룰 수 있도록 설계된 산업 표준 1 단순히 문자마다 번호를 붙임 계속 업데이트되며 현재는 Unicode Version 14.0.0 이 최신 UTF 유니코드를 실제 파일 등에 어떻게 기록할 것인지를 표준화한 것이다. 유니코드는 문자를 각 숫자에 대응시킨 것에 불과하고 이를 실제 비트로 표현하는 방식은 다양하다 UTF-8, UTF-16 등이 있다. 유니코드 속의 한글 Unicode Consortium의 Version 9.0.0 데이터베이스에 따르면 유니코드에서 한글이 지정된 블록은 다음과 같다.</description>
+      <description>유니코드에서 한글을 어떻게 다루는지를 정리하였다.&#xA;유니코드 유니코드(Unicode)는 전 세계의 모든 문자를 컴퓨터에서 일관되게 표현하고 다룰 수 있도록 설계된 산업 표준 1 단순히 문자마다 번호를 붙임 계속 업데이트되며 현재는 Unicode Version 14.0.0 이 최신 UTF 유니코드를 실제 파일 등에 어떻게 기록할 것인지를 표준화한 것이다. 유니코드는 문자를 각 숫자에 대응시킨 것에 불과하고 이를 실제 비트로 표현하는 방식은 다양하다 UTF-8, UTF-16 등이 있다. 유니코드 속의 한글 Unicode Consortium의 Version 9.0.0 데이터베이스에 따르면 유니코드에서 한글이 지정된 블록은 다음과 같다.</description>
     </item>
   </channel>
 </rss>
