@@ -1,10 +1,10 @@
-# Wonsup Yoon
+# Wonsup Yoon (윤원섭)
 
 ## Research Interests
 
 - Virtualization: unikernels, microVM, containers, etc.
 - Networking: RDMA, virtio, etc.
-- Datacenter: resource disaggregation, microservices, etc.
+- Datacenter: resource disaggregation, micrsecond-scale systems, etc.
 
 ---
 
@@ -81,7 +81,7 @@
   - Developing and maintaining [KENS (KAIST Educational Network System)](https://github.com/ANLAB-KAIST/KENSv3). Its enhancements include [memory safety](https://pusnow.com/note/kens-renewal-part1/ "korean"), [build system and development environment](https://pusnow.com/note/kens-renewal-part2/ "korean"), and [teaching ecosystem](https://pusnow.com/note/kens-renewal-part3/ "korean").
 - Technical Assistant and Software Developer, Institute of Language and Information Studies, **Yonsei University**, *2013-2017*.
   - Developing Yonsei Corpus Searcher, an efficient efficient search-filter-sort application for Yonsei Korean Corpus.
-  - Developing Yonsei Dictionary Searcher, an efficient search application for Yonsei Korean Dictionary.
+  - Developing Yonsei Dictionary Searcher, an efficient search application based on web and .net for Yonsei Korean Dictionary.
   - Developing dictionary searcher for National Institute of Korean Language (국립국어원). A dictionary search web application for Korean language.
   - Developing TOPIK (Test Of Proficiency In Korean) Word Searcher for National Institute for International Education (국립국제교육원). An education level-based dictionary search application used for TOPIK.
 
