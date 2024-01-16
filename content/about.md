@@ -65,6 +65,7 @@
 
 ## Scholarships and Awards
 
+- *Sep.* 2023: SIGCOMM '23 Travel Grants (USD 1500), **ACM SIGCOMM**
 - *Jul.* 2021: Best TA Award, **KAIST**
 - *Aug.* 2016 & *Feb.* 2017: Awarded High Honors (Top 3%), **Yonsei University**
 - *Dec.* 2015 & *Sep.* 2016: The National Scholarship for Science and Engineering, **KOSAF**
