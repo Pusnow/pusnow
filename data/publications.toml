@@ -1,8 +1,7 @@
 [[publication]]
 cite = "10.1145/3603269.3610854"
-title = "Designing a Memory Disaggregation System for Cloud"
+dblp = "conf/sigcomm/YoonOMK23"
 day = 12
-authors = ["Wonsup Yoon", "Jisu Ok", "Sue Moon", "Youngjin Kwon"]
 where = "Proceedings of the ACM SIGCOMM 2023 Conference Posters and Demos (SIGCOMM '23 Posters and Demos)"
 pdf = "dmdsc-sigcommposter23"
 

@@ -1,5 +1,5 @@
 ---
-title: "Designing a Memory Disaggregation System for Cloud"
+title: "Poster: Designing a Memory Disaggregation System for Cloud"
 date: 2023-09-12
 nogitdate: true
 pdf: "/publication/dmdsc-sigcommposter23.pdf"
