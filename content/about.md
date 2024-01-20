@@ -41,7 +41,7 @@
   - **Wonsup Yoon**, Jisu Ok, Sue Moon, and Youngjin Kwon
   - *Proceedings of the ACM SIGCOMM 2023 Conference Posters and Demos (SIGCOMM '23 Posters and Demos).* 2023
 - Host Efficient Networking Stack Utilizing NIC DRAM. [[Link]](https://www.pusnow.com/publication/hens-apnet23/)
-  - Byeong Keon Lee, Dong Hyeon Lee, Jisu Ok, **Wonsup Yoon**, and Sue Moon
+  - Byeongkeon Lee, Donghyeon Lee, Jisu Ok, **Wonsup Yoon**, and Sue Moon
   - *Proceedings of the 7th Asia-Pacific Workshop on Networking (APNet).* 2023
   - Best Paper Award
 - DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation. [[Link]](https://www.pusnow.com/publication/dilos-eurosys23/) [[Slides]](https://wsyo.one/dilos/slides)

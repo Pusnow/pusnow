@@ -7,18 +7,9 @@ where = "Proceedings of the ACM SIGCOMM 2023 Conference Posters and Demos (SIGCO
 pdf = "dmdsc-sigcommposter23"
 
 [[publication]]
-title = "Host Efficient Networking Stack Utilizing NIC DRAM"
-authors = [
-    "Byeong Keon Lee",
-    "Dong Hyeon Lee",
-    "Jisu Ok",
-    "Wonsup Yoon",
-    "Sue Moon",
-]
+cite = "10.1145/3600061.3600070"
+dblp = "conf/apnet/LeeLOYM23"
 where = "Proceedings of the 7th Asia-Pacific Workshop on Networking (APNet)"
-year = 2023
-month = 6
-day = 29
 note = "Best Paper Award"
 pdf = "hens-apnet23"
 
