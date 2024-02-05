@@ -1,0 +1,13 @@
+{{ define "body" }}
+
+{{ .Content }}
+
+<ul>
+  {{ range sort $.Site.Data.reading "date" "desc" }}
+  <li>
+    <span class="date">{{ .date | time.Format "2006/01/02" }}</span>
+    <i>{{ .title | markdownify }} - {{ .author | markdownify }}</i>
+  </li>
+  {{ end }}
+</ul>
+{{ end }}
