@@ -11,6 +11,8 @@ REF_START = "<!-- pusnow reference start -->"
 REF_END = "<!-- pusnow reference end -->"
 PUB_START = "<!-- pusnow publication start -->"
 PUB_END = "<!-- pusnow publication end -->"
+AWD_START = "<!-- pusnow award start -->"
+AWD_END = "<!-- pusnow award end -->"
 
 MY_NAME = set(["Wonsup Yoon"])
 
@@ -21,7 +23,27 @@ BOOK = 3
 ACM_COPYRIGHT = "© %s %s. This is the author's version of the work. It is posted here for your personal use. Not for redistribution. The definitive Version of Record was published in %s%s."
 
 CONFIG = {}
-BASE_URL =""
+BASE_URL = ""
+
+ABOUT_FILES = {
+    "about.md": "en",
+    "about-ko.md": "ko",
+}
+
+MONTH_EN = {
+    1: "Jan.",
+    2: "Feb.",
+    3: "Mar.",
+    4: "Apr.",
+    5: "May",
+    6: "Jun.",
+    7: "Jul.",
+    8: "Aug.",
+    9: "Sep.",
+    10: "Oct.",
+    11: "Nov.",
+    12: "Dec.",
+}
 
 
 with open("config.toml", "rb") as f:
@@ -35,7 +57,7 @@ def add_dot(text):
     return text + "."
 
 
-def format_authors(authors, bold = True):
+def format_authors(authors, bold=True):
     author_text = ""
 
     authors2 = []
@@ -173,7 +195,7 @@ def fetch_and_parse_cite(cite):
 
 def generate_publication():
     cp = pathlib.Path("content/publication")
-    for child in cp.glob('*.md'):
+    for child in cp.glob("*.md"):
         if child.is_file():
             child.unlink()
     with open("data/publications.toml", "rb") as f:
@@ -197,15 +219,25 @@ def generate_publication():
                 if ees:
                     doi_text = f", [{ees[0]}]({ees[0]})"
                 else:
-                    doi_text=""
+                    doi_text = ""
                 if right == "acmcopyright":
-                    copyright_text = ACM_COPYRIGHT % ("ACM", pub2["year"], pub2["where"], doi_text)
+                    copyright_text = ACM_COPYRIGHT % (
+                        "ACM",
+                        pub2["year"],
+                        pub2["where"],
+                        doi_text,
+                    )
                 elif right == "acmlicensed":
-                    copyright_text = ACM_COPYRIGHT % (format_authors(authors, False), pub2["year"], pub2["where"], doi_text)
-                with open ("content/publication/%s.md"% pdf, "w", encoding="utf8") as f:
-                    pdf_code = "{{% pdf \"" + f"/publication/{pdf}.pdf" + "\" %}}" 
+                    copyright_text = ACM_COPYRIGHT % (
+                        format_authors(authors, False),
+                        pub2["year"],
+                        pub2["where"],
+                        doi_text,
+                    )
+                with open("content/publication/%s.md" % pdf, "w", encoding="utf8") as f:
+                    pdf_code = '{{% pdf "' + f"/publication/{pdf}.pdf" + '" %}}'
                     f.write(
-f"""---
+                        f"""---
 title: "{pub2["title"]}"
 date: {pub2["year"]}-{pub2["month"]:02}-{pub2["day"]:02}
 nogitdate: true
@@ -221,8 +253,8 @@ tags:
 [Download PDF](/publication/{pdf}.pdf)
 
 {pdf_code}
-""")
-                    
+"""
+                    )
 
             slides = pub2.get("slides", "")
             if pdf:
@@ -257,7 +289,7 @@ def handle_cite(text):
 
     cites = re.findall(r"\[\^(.+?)\]", body)
     if not cites:
-        return None
+        return text
     executor = concurrent.futures.ThreadPoolExecutor(max_workers=5)
     futures = [executor.submit(fetch_and_parse_cite, cite) for cite in cites]
     to_cites = []
@@ -292,15 +324,60 @@ def handle_cite(text):
         updateted_text = body + "\n\n" + REF_START + "\n" + reference + "\n" + REF_END
         return updateted_text
     else:
-        return None
+        return text
 
 
 def handle_publication(text):
     if not re.search(PUB_START + ".*?" + PUB_END, text, flags=re.DOTALL):
-        return None
+        return text
     publication_text = generate_publication()
     result = re.sub(
         PUB_START + ".*?" + PUB_END, publication_text, text, flags=re.DOTALL
+    )
+    return result
+
+
+def handle_award(text, lang="en"):
+    if not re.search(AWD_START + ".*?" + AWD_END, text, flags=re.DOTALL):
+        return text
+
+    award_dict = {}
+    with open("data/awards.toml", "rb") as f:
+        data = tomllib.load(f)
+        awards = data.get("award", [])
+        for awd in awards:
+            if "year" not in awd or "month" not in awd:
+                continue
+
+            year = awd["year"]
+            month = awd["month"]
+
+            title = awd.get("title-" + lang, "")
+            if not title:
+                title = awd.get("title", "")
+
+            org = awd.get("org-" + lang, "")
+            if not org:
+                org = awd.get("org", "")
+            if (title, org) not in award_dict:
+                award_dict[(title, org)] = []
+            award_dict[(title, org)].append((year, month))
+
+    award_list = [AWD_START]
+    for awd_key in sorted(award_dict, key=lambda x: max(award_dict[x]), reverse=True):
+        title, org = awd_key
+        mon_year_list = []
+        for year, month in sorted(award_dict[awd_key]):
+            if lang == "en":
+                mon_year_list.append("*%s* %s" % (MONTH_EN[month], year))
+            elif lang == "ko":
+                mon_year_list.append("%s년 %s월" % (year, month))
+        mon_year = ", ".join(mon_year_list)
+        award_list.append("- %s: %s, **%s**" % (mon_year, title, org))
+
+    award_list.append(AWD_END)
+    result = re.sub(
+        AWD_START + ".*?" + AWD_END, "\n".join(award_list), text, flags=re.DOTALL
     )
     return result
 
@@ -315,13 +392,13 @@ def handle_markdown(fname):
 
     with open(fname, "r", encoding="utf8") as f:
         original = f.read()
-        updateted_text = handle_cite(original)
-        if updateted_text:
-            updateted_text2 = handle_publication(updateted_text)
-            if updateted_text2:
-                updateted_text = updateted_text2
-        else:
-            updateted_text = handle_publication(original)
+        updateted_text = original
+        updateted_text = handle_cite(updateted_text)
+        updateted_text = handle_publication(updateted_text)
+
+        if fname.name in ABOUT_FILES:
+            lang = ABOUT_FILES[fname.name]
+            updateted_text = handle_award(updateted_text, lang)
 
     if updateted_text:
         with open(fname, "w", encoding="utf8") as f:
