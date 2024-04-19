@@ -50,6 +50,9 @@ with open("config.toml", "rb") as f:
     CONFIG = tomllib.load(f)
     BASE_URL = CONFIG["baseURL"]
 
+with open("data/pusnow.toml", "rb") as f:
+    PUSNOW = tomllib.load(f)
+
 
 def add_dot(text):
     if text[-1] == ".":
@@ -198,46 +201,44 @@ def generate_publication():
     for child in cp.glob("*.md"):
         if child.is_file():
             child.unlink()
-    with open("data/publications.toml", "rb") as f:
-        data = tomllib.load(f)
-        publications = data.get("publication", [])
-        pubs = []
-        for pub in publications:
-            pub2 = {}
-            if "cite" in pub:
-                _, pub2 = fetch_and_parse_cite(pub["cite"])
+    publications = PUSNOW.get("publication", [])
+    pubs = []
+    for pub in publications:
+        pub2 = {}
+        if "cite" in pub:
+            _, pub2 = fetch_and_parse_cite(pub["cite"])
 
-            for key in pub:
-                pub2[key] = pub[key]
+        for key in pub:
+            pub2[key] = pub[key]
 
-            authors = pub2.get("authors", [])
-            ees = pub2.get("ees", [])
-            right = pub2.get("right", "acmlicensed")
-            pdf = pub2.get("pdf", None)
-            if pdf:
-                copyright_text = ""
-                if ees:
-                    doi_text = f", [{ees[0]}]({ees[0]})"
-                else:
-                    doi_text = ""
-                if right == "acmcopyright":
-                    copyright_text = ACM_COPYRIGHT % (
-                        "ACM",
-                        pub2["year"],
-                        pub2["where"],
-                        doi_text,
-                    )
-                elif right == "acmlicensed":
-                    copyright_text = ACM_COPYRIGHT % (
-                        format_authors(authors, False),
-                        pub2["year"],
-                        pub2["where"],
-                        doi_text,
-                    )
-                with open("content/publication/%s.md" % pdf, "w", encoding="utf8") as f:
-                    pdf_code = '{{% pdf "' + f"/publication/{pdf}.pdf" + '" %}}'
-                    f.write(
-                        f"""---
+        authors = pub2.get("authors", [])
+        ees = pub2.get("ees", [])
+        right = pub2.get("right", "acmlicensed")
+        pdf = pub2.get("pdf", None)
+        if pdf:
+            copyright_text = ""
+            if ees:
+                doi_text = f", [{ees[0]}]({ees[0]})"
+            else:
+                doi_text = ""
+            if right == "acmcopyright":
+                copyright_text = ACM_COPYRIGHT % (
+                    "ACM",
+                    pub2["year"],
+                    pub2["where"],
+                    doi_text,
+                )
+            elif right == "acmlicensed":
+                copyright_text = ACM_COPYRIGHT % (
+                    format_authors(authors, False),
+                    pub2["year"],
+                    pub2["where"],
+                    doi_text,
+                )
+            with open("content/publication/%s.md" % pdf, "w", encoding="utf8") as f:
+                pdf_code = '{{% pdf "' + f"/publication/{pdf}.pdf" + '" %}}'
+                f.write(
+                    f"""---
 title: "{pub2["title"]}"
 date: {pub2["year"]}-{pub2["month"]:02}-{pub2["day"]:02}
 nogitdate: true
@@ -254,34 +255,33 @@ tags:
 
 {pdf_code}
 """
-                    )
+                )
 
-            slides = pub2.get("slides", "")
-            if pdf:
-                ee = f" [[Link]]({BASE_URL}publication/{pdf}/)"
-            elif ees:
-                ee = " [[Link]](%s)" % ees[0]
-            else:
-                ee = ""
+        slides = pub2.get("slides", "")
+        if pdf:
+            ee = f" [[Link]]({BASE_URL}publication/{pdf}/)"
+        elif ees:
+            ee = " [[Link]](%s)" % ees[0]
+        else:
+            ee = ""
 
-            if slides:
-                ee += " [[Slides]](%s)" % slides
-            author_text = format_authors(authors)
-            note_text = pub2.get("note", "")
-            pub_text = "- %s%s\n  - %s\n  - *%s* %s" % (
-                add_dot(pub2["title"]),
-                ee,
-                author_text,
-                add_dot(pub2["where"]),
-                pub2["year"],
-            )
-            if note_text:
-                pub_text += "\n  - %s" % note_text
+        if slides:
+            ee += " [[Slides]](%s)" % slides
+        author_text = format_authors(authors)
+        note_text = pub2.get("note", "")
+        pub_text = "- %s%s\n  - %s\n  - *%s* %s" % (
+            add_dot(pub2["title"]),
+            ee,
+            author_text,
+            add_dot(pub2["where"]),
+            pub2["year"],
+        )
+        if note_text:
+            pub_text += "\n  - %s" % note_text
 
-            pubs.append(pub_text)
-        result = "\n".join(pubs)
-        return PUB_START + "\n" + result + "\n" + PUB_END
-    return PUB_START + "\n" + PUB_END
+        pubs.append(pub_text)
+    result = "\n".join(pubs)
+    return PUB_START + "\n" + result + "\n" + PUB_END
 
 
 def handle_cite(text):
@@ -342,26 +342,25 @@ def handle_award(text, lang="en"):
         return text
 
     award_dict = {}
-    with open("data/awards.toml", "rb") as f:
-        data = tomllib.load(f)
-        awards = data.get("award", [])
-        for awd in awards:
-            if "year" not in awd or "month" not in awd:
-                continue
 
-            year = awd["year"]
-            month = awd["month"]
+    awards = PUSNOW.get("award", [])
+    for awd in awards:
+        if "year" not in awd or "month" not in awd:
+            continue
 
-            title = awd.get("title-" + lang, "")
-            if not title:
-                title = awd.get("title", "")
+        year = awd["year"]
+        month = awd["month"]
 
-            org = awd.get("org-" + lang, "")
-            if not org:
-                org = awd.get("org", "")
-            if (title, org) not in award_dict:
-                award_dict[(title, org)] = []
-            award_dict[(title, org)].append((year, month))
+        title = awd.get("title-" + lang, "")
+        if not title:
+            title = awd.get("title", "")
+
+        org = awd.get("org-" + lang, "")
+        if not org:
+            org = awd.get("org", "")
+        if (title, org) not in award_dict:
+            award_dict[(title, org)] = []
+        award_dict[(title, org)].append((year, month))
 
     award_list = [AWD_START]
     for awd_key in sorted(award_dict, key=lambda x: max(award_dict[x]), reverse=True):
