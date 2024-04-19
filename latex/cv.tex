@@ -1,0 +1,233 @@
+%-------------------------
+% Resume in Latex
+% Author : Sourabh Bajaj
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeItemDot}[2]{
+  \item\small{
+    \textbf{#1}{. #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumePub}[1]{
+  \item\small{#1 \vspace{-2pt}}
+}
+
+% Just in case someone needs a heading that does not need to be in a list
+\newcommand{\resumeHeading}[4]{
+    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      {\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      {\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      {\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+    \textbf{\href{https://www.pusnow.com}{\Large Wonsup Yoon}} & Email : \href{mailto:wsyoon@kaist.ac.kr}{wsyoon@kaist.ac.kr}\\
+    Ph.D. Student, KAIST  & \href{https://www.pusnow.com}{https://www.pusnow.com} \\
+\end{tabular*}
+
+
+%-----------EDUCATION-----------------
+\section{Education}
+\resumeSubHeadingListStart
+\resumeSubheading
+{KAIST}{Republic of Korea}
+{Ph.D. in Computer Science;  GPA: 4.01/4.30}{Sep. 2019 -- present}
+\resumeItemListStart
+\resumeItem{Co-advisors}{Sue Moon and Youngjin Kwon.}
+\resumeItemListEnd
+\resumeSubheading
+{KAIST}{Republic of Korea}
+{M.S. in Computer Science;  GPA: 3.95/4.30}{Sep. 2017 -- Aug. 2019}
+\resumeItemListStart
+\resumeItem{Co-advisors}{Sue Moon and Youngjin Kwon.}
+\resumeItem{Thesis title}{A memory management layer for disaggregated data center.}
+\resumeItemListEnd
+\resumeSubheading
+{Yonsei University}{Republic of Korea}
+{B.S. in Electrical and Electronic Engineering;  GPA: 4.01/4.30}{Mar. 2013 -- Feb. 2017}
+\resumeItemListStart
+\resumeItem{Minor}{Computer Science}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Advanced Networking Lab, KAIST}{Republic of Korea}
+{Teaching Assistant}{2017 - 2022, 2024}
+\resumeItemListStart
+\resumeItemDot{Introduction to Computer Networks (CS341)}
+{Taught and developed KENS (KAIST Educational Network System) project assignments. Worked on extending KENS for memory safety, build system, development environment, and teaching ecosystem.}
+\resumeItemDot{Distributed Algorithms and Systems (CS443)}
+{Taught Raft consensus algorithm project assignments.}
+\resumeItemDot{Graduate Operating Systems (CS530)}
+{Taught operating system project assignments based on OSv unikernel.}
+\resumeItemListEnd
+
+\resumeSubheading
+{Institute of Language and Information Studies, Yonsei University}{Republic of Korea}
+{Technical Assistant and Software Developer}{2013 - 2017}
+\resumeItemListStart
+\resumeItemDot{Yonsei Corpus Searcher}
+{Developed an efficient search-filter-sort application for Yonsei Korean Corpus.}
+\resumeItemDot{Yonsei Dictionary Searcher}
+{Developed an efficient web-based and .net-based search applications for Yonsei Korean Dictionary.}
+\resumeItemDot{Dictionary searcher for National Institute of Korean Language}
+{Developed a dictionary search web application for Korean language.}
+\resumeItemDot{TOPIK Word Searcher for National Institute for International Education}
+{Developed an education level-based dictionary search application used for TOPIK (Test Of Proficiency In Korean).}
+\resumeItemListEnd
+
+
+\resumeSubHeadingListEnd
+
+
+\section{Research Interest}
+
+My broad research interests are:
+\resumeSubHeadingListStart
+\resumeItem{Virtualization}{unikernels, microVM, and containers.}
+\resumeItem{Networking}{RDMA, virtio, and programmable NICs.}
+\resumeItem{Datacenter}{resource disaggregation, micrsecond-scale systems, and tail-optimzied systems.}
+\resumeSubHeadingListEnd
+
+
+
+
+%-----------AWARD-----------------
+\section{Awards and Honors}
+\resumeSubHeadingListStart
+\resumeSubheading
+{SIGCOMM ‘23 Travel Grants (USD 1500)}{ACM SIGCOMM}
+{Awarded for travel to present at the ACM SIGCOMM 2023 conference.}{Sep. 2023}
+\resumeSubheading
+{Best Paper Award}{APNet'23}
+{Awarded for the paper "Host Efficient Networking Stack Utilizing NIC DRAM".}{Jun. 2023}
+\resumeSubheading
+{Best TA Award}{KAIST}
+{Awarded for teching the class Introduction to Computer Networks (CS341).}{Jul. 2021}
+\resumeSubheading
+{Awarded High Honors}{Yonsei University}
+{Awarded for outstanding performance in courseworks (Top 3\%).}{Aug. 2016 and Feb. 2017}
+\resumeSubheading
+{The National Scholarship for Science and Engineering}{Korea Student Aid Foundation}
+{Awarded for outstanding performance in courseworks.}{Dec. 2015 and Sep. 2016}
+\resumeSubheading
+{Yonsei Internal Scholarship}{Yonsei University}
+{Awarded for outstanding performance in courseworks.}{Sep. 2015 and Mar. 2016}
+\resumeSubheading
+{Awarded Honors}{Yonsei University}
+{Awarded for outstanding performance in courseworks (Top 10\%).}{Feb. 2015, Aug. 2015, and Feb. 2016}
+\resumeSubheading
+{Korea Telecom Scholarship}{Korea Telecom}
+{Awarded for outstanding performance in courseworks.}{Aug. 2015}
+\resumeSubHeadingListEnd
+
+
+%-----------PUBLICATION-----------------
+\section{Publications}
+\resumeSubHeadingListStart
+\resumePub{\textbf{Wonsup Yoon}, Jisu Ok, Sue Moon, and Youngjin Kwon. Poster: Designing a Memory Disaggregation System for Cloud. In \textit{Proceedings of the ACM SIGCOMM 2023 Conference Posters and Demos (SIGCOMM ‘23 Posters and Demos)}. 2023.}
+\resumePub{Byeongkeon Lee, Donghyeon Lee, Jisu Ok, \textbf{Wonsup Yoon}, and Sue Moon. Host Efficient Networking Stack Utilizing NIC DRAM. In \textit{Proceedings of the 7th Asia-Pacific Workshop on Networking (APNet)}. 2023.}
+\resumePub{\textbf{Wonsup Yoon}, Jisu Ok, Jinyoung Oh, Sue Moon, and Youngjin Kwon. DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation. In \textit{Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys)}. 2023.}
+\resumePub{\textbf{Wonsup Yoon}, Jinyoung Oh, Jisu Ok, Sue Moon, and Youngjin Kwon. DiLOS: adding performance to paging-based memory disaggregation. In \textit{Proceedings of the 12th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys)}. 2021.}
+\resumePub{\textbf{Wonsup Yoon}, Jinyoung Oh, Sue Moon, and Youngjin Kwon. Accelerating disaggregated data centers using unikernel. In \textit{Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM ‘20 Posters and Demos)}. 2020.}
+\resumePub{Keunhong Lee, Jeehoon Kang, \textbf{Wonsup Yoon}, Joongi Kim, and Sue Moon. Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System. In \textit{Proceedings of the 10th Workshop on Programming Languages and Operating Systems (PLOS@SOSP)}. 2019.}
+\resumeSubHeadingListEnd
+
+%
+%--------PROFESSIONAL ACTIVITIES------------
+\section{Professional Activities}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Eurosys'22 Shadow PC}{EuroSys}
+{Served as a member of a shadow PC.}{2022}
+\resumeSubHeadingListEnd
+
+
+%-------------------------------------------
+\end{document}
