@@ -33,6 +33,11 @@ name = "Tags"
 url = "tags/"
 weight = 5
 
+[[menu.main]]
+name = "CV"
+url = "pdf/cv.pdf"
+weight = 6
+
 
 [params]
 footer = "&copy; [Wonsup Yoon](https://www.pusnow.com) | [GitHub](https://github.com/pusnow) | Original theme: [Hugo xmin](https://github.com/yihui/hugo-xmin)"
