@@ -6,6 +6,7 @@ import json
 import tomllib
 import urllib.request
 import xml.etree.ElementTree as ET
+import subprocess
 
 REF_START = "<!-- pusnow reference start -->"
 REF_END = "<!-- pusnow reference end -->"
@@ -440,6 +441,19 @@ def handle_markdown(fname):
             f.write(updateted_text)
 
 
+def handle_latex(fname):
+    fname = pathlib.Path(fname)
+    if not fname.is_file():
+        return
+
+    print("Handling:", fname)
+
+    subprocess.run(["pdflatex", "-output-directory", "latex", fname])
+    subprocess.run(
+        ["cp", fname.with_suffix(".pdf"), "static/pdf/"],
+    )
+
+
 if len(sys.argv) > 1:
     for fname in sys.argv[1:]:
         handle_markdown(fname)
@@ -447,3 +461,7 @@ else:
     content = pathlib.Path("content/")
     for fname in content.glob("**/*.md"):
         handle_markdown(fname)
+
+    latex = pathlib.Path("latex/")
+    for fname in latex.glob("**/*.tex"):
+        handle_latex(fname)
