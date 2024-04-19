@@ -1,3 +1,8 @@
+---
+aliases:
+- /about
+---
+
 # Wonsup Yoon (윤원섭)
 
 [[Korean version (한국어버전)]](https://www.pusnow.com/about-ko/)
@@ -81,7 +86,7 @@
 ## Professional Activities
 
 <!-- pusnow activity start -->
-* 2022: EuroSys'22 Shadow PC
+- 2022: EuroSys'22 Shadow PC
 <!-- pusnow activity end -->
 
 ---

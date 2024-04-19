@@ -29,7 +29,7 @@ CONFIG = {}
 BASE_URL = ""
 
 ABOUT_FILES = {
-    "about.md": "en",
+    "_index.md": "en",
     "about-ko.md": "ko",
 }
 

@@ -12,25 +12,27 @@ name = "Home"
 url = ""
 weight = 1
 
+
+[[menu.main]]
+name = "Notes"
+url = "note/"
+weight = 2
+
 [[menu.main]]
 name = "Hiking"
 url = "hiking/"
-weight = 2
+weight = 3
 
 [[menu.main]]
 name = "Reading"
 url = "reading/"
-weight = 3
+weight = 4
 
 [[menu.main]]
 name = "Tags"
 url = "tags/"
-weight = 4
-
-[[menu.main]]
-name = "About"
-url = "about/"
 weight = 5
+
 
 [params]
 footer = "&copy; [Wonsup Yoon](https://www.pusnow.com) | [GitHub](https://github.com/pusnow) | Original theme: [Hugo xmin](https://github.com/yihui/hugo-xmin)"
