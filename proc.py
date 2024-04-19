@@ -402,9 +402,9 @@ def handle_activity(text, lang="en"):
         if not title:
             title = activity.get("title", "")
         if lang == "en":
-            activity_list.append("%s: %s" % (year, title))
+            activity_list.append("* %s: %s" % (year, title))
         elif lang == "ko":
-            activity_list.append("%s년: %s" % (year, title))
+            activity_list.append("* %s년: %s" % (year, title))
 
     activity_list.append(ACTIVITY_END)
     result = re.sub(
