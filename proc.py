@@ -13,6 +13,8 @@ PUB_START = "<!-- pusnow publication start -->"
 PUB_END = "<!-- pusnow publication end -->"
 AWD_START = "<!-- pusnow award start -->"
 AWD_END = "<!-- pusnow award end -->"
+ACTIVITY_START = "<!-- pusnow activity start -->"
+ACTIVITY_END = "<!-- pusnow activity end -->"
 
 MY_NAME = set(["Wonsup Yoon"])
 
@@ -381,6 +383,39 @@ def handle_award(text, lang="en"):
     return result
 
 
+def handle_activity(text, lang="en"):
+    if not re.search(ACTIVITY_START + ".*?" + ACTIVITY_END, text, flags=re.DOTALL):
+        return text
+
+    activity_dict = {}
+
+    activities = sorted(
+        filter(lambda x: "year" in x, PUSNOW.get("activity", [])),
+        key=lambda x: x["year"],
+        reverse=True,
+    )
+    activity_list = [ACTIVITY_START]
+    for activity in activities:
+        year = activity["year"]
+
+        title = activity.get("title-" + lang, "")
+        if not title:
+            title = activity.get("title", "")
+        if lang == "en":
+            activity_list.append("%s: %s" % (year, title))
+        elif lang == "ko":
+            activity_list.append("%s년: %s" % (year, title))
+
+    activity_list.append(ACTIVITY_END)
+    result = re.sub(
+        ACTIVITY_START + ".*?" + ACTIVITY_END,
+        "\n".join(activity_list),
+        text,
+        flags=re.DOTALL,
+    )
+    return result
+
+
 def handle_markdown(fname):
     fname = pathlib.Path(fname)
     if not fname.is_file():
@@ -394,10 +429,11 @@ def handle_markdown(fname):
         updateted_text = original
         updateted_text = handle_cite(updateted_text)
         updateted_text = handle_publication(updateted_text)
-
-        if fname.name in ABOUT_FILES:
-            lang = ABOUT_FILES[fname.name]
+        basename = pathlib.Path(fname.name).name
+        if basename in ABOUT_FILES:
+            lang = ABOUT_FILES[basename]
             updateted_text = handle_award(updateted_text, lang)
+            updateted_text = handle_activity(updateted_text, lang)
 
     if updateted_text:
         with open(fname, "w", encoding="utf8") as f:

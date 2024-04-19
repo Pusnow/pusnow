@@ -77,6 +77,14 @@
 
 ---
 
+## Professional Activities
+
+<!-- pusnow activity start -->
+2022년: EuroSys'22 Shadow PC
+<!-- pusnow activity end -->
+
+---
+
 ## 경력
 
 <div class="normal-print-a">

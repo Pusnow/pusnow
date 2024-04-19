@@ -80,7 +80,9 @@
 
 ## Professional Activities
 
-- 2022: EuroSys'22 Shadow PC
+<!-- pusnow activity start -->
+2022: EuroSys'22 Shadow PC
+<!-- pusnow activity end -->
 
 ---
 
