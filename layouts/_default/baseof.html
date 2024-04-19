@@ -25,9 +25,7 @@
     <hr />
 </nav>
 
-{{if not .IsHome }}
 <h1>{{ $page_title | markdownify }}</h1>
-{{ end }}
 
 {{ block "body" . }}{{ end }}
 
