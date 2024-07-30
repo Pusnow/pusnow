@@ -23,20 +23,16 @@ name = "Hiking"
 url = "hiking/"
 weight = 3
 
-[[menu.main]]
-name = "Reading"
-url = "reading/"
-weight = 4
 
 [[menu.main]]
 name = "Tags"
 url = "tags/"
-weight = 5
+weight = 4
 
 [[menu.main]]
 name = "CV"
 url = "pdf/cv.pdf"
-weight = 6
+weight = 5
 
 
 [params]
