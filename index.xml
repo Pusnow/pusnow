@@ -161,12 +161,5 @@
       <guid>https://www.pusnow.com/hiking/</guid>
       <description></description>
     </item>
-    <item>
-      <title>Readling Log</title>
-      <link>https://www.pusnow.com/reading/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://www.pusnow.com/reading/</guid>
-      <description></description>
-    </item>
   </channel>
 </rss>
