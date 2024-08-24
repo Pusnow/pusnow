@@ -84,6 +84,16 @@ aliases:
 
 ---
 
+## Invited Talks
+
+<!-- pusnow talk start -->
+* KIISE KCC'24: Efficient Memory Disaggregation Systems Using Unikernel
+* KIISE KCC'24: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
+* EuroDW'23: Designing a Latency-Optimized Scheduler for Memory Disaggregation
+<!-- pusnow talk end -->
+
+---
+
 ## Professional Activities
 
 <!-- pusnow activity start -->

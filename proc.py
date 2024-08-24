@@ -220,6 +220,32 @@ class Activities(BaseBlock):
         return "\n".join(activity_texts)
 
 
+class Talks(BaseBlock):
+    name = "talk"
+
+    def __init__(self, mode="md", lang="en"):
+        super().__init__(mode, lang)
+        self.talks = []
+
+    def add(self, year, title, org, note):
+        self.talks.append((year, title, org, note))
+
+    def do_markdown(self):
+        talk_text = []
+        for _, title, org, _ in sorted(self.talks, reverse=True):
+            talk_text.append("* %s: %s" % (org, title))
+        return "\n".join(talk_text)
+
+    def do_latex(self):
+        talk_text = []
+        for year, title, org, note in sorted(self.talks, reverse=True):
+            talk_text.append(
+                "\\resumeSubheading{%s}{%s}{%s}{%s}"
+                % (latex(title), latex(org), latex(note), latex(year))
+            )
+        return "\n".join(talk_text)
+
+
 REF_START = "<!-- pusnow reference start -->"
 REF_END = "<!-- pusnow reference end -->"
 
@@ -586,6 +612,24 @@ def handle_activity(text, lang="en", mode="md"):
     result = activities_blk.replace_block(text)
     return result
 
+def handle_talk(text, lang="en", mode="md"):
+    talks_blk = Talks(mode, lang)
+    if not talks_blk.find_block(text):
+        return text
+    for talk in PUSNOW.get("talk", []):
+        year = talk["year"]
+
+        title = talk.get("title-" + lang, "")
+        if not title:
+            title = talk.get("title", "")
+
+        note = talk.get("note", "")
+        org = talk.get("org", "")
+        talks_blk.add(year, title, org, note)
+
+    result = talks_blk.replace_block(text)
+    return result
+
 
 def handle_markdown(fname):
     fname = pathlib.Path(fname)
@@ -605,6 +649,7 @@ def handle_markdown(fname):
             updateted_text = handle_publication(updateted_text)
             updateted_text = handle_award(updateted_text, lang)
             updateted_text = handle_activity(updateted_text, lang)
+            updateted_text = handle_talk(updateted_text, lang)
 
     if updateted_text:
         with open(fname, "w", encoding="utf8") as f:
@@ -624,6 +669,7 @@ def handle_latex(fname):
         updateted_text = handle_publication(updateted_text, "latex")
         updateted_text = handle_award(updateted_text, "en", "latex")
         updateted_text = handle_activity(updateted_text, "en", "latex")
+        updateted_text = handle_talk(updateted_text, "en", "latex")
 
     if updateted_text:
         with open(fname, "w", encoding="utf8") as f:
