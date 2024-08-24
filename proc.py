@@ -122,10 +122,12 @@ def format_authors_md(authors, bold=True):
         author_text = ", ".join(authors2[:-1]) + ", and " + authors2[-1]
     return author_text
 
+
 def add_dot(text):
     if text[-1] == ".":
         return text
     return text + "."
+
 
 class Publications(BaseBlock):
     name = "publication"
@@ -161,14 +163,28 @@ class Publications(BaseBlock):
         return "\n".join(pub_texts)
 
 
+class Activities(BaseBlock):
+    name = "activity"
+
+    def __init__(self, mode="md", lang="en"):
+        super().__init__(mode, lang)
+        self.activity = []
+
+    def add(self, year, title):
+        self.activity.append((year, title))
+
+    def do_markdown(self):
+        activity_texts = []
+        for year, title in sorted(self.activity, reverse=True):
+            if self.lang == "en":
+                activity_texts.append("* %s: %s" % (year, title))
+            elif self.lang == "ko":
+                activity_texts.append("* %s년: %s" % (year, title))
+        return "\n".join(activity_texts)
+
+
 REF_START = "<!-- pusnow reference start -->"
 REF_END = "<!-- pusnow reference end -->"
-PUB_START = "<!-- pusnow publication start -->"
-PUB_END = "<!-- pusnow publication end -->"
-AWD_START = "<!-- pusnow award start -->"
-AWD_END = "<!-- pusnow award end -->"
-ACTIVITY_START = "<!-- pusnow activity start -->"
-ACTIVITY_END = "<!-- pusnow activity end -->"
 
 MY_NAME = set(["Wonsup Yoon"])
 
@@ -208,9 +224,6 @@ with open("config.toml", "rb") as f:
 
 with open("data/pusnow.toml", "rb") as f:
     PUSNOW = tomllib.load(f)
-
-
-
 
 
 def parse_dblp(cite, xml_txt):
@@ -507,35 +520,19 @@ def handle_award(text, lang="en"):
 
 
 def handle_activity(text, lang="en"):
-    if not re.search(ACTIVITY_START + ".*?" + ACTIVITY_END, text, flags=re.DOTALL):
+    activities_blk = Activities("md", lang)
+    if not activities_blk.find_block(text):
         return text
 
-    activity_dict = {}
-
-    activities = sorted(
-        filter(lambda x: "year" in x, PUSNOW.get("activity", [])),
-        key=lambda x: x["year"],
-        reverse=True,
-    )
-    activity_list = [ACTIVITY_START]
-    for activity in activities:
+    for activity in PUSNOW.get("activity", []):
         year = activity["year"]
 
         title = activity.get("title-" + lang, "")
         if not title:
             title = activity.get("title", "")
-        if lang == "en":
-            activity_list.append("* %s: %s" % (year, title))
-        elif lang == "ko":
-            activity_list.append("* %s년: %s" % (year, title))
+        activities_blk.add(year, title)
 
-    activity_list.append(ACTIVITY_END)
-    result = re.sub(
-        ACTIVITY_START + ".*?" + ACTIVITY_END,
-        "\n".join(activity_list),
-        text,
-        flags=re.DOTALL,
-    )
+    result = activities_blk.replace_block(text)
     return result
 
 
@@ -546,7 +543,6 @@ def handle_markdown(fname):
 
     print("Handling:", fname)
     updateted_text = None
-
 
     with open(fname, "r", encoding="utf8") as f:
         original = f.read()
