@@ -12,7 +12,7 @@ aliases:
 
 - Virtualization: unikernels, microVM, containers, etc.
 - Networking: RDMA, virtio, etc.
-- Datacenter: resource disaggregation, micrsecond-scale systems, etc.
+- Datacenter: resource disaggregation, microsecond-scale systems, etc.
 
 ---
 
