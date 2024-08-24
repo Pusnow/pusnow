@@ -8,6 +8,102 @@ import urllib.request
 import xml.etree.ElementTree as ET
 import subprocess
 
+
+def md_comment(text):
+    return "<!-- %s -->" % text
+
+
+def latex_comment(text):
+    return "%%%%%% %s" % text
+
+
+class BaseBlock:
+    def __init__(self, mode="md", lang="en"):
+        self.mode = mode
+        self.lang = lang
+
+    def comment_start(self):
+        if self.mode == "md":
+            return "<!-- pusnow %s start -->" % self.name
+        elif self.mode == "latex":
+            return "%%%%%% pusnow %s start" % self.name
+        else:
+            raise NotImplementedError
+
+    def comment_end(self):
+        if self.mode == "md":
+            return "<!-- pusnow %s end -->" % self.name
+        elif self.mode == "latex":
+            return "%%%%%% pusnow %s end" % self.name
+        else:
+            raise NotImplementedError
+
+    def block(self):
+        block = ""
+        if self.mode == "md":
+            block = self.do_markdown()
+        elif self.mode == "latex":
+            block = self.do_latex()
+        else:
+            raise NotImplementedError
+
+        return "%s\n%s\n%s" % (
+            self.comment_start(),
+            block,
+            self.comment_end(),
+        )
+
+    def find_block(self, text):
+        return re.search(
+            "%s.*?%s" % (self.comment_start(), self.comment_end()),
+            text,
+            flags=re.DOTALL,
+        )
+
+    def replace_block(self, text):
+        return re.sub(
+            "%s.*?%s" % (self.comment_start(), self.comment_end()),
+            self.block(),
+            text,
+            flags=re.DOTALL,
+        )
+
+
+class Awards(BaseBlock):
+    name = "award"
+
+    def __init__(self, mode="md", lang="en"):
+        super().__init__(mode, lang)
+        self.awards = {}
+
+    def add(self, title, org, year, month):
+        if (title, org) not in self.awards:
+            self.awards[(title, org)] = []
+        self.awards[(title, org)].append((year, month))
+
+    def do_common(self, fmt):
+        award_list = []
+        for awd_key in sorted(
+            self.awards, key=lambda x: max(self.awards[x]), reverse=True
+        ):
+            title, org = awd_key
+            mon_year_list = []
+            for year, month in sorted(self.awards[awd_key]):
+                if self.lang == "en":
+                    mon_year_list.append("*%s* %s" % (MONTH_EN[month], year))
+                elif self.lang == "ko":
+                    mon_year_list.append("%s년 %s월" % (year, month))
+            mon_year = ", ".join(mon_year_list)
+            award_list.append(fmt % (mon_year, title, org))
+        return "\n".join(award_list)
+
+    def do_markdown(self):
+        return self.do_common("- %s: %s, **%s**")
+
+    def do_latext(self):
+        return self.do_common("- %s: %s, **%s**")
+
+
 REF_START = "<!-- pusnow reference start -->"
 REF_END = "<!-- pusnow reference end -->"
 PUB_START = "<!-- pusnow publication start -->"
@@ -341,10 +437,9 @@ def handle_publication(text):
 
 
 def handle_award(text, lang="en"):
-    if not re.search(AWD_START + ".*?" + AWD_END, text, flags=re.DOTALL):
+    awards_blk = Awards("md", lang)
+    if not awards_blk.find_block(text):
         return text
-
-    award_dict = {}
 
     awards = PUSNOW.get("award", [])
     for awd in awards:
@@ -361,26 +456,10 @@ def handle_award(text, lang="en"):
         org = awd.get("org-" + lang, "")
         if not org:
             org = awd.get("org", "")
-        if (title, org) not in award_dict:
-            award_dict[(title, org)] = []
-        award_dict[(title, org)].append((year, month))
 
-    award_list = [AWD_START]
-    for awd_key in sorted(award_dict, key=lambda x: max(award_dict[x]), reverse=True):
-        title, org = awd_key
-        mon_year_list = []
-        for year, month in sorted(award_dict[awd_key]):
-            if lang == "en":
-                mon_year_list.append("*%s* %s" % (MONTH_EN[month], year))
-            elif lang == "ko":
-                mon_year_list.append("%s년 %s월" % (year, month))
-        mon_year = ", ".join(mon_year_list)
-        award_list.append("- %s: %s, **%s**" % (mon_year, title, org))
+        awards_blk.add(title, org, year, month)
 
-    award_list.append(AWD_END)
-    result = re.sub(
-        AWD_START + ".*?" + AWD_END, "\n".join(award_list), text, flags=re.DOTALL
-    )
+    result = awards_blk.replace_block(text)
     return result
 
 
