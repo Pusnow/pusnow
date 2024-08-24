@@ -104,6 +104,63 @@ class Awards(BaseBlock):
         return self.do_common("- %s: %s, **%s**")
 
 
+def format_authors_md(authors, bold=True):
+    author_text = ""
+
+    authors2 = []
+    for author in authors:
+        if bold and author in MY_NAME:
+            authors2.append("**%s**" % author)
+        else:
+            authors2.append(author)
+
+    if len(authors2) == 1:
+        author_text = authors2[0]
+    elif len(authors2) == 2:
+        author_text = " and ".join(authors2)
+    elif len(authors2) > 2:
+        author_text = ", ".join(authors2[:-1]) + ", and " + authors2[-1]
+    return author_text
+
+def add_dot(text):
+    if text[-1] == ".":
+        return text
+    return text + "."
+
+class Publications(BaseBlock):
+    name = "publication"
+
+    def __init__(self, mode="md", lang="en"):
+        super().__init__(mode, lang)
+        self.pubs = []
+
+    def add(self, title, url, slides, authors, where, year, note):
+        self.pubs.append((title, url, slides, authors, where, year, note))
+
+    def do_markdown(self):
+        pub_texts = []
+        for title, url, slides, authors, where, year, note in self.pubs:
+            ee = ""
+
+            if url:
+                ee = " [[Link]](%s)" % url
+            if slides:
+                ee += " [[Slides]](%s)" % slides
+
+            pub_text = "- %s%s\n  - %s\n  - *%s* %s" % (
+                add_dot(title),
+                ee,
+                format_authors_md(authors),
+                add_dot(where),
+                year,
+            )
+            if note:
+                pub_text += "\n  - %s" % note
+            pub_texts.append(pub_text)
+
+        return "\n".join(pub_texts)
+
+
 REF_START = "<!-- pusnow reference start -->"
 REF_END = "<!-- pusnow reference end -->"
 PUB_START = "<!-- pusnow publication start -->"
@@ -153,29 +210,7 @@ with open("data/pusnow.toml", "rb") as f:
     PUSNOW = tomllib.load(f)
 
 
-def add_dot(text):
-    if text[-1] == ".":
-        return text
-    return text + "."
 
-
-def format_authors(authors, bold=True):
-    author_text = ""
-
-    authors2 = []
-    for author in authors:
-        if bold and author in MY_NAME:
-            authors2.append("**%s**" % author)
-        else:
-            authors2.append(author)
-
-    if len(authors2) == 1:
-        author_text = authors2[0]
-    elif len(authors2) == 2:
-        author_text = " and ".join(authors2)
-    elif len(authors2) > 2:
-        author_text = ", ".join(authors2[:-1]) + ", and " + authors2[-1]
-    return author_text
 
 
 def parse_dblp(cite, xml_txt):
@@ -295,13 +330,8 @@ def fetch_and_parse_cite(cite):
     return (cite, {})
 
 
-def generate_publication():
-    cp = pathlib.Path("content/publication")
-    for child in cp.glob("*.md"):
-        if child.is_file():
-            child.unlink()
+def list_publication():
     publications = PUSNOW.get("publication", [])
-    pubs = []
     for pub in publications:
         pub2 = {}
         if "cite" in pub:
@@ -310,11 +340,33 @@ def generate_publication():
         for key in pub:
             pub2[key] = pub[key]
 
-        authors = pub2.get("authors", [])
-        ees = pub2.get("ees", [])
-        right = pub2.get("right", "acmlicensed")
-        pdf = pub2.get("pdf", None)
-        if pdf:
+        yield {
+            "authors": pub2.get("authors", []),
+            "ees": pub2.get("ees", []),
+            "right": pub2.get("right", "acmlicensed"),
+            "pdf": pub2.get("pdf", None),
+            "slides": pub2.get("slides", ""),
+            "note": pub2.get("note", ""),
+            "title": pub2["title"],
+            "where": pub2["where"],
+            "year": pub2["year"],
+            "month": pub2["month"],
+            "day": pub2["day"],
+        }
+
+
+def generate_publication():
+    cp = pathlib.Path("content/publication")
+    for child in cp.glob("*.md"):
+        if child.is_file():
+            child.unlink()
+    for pub in list_publication():
+        pdf = pub["pdf"]
+        ees = pub["ees"]
+        authors = pub["authors"]
+        right = pub["right"]
+
+        if pub["pdf"]:
             copyright_text = ""
             if ees:
                 doi_text = f", [{ees[0]}]({ees[0]})"
@@ -323,30 +375,30 @@ def generate_publication():
             if right == "acmcopyright":
                 copyright_text = ACM_COPYRIGHT % (
                     "ACM",
-                    pub2["year"],
-                    pub2["where"],
+                    pub["year"],
+                    pub["where"],
                     doi_text,
                 )
             elif right == "acmlicensed":
                 copyright_text = ACM_COPYRIGHT % (
-                    format_authors(authors, False),
-                    pub2["year"],
-                    pub2["where"],
+                    format_authors_md(authors, False),
+                    pub["year"],
+                    pub["where"],
                     doi_text,
                 )
             with open("content/publication/%s.md" % pdf, "w", encoding="utf8") as f:
                 pdf_code = '{{% pdf "' + f"/publication/{pdf}.pdf" + '" %}}'
                 f.write(
                     f"""---
-title: "{pub2["title"]}"
-date: {pub2["year"]}-{pub2["month"]:02}-{pub2["day"]:02}
+title: "{pub["title"]}"
+date: {pub["year"]}-{pub["month"]:02}-{pub["day"]:02}
 nogitdate: true
 pdf: "/publication/{pdf}.pdf"
 tags:
     - Publication
 ---
 
-{pub2["where"]}
+{pub["where"]}
 
 {copyright_text}
 
@@ -355,32 +407,6 @@ tags:
 {pdf_code}
 """
                 )
-
-        slides = pub2.get("slides", "")
-        if pdf:
-            ee = f" [[Link]]({BASE_URL}publication/{pdf}/)"
-        elif ees:
-            ee = " [[Link]](%s)" % ees[0]
-        else:
-            ee = ""
-
-        if slides:
-            ee += " [[Slides]](%s)" % slides
-        author_text = format_authors(authors)
-        note_text = pub2.get("note", "")
-        pub_text = "- %s%s\n  - %s\n  - *%s* %s" % (
-            add_dot(pub2["title"]),
-            ee,
-            author_text,
-            add_dot(pub2["where"]),
-            pub2["year"],
-        )
-        if note_text:
-            pub_text += "\n  - %s" % note_text
-
-        pubs.append(pub_text)
-    result = "\n".join(pubs)
-    return PUB_START + "\n" + result + "\n" + PUB_END
 
 
 def handle_cite(text):
@@ -401,7 +427,7 @@ def handle_cite(text):
         parsed = results.get(cite, {})
         if not parsed:
             continue
-        author_text = format_authors(parsed["authors"])
+        author_text = format_authors_md(parsed["authors"])
         title_text = parsed["title"]
 
         title_text = add_dot(title_text)
@@ -427,12 +453,29 @@ def handle_cite(text):
 
 
 def handle_publication(text):
-    if not re.search(PUB_START + ".*?" + PUB_END, text, flags=re.DOTALL):
+    publications_blk = Publications("md")
+    if not publications_blk.find_block(text):
         return text
-    publication_text = generate_publication()
-    result = re.sub(
-        PUB_START + ".*?" + PUB_END, publication_text, text, flags=re.DOTALL
-    )
+
+    for pub in list_publication():
+        if pub["pdf"]:
+            url = f"{BASE_URL}publication/{pub["pdf"]}/"
+        elif pub["ees"]:
+            url = pub["ees"][0]
+        else:
+            url = ""
+
+        publications_blk.add(
+            pub["title"],
+            url,
+            pub["slides"],
+            pub["authors"],
+            pub["where"],
+            pub["year"],
+            pub["note"],
+        )
+
+    result = publications_blk.replace_block(text)
     return result
 
 
@@ -504,14 +547,15 @@ def handle_markdown(fname):
     print("Handling:", fname)
     updateted_text = None
 
+
     with open(fname, "r", encoding="utf8") as f:
         original = f.read()
         updateted_text = original
         updateted_text = handle_cite(updateted_text)
-        updateted_text = handle_publication(updateted_text)
         basename = pathlib.Path(fname.name).name
         if basename in ABOUT_FILES:
             lang = ABOUT_FILES[basename]
+            updateted_text = handle_publication(updateted_text)
             updateted_text = handle_award(updateted_text, lang)
             updateted_text = handle_activity(updateted_text, lang)
 
@@ -537,6 +581,7 @@ if len(sys.argv) > 1:
     for fname in sys.argv[1:]:
         handle_markdown(fname)
 else:
+    generate_publication()
     content = pathlib.Path("content/")
     for fname in content.glob("**/*.md"):
         handle_markdown(fname)
