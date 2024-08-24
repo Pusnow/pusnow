@@ -380,7 +380,15 @@ def fetch_and_parse_cite(cite):
     return (cite, {})
 
 
+PUBLICATIONS_LIST = None
+
+
 def list_publication():
+    global PUBLICATIONS_LIST
+    if PUBLICATIONS_LIST is not None:
+        return PUBLICATIONS_LIST
+
+    PUBLICATIONS_LIST = []
     publications = PUSNOW.get("publication", [])
     for pub in publications:
         pub2 = {}
@@ -390,19 +398,22 @@ def list_publication():
         for key in pub:
             pub2[key] = pub[key]
 
-        yield {
-            "authors": pub2.get("authors", []),
-            "ees": pub2.get("ees", []),
-            "right": pub2.get("right", "acmlicensed"),
-            "pdf": pub2.get("pdf", None),
-            "slides": pub2.get("slides", ""),
-            "note": pub2.get("note", ""),
-            "title": pub2["title"],
-            "where": pub2["where"],
-            "year": pub2["year"],
-            "month": pub2["month"],
-            "day": pub2["day"],
-        }
+        PUBLICATIONS_LIST.append(
+            {
+                "authors": pub2.get("authors", []),
+                "ees": pub2.get("ees", []),
+                "right": pub2.get("right", "acmlicensed"),
+                "pdf": pub2.get("pdf", None),
+                "slides": pub2.get("slides", ""),
+                "note": pub2.get("note", ""),
+                "title": pub2["title"],
+                "where": pub2["where"],
+                "year": pub2["year"],
+                "month": pub2["month"],
+                "day": pub2["day"],
+            }
+        )
+    return PUBLICATIONS_LIST
 
 
 def generate_publication():
