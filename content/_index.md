@@ -79,7 +79,7 @@ aliases:
 - *Dec.* 2015, *Sep.* 2016: The National Scholarship for Science and Engineering, **Korea Student Aid Foundation**
 - *Sep.* 2015, *Mar.* 2016: Yonsei Internal Scholarship, **Yonsei University**
 - *Feb.* 2015, *Aug.* 2015, *Feb.* 2016: Awarded Honors (Top 10%), **Yonsei University**
-- *Aug.* 2015: Korea Telecom Scholarship, **KT**
+- *Aug.* 2015: Korea Telecom Scholarship, **Korea Telecom**
 <!-- pusnow award end -->
 
 ---

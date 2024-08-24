@@ -9,12 +9,11 @@ import xml.etree.ElementTree as ET
 import subprocess
 
 
-def md_comment(text):
-    return "<!-- %s -->" % text
-
-
-def latex_comment(text):
-    return "%%%%%% %s" % text
+def latex(text):
+    if isinstance(text, str):
+        return text.replace("%", "\\%")
+    else:
+        return text
 
 
 class BaseBlock:
@@ -26,7 +25,7 @@ class BaseBlock:
         if self.mode == "md":
             return "<!-- pusnow %s start -->" % self.name
         elif self.mode == "latex":
-            return "%%%%%% pusnow %s start" % self.name
+            return "%%%%%% pusnow %s start %%%%%%" % self.name
         else:
             raise NotImplementedError
 
@@ -34,7 +33,7 @@ class BaseBlock:
         if self.mode == "md":
             return "<!-- pusnow %s end -->" % self.name
         elif self.mode == "latex":
-            return "%%%%%% pusnow %s end" % self.name
+            return "%%%%%% pusnow %s end %%%%%%" % self.name
         else:
             raise NotImplementedError
 
@@ -46,7 +45,6 @@ class BaseBlock:
             block = self.do_latex()
         else:
             raise NotImplementedError
-
         return "%s\n%s\n%s" % (
             self.comment_start(),
             block,
@@ -61,9 +59,10 @@ class BaseBlock:
         )
 
     def replace_block(self, text):
+        block = self.block()
         return re.sub(
             "%s.*?%s" % (self.comment_start(), self.comment_end()),
-            self.block(),
+            lambda x: block,
             text,
             flags=re.DOTALL,
         )
@@ -75,13 +74,18 @@ class Awards(BaseBlock):
     def __init__(self, mode="md", lang="en"):
         super().__init__(mode, lang)
         self.awards = {}
+        self.awards_note = {}
 
-    def add(self, title, org, year, month):
+    def add(self, title, org, year, month, note):
         if (title, org) not in self.awards:
             self.awards[(title, org)] = []
         self.awards[(title, org)].append((year, month))
+        if (title, org) not in self.awards_note:
+            self.awards_note[(title, org)] = ""
+        if not self.awards_note[(title, org)]:
+            self.awards_note[(title, org)] = note
 
-    def do_common(self, fmt):
+    def do_common(self, func):
         award_list = []
         for awd_key in sorted(
             self.awards, key=lambda x: max(self.awards[x]), reverse=True
@@ -90,37 +94,48 @@ class Awards(BaseBlock):
             mon_year_list = []
             for year, month in sorted(self.awards[awd_key]):
                 if self.lang == "en":
-                    mon_year_list.append("*%s* %s" % (MONTH_EN[month], year))
+                    if self.mode == "md":
+                        mon_year_list.append("*%s* %s" % (MONTH_EN[month], year))
+                    elif self.mode == "latex":
+                        mon_year_list.append("%s %s" % (MONTH_EN[month], year))
                 elif self.lang == "ko":
                     mon_year_list.append("%s년 %s월" % (year, month))
-            mon_year = ", ".join(mon_year_list)
-            award_list.append(fmt % (mon_year, title, org))
+            note = self.awards_note[awd_key]
+            award_list.append(func(mon_year_list, title, org, note))
         return "\n".join(award_list)
 
     def do_markdown(self):
-        return self.do_common("- %s: %s, **%s**")
+        return self.do_common(
+            lambda mon_year, title, org, note: "- %s: %s, **%s**"
+            % (", ".join(mon_year), title, org)
+        )
 
-    def do_latext(self):
-        return self.do_common("- %s: %s, **%s**")
+    def do_latex(self):
+        return self.do_common(
+            lambda mon_year, title, org, note: "\\resumeSubheading {%s}{%s}{%s}{%s}"
+            % (latex(title), latex(org), latex(note), latex(format_and(mon_year)))
+        )
 
 
-def format_authors_md(authors, bold=True):
-    author_text = ""
+def format_and(words):
+    if len(words) == 1:
+        text = words[0]
+    elif len(words) == 2:
+        text = " and ".join(words)
+    elif len(words) > 2:
+        text = ", ".join(words[:-1]) + ", and " + words[-1]
+    return text
 
+
+def format_authors(authors, bold=None):
     authors2 = []
     for author in authors:
         if bold and author in MY_NAME:
-            authors2.append("**%s**" % author)
+            authors2.append(bold % author)
         else:
             authors2.append(author)
 
-    if len(authors2) == 1:
-        author_text = authors2[0]
-    elif len(authors2) == 2:
-        author_text = " and ".join(authors2)
-    elif len(authors2) > 2:
-        author_text = ", ".join(authors2[:-1]) + ", and " + authors2[-1]
-    return author_text
+    return format_and(authors2)
 
 
 def add_dot(text):
@@ -152,12 +167,25 @@ class Publications(BaseBlock):
             pub_text = "- %s%s\n  - %s\n  - *%s* %s" % (
                 add_dot(title),
                 ee,
-                format_authors_md(authors),
+                format_authors(authors, "**%s**"),
                 add_dot(where),
                 year,
             )
             if note:
                 pub_text += "\n  - %s" % note
+            pub_texts.append(pub_text)
+
+        return "\n".join(pub_texts)
+
+    def do_latex(self):
+        pub_texts = []
+        for title, url, slides, authors, where, year, note in self.pubs:
+            pub_text = "\\resumePub{%s. %s In \\textit{%s} %s.}" % (
+                format_authors(authors, "\\textbf{%s}"),
+                add_dot(latex(title)),
+                add_dot(latex(where)),
+                year,
+            )
             pub_texts.append(pub_text)
 
         return "\n".join(pub_texts)
@@ -170,16 +198,25 @@ class Activities(BaseBlock):
         super().__init__(mode, lang)
         self.activity = []
 
-    def add(self, year, title):
-        self.activity.append((year, title))
+    def add(self, year, title, org, note):
+        self.activity.append((year, title, org, note))
 
     def do_markdown(self):
         activity_texts = []
-        for year, title in sorted(self.activity, reverse=True):
+        for year, title, _, _ in sorted(self.activity, reverse=True):
             if self.lang == "en":
                 activity_texts.append("* %s: %s" % (year, title))
             elif self.lang == "ko":
                 activity_texts.append("* %s년: %s" % (year, title))
+        return "\n".join(activity_texts)
+
+    def do_latex(self):
+        activity_texts = []
+        for year, title, org, note in sorted(self.activity, reverse=True):
+            activity_texts.append(
+                "\\resumeSubheading{%s}{%s}{%s}{%s}"
+                % (latex(title), latex(org), latex(note), latex(year))
+            )
         return "\n".join(activity_texts)
 
 
@@ -394,7 +431,7 @@ def generate_publication():
                 )
             elif right == "acmlicensed":
                 copyright_text = ACM_COPYRIGHT % (
-                    format_authors_md(authors, False),
+                    format_authors(authors, False),
                     pub["year"],
                     pub["where"],
                     doi_text,
@@ -440,7 +477,7 @@ def handle_cite(text):
         parsed = results.get(cite, {})
         if not parsed:
             continue
-        author_text = format_authors_md(parsed["authors"])
+        author_text = format_authors(parsed["authors"], "**%s**")
         title_text = parsed["title"]
 
         title_text = add_dot(title_text)
@@ -465,8 +502,8 @@ def handle_cite(text):
         return text
 
 
-def handle_publication(text):
-    publications_blk = Publications("md")
+def handle_publication(text, mode="md"):
+    publications_blk = Publications(mode)
     if not publications_blk.find_block(text):
         return text
 
@@ -492,8 +529,8 @@ def handle_publication(text):
     return result
 
 
-def handle_award(text, lang="en"):
-    awards_blk = Awards("md", lang)
+def handle_award(text, lang="en", mode="md"):
+    awards_blk = Awards(mode, lang)
     if not awards_blk.find_block(text):
         return text
 
@@ -504,6 +541,7 @@ def handle_award(text, lang="en"):
 
         year = awd["year"]
         month = awd["month"]
+        note = awd.get("note", "")
 
         title = awd.get("title-" + lang, "")
         if not title:
@@ -513,24 +551,26 @@ def handle_award(text, lang="en"):
         if not org:
             org = awd.get("org", "")
 
-        awards_blk.add(title, org, year, month)
+        awards_blk.add(title, org, year, month, note)
 
     result = awards_blk.replace_block(text)
     return result
 
 
-def handle_activity(text, lang="en"):
-    activities_blk = Activities("md", lang)
+def handle_activity(text, lang="en", mode="md"):
+    activities_blk = Activities(mode, lang)
     if not activities_blk.find_block(text):
         return text
-
     for activity in PUSNOW.get("activity", []):
         year = activity["year"]
 
         title = activity.get("title-" + lang, "")
         if not title:
             title = activity.get("title", "")
-        activities_blk.add(year, title)
+
+        note = activity.get("note", "")
+        org = activity.get("org", "")
+        activities_blk.add(year, title, org, note)
 
     result = activities_blk.replace_block(text)
     return result
@@ -566,6 +606,17 @@ def handle_latex(fname):
         return
 
     print("Handling:", fname)
+    updateted_text = None
+    with open(fname, "r", encoding="utf8") as f:
+        original = f.read()
+        updateted_text = original
+        updateted_text = handle_publication(updateted_text, "latex")
+        updateted_text = handle_award(updateted_text, "en", "latex")
+        updateted_text = handle_activity(updateted_text, "en", "latex")
+
+    if updateted_text:
+        with open(fname, "w", encoding="utf8") as f:
+            f.write(updateted_text)
 
     subprocess.run(["pdflatex", "-output-directory", "latex", fname])
     subprocess.run(
@@ -582,6 +633,5 @@ else:
     for fname in content.glob("**/*.md"):
         handle_markdown(fname)
 
-    latex = pathlib.Path("latex/")
-    for fname in latex.glob("**/*.tex"):
+    for fname in pathlib.Path("latex/").glob("**/*.tex"):
         handle_latex(fname)

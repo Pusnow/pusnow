@@ -47,6 +47,7 @@ title = "SIGCOMM '23 Travel Grants (USD 1500)"
 org = "ACM SIGCOMM"
 title-ko = ""
 org-ko = ""
+note = "Awarded for travel to present at the ACM SIGCOMM 2023 conference."
 
 [[award]]
 year = 2023
@@ -55,6 +56,7 @@ title = "Best Paper Award"
 org = "APNet'23"
 title-ko = ""
 org-ko = ""
+note = "Awarded for the paper ``Host Efficient Networking Stack Utilizing NIC DRAM''."
 
 [[award]]
 year = 2021
@@ -63,6 +65,7 @@ title = "Best TA Award"
 org = "KAIST"
 title-ko = "우수 조교"
 org-ko = ""
+note = "Awarded for teaching the class Introduction to Computer Networks (CS341)."
 
 
 [[award]]
@@ -72,6 +75,7 @@ title = "Awarded High Honors (Top 3%)"
 org = "Yonsei University"
 title-ko = "우등상 (상위 3%)"
 org-ko = "연세대학교"
+note = "Awarded for outstanding performance in coursework."
 
 
 [[award]]
@@ -81,6 +85,7 @@ title = "Awarded High Honors (Top 3%)"
 org = "Yonsei University"
 title-ko = "우등상 (상위 3%)"
 org-ko = "연세대학교"
+note = "Awarded for outstanding performance in coursework."
 
 [[award]]
 year = 2015
@@ -89,6 +94,7 @@ title = "Yonsei Internal Scholarship"
 org = "Yonsei University"
 title-ko = "진리장학"
 org-ko = "연세대학교"
+note = "Awarded for outstanding performance in coursework."
 
 [[award]]
 year = 2016
@@ -97,6 +103,7 @@ title = "Yonsei Internal Scholarship"
 org = "Yonsei University"
 title-ko = "진리장학"
 org-ko = "연세대학교"
+note = "Awarded for outstanding performance in coursework."
 
 [[award]]
 year = 2015
@@ -105,6 +112,7 @@ title = "Awarded Honors (Top 10%)"
 org = "Yonsei University"
 title-ko = "우수상 (상위 10%)"
 org-ko = "연세대학교"
+note = "Awarded for outstanding performance in coursework."
 
 [[award]]
 year = 2015
@@ -113,6 +121,7 @@ title = "Awarded Honors (Top 10%)"
 org = "Yonsei University"
 title-ko = "우수상 (상위 10%)"
 org-ko = "연세대학교"
+note = "Awarded for outstanding performance in coursework."
 
 
 [[award]]
@@ -122,6 +131,7 @@ title = "Awarded Honors (Top 10%)"
 org = "Yonsei University"
 title-ko = "우수상 (상위 10%)"
 org-ko = "연세대학교"
+note = "Awarded for outstanding performance in coursework."
 
 
 [[award]]
@@ -131,6 +141,7 @@ title = "The National Scholarship for Science and Engineering"
 org = "Korea Student Aid Foundation"
 title-ko = "국가우수장학(이공계)"
 org-ko = "한국장학재단"
+note = "Awarded for outstanding performance in coursework."
 
 [[award]]
 year = 2016
@@ -139,17 +150,21 @@ title = "The National Scholarship for Science and Engineering"
 org = "Korea Student Aid Foundation"
 title-ko = "국가우수장학(이공계)"
 org-ko = "한국장학재단"
+note = "Awarded for outstanding performance in coursework."
 
 
 [[award]]
 year = 2015
 month = 8
 title = "Korea Telecom Scholarship"
-org = "KT"
+org = "Korea Telecom"
 title-ko = "KT창의혁신장학"
 org-ko = ""
+note = "Awarded for outstanding performance in coursework."
 
 
 [[activity]]
 year = 2022
 title = "EuroSys'22 Shadow PC"
+org = "EuroSys"
+note = "Served as a member of a shadow PC."
