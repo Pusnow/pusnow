@@ -178,10 +178,18 @@ note = "Invited for doctorial forum."
 year = 2023
 title = "Designing a Latency-Optimized Scheduler for Memory Disaggregation"
 org = "EuroDW'23"
-note = "Invited for the 17th EuroSys doctoral workshop"
+note = "Invited for the 17th EuroSys doctoral workshop."
+
+[[talk]]
+year = 2023
+title = "DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation"
+org = "Samsung GTS'23"
+note = "Invited for the Samsung Global Technology Symposium."
 
 [[activity]]
 year = 2022
 title = "EuroSys'22 Shadow PC"
 org = "EuroSys"
 note = "Served as a member of a shadow PC."
+
+
