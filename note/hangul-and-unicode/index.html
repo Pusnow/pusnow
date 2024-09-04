@@ -127,90 +127,90 @@
 <p>NFKC와 NFKD는 또 다른 NFC, NFD 정규화 방식이다. 많은 사람들이 NFC와 NFD만 한글 유니코드를 처리하는데 쓰이고 NFKD/NFD, NFKC/NFC의 차이가 없다고 생각한다. 이는 한글 음절/자모 유니코드에서 호환분해 과정과 정준분해 과정이 동일하기 때문에 생기는 인식이다.</p>
 <p>NFKC와 NFKD는 한글자모/한글음절 영역 이외의 한글 유니코드 영역을 처리할 때 유용하게 사용할 수 있다. 다음 표를 참고하면 각 유니코드 클자가 정규화 방식에 따라 어떻게 변하는 가를 확인할 수 있다.</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th>NFC</th>
-<th>NFD</th>
-<th>NFKC</th>
-<th>NFKD</th>
-<th>비고</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>각(AC01)</td>
-<td>각 (AC01)</td>
-<td>각 (1100 + 1161 + 11A8)</td>
-<td>각 (AC01)</td>
-<td>각 (1100 + 1161 + 11A8)</td>
-<td>한글음절</td>
-</tr>
-<tr>
-<td>ㄱ (1100)</td>
-<td>ᄀ (1100)</td>
-<td>ᄀ (1100)</td>
-<td>ᄀ (1100)</td>
-<td>ᄀ (1100)</td>
-<td>한글자모</td>
-</tr>
-<tr>
-<td>ㄱ (3131)</td>
-<td>ㄱ (3131)</td>
-<td>ㄱ (3131)</td>
-<td>ᄀ (1100)</td>
-<td>ᄀ (1100)</td>
-<td>호환자모</td>
-</tr>
-<tr>
-<td>㈀ (3200)</td>
-<td>㈀ (3200)</td>
-<td>㈀ (3200)</td>
-<td>(ㄱ) ( &lsquo;(&rsquo; + 1100 + &lsquo;)&rsquo; )</td>
-<td>(ㄱ) ( &lsquo;(&rsquo; + 1100 + &lsquo;)&rsquo; )</td>
-<td>자모괄호기호</td>
-</tr>
-<tr>
-<td>㈎ (320E)</td>
-<td>㈎ (320E)</td>
-<td>㈎ (320E)</td>
-<td>(가) ( &lsquo;(&rsquo; + AC00 +  &lsquo;)&rsquo; )</td>
-<td>(가) ( &lsquo;(&rsquo; + 1100 + 1161 +,&rsquo;)&rsquo; )</td>
-<td>음절괄호기호</td>
-</tr>
-<tr>
-<td>㈝㈝ (321D)</td>
-<td>㈝㈝ (321D)</td>
-<td>㈝㈝ (321D)</td>
-<td>(오전) ( &lsquo;(&rsquo; + C624 + C804 + &lsquo;)&rsquo; )</td>
-<td>(오전) ( &lsquo;(&rsquo; + 110B + 1169 + 110C + 1165 + 11ab + &lsquo;)&rsquo; )</td>
-<td>오전괄호기호</td>
-</tr>
-<tr>
-<td>㉠ (3260)</td>
-<td>㉠ (3260)</td>
-<td>㉠ (3260)</td>
-<td>ᄀ (1100)</td>
-<td>ᄀ (1100)</td>
-<td>자모원기호</td>
-</tr>
-<tr>
-<td>㉮ (326E)</td>
-<td>㉮ (326E)</td>
-<td>㉮ (326E)</td>
-<td>가 (AC00)</td>
-<td>가 (1100 + 1161)</td>
-<td>음절원기호</td>
-</tr>
-<tr>
-<td>ﾡ (FFA1)</td>
-<td>ﾡ (FFA1)</td>
-<td>ﾡ (FFA1)</td>
-<td>ᄀ(1100)</td>
-<td>ᄀ (1100)</td>
-<td>자모반각기호</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left">NFC</th>
+          <th style="text-align: left">NFD</th>
+          <th style="text-align: left">NFKC</th>
+          <th style="text-align: left">NFKD</th>
+          <th style="text-align: left">비고</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">각(AC01)</td>
+          <td style="text-align: left">각 (AC01)</td>
+          <td style="text-align: left">각 (1100 + 1161 + 11A8)</td>
+          <td style="text-align: left">각 (AC01)</td>
+          <td style="text-align: left">각 (1100 + 1161 + 11A8)</td>
+          <td style="text-align: left">한글음절</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ㄱ (1100)</td>
+          <td style="text-align: left">ᄀ (1100)</td>
+          <td style="text-align: left">ᄀ (1100)</td>
+          <td style="text-align: left">ᄀ (1100)</td>
+          <td style="text-align: left">ᄀ (1100)</td>
+          <td style="text-align: left">한글자모</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ㄱ (3131)</td>
+          <td style="text-align: left">ㄱ (3131)</td>
+          <td style="text-align: left">ㄱ (3131)</td>
+          <td style="text-align: left">ᄀ (1100)</td>
+          <td style="text-align: left">ᄀ (1100)</td>
+          <td style="text-align: left">호환자모</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">㈀ (3200)</td>
+          <td style="text-align: left">㈀ (3200)</td>
+          <td style="text-align: left">㈀ (3200)</td>
+          <td style="text-align: left">(ㄱ) ( &lsquo;(&rsquo; + 1100 + &lsquo;)&rsquo; )</td>
+          <td style="text-align: left">(ㄱ) ( &lsquo;(&rsquo; + 1100 + &lsquo;)&rsquo; )</td>
+          <td style="text-align: left">자모괄호기호</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">㈎ (320E)</td>
+          <td style="text-align: left">㈎ (320E)</td>
+          <td style="text-align: left">㈎ (320E)</td>
+          <td style="text-align: left">(가) ( &lsquo;(&rsquo; + AC00 +  &lsquo;)&rsquo; )</td>
+          <td style="text-align: left">(가) ( &lsquo;(&rsquo; + 1100 + 1161 +,&rsquo;)&rsquo; )</td>
+          <td style="text-align: left">음절괄호기호</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">㈝㈝ (321D)</td>
+          <td style="text-align: left">㈝㈝ (321D)</td>
+          <td style="text-align: left">㈝㈝ (321D)</td>
+          <td style="text-align: left">(오전) ( &lsquo;(&rsquo; + C624 + C804 + &lsquo;)&rsquo; )</td>
+          <td style="text-align: left">(오전) ( &lsquo;(&rsquo; + 110B + 1169 + 110C + 1165 + 11ab + &lsquo;)&rsquo; )</td>
+          <td style="text-align: left">오전괄호기호</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">㉠ (3260)</td>
+          <td style="text-align: left">㉠ (3260)</td>
+          <td style="text-align: left">㉠ (3260)</td>
+          <td style="text-align: left">ᄀ (1100)</td>
+          <td style="text-align: left">ᄀ (1100)</td>
+          <td style="text-align: left">자모원기호</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">㉮ (326E)</td>
+          <td style="text-align: left">㉮ (326E)</td>
+          <td style="text-align: left">㉮ (326E)</td>
+          <td style="text-align: left">가 (AC00)</td>
+          <td style="text-align: left">가 (1100 + 1161)</td>
+          <td style="text-align: left">음절원기호</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ﾡ (FFA1)</td>
+          <td style="text-align: left">ﾡ (FFA1)</td>
+          <td style="text-align: left">ﾡ (FFA1)</td>
+          <td style="text-align: left">ᄀ(1100)</td>
+          <td style="text-align: left">ᄀ (1100)</td>
+          <td style="text-align: left">자모반각기호</td>
+      </tr>
+  </tbody>
 </table>
 <p>이처럼 NFKC/NFKD의 호환분해는 단순히 자모를 분리/결합할 뿐만 아니라 각종 한글 특수 기호 또한 정규화를 진행한다. 모든 기호를 오직 한글음절/한글자모로 변환하므로 한글 특수기호를 다룰 일이 있다면 유용하게 쓰일 수 있을 것이다.</p>
 <h2 id="단위">단위</h2>
