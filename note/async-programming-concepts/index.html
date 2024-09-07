@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>비동기 프로그래밍 개념들 | Pusnow</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+</head>
+<body>
+<nav class="no-print">
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/note/">Notes</a></li>
+      
+      <li><a href="/hiking/">Hiking</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/pdf/cv.pdf">CV</a></li>
+      
+    </ul>
+    <hr />
+</nav>
+
+<h1>비동기 프로그래밍 개념들</h1>
+
+
+
+<span class="date">2024/09/07</span>
+
+<span class="date"> (Updated: 2024/09/08).</span>
+
+
+<span class="only-print">
+    The latest version of this page is available at <a href="https://www.pusnow.com/note/async-programming-concepts/">https://www.pusnow.com/note/async-programming-concepts/</a>.</span>
+<hr />
+<main>
+    <p>비동기 프로그래밍을 편하게 하기 위해 다양한 프로그래밍 언어적 기능과 라이브러리들이 존재한다.
+많은 경우 각 개념들이 엄밀하지 않게 사용되는 경우가 많은데, 이 글에서는 되도록 원전을 찾아보고 각 개념을 엄밀히 정의해본다.
+또한, 각 개념들이 처음 제안되었을 때의 의미와 다르게 현대에 사용될 수도 있다.
+이 또한 반영하려 노력해본다.</p>
+<p>이 글에서는 다음과 같은 개념들을 조사한다.</p>
+<ul>
+<li>Event-driven programming</li>
+<li>Coroutine</li>
+<li>Event Loop and Handlers</li>
+<li>Callback</li>
+<li>Promise</li>
+<li>Async/await</li>
+</ul>
+<h2 id="event-driven-programming">Event-Driven Programming</h2>
+<p>이 글에서 설명하는 event-driven은 thread-driven vs. event-driven 문맥에서 event-driven을 지칭한다.
+과거에는 thread 기반 프로그래밍과 event-driven 프로그래밍 모델 사이의 여러 논쟁이 있었으며<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, 이는 더 오래전부터 논의되어 온 procedure-oriented 시스템과 message-oriented 시스템의 이름 정도만 다른 것으로 보인다<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. 이에 따라 각 용어를 정의하면 다음과 같다. 괄호 안에는 논문이 작성될 당시에는 없거나 이 문맥에서 사용되지 않았던 개념으로 설명을 위해 추가하였다.</p>
+<ul>
+<li>Procedure-oriented (or thread-driven): a large, rapidly changing number of small processes (or threads, coroutines) and a process synchronization mechanism based on shared data.</li>
+<li>Message-oriented (or event-driven): a relatively small, static number of processes (or threads) with an explicit message (or event) system for communicating among them.</li>
+</ul>
+<p>앞서 인용한 논문에서 밝혔다시피, 두 프로그래밍 모델은 듀얼이다. 즉, 한 모델에서 정의된 기본 요소는 다른 모델에 맞는 프로그램이나 요소에 매핑될 수 있다.
+그럼에도, 초창기 Apache HTTP server (fork-based, process-driven) vs. NGINX (event-driven)에서의 논쟁 처럼, 학계에서도 웹 서버 (혹은 highly concurrent한 요청을 처리하는 서버)에서 thread-driven 모델이 우월하다는 주장<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>과 event-driven이 우월하는 주장<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>이 이어졌고 다양한 라이브러리와 서버들이 연구되었다<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
+<h2 id="coroutine">Coroutine</h2>
+<p>앞서 작성한 <a href="https://www.pusnow.com/note/execution-units/">글</a>에서처럼 코루틴은 여러 문맥에서 다양한 개념을 지칭하고 있다. 현재 문맥에서는 procedure-oriented 시스템에서 사용하는 process의 일종으로 보면 간단하다.
+코루틴은 다른 process 혹은 thread와 달리 생성과 문맥전환이 빠르기 때문에 작은 프로세스의 수가 빠르게 변화하는 procedure-oriented 시스템에서 성능을 개선하기 위해 많이 사용된다. Capriccio는 대표적인 코루틴을 사용한 procedure-oriented 시스템이다<sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
+<h2 id="event-loop-and-handlers">Event Loop and Handlers</h2>
+<p>Event-driven programming을 어떻게 할 것인가는 사실상 표준적인 방식이 존재한다: 이는 event loop와 event handler들을 활용하는 방식이다.
+이 방식에서는 하나의 프로세스가 하나의 루프(event loop)를 가지고 있고 그 루프에서 이벤트를 수신을 기다리고 수신시 그 이벤트를 처리하는 서비스 루틴(event handlers)을 호출한다<sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.
+아래 코드는 인용한 논문에서 사용한 코드 예시이다.</p>
+<pre tabindex="0"><code>begin m: messageBody;
+    i: messageld;
+    p: portid;
+    s: set of portid;
+    ... --local data and state information for this process
+    initialize;
+    do forever; -- event loop
+        [m, i, p] &lt;- WaitForMessage[s];
+        case p of
+            port 1 =&gt;... ; --algorithm (or handler) for port1
+            port 2 =&gt;...
+                    if resourceExhausted then
+                        s &lt;- s - port2;
+                        SendReply[i, reply];
+                        ...; --algorithm (or handler) for port2
+            ...
+            port k =&gt; ...
+                    s &lt;- s + port2
+                    ... ; --algorithm (or handler) for port k
+        endcase;
+    endloop;
+end;
+</code></pre><p>하나의 프로세스가 하나의 event loop를 지속적으로 실행한다. 이 loop 안에서는 (1) port의 집합 s로부터 이벤트를 수신하여 port에 따라 대응되는 handler를 실행한다. (2) 만일 특정 port(2)에 대한 리소스가 모두 소진되었을 경우, 더이상 이벤트를 수신하지 않기 위해 집합 s로부터 리소스가 소진된 port를 제거한다. (3) 다른 handler(k)에서 특정 port(2)에대한 리소스를 다시 확보했을 경우, 다시 집합 s에 그 port(2)를 추가한다.</p>
+<h2 id="callback">Callback</h2>
+<p>Event-driven programming에서 콜백은 어떤 프로그램이 특정 이벤트를 기다려야 하기 때문에 특정 작업을 완료하지 못할 경우 등록하는 함수로, 이 함수는 그 이벤트가 발생했을 경우 호출된다<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>.
+콜백은 다음 예시와 같이 비동기 함수의 인자로 전달되며, 보통의 경우 event loop와 handler를 관리하는 라이브러리에서 호출하는 경우가 많다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">awrite</span> (<span style="color:#66d9ef">int</span> fd, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>buf, <span style="color:#66d9ef">size_t</span> size, <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>callback) (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>), <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg);
+</span></span></code></pre></div><p>콜백은 event loop와 handler를 관리하는 라이브러리에서 자주 사용되는 인터페이스이다.
+다양한 라이브러리에서 애플리케이션이 등록한 callback은 특정 이벤트가 발생했을 때 라이브러리의 event handler가 그 이벤트에 대응되는 콜백 함수를 호출한다.
+이런 라이브러리에서는 라이브러리가 event loop와 handler를 관리하기 때문에, 개발자가 event handler에서 event에 따른 각 event handler를 직접 호출할 필요 없어져, event-driven 프로그래밍을 보다 쉽게 할 수 있게 한다.</p>
+<p>Callback을 사용하는 라이브러리는 libasync<sup id="fnref1:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>과 같은 연구 시스템을 비롯, .NET의 APM와 EAP, Node.JS 등이 있다.</p>
+<h3 id="번외-higher-order-function과-combinator">번외: Higher-Order Function과 Combinator</h3>
+<p>앞서 소개한 함수 <code>awrite</code>는 인자로 함수 <code>callback</code>을 받는다.
+이와 같이 함수를 인자로 받는 함수를 higher-order function이라 한다<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>.</p>
+<p>Combinator는 많은 경우 higher-order function과 같은 의미로 사용되는데, 엄밀하게 따지면 combinator pattern의 combinator만 해당된다.
+Combinator라는 용어는 combinatory logic과 combinator pattern 두 맥락에서 사용되는데, 이는 (적어도 내가 보기에는) 전혀 다른 의미를 가지고 있다<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
+<ul>
+<li>Combinator in combinatory logic: a function or definition with no free variables.
+<ul>
+<li>내부에서 사용되는 변수가 모두 인자로 제공되는 함수를 말한다. 여기서 변수에는 다른 함수도 포함함으로, 컴비네이터에서 다른 함수를 호출하기 위해서는 그 다른 함수를 인자로 받아야 한다. 즉, 이 경우 higher-order function이 되어야 한다.</li>
+</ul>
+</li>
+<li>Combinator in combinator pattern: something combines values of type T in various ways to build up more complex values of type T.
+<ul>
+<li>작은 값들을 합쳐 보다 복잡한 값들을 만들어 내는 것을 지칭한다. 보통은 함수를 인자로 받아 더 복잡한 함수를 만드는 것이 많기 때문에, higher-order function이 많다.</li>
+</ul>
+</li>
+</ul>
+<p>위 두 combinator의 용례가 밀접한 관계가 있는 것인지는 모르겠다.</p>
+<h2 id="promise">Promise</h2>
+<p>Promise는 효율적인 비동기 호출을 지원하기 위해 만들어진 데이터타입으로, 미래에 존재할 값에 대한 placeholder이다<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>.
+즉, 특정 이벤트의 발생을 callback으로 수신하는 것이 아니라 caller에서 promise 데이터타입으로 조회하게 된다.
+앞서 제시한 <code>awrite</code> 함수는 promise를 사용하면 다음과 같이 바꿀 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">promise_t</span> <span style="color:#a6e22e">awrite</span> (<span style="color:#66d9ef">int</span> fd, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>buf, <span style="color:#66d9ef">size_t</span> size);
+</span></span></code></pre></div><p>이 함수는 호출 즉시 바로 비동기적인 I/O 요청을 발생시키고 promise를 리턴하게 된다.
+후에 caller에서 promise를 조회하여 쓰기 이벤트의 성공 여부를 확인할 수 있다.</p>
+<p>Promise는 callback 방식의 몇 단점을 개선한다.</p>
+<p><em>(작성중)</em></p>
+<h2 id="asyncawait">Async/Await</h2>
+<p><em>(작성중)</em></p>
+<!-- pusnow reference start -->
+<!-- pusnow reference end --><div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Ryan Cunningham and Eddie Kohler. <em>Making Events Less Slippery with eel.</em> In HotOS 2005. <a href="http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf">http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Hugh C. Lauer and Roger M. Needham. <em>On the Duality of Operating System Structures.</em> ACM SIGOPS Oper. Syst. Rev. 13(2). <a href="https://doi.org/10.1145/850657.850658">https://doi.org/10.1145/850657.850658</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>J. Robert von Behren, Jeremy Condit, and Eric A. Brewer. <em>Why Events Are a Bad Idea (for High-Concurrency Servers).</em> In HotOS 2003. <a href="https://www.usenix.org/conference/hotos-ix/why-events-are-bad-idea-high-concurrency-servers">https://www.usenix.org/conference/hotos-ix/why-events-are-bad-idea-high-concurrency-servers</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>John Ousterhout. <em>Why Threads Are A Bad Idea (for most purposes)</em> In ATC 1996.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>J. Robert von Behren, Jeremy Condit, Feng Zhou, George C. Necula, and Eric A. Brewer. <em>Capriccio: scalable threads for internet services.</em> In SOSP 2003. <a href="https://doi.org/10.1145/945445.945471">https://doi.org/10.1145/945445.945471</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Matt Welsh, David E. Culler, and Eric A. Brewer. <em>SEDA: An Architecture for Well-Conditioned, Scalable Internet Services.</em> In SOSP 2001. <a href="https://doi.org/10.1145/502034.502057">https://doi.org/10.1145/502034.502057</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>Frank Dabek, Nickolai Zeldovich, M. Frans Kaashoek, David Mazières, and Robert Tappan Morris. <em>Event-driven programming for robust software.</em> In ACM SIGOPS European Workshop 2002. <a href="https://doi.org/10.1145/1133373.1133410">https://doi.org/10.1145/1133373.1133410</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>John C. Reynolds. <em>Definitional interpreters for higher-order programming languages.</em> In ACM Annual Conference (2) 1972. <a href="https://doi.org/10.1145/800194.805852">https://doi.org/10.1145/800194.805852</a>&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>Haskell Wiki. <em>Combinator</em>. <a href="https://wiki.haskell.org/Combinator">https://wiki.haskell.org/Combinator</a>&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>Barbara Liskov and Liuba Shrira. <em>Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems.</em> In PLDI 1988. <a href="https://doi.org/10.1145/53990.54016">https://doi.org/10.1145/53990.54016</a>&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+</main>
+
+
+<footer class="no-print">
+    
+    <hr />
+    © <a href="https://www.pusnow.com">Wonsup Yoon</a> | <a href="https://github.com/pusnow">GitHub</a> | Original theme: <a href="https://github.com/yihui/hugo-xmin">Hugo xmin</a>
+    
+</footer>
+
+
+</body>
+
+</html>
