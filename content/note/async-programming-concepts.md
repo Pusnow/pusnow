@@ -17,7 +17,7 @@ tags:
 * Coroutine
 * Event Loop and Handlers
 * Callback
-* Promise
+* Promise and Future
 * Async/await
 
 ## Event-Driven Programming
@@ -99,7 +99,7 @@ Combinator라는 용어는 combinatory logic과 combinator pattern 두 맥락에
 
 위 두 combinator의 용례가 밀접한 관계가 있는 것인지는 모르겠다.
 
-## Promise
+## Promise and Future
 
 Promise는 효율적인 비동기 호출을 지원하기 위해 만들어진 데이터타입으로, 미래에 존재할 값에 대한 placeholder이다[^conf/pldi/LiskovS88].
 즉, 특정 이벤트의 발생을 callback으로 수신하는 것이 아니라 caller에서 promise 데이터타입으로 조회하게 된다.
@@ -112,9 +112,13 @@ promise_t awrite (int fd, char *buf, size_t size);
 이 함수는 호출 즉시 바로 비동기적인 I/O 요청을 발생시키고 promise를 리턴하게 된다.
 후에 caller에서 promise를 조회하여 쓰기 이벤트의 성공 여부를 확인할 수 있다.
 
-Promise는 callback 방식의 몇 단점을 개선한다.
+Promise는 callback 방식의 여러 단점을 개선하지만, 그 중 가장 유명한 것은 callback hell일 것이다.
 
-*(작성중)*
+
+Future는 promise와 유사한 개념이다.
+다만, future는 evaluation이 지연될 수 있고, future가 다른 객체로 전달되어 꼭 evaluation 주체가 callee가 아닐 수 있다는 차이점이 있다[^conf/sc/Chatterjee89].
+
+
 
 ## Async/Await
 
@@ -124,16 +128,17 @@ Promise는 callback 방식의 몇 단점을 개선한다.
 [^haskell-combinator]: Haskell Wiki. *Combinator*. [https://wiki.haskell.org/Combinator](https://wiki.haskell.org/Combinator)
 
 <!-- pusnow reference start -->
-[^conf/hotos/CunninghamK05]: Ryan Cunningham and Eddie Kohler. *Making Events Less Slippery with eel.* In HotOS 2005. [http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf](http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf)
+[^conf/hotos/CunninghamK05]: Ryan Cunningham and Eddie Kohler. *Making Events Less Slippery with eel.* . [http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf](http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf)
 [^journals/sigops/LauerN79]: Hugh C. Lauer and Roger M. Needham. *On the Duality of Operating System Structures.* ACM SIGOPS Oper. Syst. Rev. 13(2). [https://doi.org/10.1145/850657.850658](https://doi.org/10.1145/850657.850658)
-[^conf/hotos/BehrenCB03]: J. Robert von Behren, Jeremy Condit, and Eric A. Brewer. *Why Events Are a Bad Idea (for High-Concurrency Servers).* In HotOS 2003. [https://www.usenix.org/conference/hotos-ix/why-events-are-bad-idea-high-concurrency-servers](https://www.usenix.org/conference/hotos-ix/why-events-are-bad-idea-high-concurrency-servers)
-[^conf/hotos/CunninghamK05]: Ryan Cunningham and Eddie Kohler. *Making Events Less Slippery with eel.* In HotOS 2005. [http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf](http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf)
-[^conf/sosp/BehrenCZNB03]: J. Robert von Behren, Jeremy Condit, Feng Zhou, George C. Necula, and Eric A. Brewer. *Capriccio: scalable threads for internet services.* In SOSP 2003. [https://doi.org/10.1145/945445.945471](https://doi.org/10.1145/945445.945471)
-[^conf/sosp/WelshCB01]: Matt Welsh, David E. Culler, and Eric A. Brewer. *SEDA: An Architecture for Well-Conditioned, Scalable Internet Services.* In SOSP 2001. [https://doi.org/10.1145/502034.502057](https://doi.org/10.1145/502034.502057)
-[^conf/sosp/BehrenCZNB03]: J. Robert von Behren, Jeremy Condit, Feng Zhou, George C. Necula, and Eric A. Brewer. *Capriccio: scalable threads for internet services.* In SOSP 2003. [https://doi.org/10.1145/945445.945471](https://doi.org/10.1145/945445.945471)
+[^conf/hotos/BehrenCB03]: J. Robert von Behren, Jeremy Condit, and Eric A. Brewer. *Why Events Are a Bad Idea (for High-Concurrency Servers).* . [https://www.usenix.org/conference/hotos-ix/why-events-are-bad-idea-high-concurrency-servers](https://www.usenix.org/conference/hotos-ix/why-events-are-bad-idea-high-concurrency-servers)
+[^conf/hotos/CunninghamK05]: Ryan Cunningham and Eddie Kohler. *Making Events Less Slippery with eel.* . [http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf](http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf)
+[^conf/sosp/BehrenCZNB03]: J. Robert von Behren, Jeremy Condit, Feng Zhou, George C. Necula, and Eric A. Brewer. *Capriccio: scalable threads for internet services.* . [https://doi.org/10.1145/945445.945471](https://doi.org/10.1145/945445.945471)
+[^conf/sosp/WelshCB01]: Matt Welsh, David E. Culler, and Eric A. Brewer. *SEDA: An Architecture for Well-Conditioned, Scalable Internet Services.* . [https://doi.org/10.1145/502034.502057](https://doi.org/10.1145/502034.502057)
+[^conf/sosp/BehrenCZNB03]: J. Robert von Behren, Jeremy Condit, Feng Zhou, George C. Necula, and Eric A. Brewer. *Capriccio: scalable threads for internet services.* . [https://doi.org/10.1145/945445.945471](https://doi.org/10.1145/945445.945471)
 [^journals/sigops/LauerN79]: Hugh C. Lauer and Roger M. Needham. *On the Duality of Operating System Structures.* ACM SIGOPS Oper. Syst. Rev. 13(2). [https://doi.org/10.1145/850657.850658](https://doi.org/10.1145/850657.850658)
-[^conf/sigopsE/DabekZKMM02]: Frank Dabek, Nickolai Zeldovich, M. Frans Kaashoek, David Mazières, and Robert Tappan Morris. *Event-driven programming for robust software.* In ACM SIGOPS European Workshop 2002. [https://doi.org/10.1145/1133373.1133410](https://doi.org/10.1145/1133373.1133410)
-[^conf/sigopsE/DabekZKMM02]: Frank Dabek, Nickolai Zeldovich, M. Frans Kaashoek, David Mazières, and Robert Tappan Morris. *Event-driven programming for robust software.* In ACM SIGOPS European Workshop 2002. [https://doi.org/10.1145/1133373.1133410](https://doi.org/10.1145/1133373.1133410)
-[^conf/acm/Reynolds72]: John C. Reynolds. *Definitional interpreters for higher-order programming languages.* In ACM Annual Conference (2) 1972. [https://doi.org/10.1145/800194.805852](https://doi.org/10.1145/800194.805852)
-[^conf/pldi/LiskovS88]: Barbara Liskov and Liuba Shrira. *Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems.* In PLDI 1988. [https://doi.org/10.1145/53990.54016](https://doi.org/10.1145/53990.54016)
+[^conf/sigopsE/DabekZKMM02]: Frank Dabek, Nickolai Zeldovich, M. Frans Kaashoek, David Mazières, and Robert Tappan Morris. *Event-driven programming for robust software.* . [https://doi.org/10.1145/1133373.1133410](https://doi.org/10.1145/1133373.1133410)
+[^conf/sigopsE/DabekZKMM02]: Frank Dabek, Nickolai Zeldovich, M. Frans Kaashoek, David Mazières, and Robert Tappan Morris. *Event-driven programming for robust software.* . [https://doi.org/10.1145/1133373.1133410](https://doi.org/10.1145/1133373.1133410)
+[^conf/acm/Reynolds72]: John C. Reynolds. *Definitional interpreters for higher-order programming languages.* . [https://doi.org/10.1145/800194.805852](https://doi.org/10.1145/800194.805852)
+[^conf/pldi/LiskovS88]: Barbara Liskov and Liuba Shrira. *Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems.* . [https://doi.org/10.1145/53990.54016](https://doi.org/10.1145/53990.54016)
+[^conf/sc/Chatterjee89]: Arunodaya Chatterjee. *FUTURES: a mechanism for concurrency among objects.* . [https://doi.org/10.1145/76263.76326](https://doi.org/10.1145/76263.76326)
 <!-- pusnow reference end -->
