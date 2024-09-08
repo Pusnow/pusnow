@@ -114,6 +114,8 @@ promise_t awrite (int fd, char *buf, size_t size);
 
 Promise는 callback 방식의 여러 단점을 개선하지만, 그 중 가장 유명한 것은 callback hell일 것이다.
 
+(작성중)
+
 
 Future는 promise와 유사한 개념이다.
 다만, future는 evaluation이 지연될 수 있고, future가 다른 객체로 전달되어 꼭 evaluation 주체가 callee가 아닐 수 있다는 차이점이 있다[^conf/sc/Chatterjee89].
