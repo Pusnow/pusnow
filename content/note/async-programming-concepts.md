@@ -105,29 +105,69 @@ Promise는 효율적인 비동기 호출을 지원하기 위해 만들어진 데
 즉, 특정 이벤트의 발생을 callback으로 수신하는 것이 아니라 caller에서 promise 데이터타입으로 조회하게 된다.
 앞서 제시한 `awrite` 함수는 promise를 사용하면 다음과 같이 바꿀 수 있다.
 
-```c
-promise_t awrite (int fd, char *buf, size_t size);
+```c++
+promise_t<int> awrite (int fd, char *buf, size_t size);
 ```
 
 이 함수는 호출 즉시 바로 비동기적인 I/O 요청을 발생시키고 promise를 리턴하게 된다.
 후에 caller에서 promise를 조회하여 쓰기 이벤트의 성공 여부를 확인할 수 있다.
 
 Promise는 callback 방식의 여러 단점을 개선하지만, 그 중 가장 유명한 것은 callback hell일 것이다.
+Callback hell은 callback 함수 내에서 새로운 callback 함수를 등록하는 경우에, indendation의 레벨이 계속 증가하여 가독성이 좋아지지 않는 문제를 말한다[^callbackhell].
+Promise를 사용하면 callback을 함수의 인자로 넘겨주지 않기 때문에 이런 문제가 발생하지 않고, 만일 callback처럼 continuation 기능을 꼭 사용하고 싶다면 `then()`과 같은 promise가 제공하는 higher-order 함수를 사용하면 된다. 이 경우에도 caller에서 `then()`을 호출하기 때문에 추가적인 indentation level이 증가하지는 않는다. 아래는 `then()` 함수를 사용하는 예시이다. 여러 continuation을 사용했음에도 indentation이 일정하게 유지된다.
 
-(작성중)
+```c++
+promise_t<int> p = awrite(fd, buf, size);
+promise_t<bool> p2 = p.then(
+  ||(int written){
+    if(written > 0 ) { return true;  } 
+    else { return false; }
+});
+promise_t<void> p3 = p2.then(
+  ||(bool ok){
+    if(ok) { printf("ok\n"); } 
+    else { printf("error\n"); }
+});
+```
 
-
-Future는 promise와 유사한 개념이다.
+Future 또한 비동기 프로그래밍에서 많이 사용도는 용어인데, 이는 promise와 유사한 개념이다.
 다만, future는 evaluation이 지연될 수 있고, future가 다른 객체로 전달되어 꼭 evaluation 주체가 callee가 아닐 수 있다는 차이점이 있다[^conf/sc/Chatterjee89].
-
-
 
 ## Async/Await
 
-*(작성중)*
+Promise 위주로 프로그래밍을 하다보면 모든 함수가 promise를 리턴하게 되는 상황이 자주 발생한다.
+몇 프로그래밍 언어에서는 async 키워드를 통해 이를 통일성 있게 표현할 수 있게 한다[^journals/pacmpl/Syme20].
+예를 들면, 아래 `awrite` 함수는 앞서 설명한 함수와 동치이다. (실제 C++에는 async 키워드가 없다. 여기서는 임의로 추가하였다.)
+
+```c++
+async int awrite (int fd, char *buf, size_t size);
+```
+
+Promise는 callback이 발생시키는 모든 문제를 해결하지는 못했다.
+이 중 하나는 inversion of control-flow이다.
+이 문제는 callback을 등록하는 주체와 이를 실행하는 주체가 달라지는 상황을 말한다.
+위 예제 들에서 callback 함수는 누가 호출하게 되는가?
+비동기 프레임워크에 따라서는 다른 스레드에서 실행될 수 있고[^conf/icse/OkurHDD14], 같은 스레드에서 실행된다 하더라도 스택프레임은 달라질 수 있다.
+만일 다른 스레드에서 callback 호출된다면, caller 함수가 제어하는 변수에 접근할 때 락 등을 사용하여 신중하게 접근해야 한다.
+Callback이 caller와 같은 스레드에서 실행한다 하더라도, 스택 프래임이 달라지기 때문에, 만일 callback 함수에서 실수로 caller 함수의 로컬 변수에 접근하다면 use-after-free 오류가 발생하게 된다.
+
+Await 키워드는 이 문제를 pause를 통해 해결한다.
+특정 promise에 await을 호출하게 되면 실행중인 컨택스트는 일시 중지되고, 후에 promise가 처리되면 중지된 컨택스트가 재개된다.
+
+(작성중)
+
+```c++
+int written = awrite(fd, buf, size).await();
+if(written > 0 ) { return true;  } 
+else { return false; }
+...
+```
+
+
 
 [^whythreadsbad]: John Ousterhout. *Why Threads Are A Bad Idea (for most purposes)* In ATC 1996.
-[^haskell-combinator]: Haskell Wiki. *Combinator*. [https://wiki.haskell.org/Combinator](https://wiki.haskell.org/Combinator)
+[^haskell-combinator]: Haskell Wiki. *Combinator*. [https://wiki.haskell.org/Combinator](https://wiki.haskell.org/Combinator).
+[^callbackhell]: *Callback Hell*. [http://callbackhell.com](http://callbackhell.com).
 
 <!-- pusnow reference start -->
 [^conf/hotos/CunninghamK05]: Ryan Cunningham and Eddie Kohler. *Making Events Less Slippery with eel.* In HotOS 2005. [http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf](http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf)
@@ -143,4 +183,6 @@ Future는 promise와 유사한 개념이다.
 [^conf/acm/Reynolds72]: John C. Reynolds. *Definitional interpreters for higher-order programming languages.* In ACM Annual Conference (2) 1972. [https://doi.org/10.1145/800194.805852](https://doi.org/10.1145/800194.805852)
 [^conf/pldi/LiskovS88]: Barbara Liskov and Liuba Shrira. *Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems.* In PLDI 1988. [https://doi.org/10.1145/53990.54016](https://doi.org/10.1145/53990.54016)
 [^conf/sc/Chatterjee89]: Arunodaya Chatterjee. *FUTURES: a mechanism for concurrency among objects.* In SC 1989. [https://doi.org/10.1145/76263.76326](https://doi.org/10.1145/76263.76326)
+[^journals/pacmpl/Syme20]: Don Syme. *The early history of F#.* Proc. ACM Program. Lang. 4(HOPL). [https://doi.org/10.1145/3386325](https://doi.org/10.1145/3386325)
+[^conf/icse/OkurHDD14]: Semih Okur, David L. Hartveld, Danny Dig, and Arie van Deursen. *A study and toolkit for asynchronous programming in c#.* In ICSE 2014. [https://doi.org/10.1145/2568225.2568309](https://doi.org/10.1145/2568225.2568309)
 <!-- pusnow reference end -->
