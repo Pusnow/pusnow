@@ -35,7 +35,7 @@
 
 <span class="date">2024/09/07</span>
 
-<span class="date"> (Updated: 2024/09/10).</span>
+<span class="date"> (Updated: 2024/09/15).</span>
 
 
 <span class="only-print">
@@ -54,6 +54,8 @@
 <li>Callback</li>
 <li>Promise and Future</li>
 <li>Async/await</li>
+<li>Actor</li>
+<li>Channel</li>
 </ul>
 <h2 id="event-driven-programming">Event-Driven Programming</h2>
 <p>이 글에서 설명하는 event-driven은 thread-driven vs. event-driven 문맥에서 event-driven을 지칭한다.
@@ -121,14 +123,15 @@ Combinator라는 용어는 combinatory logic과 combinator pattern 두 맥락에
 </ul>
 <p>위 두 combinator의 용례가 밀접한 관계가 있는 것인지는 모르겠다.</p>
 <h2 id="promise-and-future">Promise and Future</h2>
-<p>Promise는 효율적인 비동기 호출을 지원하기 위해 만들어진 데이터타입으로, 미래에 존재할 값에 대한 placeholder이다<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>.
-즉, 특정 이벤트의 발생을 callback으로 수신하는 것이 아니라 caller에서 promise 데이터타입으로 조회하게 된다.
+<p>Promise와 Future는 효율적인 비동기 호출을 지원하기 위해 만들어진 데이터타입으로, 미래에 존재할 값에 대한 placeholder이다<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup><sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>.
+처음 이들이 생성되었을 때는 결과 값을 지니고 있지 않지만 비동기적이 완료되어 값이 생성되면 placeholder에 값이 채워져 결과 값을 caller가 조회할 수 있게 된다.</p>
+<p>Callback 매커니즘과 비교한다면  특정 이벤트의 발생을 callback으로 수신하는 것이 아니라 caller에서 promise/future 데이터타입으로 조회하게 된다.
 앞서 제시한 <code>awrite</code> 함수는 promise를 사용하면 다음과 같이 바꿀 수 있다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>promise_t<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> awrite (<span style="color:#66d9ef">int</span> fd, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>buf, size_t size);
 </span></span></code></pre></div><p>이 함수는 호출 즉시 바로 비동기적인 I/O 요청을 발생시키고 promise를 리턴하게 된다.
 후에 caller에서 promise를 조회하여 쓰기 이벤트의 성공 여부를 확인할 수 있다.</p>
-<p>Promise는 callback 방식의 여러 단점을 개선하지만, 그 중 가장 유명한 것은 callback hell일 것이다.
-Callback hell은 callback 함수 내에서 새로운 callback 함수를 등록하는 경우에, indendation의 레벨이 계속 증가하여 가독성이 좋아지지 않는 문제를 말한다<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>.
+<p>이들은 callback 방식의 여러 단점을 개선하지만, 그 중 가장 유명한 것은 callback hell일 것이다.
+Callback hell은 callback 함수 내에서 새로운 callback 함수를 등록하는 경우에, indendation의 레벨이 계속 증가하여 가독성이 좋아지지 않는 문제를 말한다<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>.
 Promise를 사용하면 callback을 함수의 인자로 넘겨주지 않기 때문에 이런 문제가 발생하지 않고, 만일 callback처럼 continuation 기능을 꼭 사용하고 싶다면 <code>then()</code>과 같은 promise가 제공하는 higher-order 함수를 사용하면 된다. 이 경우에도 caller에서 <code>then()</code>을 호출하기 때문에 추가적인 indentation level이 증가하지는 않는다. 아래는 <code>then()</code> 함수를 사용하는 예시이다. 여러 continuation을 사용했음에도 indentation이 일정하게 유지된다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>promise_t<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> p <span style="color:#f92672">=</span> awrite(fd, buf, size);
 </span></span><span style="display:flex;"><span>promise_t<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;</span> p2 <span style="color:#f92672">=</span> p.then(
@@ -141,28 +144,40 @@ Promise를 사용하면 callback을 함수의 인자로 넘겨주지 않기 때�
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(ok) { printf(<span style="color:#e6db74">&#34;ok</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>); } 
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> { printf(<span style="color:#e6db74">&#34;error</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>); }
 </span></span><span style="display:flex;"><span>});
-</span></span></code></pre></div><p>Future 또한 비동기 프로그래밍에서 많이 사용도는 용어인데, 이는 promise와 유사한 개념이다.
-다만, future는 evaluation이 지연될 수 있고, future가 다른 객체로 전달되어 꼭 evaluation 주체가 callee가 아닐 수 있다는 차이점이 있다<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>.</p>
+</span></span></code></pre></div><p>Promise와 future는 매우 유사한 개념이다. 이들은 많은 경우 같은 것을 지칭하지만 맥락에 따라 다른 것을 지칭하기도 한다.
+예를 들면, promise를 강타입, 예외처리, call-stream기능을 추가적으로 지원하는 future를 지칭하거나<sup id="fnref1:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>,
+future를 evaluation이 지연될 수 있고 객체로 전달되어 꼭 evaluation 주체가 callee가 아닐 수 있는 promise를 지칭하는 경우도 있다<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>.
+또, 현대의 프로그래밍 언어에 따라서는 이들을 구분해서 사용하기도한다.
+C++에서는 promise를 future를 이용하여 비동기적으로 조회할 수 있는 객체를 지칭한다<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup>.</p>
 <h2 id="asyncawait">Async/Await</h2>
 <p>Promise 위주로 프로그래밍을 하다보면 모든 함수가 promise를 리턴하게 되는 상황이 자주 발생한다.
-몇 프로그래밍 언어에서는 async 키워드를 통해 이를 통일성 있게 표현할 수 있게 한다<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>.
+몇 프로그래밍 언어에서는 async 키워드를 통해 이를 통일성 있게 표현할 수 있게 한다<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>.
 예를 들면, 아래 <code>awrite</code> 함수는 앞서 설명한 함수와 동치이다. (실제 C++에는 async 키워드가 없다. 여기서는 임의로 추가하였다.)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>async <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">awrite</span> (<span style="color:#66d9ef">int</span> fd, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>buf, size_t size);
 </span></span></code></pre></div><p>Promise는 callback이 발생시키는 모든 문제를 해결하지는 못했다.
 이 중 하나는 inversion of control-flow이다.
 이 문제는 callback을 등록하는 주체와 이를 실행하는 주체가 달라지는 상황을 말한다.
 위 예제 들에서 callback 함수는 누가 호출하게 되는가?
-비동기 프레임워크에 따라서는 다른 스레드에서 실행될 수 있고<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup>, 같은 스레드에서 실행된다 하더라도 스택프레임은 달라질 수 있다.
+비동기 프레임워크에 따라서는 다른 스레드에서 실행될 수 있고<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup>, 같은 스레드에서 실행된다 하더라도 스택프레임은 달라질 수 있다.
 만일 다른 스레드에서 callback 호출된다면, caller 함수가 제어하는 변수에 접근할 때 락 등을 사용하여 신중하게 접근해야 한다.
 Callback이 caller와 같은 스레드에서 실행한다 하더라도, 스택 프래임이 달라지기 때문에, 만일 callback 함수에서 실수로 caller 함수의 로컬 변수에 접근하다면 use-after-free 오류가 발생하게 된다.</p>
 <p>Await 키워드는 이 문제를 pause를 통해 해결한다.
-특정 promise에 await을 호출하게 되면 실행중인 컨택스트는 일시 중지되고, 후에 promise가 처리되면 중지된 컨택스트가 재개된다.</p>
-<p>(작성중)</p>
+특정 promise에 await을 호출하게 되면 실행중인 컨택스트는 일시 중지되고, 후에 promise가 처리되면 중지된 컨택스트가 재개된다.
+아래 예시에서 <code>await()</code> 함수를 통해 promise를 조회하는 예시이다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> written <span style="color:#f92672">=</span> awrite(fd, buf, size).await();
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(written <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> ) { <span style="color:#66d9ef">return</span> true;  } 
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> false; }
 </span></span><span style="display:flex;"><span>...
-</span></span></code></pre></div><!-- pusnow reference start -->
+</span></span></code></pre></div><p>Async/Await을 사용하게 된다면 이벤트 처리를 동기적 시멘틱을 사용할 수 있다.
+위 코드를 일반적인 write 시스템콜을 사용하는 코드과 비교해보면, <code>await()</code> 함수가 있다는 점만 제외한다면 대부분 일치한 다는 것을 알 수 있다.</p>
+<p>그렇다면, Async/Await의 프로그래밍 모델은 event-driven일까 아니면 thread-driven일까?
+사람마다 의견이 다를 수 있지만, 나는 event loop위에서 구현된 thread-driven이라 생각한다.
+이와 같은 구조는 Capriccio와 유사한 구조로<sup id="fnref2:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, 이 구조 위에서 컴파일러/라이브러리가 Async/Await 키워드를 통해 락으로 보호된 값 (promise)를 쉽게 사용할 수 있게 한 것이다.</p>
+<h2 id="actor">Actor</h2>
+<p>(작성중)</p>
+<h2 id="channel">Channel</h2>
+<p>(작성중)</p>
+<!-- pusnow reference start -->
 <!-- pusnow reference end --><div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -179,7 +194,7 @@ Callback이 caller와 같은 스레드에서 실행한다 하더라도, 스택 �
 <p>John Ousterhout. <em>Why Threads Are A Bad Idea (for most purposes)</em> In ATC 1996.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>J. Robert von Behren, Jeremy Condit, Feng Zhou, George C. Necula, and Eric A. Brewer. <em>Capriccio: scalable threads for internet services.</em> In SOSP 2003. <a href="https://doi.org/10.1145/945445.945471">https://doi.org/10.1145/945445.945471</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>J. Robert von Behren, Jeremy Condit, Feng Zhou, George C. Necula, and Eric A. Brewer. <em>Capriccio: scalable threads for internet services.</em> In SOSP 2003. <a href="https://doi.org/10.1145/945445.945471">https://doi.org/10.1145/945445.945471</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
 <p>Matt Welsh, David E. Culler, and Eric A. Brewer. <em>SEDA: An Architecture for Well-Conditioned, Scalable Internet Services.</em> In SOSP 2001. <a href="https://doi.org/10.1145/502034.502057">https://doi.org/10.1145/502034.502057</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
@@ -194,19 +209,25 @@ Callback이 caller와 같은 스레드에서 실행한다 하더라도, 스택 �
 <p>Haskell Wiki. <em>Combinator</em>. <a href="https://wiki.haskell.org/Combinator">https://wiki.haskell.org/Combinator</a>.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:10">
-<p>Barbara Liskov and Liuba Shrira. <em>Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems.</em> In PLDI 1988. <a href="https://doi.org/10.1145/53990.54016">https://doi.org/10.1145/53990.54016</a>&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Robert H. Halstead Jr.. <em>Multilisp: A Language for Concurrent Symbolic Computation.</em> ACM Trans. Program. Lang. Syst. 7(4). <a href="https://doi.org/10.1145/4472.4478">https://doi.org/10.1145/4472.4478</a>&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:11">
-<p><em>Callback Hell</em>. <a href="http://callbackhell.com">http://callbackhell.com</a>.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Barbara Liskov and Liuba Shrira. <em>Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems.</em> In PLDI 1988. <a href="https://doi.org/10.1145/53990.54016">https://doi.org/10.1145/53990.54016</a>&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:12">
-<p>Arunodaya Chatterjee. <em>FUTURES: a mechanism for concurrency among objects.</em> In SC 1989. <a href="https://doi.org/10.1145/76263.76326">https://doi.org/10.1145/76263.76326</a>&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><em>Callback Hell</em>. <a href="http://callbackhell.com">http://callbackhell.com</a>.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:13">
-<p>Don Syme. <em>The early history of F#.</em> Proc. ACM Program. Lang. 4(HOPL). <a href="https://doi.org/10.1145/3386325">https://doi.org/10.1145/3386325</a>&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Arunodaya Chatterjee. <em>FUTURES: a mechanism for concurrency among objects.</em> In SC 1989. <a href="https://doi.org/10.1145/76263.76326">https://doi.org/10.1145/76263.76326</a>&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:14">
-<p>Semih Okur, David L. Hartveld, Danny Dig, and Arie van Deursen. <em>A study and toolkit for asynchronous programming in c#.</em> In ICSE 2014. <a href="https://doi.org/10.1145/2568225.2568309">https://doi.org/10.1145/2568225.2568309</a>&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><em>std:promise</em> <a href="https://en.cppreference.com/w/cpp/thread/promise">https://en.cppreference.com/w/cpp/thread/promise</a>&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:15">
+<p>Don Syme. <em>The early history of F#.</em> Proc. ACM Program. Lang. 4(HOPL). <a href="https://doi.org/10.1145/3386325">https://doi.org/10.1145/3386325</a>&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:16">
+<p>Semih Okur, David L. Hartveld, Danny Dig, and Arie van Deursen. <em>A study and toolkit for asynchronous programming in c#.</em> In ICSE 2014. <a href="https://doi.org/10.1145/2568225.2568309">https://doi.org/10.1145/2568225.2568309</a>&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
