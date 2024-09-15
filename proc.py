@@ -502,6 +502,7 @@ def handle_cite(text):
     cites = re.findall(r"\[\^(.+?)\]", body)
     if not cites:
         return text
+    cites = list(set(cites))
     executor = concurrent.futures.ThreadPoolExecutor(max_workers=5)
     futures = [executor.submit(fetch_and_parse_cite, cite) for cite in cites]
     to_cites = []
