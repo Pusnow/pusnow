@@ -19,6 +19,8 @@ tags:
 * Callback
 * Promise and Future
 * Async/await
+* Actor
+* Channel
 
 ## Event-Driven Programming
 
@@ -101,8 +103,10 @@ Combinator라는 용어는 combinatory logic과 combinator pattern 두 맥락에
 
 ## Promise and Future
 
-Promise는 효율적인 비동기 호출을 지원하기 위해 만들어진 데이터타입으로, 미래에 존재할 값에 대한 placeholder이다[^conf/pldi/LiskovS88].
-즉, 특정 이벤트의 발생을 callback으로 수신하는 것이 아니라 caller에서 promise 데이터타입으로 조회하게 된다.
+Promise와 Future는 효율적인 비동기 호출을 지원하기 위해 만들어진 데이터타입으로, 미래에 존재할 값에 대한 placeholder이다[^journals/toplas/Halstead85][^conf/pldi/LiskovS88].
+처음 이들이 생성되었을 때는 결과 값을 지니고 있지 않지만 비동기적이 완료되어 값이 생성되면 placeholder에 값이 채워져 결과 값을 caller가 조회할 수 있게 된다.
+
+Callback 매커니즘과 비교한다면  특정 이벤트의 발생을 callback으로 수신하는 것이 아니라 caller에서 promise/future 데이터타입으로 조회하게 된다.
 앞서 제시한 `awrite` 함수는 promise를 사용하면 다음과 같이 바꿀 수 있다.
 
 ```c++
@@ -112,7 +116,7 @@ promise_t<int> awrite (int fd, char *buf, size_t size);
 이 함수는 호출 즉시 바로 비동기적인 I/O 요청을 발생시키고 promise를 리턴하게 된다.
 후에 caller에서 promise를 조회하여 쓰기 이벤트의 성공 여부를 확인할 수 있다.
 
-Promise는 callback 방식의 여러 단점을 개선하지만, 그 중 가장 유명한 것은 callback hell일 것이다.
+이들은 callback 방식의 여러 단점을 개선하지만, 그 중 가장 유명한 것은 callback hell일 것이다.
 Callback hell은 callback 함수 내에서 새로운 callback 함수를 등록하는 경우에, indendation의 레벨이 계속 증가하여 가독성이 좋아지지 않는 문제를 말한다[^callbackhell].
 Promise를 사용하면 callback을 함수의 인자로 넘겨주지 않기 때문에 이런 문제가 발생하지 않고, 만일 callback처럼 continuation 기능을 꼭 사용하고 싶다면 `then()`과 같은 promise가 제공하는 higher-order 함수를 사용하면 된다. 이 경우에도 caller에서 `then()`을 호출하기 때문에 추가적인 indentation level이 증가하지는 않는다. 아래는 `then()` 함수를 사용하는 예시이다. 여러 continuation을 사용했음에도 indentation이 일정하게 유지된다.
 
@@ -130,8 +134,12 @@ promise_t<void> p3 = p2.then(
 });
 ```
 
-Future 또한 비동기 프로그래밍에서 많이 사용도는 용어인데, 이는 promise와 유사한 개념이다.
-다만, future는 evaluation이 지연될 수 있고, future가 다른 객체로 전달되어 꼭 evaluation 주체가 callee가 아닐 수 있다는 차이점이 있다[^conf/sc/Chatterjee89].
+Promise와 future는 매우 유사한 개념이다. 이들은 많은 경우 같은 것을 지칭하지만 맥락에 따라 다른 것을 지칭하기도 한다.
+예를 들면, promise를 강타입, 예외처리, call-stream기능을 추가적으로 지원하는 future를 지칭하거나[^conf/pldi/LiskovS88],
+future를 evaluation이 지연될 수 있고 객체로 전달되어 꼭 evaluation 주체가 callee가 아닐 수 있는 promise를 지칭하는 경우도 있다[^conf/sc/Chatterjee89].
+또, 현대의 프로그래밍 언어에 따라서는 이들을 구분해서 사용하기도한다.
+C++에서는 promise를 future를 이용하여 비동기적으로 조회할 수 있는 객체를 지칭한다[^cpppromise].
+
 
 ## Async/Await
 
@@ -153,8 +161,7 @@ Callback이 caller와 같은 스레드에서 실행한다 하더라도, 스택 �
 
 Await 키워드는 이 문제를 pause를 통해 해결한다.
 특정 promise에 await을 호출하게 되면 실행중인 컨택스트는 일시 중지되고, 후에 promise가 처리되면 중지된 컨택스트가 재개된다.
-
-(작성중)
+아래 예시에서 `await()` 함수를 통해 promise를 조회하는 예시이다.
 
 ```c++
 int written = awrite(fd, buf, size).await();
@@ -163,26 +170,39 @@ else { return false; }
 ...
 ```
 
+Async/Await을 사용하게 된다면 이벤트 처리를 동기적 시멘틱을 사용할 수 있다.
+위 코드를 일반적인 write 시스템콜을 사용하는 코드과 비교해보면, `await()` 함수가 있다는 점만 제외한다면 대부분 일치한 다는 것을 알 수 있다.
+
+그렇다면, Async/Await의 프로그래밍 모델은 event-driven일까 아니면 thread-driven일까?
+사람마다 의견이 다를 수 있지만, 나는 event loop위에서 구현된 thread-driven이라 생각한다.
+이와 같은 구조는 Capriccio와 유사한 구조로[^conf/sosp/BehrenCZNB03], 이 구조 위에서 컴파일러/라이브러리가 Async/Await 키워드를 통해 락으로 보호된 값 (promise)를 쉽게 사용할 수 있게 한 것이다.
+
+
+## Actor
+
+(작성중)
+
+## Channel
+
+(작성중)
 
 
 [^whythreadsbad]: John Ousterhout. *Why Threads Are A Bad Idea (for most purposes)* In ATC 1996.
 [^haskell-combinator]: Haskell Wiki. *Combinator*. [https://wiki.haskell.org/Combinator](https://wiki.haskell.org/Combinator).
 [^callbackhell]: *Callback Hell*. [http://callbackhell.com](http://callbackhell.com).
+[^cpppromise]: *std:promise* [https://en.cppreference.com/w/cpp/thread/promise](https://en.cppreference.com/w/cpp/thread/promise)
 
 <!-- pusnow reference start -->
-[^conf/hotos/CunninghamK05]: Ryan Cunningham and Eddie Kohler. *Making Events Less Slippery with eel.* In HotOS 2005. [http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf](http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf)
-[^journals/sigops/LauerN79]: Hugh C. Lauer and Roger M. Needham. *On the Duality of Operating System Structures.* ACM SIGOPS Oper. Syst. Rev. 13(2). [https://doi.org/10.1145/850657.850658](https://doi.org/10.1145/850657.850658)
-[^conf/hotos/BehrenCB03]: J. Robert von Behren, Jeremy Condit, and Eric A. Brewer. *Why Events Are a Bad Idea (for High-Concurrency Servers).* In HotOS 2003. [https://www.usenix.org/conference/hotos-ix/why-events-are-bad-idea-high-concurrency-servers](https://www.usenix.org/conference/hotos-ix/why-events-are-bad-idea-high-concurrency-servers)
-[^conf/hotos/CunninghamK05]: Ryan Cunningham and Eddie Kohler. *Making Events Less Slippery with eel.* In HotOS 2005. [http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf](http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf)
 [^conf/sosp/BehrenCZNB03]: J. Robert von Behren, Jeremy Condit, Feng Zhou, George C. Necula, and Eric A. Brewer. *Capriccio: scalable threads for internet services.* In SOSP 2003. [https://doi.org/10.1145/945445.945471](https://doi.org/10.1145/945445.945471)
-[^conf/sosp/WelshCB01]: Matt Welsh, David E. Culler, and Eric A. Brewer. *SEDA: An Architecture for Well-Conditioned, Scalable Internet Services.* In SOSP 2001. [https://doi.org/10.1145/502034.502057](https://doi.org/10.1145/502034.502057)
-[^conf/sosp/BehrenCZNB03]: J. Robert von Behren, Jeremy Condit, Feng Zhou, George C. Necula, and Eric A. Brewer. *Capriccio: scalable threads for internet services.* In SOSP 2003. [https://doi.org/10.1145/945445.945471](https://doi.org/10.1145/945445.945471)
-[^journals/sigops/LauerN79]: Hugh C. Lauer and Roger M. Needham. *On the Duality of Operating System Structures.* ACM SIGOPS Oper. Syst. Rev. 13(2). [https://doi.org/10.1145/850657.850658](https://doi.org/10.1145/850657.850658)
-[^conf/sigopsE/DabekZKMM02]: Frank Dabek, Nickolai Zeldovich, M. Frans Kaashoek, David Mazières, and Robert Tappan Morris. *Event-driven programming for robust software.* In ACM SIGOPS European Workshop 2002. [https://doi.org/10.1145/1133373.1133410](https://doi.org/10.1145/1133373.1133410)
+[^conf/pldi/LiskovS88]: Barbara Liskov and Liuba Shrira. *Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems.* In PLDI 1988. [https://doi.org/10.1145/53990.54016](https://doi.org/10.1145/53990.54016)
 [^conf/sigopsE/DabekZKMM02]: Frank Dabek, Nickolai Zeldovich, M. Frans Kaashoek, David Mazières, and Robert Tappan Morris. *Event-driven programming for robust software.* In ACM SIGOPS European Workshop 2002. [https://doi.org/10.1145/1133373.1133410](https://doi.org/10.1145/1133373.1133410)
 [^conf/acm/Reynolds72]: John C. Reynolds. *Definitional interpreters for higher-order programming languages.* In ACM Annual Conference (2) 1972. [https://doi.org/10.1145/800194.805852](https://doi.org/10.1145/800194.805852)
-[^conf/pldi/LiskovS88]: Barbara Liskov and Liuba Shrira. *Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems.* In PLDI 1988. [https://doi.org/10.1145/53990.54016](https://doi.org/10.1145/53990.54016)
+[^conf/hotos/BehrenCB03]: J. Robert von Behren, Jeremy Condit, and Eric A. Brewer. *Why Events Are a Bad Idea (for High-Concurrency Servers).* In HotOS 2003. [https://www.usenix.org/conference/hotos-ix/why-events-are-bad-idea-high-concurrency-servers](https://www.usenix.org/conference/hotos-ix/why-events-are-bad-idea-high-concurrency-servers)
 [^conf/sc/Chatterjee89]: Arunodaya Chatterjee. *FUTURES: a mechanism for concurrency among objects.* In SC 1989. [https://doi.org/10.1145/76263.76326](https://doi.org/10.1145/76263.76326)
+[^conf/hotos/CunninghamK05]: Ryan Cunningham and Eddie Kohler. *Making Events Less Slippery with eel.* In HotOS 2005. [http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf](http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf)
+[^journals/toplas/Halstead85]: Robert H. Halstead Jr.. *Multilisp: A Language for Concurrent Symbolic Computation.* ACM Trans. Program. Lang. Syst. 7(4). [https://doi.org/10.1145/4472.4478](https://doi.org/10.1145/4472.4478)
+[^journals/sigops/LauerN79]: Hugh C. Lauer and Roger M. Needham. *On the Duality of Operating System Structures.* ACM SIGOPS Oper. Syst. Rev. 13(2). [https://doi.org/10.1145/850657.850658](https://doi.org/10.1145/850657.850658)
 [^journals/pacmpl/Syme20]: Don Syme. *The early history of F#.* Proc. ACM Program. Lang. 4(HOPL). [https://doi.org/10.1145/3386325](https://doi.org/10.1145/3386325)
 [^conf/icse/OkurHDD14]: Semih Okur, David L. Hartveld, Danny Dig, and Arie van Deursen. *A study and toolkit for asynchronous programming in c#.* In ICSE 2014. [https://doi.org/10.1145/2568225.2568309](https://doi.org/10.1145/2568225.2568309)
+[^conf/sosp/WelshCB01]: Matt Welsh, David E. Culler, and Eric A. Brewer. *SEDA: An Architecture for Well-Conditioned, Scalable Internet Services.* In SOSP 2001. [https://doi.org/10.1145/502034.502057](https://doi.org/10.1145/502034.502057)
 <!-- pusnow reference end -->
