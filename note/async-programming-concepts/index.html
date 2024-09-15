@@ -54,8 +54,8 @@
 <li>Callback</li>
 <li>Promise and Future</li>
 <li>Async/await</li>
-<li>Actor</li>
-<li>Channel</li>
+<li>CSP Model</li>
+<li>Actor Model</li>
 </ul>
 <h2 id="event-driven-programming">Event-Driven Programming</h2>
 <p>이 글에서 설명하는 event-driven은 thread-driven vs. event-driven 문맥에서 event-driven을 지칭한다.
@@ -173,10 +173,12 @@ Callback이 caller와 같은 스레드에서 실행한다 하더라도, 스택 �
 <p>그렇다면, Async/Await의 프로그래밍 모델은 event-driven일까 아니면 thread-driven일까?
 사람마다 의견이 다를 수 있지만, 나는 event loop위에서 구현된 thread-driven이라 생각한다.
 이와 같은 구조는 Capriccio와 유사한 구조로<sup id="fnref2:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, 이 구조 위에서 컴파일러/라이브러리가 Async/Await 키워드를 통해 락으로 보호된 값 (promise)를 쉽게 사용할 수 있게 한 것이다.</p>
-<h2 id="actor">Actor</h2>
-<p>(작성중)</p>
-<h2 id="channel">Channel</h2>
-<p>(작성중)</p>
+<h2 id="csp-model">CSP Model</h2>
+<p><sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup>
+(작성중)</p>
+<h2 id="actor-model">Actor Model</h2>
+<p><sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup>
+(작성중)</p>
 <!-- pusnow reference start -->
 <!-- pusnow reference end --><div class="footnotes" role="doc-endnotes">
 <hr>
@@ -228,6 +230,12 @@ Callback이 caller와 같은 스레드에서 실행한다 하더라도, 스택 �
 </li>
 <li id="fn:16">
 <p>Semih Okur, David L. Hartveld, Danny Dig, and Arie van Deursen. <em>A study and toolkit for asynchronous programming in c#.</em> In ICSE 2014. <a href="https://doi.org/10.1145/2568225.2568309">https://doi.org/10.1145/2568225.2568309</a>&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:17">
+<p>C. A. R. Hoare. <em>Communicating Sequential Processes.</em> Commun. ACM 21(8). <a href="https://doi.org/10.1145/359576.359585">https://doi.org/10.1145/359576.359585</a>&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:18">
+<p>Carl Hewitt, Peter Boehler Bishop, and Richard Steiger. <em>A Universal Modular ACTOR Formalism for Artificial Intelligence.</em> In IJCAI 1973. <a href="http://ijcai.org/Proceedings/73/Papers/027B.pdf">http://ijcai.org/Proceedings/73/Papers/027B.pdf</a>&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
