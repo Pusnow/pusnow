@@ -180,7 +180,7 @@ Async/Await을 사용하게 된다면 이벤트 처리를 동기적 시멘틱을
 
 ## CSP Model
 
-[^journals/cacm/Hoare78]
+[^journals/cacm/Hoare78][^csp]
 (작성중)
 
 ## Actor Model
@@ -193,6 +193,7 @@ Async/Await을 사용하게 된다면 이벤트 처리를 동기적 시멘틱을
 [^haskell-combinator]: Haskell Wiki. *Combinator*. [https://wiki.haskell.org/Combinator](https://wiki.haskell.org/Combinator).
 [^callbackhell]: *Callback Hell*. [http://callbackhell.com](http://callbackhell.com).
 [^cpppromise]: *std:promise* [https://en.cppreference.com/w/cpp/thread/promise](https://en.cppreference.com/w/cpp/thread/promise)
+[^csp]: C. A. R. Hoare. *Communicating Sequential Processes*. [http://usingcsp.com/cspbook.pdf](http://usingcsp.com/cspbook.pdf)
 
 <!-- pusnow reference start -->
 [^conf/acm/Reynolds72]: John C. Reynolds. *Definitional interpreters for higher-order programming languages.* In ACM Annual Conference (2) 1972. [https://doi.org/10.1145/800194.805852](https://doi.org/10.1145/800194.805852)
