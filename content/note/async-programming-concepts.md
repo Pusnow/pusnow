@@ -19,8 +19,8 @@ tags:
 * Callback
 * Promise and Future
 * Async/await
-* Actor
-* Channel
+* CSP Model
+* Actor Model
 
 ## Event-Driven Programming
 
@@ -178,12 +178,14 @@ Async/Await을 사용하게 된다면 이벤트 처리를 동기적 시멘틱을
 이와 같은 구조는 Capriccio와 유사한 구조로[^conf/sosp/BehrenCZNB03], 이 구조 위에서 컴파일러/라이브러리가 Async/Await 키워드를 통해 락으로 보호된 값 (promise)를 쉽게 사용할 수 있게 한 것이다.
 
 
-## Actor
+## CSP Model
 
+[^journals/cacm/Hoare78]
 (작성중)
 
-## Channel
+## Actor Model
 
+[^conf/ijcai/HewittBS73]
 (작성중)
 
 
@@ -193,16 +195,18 @@ Async/Await을 사용하게 된다면 이벤트 처리를 동기적 시멘틱을
 [^cpppromise]: *std:promise* [https://en.cppreference.com/w/cpp/thread/promise](https://en.cppreference.com/w/cpp/thread/promise)
 
 <!-- pusnow reference start -->
-[^conf/sosp/BehrenCZNB03]: J. Robert von Behren, Jeremy Condit, Feng Zhou, George C. Necula, and Eric A. Brewer. *Capriccio: scalable threads for internet services.* In SOSP 2003. [https://doi.org/10.1145/945445.945471](https://doi.org/10.1145/945445.945471)
-[^conf/pldi/LiskovS88]: Barbara Liskov and Liuba Shrira. *Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems.* In PLDI 1988. [https://doi.org/10.1145/53990.54016](https://doi.org/10.1145/53990.54016)
-[^conf/sigopsE/DabekZKMM02]: Frank Dabek, Nickolai Zeldovich, M. Frans Kaashoek, David Mazières, and Robert Tappan Morris. *Event-driven programming for robust software.* In ACM SIGOPS European Workshop 2002. [https://doi.org/10.1145/1133373.1133410](https://doi.org/10.1145/1133373.1133410)
 [^conf/acm/Reynolds72]: John C. Reynolds. *Definitional interpreters for higher-order programming languages.* In ACM Annual Conference (2) 1972. [https://doi.org/10.1145/800194.805852](https://doi.org/10.1145/800194.805852)
 [^conf/hotos/BehrenCB03]: J. Robert von Behren, Jeremy Condit, and Eric A. Brewer. *Why Events Are a Bad Idea (for High-Concurrency Servers).* In HotOS 2003. [https://www.usenix.org/conference/hotos-ix/why-events-are-bad-idea-high-concurrency-servers](https://www.usenix.org/conference/hotos-ix/why-events-are-bad-idea-high-concurrency-servers)
-[^conf/sc/Chatterjee89]: Arunodaya Chatterjee. *FUTURES: a mechanism for concurrency among objects.* In SC 1989. [https://doi.org/10.1145/76263.76326](https://doi.org/10.1145/76263.76326)
 [^conf/hotos/CunninghamK05]: Ryan Cunningham and Eddie Kohler. *Making Events Less Slippery with eel.* In HotOS 2005. [http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf](http://www.usenix.org/events/hotos05/final_papers/full_papers/cunningham/cunningham.pdf)
-[^journals/toplas/Halstead85]: Robert H. Halstead Jr.. *Multilisp: A Language for Concurrent Symbolic Computation.* ACM Trans. Program. Lang. Syst. 7(4). [https://doi.org/10.1145/4472.4478](https://doi.org/10.1145/4472.4478)
-[^journals/sigops/LauerN79]: Hugh C. Lauer and Roger M. Needham. *On the Duality of Operating System Structures.* ACM SIGOPS Oper. Syst. Rev. 13(2). [https://doi.org/10.1145/850657.850658](https://doi.org/10.1145/850657.850658)
-[^journals/pacmpl/Syme20]: Don Syme. *The early history of F#.* Proc. ACM Program. Lang. 4(HOPL). [https://doi.org/10.1145/3386325](https://doi.org/10.1145/3386325)
 [^conf/icse/OkurHDD14]: Semih Okur, David L. Hartveld, Danny Dig, and Arie van Deursen. *A study and toolkit for asynchronous programming in c#.* In ICSE 2014. [https://doi.org/10.1145/2568225.2568309](https://doi.org/10.1145/2568225.2568309)
+[^conf/ijcai/HewittBS73]: Carl Hewitt, Peter Boehler Bishop, and Richard Steiger. *A Universal Modular ACTOR Formalism for Artificial Intelligence.* In IJCAI 1973. [http://ijcai.org/Proceedings/73/Papers/027B.pdf](http://ijcai.org/Proceedings/73/Papers/027B.pdf)
+[^conf/pldi/LiskovS88]: Barbara Liskov and Liuba Shrira. *Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems.* In PLDI 1988. [https://doi.org/10.1145/53990.54016](https://doi.org/10.1145/53990.54016)
+[^conf/sc/Chatterjee89]: Arunodaya Chatterjee. *FUTURES: a mechanism for concurrency among objects.* In SC 1989. [https://doi.org/10.1145/76263.76326](https://doi.org/10.1145/76263.76326)
+[^conf/sigopsE/DabekZKMM02]: Frank Dabek, Nickolai Zeldovich, M. Frans Kaashoek, David Mazières, and Robert Tappan Morris. *Event-driven programming for robust software.* In ACM SIGOPS European Workshop 2002. [https://doi.org/10.1145/1133373.1133410](https://doi.org/10.1145/1133373.1133410)
+[^conf/sosp/BehrenCZNB03]: J. Robert von Behren, Jeremy Condit, Feng Zhou, George C. Necula, and Eric A. Brewer. *Capriccio: scalable threads for internet services.* In SOSP 2003. [https://doi.org/10.1145/945445.945471](https://doi.org/10.1145/945445.945471)
 [^conf/sosp/WelshCB01]: Matt Welsh, David E. Culler, and Eric A. Brewer. *SEDA: An Architecture for Well-Conditioned, Scalable Internet Services.* In SOSP 2001. [https://doi.org/10.1145/502034.502057](https://doi.org/10.1145/502034.502057)
+[^journals/cacm/Hoare78]: C. A. R. Hoare. *Communicating Sequential Processes.* Commun. ACM 21(8). [https://doi.org/10.1145/359576.359585](https://doi.org/10.1145/359576.359585)
+[^journals/pacmpl/Syme20]: Don Syme. *The early history of F#.* Proc. ACM Program. Lang. 4(HOPL). [https://doi.org/10.1145/3386325](https://doi.org/10.1145/3386325)
+[^journals/sigops/LauerN79]: Hugh C. Lauer and Roger M. Needham. *On the Duality of Operating System Structures.* ACM SIGOPS Oper. Syst. Rev. 13(2). [https://doi.org/10.1145/850657.850658](https://doi.org/10.1145/850657.850658)
+[^journals/toplas/Halstead85]: Robert H. Halstead Jr.. *Multilisp: A Language for Concurrent Symbolic Computation.* ACM Trans. Program. Lang. Syst. 7(4). [https://doi.org/10.1145/4472.4478](https://doi.org/10.1145/4472.4478)
 <!-- pusnow reference end -->
