@@ -185,7 +185,7 @@ Async/Await을 사용하게 된다면 이벤트 처리를 동기적 시멘틱을
 
 ## Actor Model
 
-[^conf/ijcai/HewittBS73]
+[^conf/ijcai/HewittBS73][^conf/popl/HewittA77]
 (작성중)
 
 
@@ -201,6 +201,7 @@ Async/Await을 사용하게 된다면 이벤트 처리를 동기적 시멘틱을
 [^conf/icse/OkurHDD14]: Semih Okur, David L. Hartveld, Danny Dig, and Arie van Deursen. *A study and toolkit for asynchronous programming in c#.* In ICSE 2014. [https://doi.org/10.1145/2568225.2568309](https://doi.org/10.1145/2568225.2568309)
 [^conf/ijcai/HewittBS73]: Carl Hewitt, Peter Boehler Bishop, and Richard Steiger. *A Universal Modular ACTOR Formalism for Artificial Intelligence.* In IJCAI 1973. [http://ijcai.org/Proceedings/73/Papers/027B.pdf](http://ijcai.org/Proceedings/73/Papers/027B.pdf)
 [^conf/pldi/LiskovS88]: Barbara Liskov and Liuba Shrira. *Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems.* In PLDI 1988. [https://doi.org/10.1145/53990.54016](https://doi.org/10.1145/53990.54016)
+[^conf/popl/HewittA77]: Russell R. Atkinson and Carl Hewitt. *Parallelism and Synchronization in Actor Systems.* In POPL 1977. [https://doi.org/10.1145/512950.512975](https://doi.org/10.1145/512950.512975)
 [^conf/sc/Chatterjee89]: Arunodaya Chatterjee. *FUTURES: a mechanism for concurrency among objects.* In SC 1989. [https://doi.org/10.1145/76263.76326](https://doi.org/10.1145/76263.76326)
 [^conf/sigopsE/DabekZKMM02]: Frank Dabek, Nickolai Zeldovich, M. Frans Kaashoek, David Mazières, and Robert Tappan Morris. *Event-driven programming for robust software.* In ACM SIGOPS European Workshop 2002. [https://doi.org/10.1145/1133373.1133410](https://doi.org/10.1145/1133373.1133410)
 [^conf/sosp/BehrenCZNB03]: J. Robert von Behren, Jeremy Condit, Feng Zhou, George C. Necula, and Eric A. Brewer. *Capriccio: scalable threads for internet services.* In SOSP 2003. [https://doi.org/10.1145/945445.945471](https://doi.org/10.1145/945445.945471)
