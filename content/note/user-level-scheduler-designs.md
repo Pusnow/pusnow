@@ -65,7 +65,7 @@ graph TB
 * Goroutine[^10.1145/3488716]: Go 언어에서 사용하는 유저레벨 스레드를 지칭한다.
 
 <!-- pusnow reference start -->
-[^books/daglib/0096707]: Scott Oaks and Henry Wong. *Java threads - Java 2 (2. ed.).* O'Reilly, 1999.
 [^10.1145/1182807.1182811]: Adam Dunkels, Oliver Schmidt, Thiemo Voigt, and Muneeb Ali. *Protothreads: simplifying event-driven programming of memory-constrained embedded systems.* Proceedings of the 4th international conference on Embedded networked sensor systems. [https://dl.acm.org/doi/pdf/10.1145/1182807.1182811](https://dl.acm.org/doi/pdf/10.1145/1182807.1182811)
 [^10.1145/3488716]: Russ Cox, Robert Griesemer, Rob Pike, Ian Lance Taylor, and Ken Thompson. *The Go programming language and environment.* Communications of the ACM 65, 5. [https://dl.acm.org/doi/pdf/10.1145/3488716](https://dl.acm.org/doi/pdf/10.1145/3488716)
+[^books/daglib/0096707]: Scott Oaks and Henry Wong. *Java threads - Java 2 (2. ed.).* O'Reilly, 1999.
 <!-- pusnow reference end -->
