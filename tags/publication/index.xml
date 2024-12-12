@@ -6,8 +6,15 @@
     <description>Recent content in Publication on Pusnow</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Jan 2024 19:19:20 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 12 Dec 2024 16:06:23 +0900</lastBuildDate>
     <atom:link href="https://www.pusnow.com/tags/publication/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Poster: Pushing RDMA into Milliseconds RTT Communication</title>
+      <link>https://www.pusnow.com/publication/millirdma-conextposter24/</link>
+      <pubDate>Mon, 09 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://www.pusnow.com/publication/millirdma-conextposter24/</guid>
+      <description>&lt;p&gt;Proceedings of the 20th International Conference on emerging Networking EXperiments and Technologies (Poster Session) (CoNEXT &amp;lsquo;24 Posters)&lt;/p&gt;&#xA;&lt;p&gt;© Jisu Ok, Wonsup Yoon, and Sue Moon 2024. This is the author&amp;rsquo;s version of the work. It is posted here for your personal use. Not for redistribution. The definitive Version of Record was published in Proceedings of the 20th International Conference on emerging Networking EXperiments and Technologies (Poster Session) (CoNEXT &amp;lsquo;24 Posters), &lt;a href=&#34;https://dl.acm.org/doi/pdf/10.1145/3680121.3699883&#34;&gt;https://dl.acm.org/doi/pdf/10.1145/3680121.3699883&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Poster: Designing a Memory Disaggregation System for Cloud</title>
       <link>https://www.pusnow.com/publication/dmdsc-sigcommposter23/</link>
