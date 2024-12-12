@@ -37,6 +37,9 @@
 <div class="avoid-page-break-inside-ul no-print-a">
 
 <!-- pusnow publication start -->
+- Poster: Pushing RDMA into Milliseconds RTT Communication. [[Link]](https://www.pusnow.com/publication/millirdma-conextposter24/)
+  - Jisu Ok, **Wonsup Yoon**, and Sue Moon
+  - *Proceedings of the 20th International Conference on emerging Networking EXperiments and Technologies (Poster Session) (CoNEXT '24 Posters).* 2024
 - Poster: Designing a Memory Disaggregation System for Cloud. [[Link]](https://www.pusnow.com/publication/dmdsc-sigcommposter23/)
   - **Wonsup Yoon**, Jisu Ok, Sue Moon, and Youngjin Kwon
   - *Proceedings of the ACM SIGCOMM 2023 Conference Posters and Demos (SIGCOMM '23 Posters and Demos).* 2023

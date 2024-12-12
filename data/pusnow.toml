@@ -1,4 +1,10 @@
 [[publication]]
+cite = "10.1145/3680121.3699883"
+dblp = "conf/conext/OkYM24"
+pdf = "millirdma-conextposter24"
+where = "Proceedings of the 20th International Conference on emerging Networking EXperiments and Technologies (Poster Session) (CoNEXT '24 Posters)"
+
+[[publication]]
 cite = "10.1145/3603269.3610854"
 dblp = "conf/sigcomm/YoonOMK23"
 day = 12
