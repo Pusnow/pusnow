@@ -1,3 +1,13 @@
 {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "zenMode.centerLayout": true,
+    "workbench.colorTheme": "Default Light Modern",
+    "[markdown]": {
+        "editor.fontFamily": "KoPub바탕체",
+        "editor.wordWrap": "on",
+        "editor.lineNumbers": "off",
+        "editor.rulers": [],
+        "editor.fontSize": 20,
+        "editor.lineHeight": 30,
+    },
 }
