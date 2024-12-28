@@ -10,4 +10,13 @@
         "editor.fontSize": 20,
         "editor.lineHeight": 30,
     },
+    "spellright.language": [
+        "ko",
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ],
 }
