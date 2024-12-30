@@ -6,8 +6,15 @@
     <description>Recent content in Notes on Pusnow</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 Dec 2024 01:43:21 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 30 Dec 2024 22:34:00 +0900</lastBuildDate>
     <atom:link href="https://www.pusnow.com/note/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>노트 중심 연구 방법</title>
+      <link>https://www.pusnow.com/note/note-driven-research/</link>
+      <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://www.pusnow.com/note/note-driven-research/</guid>
+      <description>&lt;p&gt;나의 박사과정의 상당 부분은 &amp;ldquo;노트&amp;quot;를 작성하는 것이었다.&#xA;연구노트, 회의록, 아이디어 노트 등 다양한 종류의 노트가 있겠지만,&#xA;내가 말하고자 하는 노트는 이들의 목적 모두를 어느 정도 대체할 수 있기 때문에 이 글에서는 그저 노트라 지칭한다.&lt;/p&gt;&#xA;&lt;p&gt;나는 본격적으로 연구를 시작할 때인 석사 2학년(2019년 1월)부터 지금까지 꾸준하게 이 노트를 주기적으로(대개 주 1회) 작성해 왔고, 돌이켜보면 이 습관이 내가 연구를 꾸준히 할 수 있었던 원동력이지 않았나 싶다.&lt;/p&gt;&#xA;&lt;p&gt;박사과정을 마무리해 가는 지금, 나의 연구 방법인 &amp;ldquo;노트 중심 연구 방법&amp;quot;을 정리하여 소개해 본다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>비동기 프로그래밍 개념들</title>
       <link>https://www.pusnow.com/note/async-programming-concepts/</link>
