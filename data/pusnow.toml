@@ -4,7 +4,7 @@ year = 2025
 month = 4
 day = 1
 authors = ["Wonsup Yoon", "Jisu Ok", "Sue Moon", "Youngjin Kwon"]
-where = "Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys)"
+where = "Proceedings of the Twentieth European Conference on Computer Systems (EuroSys)"
 
 
 [[publication]]
