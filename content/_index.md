@@ -43,6 +43,9 @@ aliases:
 <div class="avoid-page-break-inside-ul no-print-a">
 
 <!-- pusnow publication start -->
+- Adios to Busy-Waiting for Microsecond-scale Memory Disaggregation.
+  - **Wonsup Yoon**, Jisu Ok, Sue Moon, and Youngjin Kwon
+  - *Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys).* 2025
 - Poster: Pushing RDMA into Milliseconds RTT Communication. [[Link]](https://www.pusnow.com/publication/millirdma-conextposter24/)
   - Jisu Ok, **Wonsup Yoon**, and Sue Moon
   - *Proceedings of the 20th International Conference on emerging Networking EXperiments and Technologies (Poster Session) (CoNEXT '24 Posters).* 2024

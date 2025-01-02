@@ -1,4 +1,13 @@
 [[publication]]
+title = "Adios to Busy-Waiting for Microsecond-scale Memory Disaggregation"
+year = 2025
+month = 4
+day = 1
+authors = ["Wonsup Yoon", "Jisu Ok", "Sue Moon", "Youngjin Kwon"]
+where = "Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys)"
+
+
+[[publication]]
 cite = "10.1145/3680121.3699883"
 dblp = "conf/conext/OkYM24"
 pdf = "millirdma-conextposter24"
@@ -197,5 +206,3 @@ year = 2022
 title = "EuroSys'22 Shadow PC"
 org = "EuroSys"
 note = "Served as a member of a shadow PC."
-
-
