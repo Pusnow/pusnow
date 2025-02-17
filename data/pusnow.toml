@@ -180,25 +180,25 @@ note = "Awarded for outstanding performance in coursework."
 [[talk]]
 year = 2024
 title = "DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation"
-org = "KIISE KCC'24"
+org = "KIISE KCC"
 note = "Invited for top conference session."
 
 [[talk]]
 year = 2024
 title = "Efficient Memory Disaggregation Systems Using Unikernel"
-org = "KIISE KCC'24"
+org = "KIISE KCC"
 note = "Invited for doctorial forum."
 
 [[talk]]
 year = 2023
 title = "Designing a Latency-Optimized Scheduler for Memory Disaggregation"
-org = "EuroDW'23"
+org = "EuroDW"
 note = "Invited for the 17th EuroSys doctoral workshop."
 
 [[talk]]
 year = 2023
 title = "DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation"
-org = "Samsung GTS'23"
+org = "Samsung GTS"
 note = "Invited for the Samsung Global Technology Symposium."
 
 [[activity]]
