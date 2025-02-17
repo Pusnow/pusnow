@@ -2,105 +2,105 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.pusnow.com/note/</loc>
+    <loc>https://yoon.ws/note/</loc>
+    <lastmod>2025-02-17T19:52:56+09:00</lastmod>
+  </url><url>
+    <loc>https://yoon.ws/tags/research/</loc>
     <lastmod>2024-12-30T22:37:05+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/tags/research/</loc>
+    <loc>https://yoon.ws/tags/</loc>
+    <lastmod>2025-02-17T19:52:56+09:00</lastmod>
+  </url><url>
+    <loc>https://yoon.ws/note/note-driven-research/</loc>
     <lastmod>2024-12-30T22:37:05+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/tags/</loc>
-    <lastmod>2024-12-30T22:37:05+09:00</lastmod>
-  </url><url>
-    <loc>https://www.pusnow.com/note/note-driven-research/</loc>
-    <lastmod>2024-12-30T22:37:05+09:00</lastmod>
-  </url><url>
-    <loc>https://www.pusnow.com/publication/millirdma-conextposter24/</loc>
+    <loc>https://yoon.ws/publication/millirdma-conextposter24/</loc>
     <lastmod>2024-12-12T16:06:23+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/tags/publication/</loc>
+    <loc>https://yoon.ws/tags/publication/</loc>
     <lastmod>2024-12-12T16:06:23+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/publication/</loc>
+    <loc>https://yoon.ws/publication/</loc>
     <lastmod>2024-12-12T16:06:23+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/tags/system/</loc>
-    <lastmod>2024-12-29T01:43:21+09:00</lastmod>
+    <loc>https://yoon.ws/tags/system/</loc>
+    <lastmod>2025-02-17T19:52:56+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/async-programming-concepts/</loc>
-    <lastmod>2024-09-15T20:35:45+09:00</lastmod>
+    <loc>https://yoon.ws/note/async-programming-concepts/</loc>
+    <lastmod>2025-02-17T19:52:56+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/publication/dmdsc-sigcommposter23/</loc>
+    <loc>https://yoon.ws/publication/dmdsc-sigcommposter23/</loc>
     <lastmod>2024-01-20T19:19:20+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/publication/hens-apnet23/</loc>
+    <loc>https://yoon.ws/publication/hens-apnet23/</loc>
     <lastmod>2024-01-20T19:17:54+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/execution-units/</loc>
+    <loc>https://yoon.ws/note/execution-units/</loc>
     <lastmod>2024-12-29T01:43:21+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/publication/dilos-eurosys23/</loc>
+    <loc>https://yoon.ws/publication/dilos-eurosys23/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/qcnfa765-wifi-6-ap/</loc>
+    <loc>https://yoon.ws/note/qcnfa765-wifi-6-ap/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/diy-wifi-router/</loc>
+    <loc>https://yoon.ws/note/diy-wifi-router/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/kens-renewal-part3/</loc>
+    <loc>https://yoon.ws/note/kens-renewal-part3/</loc>
+    <lastmod>2025-02-17T19:52:56+09:00</lastmod>
+  </url><url>
+    <loc>https://yoon.ws/note/kens-renewal-part2/</loc>
+    <lastmod>2025-02-17T19:52:56+09:00</lastmod>
+  </url><url>
+    <loc>https://yoon.ws/note/kens-renewal-part1/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/kens-renewal-part2/</loc>
+    <loc>https://yoon.ws/note/cs-top-conferences/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/kens-renewal-part1/</loc>
+    <loc>https://yoon.ws/note/use-method-and-red-method/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/cs-top-conferences/</loc>
+    <loc>https://yoon.ws/note/dinv/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/use-method-and-red-method/</loc>
+    <loc>https://yoon.ws/note/undefined-behaviors-of-bit-scan-operators/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/dinv/</loc>
+    <loc>https://yoon.ws/publication/dilos-apsys21/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/undefined-behaviors-of-bit-scan-operators/</loc>
+    <loc>https://yoon.ws/note/c-atomic-instruction-mapping/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/publication/dilos-apsys21/</loc>
+    <loc>https://yoon.ws/note/distributed-file-system/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/c-atomic-instruction-mapping/</loc>
+    <loc>https://yoon.ws/note/size-of-standard-types/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/distributed-file-system/</loc>
+    <loc>https://yoon.ws/publication/dilos-sigcommposter20/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/size-of-standard-types/</loc>
+    <loc>https://yoon.ws/publication/rust-intrusive-plos19/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/publication/dilos-sigcommposter20/</loc>
+    <loc>https://yoon.ws/tags/hangul/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/publication/rust-intrusive-plos19/</loc>
+    <loc>https://yoon.ws/note/hangul-and-unicode/</loc>
     <lastmod>2023-08-08T09:31:31+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/tags/hangul/</loc>
-    <lastmod>2023-08-08T09:31:31+09:00</lastmod>
+    <loc>https://yoon.ws/</loc>
+    <lastmod>2025-02-17T19:52:56+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/note/hangul-and-unicode/</loc>
-    <lastmod>2023-08-08T09:31:31+09:00</lastmod>
+    <loc>https://yoon.ws/about-ko/</loc>
+    <lastmod>2025-02-17T19:52:56+09:00</lastmod>
   </url><url>
-    <loc>https://www.pusnow.com/</loc>
-    <lastmod>2025-01-02T11:22:05+09:00</lastmod>
+    <loc>https://yoon.ws/categories/</loc>
   </url><url>
-    <loc>https://www.pusnow.com/about-ko/</loc>
-    <lastmod>2025-01-02T11:22:05+09:00</lastmod>
-  </url><url>
-    <loc>https://www.pusnow.com/categories/</loc>
-  </url><url>
-    <loc>https://www.pusnow.com/hiking/</loc>
+    <loc>https://yoon.ws/hiking/</loc>
     <lastmod>2022-11-01T20:40:37+09:00</lastmod>
   </url>
 </urlset>

@@ -35,11 +35,11 @@
 
 <span class="date">2024/09/07</span>
 
-<span class="date"> (Updated: 2024/09/15).</span>
+<span class="date"> (Updated: 2025/02/17).</span>
 
 
 <span class="only-print">
-    The latest version of this page is available at <a href="https://www.pusnow.com/note/async-programming-concepts/">https://www.pusnow.com/note/async-programming-concepts/</a>.</span>
+    The latest version of this page is available at <a href="https://yoon.ws/note/async-programming-concepts/">https://yoon.ws/note/async-programming-concepts/</a>.</span>
 <hr />
 <main>
     <p>비동기 프로그래밍을 편하게 하기 위해 다양한 프로그래밍 언어적 기능과 라이브러리들이 존재한다.
@@ -67,7 +67,7 @@
 <p>앞서 인용한 논문에서 밝혔다시피, 두 프로그래밍 모델은 듀얼이다. 즉, 한 모델에서 정의된 기본 요소는 다른 모델에 맞는 프로그램이나 요소에 매핑될 수 있다.
 그럼에도, 초창기 Apache HTTP server (fork-based, process-driven) vs. NGINX (event-driven)에서의 논쟁 처럼, 학계에서도 웹 서버 (혹은 highly concurrent한 요청을 처리하는 서버)에서 thread-driven 모델이 우월하다는 주장<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>과 event-driven이 우월하는 주장<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>이 이어졌고 다양한 라이브러리와 서버들이 연구되었다<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
 <h2 id="coroutine">Coroutine</h2>
-<p>앞서 작성한 <a href="https://www.pusnow.com/note/execution-units/">글</a>에서처럼 코루틴은 여러 문맥에서 다양한 개념을 지칭하고 있다. 현재 문맥에서는 procedure-oriented 시스템에서 사용하는 process의 일종으로 보면 간단하다.
+<p>앞서 작성한 <a href="https://yoon.ws/note/execution-units/">글</a>에서처럼 코루틴은 여러 문맥에서 다양한 개념을 지칭하고 있다. 현재 문맥에서는 procedure-oriented 시스템에서 사용하는 process의 일종으로 보면 간단하다.
 코루틴은 다른 process 혹은 thread와 달리 생성과 문맥전환이 빠르기 때문에 작은 프로세스의 수가 빠르게 변화하는 procedure-oriented 시스템에서 성능을 개선하기 위해 많이 사용된다. Capriccio는 대표적인 코루틴을 사용한 procedure-oriented 시스템이다<sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
 <h2 id="event-loop-and-handlers">Event Loop and Handlers</h2>
 <p>Event-driven programming을 어떻게 할 것인가는 사실상 표준적인 방식이 존재한다: 이는 event loop와 event handler들을 활용하는 방식이다.
@@ -252,7 +252,7 @@ Callback이 caller와 같은 스레드에서 실행한다 하더라도, 스택 �
 <footer class="no-print">
     
     <hr />
-    © <a href="https://www.pusnow.com">Wonsup Yoon</a> | <a href="https://github.com/pusnow">GitHub</a> | Original theme: <a href="https://github.com/yihui/hugo-xmin">Hugo xmin</a>
+    © <a href="https://yoon.ws">Wonsup Yoon</a> | <a href="https://github.com/pusnow">GitHub</a> | Original theme: <a href="https://github.com/yihui/hugo-xmin">Hugo xmin</a>
     
 </footer>
 
