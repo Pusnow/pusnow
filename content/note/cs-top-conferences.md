@@ -6,7 +6,7 @@ tags:
     - System
 ---
 
-URL: <https://wsyo.one/csconf>
+URL: <https://yoon.ws/csconf>
 
 과제 실적 정리 등으로 CS 분야 우수 학술대회 목록을 사용해야 할 때가 있다.
 한국에서 자주 사용되는 목록으로는 한국정보과학회, BK21플러스, KAIST, 서울대, 포항공대에서 관리하는 목록이 있는데,

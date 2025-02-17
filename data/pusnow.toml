@@ -32,7 +32,7 @@ cite = "10.1145/3552326.3567488"
 dblp = "conf/eurosys/YoonOOMK23"
 where = "Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys)"
 note = "Best Paper Runner-up"
-slides = "https://wsyo.one/dilos/slides"
+slides = "https://yoon.ws/dilos/slides"
 pdf = "dilos-eurosys23"
 
 [[publication]]

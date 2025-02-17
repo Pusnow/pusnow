@@ -50,7 +50,7 @@
   - Byeongkeon Lee, Donghyeon Lee, Jisu Ok, **Wonsup Yoon**, and Sue Moon
   - *Proceedings of the 7th Asia-Pacific Workshop on Networking (APNet).* 2023
   - Best Paper Award
-- DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation. [[Link]](https://yoon.ws/publication/dilos-eurosys23/) [[Slides]](https://wsyo.one/dilos/slides)
+- DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation. [[Link]](https://yoon.ws/publication/dilos-eurosys23/) [[Slides]](https://yoon.ws/dilos/slides)
   - **Wonsup Yoon**, Jisu Ok, Jinyoung Oh, Sue Moon, and Youngjin Kwon
   - *Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys).* 2023
   - Best Paper Runner-up
