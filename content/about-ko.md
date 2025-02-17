@@ -127,7 +127,7 @@
 - Email: [wsyoon@kaist.ac.kr](mailto:wsyoon@kaist.ac.kr)
 - GitHub: [Pusnow](https://github.com/Pusnow)
 - Google Scholar: [Wonsup Yoon](https://scholar.google.com/citations?user=QXsLShMAAAAJ)
-- LinkedIn: [pusnow](https://www.linkedin.com/in/pusnow/)
+- LinkedIn: [wsyoon](https://www.linkedin.com/in/wsyoon/)
 - ORCID: [0000-0002-6247-4119](https://orcid.org/0000-0002-6247-4119)
 
 </div>
