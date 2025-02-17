@@ -7,7 +7,7 @@ tags:
 ---
 
 * [Source code available](https://github.com/ANLAB-KAIST/KENSv3)
-* [Part 1](https://www.pusnow.com/note/kens-renewal-part1/)
+* [Part 1](https://yoon.ws/note/kens-renewal-part1/)
 
 ## KENS 개발 환경
 

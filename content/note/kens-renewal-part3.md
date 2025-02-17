@@ -7,8 +7,8 @@ tags:
 ---
 
 * [Source code available](https://github.com/ANLAB-KAIST/KENSv3)
-* [Part 1](https://www.pusnow.com/note/kens-renewal-part1/)
-* [Part 2](https://www.pusnow.com/note/kens-renewal-part2/)
+* [Part 1](https://yoon.ws/note/kens-renewal-part1/)
+* [Part 2](https://yoon.ws/note/kens-renewal-part2/)
 
 ## 지속가능성
 

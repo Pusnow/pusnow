@@ -6,7 +6,7 @@ aliases:
 
 # Wonsup Yoon (윤원섭)
 
-[[Korean version (한국어버전)]](https://www.pusnow.com/about-ko/)
+[[Korean version (한국어버전)]](https://yoon.ws/about-ko/)
 
 ## Research Interests
 
@@ -46,27 +46,27 @@ aliases:
 - Adios to Busy-Waiting for Microsecond-scale Memory Disaggregation.
   - **Wonsup Yoon**, Jisu Ok, Sue Moon, and Youngjin Kwon
   - *Proceedings of the Twentieth European Conference on Computer Systems (EuroSys).* 2025
-- Poster: Pushing RDMA into Milliseconds RTT Communication. [[Link]](https://www.pusnow.com/publication/millirdma-conextposter24/)
+- Poster: Pushing RDMA into Milliseconds RTT Communication. [[Link]](https://yoon.ws/publication/millirdma-conextposter24/)
   - Jisu Ok, **Wonsup Yoon**, and Sue Moon
   - *Proceedings of the 20th International Conference on emerging Networking EXperiments and Technologies (Poster Session) (CoNEXT '24 Posters).* 2024
-- Poster: Designing a Memory Disaggregation System for Cloud. [[Link]](https://www.pusnow.com/publication/dmdsc-sigcommposter23/)
+- Poster: Designing a Memory Disaggregation System for Cloud. [[Link]](https://yoon.ws/publication/dmdsc-sigcommposter23/)
   - **Wonsup Yoon**, Jisu Ok, Sue Moon, and Youngjin Kwon
   - *Proceedings of the ACM SIGCOMM 2023 Conference Posters and Demos (SIGCOMM '23 Posters and Demos).* 2023
-- Host Efficient Networking Stack Utilizing NIC DRAM. [[Link]](https://www.pusnow.com/publication/hens-apnet23/)
+- Host Efficient Networking Stack Utilizing NIC DRAM. [[Link]](https://yoon.ws/publication/hens-apnet23/)
   - Byeongkeon Lee, Donghyeon Lee, Jisu Ok, **Wonsup Yoon**, and Sue Moon
   - *Proceedings of the 7th Asia-Pacific Workshop on Networking (APNet).* 2023
   - Best Paper Award
-- DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation. [[Link]](https://www.pusnow.com/publication/dilos-eurosys23/) [[Slides]](https://wsyo.one/dilos/slides)
+- DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation. [[Link]](https://yoon.ws/publication/dilos-eurosys23/) [[Slides]](https://wsyo.one/dilos/slides)
   - **Wonsup Yoon**, Jisu Ok, Jinyoung Oh, Sue Moon, and Youngjin Kwon
   - *Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys).* 2023
   - Best Paper Runner-up
-- DiLOS: adding performance to paging-based memory disaggregation. [[Link]](https://www.pusnow.com/publication/dilos-apsys21/)
+- DiLOS: adding performance to paging-based memory disaggregation. [[Link]](https://yoon.ws/publication/dilos-apsys21/)
   - **Wonsup Yoon**, Jinyoung Oh, Jisu Ok, Sue Moon, and Youngjin Kwon
   - *Proceedings of the 12th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys).* 2021
-- Accelerating disaggregated data centers using unikernel. [[Link]](https://www.pusnow.com/publication/dilos-sigcommposter20/)
+- Accelerating disaggregated data centers using unikernel. [[Link]](https://yoon.ws/publication/dilos-sigcommposter20/)
   - **Wonsup Yoon**, Jinyoung Oh, Sue Moon, and Youngjin Kwon
   - *Proceedings of the ACM SIGCOMM 2020 Conference Posters and Demos (SIGCOMM '20 Posters and Demos).* 2020
-- Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System. [[Link]](https://www.pusnow.com/publication/rust-intrusive-plos19/)
+- Enveloping Implicit Assumptions of Intrusive Data Structures within Ownership Type System. [[Link]](https://yoon.ws/publication/rust-intrusive-plos19/)
   - Keunhong Lee, Jeehoon Kang, **Wonsup Yoon**, Joongi Kim, and Sue Moon
   - *Proceedings of the 10th Workshop on Programming Languages and Operating Systems (PLOS@SOSP).* 2019
 <!-- pusnow publication end -->
@@ -93,10 +93,10 @@ aliases:
 ## Invited Talks
 
 <!-- pusnow talk start -->
-* KIISE KCC'24: Efficient Memory Disaggregation Systems Using Unikernel
-* KIISE KCC'24: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
-* Samsung GTS'23: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
-* EuroDW'23: Designing a Latency-Optimized Scheduler for Memory Disaggregation
+- KIISE KCC'24: Efficient Memory Disaggregation Systems Using Unikernel
+- KIISE KCC'24: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
+- Samsung GTS'23: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
+- EuroDW'23: Designing a Latency-Optimized Scheduler for Memory Disaggregation
 <!-- pusnow talk end -->
 
 ---
@@ -104,7 +104,7 @@ aliases:
 ## Professional Activities
 
 <!-- pusnow activity start -->
-* 2022: EuroSys'22 Shadow PC
+- 2022: EuroSys'22 Shadow PC
 <!-- pusnow activity end -->
 
 ---
