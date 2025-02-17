@@ -1,6 +1,6 @@
 baseURL = "https://yoon.ws/"
 languageCode = "en-us"
-title = "Pusnow"
+title = "Wonsup Yoon"
 enableGitInfo = true
 
 [permalinks]

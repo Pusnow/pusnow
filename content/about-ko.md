@@ -109,7 +109,7 @@
 - 수업조교, **KAIST**, *2017-2022, 2024*.
   - CS341 (전상망개론),  CS443 (분산 알고리즘 및 시스템), CS530 (운영체제).
   - [KENS (KAIST Educational Network System)](https://github.com/ANLAB-KAIST/KENSv3), [Raft consensus algorithm](https://an.kaist.ac.kr/courses/2018/cs443/lab/lab-raft.html), OSv 유니커널 기반 프로젝트 지도.
-  - [KENS (KAIST Educational Network System)](https://github.com/ANLAB-KAIST/KENSv3) 개발 및 관리. 주요 내용: [메모리안전성](https://pusnow.com/note/kens-renewal-part1/), [빌드시스템과 개발환경](https://pusnow.com/note/kens-renewal-part2/), [교육 에코시스템](https://pusnow.com/note/kens-renewal-part3/).
+  - [KENS (KAIST Educational Network System)](https://github.com/ANLAB-KAIST/KENSv3) 개발 및 관리. 주요 내용: [메모리안전성](https://yoon.ws/note/kens-renewal-part1/), [빌드시스템과 개발환경](https://yoon.ws/note/kens-renewal-part2/), [교육 에코시스템](https://yoon.ws/note/kens-renewal-part3/).
 - 전산 조교 및 소프트웨어 개발자, 언어정보연구원, **연세대학교**, *2013-2017*.
   - 연세말뭉치검색기 개발, 효율적인 연세 한국어 말뭉치 검색/필터/정렬 시스템.
   - 연세사전검색기 개발, 웹기반 및 .net 연세한국어사전 검색기.

@@ -115,7 +115,7 @@ aliases:
 
 - Teaching Assistant, **KAIST**, *2017-2022, 2024*.
   - Teaching CS341 (Introduction to Computer Networks),  CS443 (Distributed Algorithms and Systems), and CS530 (Graduate Operating Systems). Its main job was teaching project assignments including [KENS (KAIST Educational Network System)](https://github.com/ANLAB-KAIST/KENSv3), [Raft consensus algorithm](https://an.kaist.ac.kr/courses/2018/cs443/lab/lab-raft.html), and an OSv unikernel-based project.
-  - Developing and maintaining [KENS (KAIST Educational Network System)](https://github.com/ANLAB-KAIST/KENSv3). Its enhancements include [memory safety](https://pusnow.com/note/kens-renewal-part1/ "korean"), [build system and development environment](https://pusnow.com/note/kens-renewal-part2/ "korean"), and [teaching ecosystem](https://pusnow.com/note/kens-renewal-part3/ "korean").
+  - Developing and maintaining [KENS (KAIST Educational Network System)](https://github.com/ANLAB-KAIST/KENSv3). Its enhancements include [memory safety](https://yoon.ws/note/kens-renewal-part1/ "korean"), [build system and development environment](https://yoon.ws/note/kens-renewal-part2/ "korean"), and [teaching ecosystem](https://yoon.ws/note/kens-renewal-part3/ "korean").
 - Technical Assistant and Software Developer, Institute of Language and Information Studies, **Yonsei University**, *2013-2017*.
   - Developing Yonsei Corpus Searcher, an efficient efficient search-filter-sort application for Yonsei Korean Corpus.
   - Developing Yonsei Dictionary Searcher, an efficient search application based on web and .net for Yonsei Korean Dictionary.
