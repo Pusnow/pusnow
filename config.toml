@@ -31,7 +31,7 @@ weight = 4
 
 [[menu.main]]
 name = "CV"
-url = "pdf/cv.pdf"
+url = "pdf/wsyoon-cv.pdf"
 weight = 5
 
 

@@ -1,3 +1,4 @@
+
 [[publication]]
 title = "Adios to Busy-Waiting for Microsecond-scale Memory Disaggregation"
 year = 2025
@@ -5,6 +6,14 @@ month = 4
 day = 1
 authors = ["Wonsup Yoon", "Jisu Ok", "Sue Moon", "Youngjin Kwon"]
 where = "Proceedings of the Twentieth European Conference on Computer Systems (EuroSys)"
+
+[[publication]]
+title = "Dynamic Dispatcher Assignment With Flat-Combining"
+year = 2025
+month = 4
+day = 1
+authors = ["Gangmin Lee", "Wonsup Yoon", "Sue Moon"]
+where = "Proceedings of the Twentieth European Conference on Computer Systems (Poster Session) (EuroSys '25 Posters)"
 
 
 [[publication]]
