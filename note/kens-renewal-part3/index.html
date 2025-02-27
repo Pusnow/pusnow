@@ -35,7 +35,7 @@
 
 <span class="date">2022/11/22</span>
 
-<span class="date"> (Updated: 2025/02/17).</span>
+<span class="date"> (Updated: 2025/02/27).</span>
 
 
 <span class="only-print">
@@ -70,12 +70,12 @@
 <p>학생들의 과제물을 관리하는 작업은 과제 파이프라인을 이용한다.
 다음은 KENS 과제 파이프라인으로 학생들이 KLMS(KAIST Learning Management System)에 제출된 과제물들이 어떻게 처리되는가를 보여준다.</p>
 <div class="mermaid">flowchart TB
-    klms(1. Submission archive) -- unzip --> klms_extracted
-    klms_extracted(2. Extracted KLMS archive) -- extract_klms.py --> submissions
-    submissions(3. Submissions) -- git commit/push --> github(4. GitHub)
-    submissions -- check_plag.py --> plagiarism_report(5. Plagiarism report `result/`)
+    klms(1\. Submission archive) -- unzip --> klms_extracted
+    klms_extracted(2\. Extracted KLMS archive) -- extract_klms.py --> submissions
+    submissions(3\. Submissions) -- git commit/push --> github(4\. GitHub)
+    submissions -- check_plag.py --> plagiarism_report(5\. Plagiarism report `result/`)
     submissions -- grade.py --> grading_result
-    grading_result(6. Grading result) -- report.py --> report(7. Grading report)
+    grading_result(6\. Grading result) -- report.py --> report(7\. Grading report)
 </div>
 <ol>
 <li>학생들이 제출한 과제물들은 KLMS에서 압축 파일로 한 번에 다운로드 받을 수 있다.</li>
