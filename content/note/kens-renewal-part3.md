@@ -42,12 +42,12 @@ tags:
 
 ```mermaid
 flowchart TB
-    klms(1. Submission archive) -- unzip --> klms_extracted
-    klms_extracted(2. Extracted KLMS archive) -- extract_klms.py --> submissions
-    submissions(3. Submissions) -- git commit/push --> github(4. GitHub)
-    submissions -- check_plag.py --> plagiarism_report(5. Plagiarism report `result/`)
+    klms(1\. Submission archive) -- unzip --> klms_extracted
+    klms_extracted(2\. Extracted KLMS archive) -- extract_klms.py --> submissions
+    submissions(3\. Submissions) -- git commit/push --> github(4\. GitHub)
+    submissions -- check_plag.py --> plagiarism_report(5\. Plagiarism report `result/`)
     submissions -- grade.py --> grading_result
-    grading_result(6. Grading result) -- report.py --> report(7. Grading report)
+    grading_result(6\. Grading result) -- report.py --> report(7\. Grading report)
 ```
 
 1. 학생들이 제출한 과제물들은 KLMS에서 압축 파일로 한 번에 다운로드 받을 수 있다.
