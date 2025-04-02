@@ -37,10 +37,10 @@
 <div class="avoid-page-break-inside-ul no-print-a">
 
 <!-- pusnow publication start -->
-- Adios to Busy-Waiting for Microsecond-scale Memory Disaggregation.
+- Adios to Busy-Waiting for Microsecond-scale Memory Disaggregation. [[Link]](https://yoon.ws/publication/adios-eurosys25/) [[Slides]](https://yoon.ws/publication/adios-eurosys25-slides.pptx)
   - **Wonsup Yoon**, Jisu Ok, Sue Moon, and Youngjin Kwon
-  - *Proceedings of the Twentieth European Conference on Computer Systems (EuroSys).* 2025
-- Dynamic Dispatcher Assignment With Flat-Combining.
+  - *Proceedings of the Twentieth European Conference on Computer Systems.* 2025
+- Dynamic Dispatcher Assignment With Flat-Combining. [[Link]](https://yoon.ws/publication/dyndispatcher-eurosysposter25/)
   - Gangmin Lee, **Wonsup Yoon**, and Sue Moon
   - *Proceedings of the Twentieth European Conference on Computer Systems (Poster Session) (EuroSys '25 Posters).* 2025
 - Poster: Pushing RDMA into Milliseconds RTT Communication. [[Link]](https://yoon.ws/publication/millirdma-conextposter24/)
@@ -53,7 +53,7 @@
   - Byeongkeon Lee, Donghyeon Lee, Jisu Ok, **Wonsup Yoon**, and Sue Moon
   - *Proceedings of the 7th Asia-Pacific Workshop on Networking (APNet).* 2023
   - Best Paper Award
-- DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation. [[Link]](https://yoon.ws/publication/dilos-eurosys23/) [[Slides]](https://yoon.ws/dilos/slides)
+- DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation. [[Link]](https://yoon.ws/publication/dilos-eurosys23/) [[Slides]](https://yoon.ws/publication/dilos-eurosys23-slides.pptx)
   - **Wonsup Yoon**, Jisu Ok, Jinyoung Oh, Sue Moon, and Youngjin Kwon
   - *Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys).* 2023
   - Best Paper Runner-up

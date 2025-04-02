@@ -552,11 +552,18 @@ def handle_publication(text, mode="md"):
             url = pub["ees"][0]
         else:
             url = ""
+        if pub["slides"]:
+            if pub["slides"].startswith("https://"):
+                slides = pub["slides"]
+            else:
+                slides = f"{BASE_URL}publication/{pub["slides"]}"
+        else:
+            slides = None
 
         publications_blk.add(
             pub["title"],
             url,
-            pub["slides"],
+            slides,
             pub["authors"],
             pub["where"],
             pub["year"],

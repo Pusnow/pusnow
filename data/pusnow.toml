@@ -1,11 +1,8 @@
 
 [[publication]]
-title = "Adios to Busy-Waiting for Microsecond-scale Memory Disaggregation"
-year = 2025
-month = 4
-day = 1
-authors = ["Wonsup Yoon", "Jisu Ok", "Sue Moon", "Youngjin Kwon"]
-where = "Proceedings of the Twentieth European Conference on Computer Systems (EuroSys)"
+cite = "10.1145/3689031.3717475"
+pdf = "adios-eurosys25"
+slides = "adios-eurosys25-slides.pptx"
 
 [[publication]]
 title = "Dynamic Dispatcher Assignment With Flat-Combining"
@@ -14,7 +11,7 @@ month = 4
 day = 1
 authors = ["Gangmin Lee", "Wonsup Yoon", "Sue Moon"]
 where = "Proceedings of the Twentieth European Conference on Computer Systems (Poster Session) (EuroSys '25 Posters)"
-
+pdf = "dyndispatcher-eurosysposter25"
 
 [[publication]]
 cite = "10.1145/3680121.3699883"
@@ -41,7 +38,7 @@ cite = "10.1145/3552326.3567488"
 dblp = "conf/eurosys/YoonOOMK23"
 where = "Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys)"
 note = "Best Paper Runner-up"
-slides = "https://yoon.ws/dilos/slides"
+slides = "dilos-eurosys23-slides.pptx"
 pdf = "dilos-eurosys23"
 
 [[publication]]
