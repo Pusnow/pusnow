@@ -6,8 +6,22 @@
     <description>Recent content in Publications on Wonsup Yoon</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Dec 2024 16:06:23 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 03 Apr 2025 06:43:24 +0900</lastBuildDate>
     <atom:link href="https://yoon.ws/publication/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dynamic Dispatcher Assignment With Flat-Combining</title>
+      <link>https://yoon.ws/publication/dyndispatcher-eurosysposter25/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://yoon.ws/publication/dyndispatcher-eurosysposter25/</guid>
+      <description>&lt;p&gt;Proceedings of the Twentieth European Conference on Computer Systems (Poster Session) (EuroSys &amp;lsquo;25 Posters)&lt;/p&gt;&#xA;&lt;p&gt;© Gangmin Lee, Wonsup Yoon, and Sue Moon 2025. This is the author&amp;rsquo;s version of the work. It is posted here for your personal use. Not for redistribution. The definitive Version of Record was published in Proceedings of the Twentieth European Conference on Computer Systems (Poster Session) (EuroSys &amp;lsquo;25 Posters).&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://yoon.ws/publication/dyndispatcher-eurosysposter25.pdf&#34;&gt;Download PDF&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;object data=&#34;/publication/dyndispatcher-eurosysposter25.pdf&#34; width=&#34;100%&#34; height=&#34;500&#34;&gt;&lt;/object&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Adios to Busy-Waiting for Microsecond-scale Memory Disaggregation</title>
+      <link>https://yoon.ws/publication/adios-eurosys25/</link>
+      <pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://yoon.ws/publication/adios-eurosys25/</guid>
+      <description>&lt;p&gt;Proceedings of the Twentieth European Conference on Computer Systems&lt;/p&gt;&#xA;&lt;p&gt;© Wonsup Yoon, Jisu Ok, Sue Moon, and Youngjin Kwon 2025. This is the author&amp;rsquo;s version of the work. It is posted here for your personal use. Not for redistribution. The definitive Version of Record was published in Proceedings of the Twentieth European Conference on Computer Systems, &lt;a href=&#34;https://dl.acm.org/doi/pdf/10.1145/3689031.3717475&#34;&gt;https://dl.acm.org/doi/pdf/10.1145/3689031.3717475&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://yoon.ws/publication/adios-eurosys25.pdf&#34;&gt;Download PDF&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;object data=&#34;/publication/adios-eurosys25.pdf&#34; width=&#34;100%&#34; height=&#34;500&#34;&gt;&lt;/object&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Poster: Pushing RDMA into Milliseconds RTT Communication</title>
       <link>https://yoon.ws/publication/millirdma-conextposter24/</link>
