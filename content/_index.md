@@ -20,7 +20,7 @@ aliases:
 
 <div class="avoid-page-break-inside-ul normal-print-a">
 
-- Ph.D. Student in Computer Science, **KAIST**, *2019.9-present*.
+- Ph.D. Student in Computer Science, **KAIST**, *2019.9-2025.8 (expected)*.
   - Co-advisors: [Sue Moon](https://an.kaist.ac.kr/~sbmoon/) and [Youngjin Kwon](https://sites.google.com/view/yjkwon/home)
   - GPA: 4.01/4.30
 - M.S. in Computer Science, **KAIST**, *2017.9-2019.8*.
@@ -90,10 +90,10 @@ aliases:
 ## Invited Talks
 
 <!-- pusnow talk start -->
-* KIISE KCC'24: Efficient Memory Disaggregation Systems Using Unikernel
-* KIISE KCC'24: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
-* Samsung GTS'23: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
-* EuroDW'23: Designing a Latency-Optimized Scheduler for Memory Disaggregation
+- KIISE KCC'24: Efficient Memory Disaggregation Systems Using Unikernel
+- KIISE KCC'24: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
+- Samsung GTS'23: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
+- EuroDW'23: Designing a Latency-Optimized Scheduler for Memory Disaggregation
 <!-- pusnow talk end -->
 
 ---
@@ -101,7 +101,7 @@ aliases:
 ## Professional Activities
 
 <!-- pusnow activity start -->
-* 2022: EuroSys'22 Shadow PC
+- 2022: EuroSys'22 Shadow PC
 <!-- pusnow activity end -->
 
 ---
