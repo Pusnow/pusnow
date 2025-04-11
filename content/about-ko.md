@@ -16,10 +16,8 @@
 
 - 전산학부 박사과정, **KAIST**, *2019.9-2025.8(예정)*.
   - 공동지도교수: [문수복](https://an.kaist.ac.kr/~sbmoon/), [권영진](https://sites.google.com/view/yjkwon/home)
-  - GPA: 4.01/4.30
 - 전산학부 석사, **KAIST**, *2017.9-2019.8*.
   - 공동지도교수: [문수복](https://an.kaist.ac.kr/~sbmoon/) and [권영진](https://sites.google.com/view/yjkwon/home)
-  - GPA: 3.95/4.30
 - 전기전자공학부 학사, **연세대학교**, *2013.3-2017.2*.
   - 부전공: 컴퓨터과학
   - 우등졸업 (상위 3%)
@@ -89,10 +87,10 @@
 ## Invited Talks
 
 <!-- pusnow talk start -->
-* KIISE KCC 2024: Efficient Memory Disaggregation Systems Using Unikernel
-* KIISE KCC 2024: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
-* Samsung GTS 2023: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
-* EuroDW 2023: Designing a Latency-Optimized Scheduler for Memory Disaggregation
+- KIISE KCC 2024: Efficient Memory Disaggregation Systems Using Unikernel
+- KIISE KCC 2024: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
+- Samsung GTS 2023: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
+- EuroDW 2023: Designing a Latency-Optimized Scheduler for Memory Disaggregation
 <!-- pusnow talk end -->
 
 ---
@@ -100,7 +98,7 @@
 ## Professional Activities
 
 <!-- pusnow activity start -->
-* 2022년: EuroSys'22 Shadow PC
+- 2022년: EuroSys'22 Shadow PC
 <!-- pusnow activity end -->
 
 ---
