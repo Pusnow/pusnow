@@ -232,8 +232,8 @@ class Talks(BaseBlock):
 
     def do_markdown(self):
         talk_text = []
-        for _, title, org, _ in sorted(self.talks, reverse=True):
-            talk_text.append("* %s: %s" % (org, title))
+        for year, title, org, _ in sorted(self.talks, reverse=True):
+            talk_text.append("* %s %s: %s" % (org, year, title))
         return "\n".join(talk_text)
 
     def do_latex(self):
@@ -552,11 +552,18 @@ def handle_publication(text, mode="md"):
             url = pub["ees"][0]
         else:
             url = ""
+        if pub["slides"]:
+            if pub["slides"].startswith("https://"):
+                slides = pub["slides"]
+            else:
+                slides = f"{BASE_URL}publication/{pub["slides"]}"
+        else:
+            slides = None
 
         publications_blk.add(
             pub["title"],
             url,
-            pub["slides"],
+            slides,
             pub["authors"],
             pub["where"],
             pub["year"],

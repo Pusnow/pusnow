@@ -35,7 +35,7 @@ tags:
 
 ## Coroutine
 
-앞서 작성한 [글](https://www.pusnow.com/note/execution-units/)에서처럼 코루틴은 여러 문맥에서 다양한 개념을 지칭하고 있다. 현재 문맥에서는 procedure-oriented 시스템에서 사용하는 process의 일종으로 보면 간단하다.
+앞서 작성한 [글](https://yoon.ws/note/execution-units/)에서처럼 코루틴은 여러 문맥에서 다양한 개념을 지칭하고 있다. 현재 문맥에서는 procedure-oriented 시스템에서 사용하는 process의 일종으로 보면 간단하다.
 코루틴은 다른 process 혹은 thread와 달리 생성과 문맥전환이 빠르기 때문에 작은 프로세스의 수가 빠르게 변화하는 procedure-oriented 시스템에서 성능을 개선하기 위해 많이 사용된다. Capriccio는 대표적인 코루틴을 사용한 procedure-oriented 시스템이다[^conf/sosp/BehrenCZNB03].
 
 ## Event Loop and Handlers
@@ -140,7 +140,6 @@ future를 evaluation이 지연될 수 있고 객체로 전달되어 꼭 evaluati
 또, 현대의 프로그래밍 언어에 따라서는 이들을 구분해서 사용하기도한다.
 C++에서는 promise를 future를 이용하여 비동기적으로 조회할 수 있는 객체를 지칭한다[^cpppromise].
 
-
 ## Async/Await
 
 Promise 위주로 프로그래밍을 하다보면 모든 함수가 promise를 리턴하게 되는 상황이 자주 발생한다.
@@ -177,7 +176,6 @@ Async/Await을 사용하게 된다면 이벤트 처리를 동기적 시멘틱을
 사람마다 의견이 다를 수 있지만, 나는 event loop위에서 구현된 thread-driven이라 생각한다.
 이와 같은 구조는 Capriccio와 유사한 구조로[^conf/sosp/BehrenCZNB03], 이 구조 위에서 컴파일러/라이브러리가 Async/Await 키워드를 통해 락으로 보호된 값 (promise)를 쉽게 사용할 수 있게 한 것이다.
 
-
 ## CSP Model
 
 [^journals/cacm/Hoare78][^csp]
@@ -187,7 +185,6 @@ Async/Await을 사용하게 된다면 이벤트 처리를 동기적 시멘틱을
 
 [^conf/ijcai/HewittBS73][^conf/popl/HewittA77]
 (작성중)
-
 
 [^whythreadsbad]: John Ousterhout. *Why Threads Are A Bad Idea (for most purposes)* In ATC 1996.
 [^haskell-combinator]: Haskell Wiki. *Combinator*. [https://wiki.haskell.org/Combinator](https://wiki.haskell.org/Combinator).

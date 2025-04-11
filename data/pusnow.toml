@@ -1,3 +1,18 @@
+
+[[publication]]
+cite = "10.1145/3689031.3717475"
+pdf = "adios-eurosys25"
+slides = "adios-eurosys25-slides.pptx"
+
+[[publication]]
+title = "Dynamic Dispatcher Assignment With Flat-Combining"
+year = 2025
+month = 4
+day = 1
+authors = ["Gangmin Lee", "Wonsup Yoon", "Sue Moon"]
+where = "Proceedings of the Twentieth European Conference on Computer Systems (Poster Session) (EuroSys '25 Posters)"
+pdf = "dyndispatcher-eurosysposter25"
+
 [[publication]]
 cite = "10.1145/3680121.3699883"
 dblp = "conf/conext/OkYM24"
@@ -23,7 +38,7 @@ cite = "10.1145/3552326.3567488"
 dblp = "conf/eurosys/YoonOOMK23"
 where = "Proceedings of the Eighteenth European Conference on Computer Systems (EuroSys)"
 note = "Best Paper Runner-up"
-slides = "https://wsyo.one/dilos/slides"
+slides = "dilos-eurosys23-slides.pptx"
 pdf = "dilos-eurosys23"
 
 [[publication]]
@@ -171,25 +186,25 @@ note = "Awarded for outstanding performance in coursework."
 [[talk]]
 year = 2024
 title = "DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation"
-org = "KIISE KCC'24"
+org = "KIISE KCC"
 note = "Invited for top conference session."
 
 [[talk]]
 year = 2024
 title = "Efficient Memory Disaggregation Systems Using Unikernel"
-org = "KIISE KCC'24"
+org = "KIISE KCC"
 note = "Invited for doctorial forum."
 
 [[talk]]
 year = 2023
 title = "Designing a Latency-Optimized Scheduler for Memory Disaggregation"
-org = "EuroDW'23"
+org = "EuroDW"
 note = "Invited for the 17th EuroSys doctoral workshop."
 
 [[talk]]
 year = 2023
 title = "DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation"
-org = "Samsung GTS'23"
+org = "Samsung GTS"
 note = "Invited for the Samsung Global Technology Symposium."
 
 [[activity]]
@@ -197,5 +212,3 @@ year = 2022
 title = "EuroSys'22 Shadow PC"
 org = "EuroSys"
 note = "Served as a member of a shadow PC."
-
-

@@ -1,6 +1,6 @@
-baseURL = "https://www.pusnow.com/"
+baseURL = "https://yoon.ws/"
 languageCode = "en-us"
-title = "Pusnow"
+title = "Wonsup Yoon"
 enableGitInfo = true
 
 [permalinks]
@@ -31,12 +31,12 @@ weight = 4
 
 [[menu.main]]
 name = "CV"
-url = "pdf/cv.pdf"
+url = "pdf/wsyoon-cv.pdf"
 weight = 5
 
 
 [params]
-footer = "&copy; [Wonsup Yoon](https://www.pusnow.com) | [GitHub](https://github.com/pusnow) | Original theme: [Hugo xmin](https://github.com/yihui/hugo-xmin)"
+footer = "&copy; [Wonsup Yoon](https://yoon.ws) | [GitHub](https://github.com/pusnow) | Original theme: [Hugo xmin](https://github.com/yihui/hugo-xmin)"
 
 [markup]
 defaultMarkdownHandler = "goldmark"
