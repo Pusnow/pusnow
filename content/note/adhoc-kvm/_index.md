@@ -15,11 +15,11 @@ lang: ko-kr
 여러 해 동안 가성비 있는 솔루션을 찾아왔다.
 [ATEN CV211](https://www.compuzone.co.kr/product/product_detail.htm?ProductNo=445542&BigDivNo=12&MediumDivNo=1059&DivNo=2188) 같은 제품을 사용해도 되지만, 가격이 30만원이 넘어가 만만치 않고, HDMI를 지원하지 않고 VGA 인풋만 지원한다[^2].
 
-그러던 중 올해 초 [CH9329 + CH340UART/TTL 직렬 포트](https://ko.aliexpress.com/item/1005006347644715.html?spm=a2g0o.order_list.order_list_main.25.5bf5140f5KY2RA&gatewayAdapt=glo2kor)라는 것을 발견했다.
+그러던 중 올해 초 [CH9329 + CH340UART/TTL 직렬 포트](https://ko.aliexpress.com/item/1005006347644715.html)라는 것을 발견했다.
 조금 조사한 바로는 CH9329는 시리얼 통신을 통해 명령을 내리면, 키보드와 마우스 인풋으로 변환하여 컴퓨터로 전송하는 USB 키보드처럼 동작하는 디바이스이고, CH340는 USB를 이용하여 CH9329와 통신하게 해주는 디바이스이다.
 이를 USB HDMI 캡처 보드와 조합하면 간이(Ad-Hoc) KVM을 만들 수 있다고 생각하였다.
 바로 구매하여 아래와 같이 설정하였다.
-라즈베리파이를 제어하기 위해 Hagibis HDMI-USB 캡처보드, CH9329/CH340을 연결하고, 5V 파워를 이용하여 전원을 공급하였다. 노트북은 사용하던 맥북프로를 활용한다.
+라즈베리파이를 제어하기 위해 [Hagibis HDMI-USB 캡처보드](https://ko.aliexpress.com/item/1005006211797347.html), CH9329/CH340을 연결하고, 5V 파워를 이용하여 전원을 공급하였다. 노트북은 사용하던 맥북프로를 활용한다.
 
 ![Ad-Hoc KVM 하드웨어 설정](adhoc-kvm-hw.png)
 
