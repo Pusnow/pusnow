@@ -184,6 +184,12 @@ org-ko = ""
 note = "Awarded for outstanding performance in coursework."
 
 [[talk]]
+year = 2025
+title = "Adios to Busy-Waiting for Microsecond-scale Memory Disaggregation"
+org = "KIISE KCC"
+note = "Invited for top conference session."
+
+[[talk]]
 year = 2024
 title = "DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation"
 org = "KIISE KCC"
