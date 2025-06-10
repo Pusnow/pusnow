@@ -2,6 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://yoon.ws/note/</loc>
+    <lastmod>2025-06-10T20:42:04+09:00</lastmod>
+  </url><url>
+    <loc>https://yoon.ws/tags/system/</loc>
+    <lastmod>2025-06-10T20:42:04+09:00</lastmod>
+  </url><url>
+    <loc>https://yoon.ws/tags/</loc>
+    <lastmod>2025-06-10T20:42:04+09:00</lastmod>
+  </url><url>
+    <loc>https://yoon.ws/note/adhoc-kvm/</loc>
+    <lastmod>2025-06-10T20:42:04+09:00</lastmod>
+  </url><url>
     <loc>https://yoon.ws/publication/dyndispatcher-eurosysposter25/</loc>
     <lastmod>2025-04-03T06:43:24+09:00</lastmod>
   </url><url>
@@ -11,14 +23,8 @@
     <loc>https://yoon.ws/publication/</loc>
     <lastmod>2025-04-03T06:43:24+09:00</lastmod>
   </url><url>
-    <loc>https://yoon.ws/tags/</loc>
-    <lastmod>2025-04-03T06:43:24+09:00</lastmod>
-  </url><url>
     <loc>https://yoon.ws/publication/adios-eurosys25/</loc>
     <lastmod>2025-04-03T06:43:24+09:00</lastmod>
-  </url><url>
-    <loc>https://yoon.ws/note/</loc>
-    <lastmod>2025-02-27T14:17:35+09:00</lastmod>
   </url><url>
     <loc>https://yoon.ws/tags/research/</loc>
     <lastmod>2024-12-30T22:37:05+09:00</lastmod>
@@ -28,9 +34,6 @@
   </url><url>
     <loc>https://yoon.ws/publication/millirdma-conextposter24/</loc>
     <lastmod>2024-12-12T16:06:23+09:00</lastmod>
-  </url><url>
-    <loc>https://yoon.ws/tags/system/</loc>
-    <lastmod>2025-02-27T14:17:35+09:00</lastmod>
   </url><url>
     <loc>https://yoon.ws/note/async-programming-concepts/</loc>
     <lastmod>2025-02-17T19:52:56+09:00</lastmod>
