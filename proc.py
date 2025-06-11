@@ -8,6 +8,21 @@ import urllib.request
 import xml.etree.ElementTree as ET
 import subprocess
 
+CITE_CACHE_PATH = pathlib.Path(".cite_cache.json")
+
+try:
+    with open(CITE_CACHE_PATH, "rb") as fp:
+        CITE_CACHE = json.load(fp)
+except FileNotFoundError:
+    CITE_CACHE = {}
+except json.decoder.JSONDecodeError:
+    CITE_CACHE = {}
+
+
+def dump_exit():
+    with open(CITE_CACHE_PATH, "w", encoding="utf8") as fp:
+        json.dump(CITE_CACHE, fp)
+
 
 def latex(text):
     if isinstance(text, str):
@@ -397,12 +412,16 @@ def fetch_acm(cite):
 
 
 def fetch_and_parse_cite(cite):
+    if cite in CITE_CACHE:
+        return (cite, CITE_CACHE[cite]) 
     cite, text = fetch_acm(cite)
     if text:
-        return (cite, parse_acm(cite, text))
+        CITE_CACHE[cite] = parse_acm(cite, text)
+        return (cite, CITE_CACHE[cite])
     cite, text = fetch_dblp(cite)
     if text:
-        return (cite, parse_dblp(cite, text))
+        CITE_CACHE[cite] = parse_dblp(cite, text)
+        return (cite, CITE_CACHE[cite])
     return (cite, {})
 
 
@@ -700,3 +719,4 @@ else:
 
     for fname in pathlib.Path("latex/").glob("**/*.tex"):
         handle_latex(fname)
+dump_exit()
