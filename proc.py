@@ -247,8 +247,8 @@ class Talks(BaseBlock):
 
     def do_markdown(self):
         talk_text = []
-        for year, title, org, _ in sorted(self.talks, reverse=True):
-            talk_text.append("* %s %s: %s" % (org, year, title))
+        for year, title, org, note in sorted(self.talks, reverse=True):
+            talk_text.append("* %s %s: %s\n  * %s" % (org, year, title, note))
         return "\n".join(talk_text)
 
     def do_latex(self):

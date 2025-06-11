@@ -88,10 +88,15 @@
 
 <!-- pusnow talk start -->
 * KIISE KCC 2025: Adios to Busy-Waiting for Microsecond-scale Memory Disaggregation
+  * Invited for the top conference session.
 * KIISE KCC 2024: Efficient Memory Disaggregation Systems Using Unikernel
+  * Invited for the doctorial forum.
 * KIISE KCC 2024: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
+  * Invited for the top conference session.
 * Samsung GTS 2023: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
+  * Invited for the Samsung Global Technology Symposium.
 * EuroDW 2023: Designing a Latency-Optimized Scheduler for Memory Disaggregation
+  * Invited for the 17th EuroSys doctoral workshop.
 <!-- pusnow talk end -->
 
 ---
