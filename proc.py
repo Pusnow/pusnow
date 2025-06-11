@@ -318,6 +318,8 @@ def parse_dblp(cite, xml_txt):
         return None
     tree = ET.fromstring(xml_txt)
     authors = [author.text for author in tree.iter("author")]
+    authors = [re.sub(r"[0-9]*$", "", author).strip() for author in authors]
+
     title = " ".join([title.text for title in tree.iter("title")])
     year = "".join([year.text for year in tree.iter("year")][:1])
     ees = [ee.text for ee in tree.iter("ee")]
