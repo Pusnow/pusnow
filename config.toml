@@ -4,8 +4,8 @@ title = "Wonsup Yoon"
 enableGitInfo = true
 
 [permalinks]
-note = "/note/:filename/"
-publication = "/publication/:filename/"
+note = "/note/:contentbasename/"
+publication = "/publication/:contentbasename/"
 
 [[menu.main]]
 name = "Home"
