@@ -1,5 +1,5 @@
 ---
-title: 간이(Ad-Hoc) KVM
+title: "간이(Ad-Hoc) KVM"
 date: 2025-06-10
 tags:
     - System
