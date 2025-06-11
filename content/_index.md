@@ -94,10 +94,11 @@ aliases:
 ## Invited Talks
 
 <!-- pusnow talk start -->
-- KIISE KCC 2024: Efficient Memory Disaggregation Systems Using Unikernel
-- KIISE KCC 2024: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
-- Samsung GTS 2023: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
-- EuroDW 2023: Designing a Latency-Optimized Scheduler for Memory Disaggregation
+* KIISE KCC 2025: Adios to Busy-Waiting for Microsecond-scale Memory Disaggregation
+* KIISE KCC 2024: Efficient Memory Disaggregation Systems Using Unikernel
+* KIISE KCC 2024: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
+* Samsung GTS 2023: DiLOS: Do Not Trade Compatibility for Performance in Memory Disaggregation
+* EuroDW 2023: Designing a Latency-Optimized Scheduler for Memory Disaggregation
 <!-- pusnow talk end -->
 
 ---
@@ -105,7 +106,7 @@ aliases:
 ## Professional Activities
 
 <!-- pusnow activity start -->
-- 2022: EuroSys'22 Shadow PC
+* 2022: EuroSys'22 Shadow PC
 <!-- pusnow activity end -->
 
 ---
